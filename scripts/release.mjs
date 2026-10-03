@@ -6,6 +6,7 @@ import {createHash} from 'node:crypto';
 import {Connection,Keypair,PublicKey} from '@solana/web3.js';
 import {getMint} from '@solana/spl-token';
 import bs58 from 'bs58';
+import {assertReceiptDeploymentSlot,verifyAdditionalReleaseEvidence} from './release-evidence.ts';
 
 try {
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');process.chdir(root);
@@ -61,9 +62,10 @@ if(command==='prepare'){
   if(!data||!data.owner.equals(loader)||data.data.length<45+artifact.length||data.data.readUInt32LE(0)!==3)throw new Error('ProgramData invalid');
   if(sha(data.data.subarray(45,45+artifact.length))!==release.artifactHash||data.data.subarray(45+artifact.length).some(byte=>byte!==0))throw new Error('Deployed program bytes differ from reviewed artifact');
   if(data.data[12]!==0&&data.data[12]!==1)throw new Error('Invalid authority option');
-  return {programData:dataAddress.toBase58(),upgradeAuthority:data.data[12]===0?null:new PublicKey(data.data.subarray(13,45)).toBase58(),artifactHash:release.artifactHash,verifiedAt:new Date().toISOString()};
+  const deploymentSlot=Number(data.data.readBigUInt64LE(4));if(!Number.isSafeInteger(deploymentSlot))throw new Error('ProgramData deployment slot is invalid');
+  return {programData:dataAddress.toBase58(),deploymentSlot,upgradeAuthority:data.data[12]===0?null:new PublicKey(data.data.subarray(13,45)).toBase58(),artifactHash:release.artifactHash,verifiedAt:new Date().toISOString()};
  }
- async function verifyAcceptance(evidence){
+ async function verifyAcceptance(evidence,deploymentSlot){
   if(evidence.programId!==id||evidence.network!=='devnet'||evidence.complete!==true||evidence.genesisHash!==genesis||evidence.artifactHash!==release.artifactHash)throw new Error('Complete acceptance must identify this final program, genesis and artifact');
   if(![2,3,4].every(n=>evidence.cycles?.some(c=>c.legs===n&&c.state==='Settled'&&c.balancesVerified))||evidence.refund?.state!=='Refunded'||!evidence.refund.independent||!evidence.refund.ownerAbsent||!evidence.refund.balancesVerified||!evidence.refund.freshAccount)throw new Error('Complete final-program devnet success and independent fallback recovery evidence is required');
   if(!Array.isArray(evidence.transactions)||evidence.transactions.length===0||evidence.transactions.length>512)throw new Error('Acceptance transaction receipts missing or oversized');
@@ -72,6 +74,7 @@ if(command==='prepare'){
   for(const entry of evidence.transactions){
    const tx=await connection.getTransaction(entry.signature,{commitment:'finalized',maxSupportedTransactionVersion:0});
    if(!tx?.meta||tx.meta.err)throw new Error('Acceptance transaction lacks a successful finalized receipt');
+   assertReceiptDeploymentSlot(tx.slot,deploymentSlot);
    const message=tx.transaction.message,keys=message.staticAccountKeys??message.accountKeys;
    const allKeys=[...keys,...(tx.meta.loadedAddresses?.writable??[]),...(tx.meta.loadedAddresses?.readonly??[])];
    for(const instruction of message.compiledInstructions??message.instructions){
@@ -116,7 +119,14 @@ if(command==='prepare'){
  }else{
   const inspection=await inspectProgram();
   const evidencePath=workspacePath(flag('evidence','docs/evidence/devnet-flows.json')),evidence=json(evidencePath);
-  await verifyAcceptance(evidence);
+  await verifyAcceptance(evidence,inspection.deploymentSlot);
+  const recoveryPath=workspacePath(flag('recovery-evidence','docs/evidence/devnet-independent-cli.json'));
+  const walletsPath=workspacePath(flag('wallet-evidence','docs/evidence/devnet-browser-wallets.json'));
+  const recoveryEvidence=json(recoveryPath),walletEvidence=json(walletsPath);
+  await verifyAdditionalReleaseEvidence(connection,{programId:id,genesisHash:genesis,artifactHash:release.artifactHash,deploymentSlot:inspection.deploymentSlot},recoveryEvidence,walletEvidence,command==='publish'?release.finalizedAt:undefined);
+  const publicApp=await fetch(walletEvidence.publicAppUrl,{signal:AbortSignal.timeout(15000),redirect:'error'});
+  if(!publicApp.ok||!publicApp.headers.get('content-type')?.includes('text/html'))throw new Error('Accepted public frontend is unavailable without redirects');
+  const additionalEvidenceHashes={independentCli:sha(readFileSync(recoveryPath)),browserWallets:sha(readFileSync(walletsPath))};
   if(command==='publish'){
    if(inspection.upgradeAuthority!==null||!release.immutabilityVerified||!release.finalizedAt)throw new Error('Final program immutability has not been verified');
    const began=Date.parse(evidence.startedAt),finalizedAt=Date.parse(release.finalizedAt);
@@ -128,9 +138,10 @@ if(command==='prepare'){
    if(execute){
     Object.assign(manifest,{programData:inspection.programData,upgradeAuthority:null,artifactHash:release.artifactHash,commit:release.commit??undefined,deployed:true,verifiedAt:new Date().toISOString()});
     write('deployments/devnet.json',manifest);write('apps/web/public/deployments/devnet.json',manifest);
-    Object.assign(release,{status:'verified-immutable-release',postFinalizationEvidenceHash:sha(readFileSync(evidencePath)),publishedAt:new Date().toISOString()});write(releasePath,release);
+    Object.assign(release,{status:'verified-immutable-release',postFinalizationEvidenceHash:sha(readFileSync(evidencePath)),postFinalizationAdditionalEvidenceHashes:additionalEvidenceHashes,publishedAt:new Date().toISOString()});write(releasePath,release);
     const publicDir=join(root,'deployments/releases',id);mkdirSync(publicDir,{recursive:true});
     copyFileSync(artifactPath,join(publicDir,'swapcircle.so'));copyFileSync(join(directory,release.idl),join(publicDir,'swapcircle.json'));write(join(publicDir,'release.json'),release);copyFileSync(evidencePath,join(publicDir,'acceptance.json'));
+    copyFileSync(recoveryPath,join(publicDir,'independent-cli.json'));copyFileSync(walletsPath,join(publicDir,'browser-wallets.json'));
     console.log(JSON.stringify({published:true,manifest:'deployments/devnet.json',release:posix(join(publicDir,'release.json'))},null,2));
    }
   }else{
@@ -142,7 +153,7 @@ if(command==='prepare'){
    const script=`set -euo pipefail\numask 077\nSC_TMP=$(mktemp -d /tmp/swapcircle-finalize.XXXXXX)\ntrap 'rm -f "$SC_TMP/payer.json"; rmdir "$SC_TMP"' EXIT\nIFS= read -r SC_PAYER\nprintf '%s' "$SC_PAYER" > "$SC_TMP/payer.json"\nunset SC_PAYER\nsolana program set-upgrade-authority "$1" --final --upgrade-authority "$SC_TMP/payer.json" --keypair "$SC_TMP/payer.json" --url "$2" --commitment finalized --output json\nsolana program show "$1" --url "$2" --commitment finalized --output json\n`;
    const cli=runDocker(['exec','-i','swapcircle-toolchain','bash','-c',script,'finalize',id,rpc],{input:payer.json+'\n',secretOutput:true});
    const after=await inspectProgram();if(after.upgradeAuthority!==null)throw new Error('Finalization did not remove authority');
-   Object.assign(release,after,{status:'immutable-awaiting-post-finalization-acceptance',immutabilityVerified:true,finalizedAt:new Date().toISOString(),preFinalizationEvidenceHash:sha(readFileSync(evidencePath))});write(releasePath,release);
+   Object.assign(release,after,{status:'immutable-awaiting-post-finalization-acceptance',immutabilityVerified:true,finalizedAt:new Date().toISOString(),preFinalizationEvidenceHash:sha(readFileSync(evidencePath)),preFinalizationAdditionalEvidenceHashes:additionalEvidenceHashes});write(releasePath,release);
    write(join(directory,'finalization-receipt.json'),{...after,programId:id,cliOutput:cli.trim(),requiredNext:'Rerun complete final-program acceptance after authority removal before publishing final manifest.'});
    console.log(JSON.stringify({immutable:true,programId:id,programData:after.programData,next:'Rerun complete acceptance and publish final manifest.'},null,2));
   }

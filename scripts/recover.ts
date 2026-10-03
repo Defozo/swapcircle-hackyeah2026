@@ -23,7 +23,7 @@ else{
    const checked=await checkPendingTransaction(connection,prior.signature);
    // A transient RPC omission must not erase a previously observed confirmation.
    const old=checked.phase==='unknown'&&['confirmed','finalized'].includes(prior.confirmation??'')?{...checked,phase:prior.confirmation as 'confirmed'|'finalized'}:checked;
-   const expired=prior.progress?.lastValidBlockHeight!==undefined&&await connection.getBlockHeight('confirmed')>prior.progress.lastValidBlockHeight;
+   const expired=prior.progress?.lastValidBlockHeight!==undefined&&await connection.getBlockHeight('finalized')>prior.progress.lastValidBlockHeight;
    assertRecoveryRetryAllowed(prior,old,{expired,retryAfterCheck:has('retry-after-check'),newOperation:has('new-operation')});
   }
  }

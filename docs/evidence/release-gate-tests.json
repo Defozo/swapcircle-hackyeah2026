@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-10-03",
+  "command": "pnpm exec vitest run tests/sdk/release-evidence.test.ts tests/sdk/recovery-journal.test.ts",
+  "passed": 13,
+  "failed": 0,
+  "releaseGateTests": 9,
+  "recoveryJournalTests": 4,
+  "nativeNode24TypeScriptImport": "passed",
+  "releaseMjsSyntax": "passed",
+  "scope": "Validation logic exercised with controlled RPC fixtures. This report is not devnet, wallet-extension, deployment or immutable-release acceptance."
+}

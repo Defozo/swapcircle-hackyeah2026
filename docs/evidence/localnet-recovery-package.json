@@ -14,5 +14,7 @@
   "termsHash": "73ada3d7210aab481fb4200c5e716666d4356d91177254f74d248a9eb68de2b5",
   "sdkVersion": "0.1.0",
   "idlVersion": "0.1.0",
-  "command": "pnpm recover -- --cycle 12PXzHFtaRaAZPUJiBTt9U3Qe5SQCgo3eQidSrjDGNYL --leg 0 --rpc http://127.0.0.1:8899 --manifest deployments/localnet.json"
+  "command": "pnpm recover -- --package docs/evidence/localnet-recovery-package.json --rpc http://127.0.0.1:8899",
+  "commandUpdatedAt": "2026-10-03",
+  "commandUpdateNote": "Suggested command updated to use this public package directly. Original cycle terms and executed receipt are unchanged."
 }

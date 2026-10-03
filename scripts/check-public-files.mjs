@@ -1,11 +1,19 @@
 import {spawnSync} from 'node:child_process';
-import {readFileSync} from 'node:fs';
+import {readFileSync,readdirSync,existsSync} from 'node:fs';
+import {join} from 'node:path';
 
 // Run immediately before publishing. Only the file path and category are printed.
 // psst may inject project secrets so their exact representations can be checked.
 const result=spawnSync('git',['ls-files','--cached','--others','--exclude-standard','-z'],{encoding:'utf8',windowsHide:true});
 if(result.status!==0)throw new Error('Cannot enumerate public project files');
 const files=[...new Set(result.stdout.split('\0').filter(Boolean))];
+// Built browser artifacts are ignored by Git, but must pass the same check.
+if(process.argv.includes('--dist')){
+ const directory='apps/web/dist';
+ if(!existsSync(directory))throw new Error('Build the frontend before checking --dist');
+ const walk=path=>{for(const entry of readdirSync(path,{withFileTypes:true})){const child=join(path,entry.name);if(entry.isDirectory())walk(child);else files.push(child);}};
+ walk(directory);
+}
 const needles=[];
 for(const [name,value] of Object.entries(process.env)){
  if(!name.startsWith('SWAPCIRCLE_')||!/(KEY|TOKEN|SECRET)$/.test(name)||!value)continue;

@@ -118,6 +118,13 @@ independent refunds with an unsafe ATA and a fresh safe recovery account, and
 confirm balances and finalized receipts. Also perform the real-wallet checks in
 the public frontend. CLI signers do not prove browser wallet compatibility.
 
+Finalization requires all three reports described in
+[release-evidence.md](release-evidence.md): program flows, independent CLI recovery,
+and observed Phantom/Solflare use in the public application. The gate checks each
+receipt against the current deployment slot. Run the independent recovery command
+and record the actual wallet observations before proceeding. Repeat all three
+after authority removal; old reports cannot be reused for final publication.
+
 ## Explicit irreversible finalization
 
 ```sh

@@ -21,6 +21,14 @@ jobs:
       - run: pnpm build
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: web-verification
+          path: |
+            docs/evidence/playwright-report/
+            apps/web/test-results/
+          if-no-files-found: ignore
   program:
     runs-on: ubuntu-latest
     env:
@@ -33,3 +41,9 @@ jobs:
       - uses: actions/checkout@v4
       - run: anchor build --no-idl --ignore-keys
       - run: cargo test --locked --manifest-path tests/program/Cargo.toml -- --nocapture
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sbf-measurements
+          path: tests/program/measurements*.json
+          if-no-files-found: error
