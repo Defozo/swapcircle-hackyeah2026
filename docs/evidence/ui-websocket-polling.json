@@ -1,0 +1,22 @@
+{
+  "cluster": "localnet",
+  "realValidator": true,
+  "cycle": "2rPjcsLV6PpzVwodGm17A4FG4Zf6ay1WztDtUSATacVd",
+  "subscriptionEstablished": true,
+  "disconnectedAt": 1791042742238,
+  "closedServerConnections": 1,
+  "blockedReconnects": 29,
+  "droppedNotifications": 0,
+  "pollReads": [
+    1791042757013,
+    1791042771950
+  ],
+  "depositObservedAt": 1791042757986,
+  "settlementObservedAt": 1791042772405,
+  "depositSignature": "2zB61UdWvmCyMpbPwZzWk9uDuR1mpUKSVWFg4sCSMppWGf4L1jLaLvgghzxUNZckXvAJaMYEXw3csMovnxGt41tt",
+  "settlementSignature": "4zNKQ9D8qYs9Q94J9T5RGyttUpcyTvKKDP9amttj8Fua43DRzje4CABjzbCh8LKdb8GTrtMJAo3To11WLmy9FsuD",
+  "state": "Settled",
+  "httpPollingVerified": true,
+  "pageErrors": [],
+  "uiScreenshotVerified": true
+}

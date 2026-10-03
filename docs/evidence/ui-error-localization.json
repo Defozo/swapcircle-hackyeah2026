@@ -1,0 +1,20 @@
+{
+  "readOnly": true,
+  "seededHistoryPresentationTest": true,
+  "mockedRPC": true,
+  "noFinancialOperations": true,
+  "errors": [
+    "DeadlinePassed 6007",
+    "signature rejected",
+    "HTTP 429",
+    "Program is not deployed"
+  ],
+  "languages": [
+    "pl",
+    "en"
+  ],
+  "reloadVerified": true,
+  "persistedJournalUnchanged": true,
+  "sendTransactionCalls": 0,
+  "checkedAt": "2026-10-03T16:07:01.212Z"
+}

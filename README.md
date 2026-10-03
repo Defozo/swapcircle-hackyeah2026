@@ -18,6 +18,7 @@ Kod implementuje program, SDK, tablicę podpisanych ofert Convex, wyszukiwanie c
 - [Weryfikacja działającej tablicy Convex](tests/matching/live-result.json)
 - [Opis zgłoszenia](submission/description.md), [prezentacja PDF](submission/SwapCircle.pdf), [scenariusz pokazu](docs/demo.md)
 - [Film: rzeczywisty localnet, 1:55](https://github.com/Defozo/swapcircle-hackyeah2026/releases/tag/demo-localnet-2026-10-03), [salda i sygnatury nagrania](submission/demo-localnet.evidence.json)
+- [Pakiet materiałów ZIP](https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-localnet-2026-10-03/SwapCircle-localnet-package.zip): dane zespołu, opis, PDF, film, dowody i status formalny. Przygotowany pakiet localnet nie oznacza wysłania zgłoszenia ani pełnego odbioru devnet.
 - [Pełny zakres pomiarów kosztów i limitów](docs/measurements.md)
 - [Hipoteza potrzeby i plan walidacji](docs/validation-research.md)
 

@@ -4,6 +4,7 @@
   "video": "https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-localnet-2026-10-03/demo-localnet.mp4",
   "videoRelease": "https://github.com/Defozo/swapcircle-hackyeah2026/releases/tag/demo-localnet-2026-10-03",
   "pdf": "https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-localnet-2026-10-03/SwapCircle.pdf",
+  "package": "https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-localnet-2026-10-03/SwapCircle-localnet-package.zip",
   "network": "localnet verified; devnet deployment pending test SOL",
   "submissionSent": false
 }

@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "cluster": "devnet",
+  "genesisHash": "EtWTRABZaYq6iMfeYKouRu166VU2xqa1wcaWoxPkrZBG",
+  "programId": "Eof8Zk6Y6GkaeawM6grb3gQQFcXEikhEHuEnT4nLyzv4",
+  "developmentProgramId": "HkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGun",
+  "preparedAt": "2026-10-03T13:37:25.741Z",
+  "commit": null,
+  "artifact": "swapcircle.so",
+  "artifactHash": "dc9446536fd0ca03b5fcd2d2dbc3cb8b2720bf9c6f0e2d6e43e7f92a384a6bf9",
+  "idl": "swapcircle.json",
+  "idlHash": "b42587229f7197ca3b3a51dc9c7fdf9c7709039e19fee9a3fa5986d54c844945",
+  "sourceHash": "e45338eb84a94c4154573b7d63a3a69679f1fb622ef32e545ba3742b1f94f3dd",
+  "sourceFiles": [
+    {
+      "path": "Anchor.toml",
+      "sha256": "e6d69947432e32fe209254aedbef3da4c328d24ac7d9400fa6913939a8611087"
+    },
+    {
+      "path": "Cargo.lock",
+      "sha256": "f97b4bdfe0ca2cd49c35099b8550f3f689c4102292c03860360dbf5a681455c8"
+    },
+    {
+      "path": "Cargo.toml",
+      "sha256": "98e36e71dbaa6a8eea272aac0e976544f259882dd37109bfdeac9fae8b9243c6"
+    },
+    {
+      "path": "programs/swapcircle/Cargo.toml",
+      "sha256": "3d542c433939cea6ac7175d40e720b9de5621f6eb4697ad199001ab16444ebee"
+    },
+    {
+      "path": "programs/swapcircle/README.md",
+      "sha256": "99b2db996419a868cd02a160b3f3d32e0700872aa9f7decf240af06efcac46bc"
+    },
+    {
+      "path": "programs/swapcircle/src/lib.rs",
+      "sha256": "6e5282d6622718950587f1ec3b46dea48cf94f7837865003b7eab0f31ac2b352"
+    }
+  ],
+  "status": "prepared",
+  "upgradeAuthority": null,
+  "immutabilityVerified": false,
+  "deployed": false,
+  "sourceCommit": "1fc13d83e983393daf4a6efad67cb3fbb2cdab63",
+  "sourceProvenance": {
+    "version": 1,
+    "commit": "1fc13d83e983393daf4a6efad67cb3fbb2cdab63",
+    "verifiedAt": "2026-10-03T15:31:41.659Z",
+    "preparedSourceHash": "e45338eb84a94c4154573b7d63a3a69679f1fb622ef32e545ba3742b1f94f3dd",
+    "normalizedSourceHash": "a51739ead01c92583b9853ec4b71a0d9a0bea936043f316ce54c183435455da5",
+    "transformations": [
+      "Development Program ID replaced by final Program ID only in declare_id and Anchor.toml",
+      "CRLF and LF compared equivalently for text files"
+    ],
+    "files": [
+      {
+        "path": "Anchor.toml",
+        "gitFileSha256": "f8c4cc9c9eadff407f01247900612eb824a19d88aa0db9623990a54168c67b5e",
+        "preparedFileSha256": "e6d69947432e32fe209254aedbef3da4c328d24ac7d9400fa6913939a8611087",
+        "normalizedPreparedSha256": "72d48a391db6a9e59900ff5159fe8045d65d079f8cdd0768a55dbe755ee76314"
+      },
+      {
+        "path": "Cargo.lock",
+        "gitFileSha256": "f97b4bdfe0ca2cd49c35099b8550f3f689c4102292c03860360dbf5a681455c8",
+        "preparedFileSha256": "f97b4bdfe0ca2cd49c35099b8550f3f689c4102292c03860360dbf5a681455c8",
+        "normalizedPreparedSha256": "f97b4bdfe0ca2cd49c35099b8550f3f689c4102292c03860360dbf5a681455c8"
+      },
+      {
+        "path": "Cargo.toml",
+        "gitFileSha256": "98e36e71dbaa6a8eea272aac0e976544f259882dd37109bfdeac9fae8b9243c6",
+        "preparedFileSha256": "98e36e71dbaa6a8eea272aac0e976544f259882dd37109bfdeac9fae8b9243c6",
+        "normalizedPreparedSha256": "98e36e71dbaa6a8eea272aac0e976544f259882dd37109bfdeac9fae8b9243c6"
+      },
+      {
+        "path": "programs/swapcircle/Cargo.toml",
+        "gitFileSha256": "3d542c433939cea6ac7175d40e720b9de5621f6eb4697ad199001ab16444ebee",
+        "preparedFileSha256": "3d542c433939cea6ac7175d40e720b9de5621f6eb4697ad199001ab16444ebee",
+        "normalizedPreparedSha256": "3d542c433939cea6ac7175d40e720b9de5621f6eb4697ad199001ab16444ebee"
+      },
+      {
+        "path": "programs/swapcircle/README.md",
+        "gitFileSha256": "99b2db996419a868cd02a160b3f3d32e0700872aa9f7decf240af06efcac46bc",
+        "preparedFileSha256": "99b2db996419a868cd02a160b3f3d32e0700872aa9f7decf240af06efcac46bc",
+        "normalizedPreparedSha256": "99b2db996419a868cd02a160b3f3d32e0700872aa9f7decf240af06efcac46bc"
+      },
+      {
+        "path": "programs/swapcircle/src/lib.rs",
+        "gitFileSha256": "1aeb858d88d2aad67c2162c9a5d241d7cfd1174f00297d44e2281ebe99ec823f",
+        "preparedFileSha256": "6e5282d6622718950587f1ec3b46dea48cf94f7837865003b7eab0f31ac2b352",
+        "normalizedPreparedSha256": "6e5282d6622718950587f1ec3b46dea48cf94f7837865003b7eab0f31ac2b352"
+      }
+    ]
+  }
+}

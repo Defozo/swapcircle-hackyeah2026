@@ -1,10 +1,17 @@
 {
-  "verifiedAt": "2026-10-03T14:37:41.298Z",
+  "verifiedAt": "2026-10-03T16:15:14.662Z",
   "url": "https://defozo.github.io/swapcircle-hackyeah2026/",
   "freshBrowserContext": true,
   "authenticationUsed": false,
   "loaded": true,
   "navigationVerified": true,
+  "sharedOfferBoardConnected": true,
+  "languages": [
+    "pl",
+    "en"
+  ],
+  "englishRecoveryTermsVerified": true,
+  "languagePersistsAfterReload": true,
   "mobileOverflow": false,
   "pageErrors": [],
   "failedAssets": [],

@@ -1,0 +1,295 @@
+{
+  "checkedAt": "2026-10-03T15:58:01.426Z",
+  "cluster": "localnet",
+  "scope": "Read-only rendering verification of existing cycle accounts. No wallet, signing, deposits or refunds in this test.",
+  "nodesRetainedAcrossModalRefreshAndLanguage": true,
+  "snapshots": [
+    {
+      "label": "initial refunded cycle",
+      "expected": 2,
+      "geometry": {
+        "nodes": [
+          {
+            "text": "AAlicja10 dX",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          },
+          {
+            "text": "BBartek4 dY",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          }
+        ],
+        "edges": [
+          "10 dX",
+          "4 dY"
+        ]
+      }
+    },
+    {
+      "label": "wallet modal close 1",
+      "expected": 2,
+      "geometry": {
+        "nodes": [
+          {
+            "text": "AAlicja10 dX",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          },
+          {
+            "text": "BBartek4 dY",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          }
+        ],
+        "edges": [
+          "10 dX",
+          "4 dY"
+        ]
+      }
+    },
+    {
+      "label": "RPC refresh 1",
+      "expected": 2,
+      "geometry": {
+        "nodes": [
+          {
+            "text": "AAlicja10 dX",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          },
+          {
+            "text": "BBartek4 dY",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          }
+        ],
+        "edges": [
+          "10 dX",
+          "4 dY"
+        ]
+      }
+    },
+    {
+      "label": "wallet modal close 2",
+      "expected": 2,
+      "geometry": {
+        "nodes": [
+          {
+            "text": "AAlicja10 dX",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          },
+          {
+            "text": "BBartek4 dY",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          }
+        ],
+        "edges": [
+          "10 dX",
+          "4 dY"
+        ]
+      }
+    },
+    {
+      "label": "RPC refresh 2",
+      "expected": 2,
+      "geometry": {
+        "nodes": [
+          {
+            "text": "AAlicja10 dX",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          },
+          {
+            "text": "BBartek4 dY",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          }
+        ],
+        "edges": [
+          "10 dX",
+          "4 dY"
+        ]
+      }
+    },
+    {
+      "label": "wallet modal close 3",
+      "expected": 2,
+      "geometry": {
+        "nodes": [
+          {
+            "text": "AAlicja10 dX",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          },
+          {
+            "text": "BBartek4 dY",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          }
+        ],
+        "edges": [
+          "10 dX",
+          "4 dY"
+        ]
+      }
+    },
+    {
+      "label": "RPC refresh 3",
+      "expected": 2,
+      "geometry": {
+        "nodes": [
+          {
+            "text": "AAlicja10 dX",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          },
+          {
+            "text": "BBartek4 dY",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          }
+        ],
+        "edges": [
+          "10 dX",
+          "4 dY"
+        ]
+      }
+    },
+    {
+      "label": "PL to EN",
+      "expected": 2,
+      "geometry": {
+        "nodes": [
+          {
+            "text": "AAlicja10 dX",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          },
+          {
+            "text": "BBartek4 dY",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          }
+        ],
+        "edges": [
+          "10 dX",
+          "4 dY"
+        ]
+      }
+    },
+    {
+      "label": "changed cycle 3 participants",
+      "expected": 3,
+      "geometry": {
+        "nodes": [
+          {
+            "text": "AAlicja100 dX",
+            "visibility": "visible",
+            "width": 178.865478515625,
+            "height": 62.87396240234375
+          },
+          {
+            "text": "CCelina250 dZ",
+            "visibility": "visible",
+            "width": 178.8656005859375,
+            "height": 62.87396240234375
+          },
+          {
+            "text": "BBartek40 dY",
+            "visibility": "visible",
+            "width": 178.86553955078125,
+            "height": 62.87396240234375
+          }
+        ],
+        "edges": [
+          "100 dX",
+          "250 dZ",
+          "40 dY"
+        ]
+      }
+    },
+    {
+      "label": "changed cycle 4 participants",
+      "expected": 4,
+      "geometry": {
+        "nodes": [
+          {
+            "text": "AAlicja100 dX",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          },
+          {
+            "text": "BBartek40 dY",
+            "visibility": "visible",
+            "width": 142.85235595703125,
+            "height": 50.21478271484375
+          },
+          {
+            "text": "CCelina250 dZ",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          },
+          {
+            "text": "RRecovery1.25 dSIX",
+            "visibility": "visible",
+            "width": 142.85235595703125,
+            "height": 50.21478271484375
+          }
+        ],
+        "edges": [
+          "100 dX",
+          "40 dY",
+          "250 dZ",
+          "1.25 dSIX"
+        ]
+      }
+    },
+    {
+      "label": "changed cycle 2 participants",
+      "expected": 2,
+      "geometry": {
+        "nodes": [
+          {
+            "text": "AAlicja100 dX",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          },
+          {
+            "text": "BBartek40 dY",
+            "visibility": "visible",
+            "width": 142.852294921875,
+            "height": 50.21478271484375
+          }
+        ],
+        "edges": [
+          "100 dX",
+          "40 dY"
+        ]
+      }
+    }
+  ],
+  "pageErrors": [],
+  "complete": true
+}

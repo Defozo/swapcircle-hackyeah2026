@@ -1,0 +1,104 @@
+{
+  "version": 1,
+  "packagedAt": "2026-10-03T15:43:51.153049+00:00",
+  "archive": ".local/SwapCircle-localnet-package.zip",
+  "sha256": "71b8633fa92acdb7d58c817a2e48441eb844f753e86f9cb985f9d8bf76e44fcc",
+  "bytes": 6848583,
+  "entryCount": 9,
+  "repository": "https://github.com/Defozo/swapcircle-hackyeah2026",
+  "repositoryHeadAtPackaging": "1fc13d83e983393daf4a6efad67cb3fbb2cdab63",
+  "scope": "Prepared localnet submission materials, with automated test-wallet signatures. Not devnet or immutable-release acceptance; not a submitted HackTribe entry.",
+  "packagingPublishedArchive": false,
+  "submissionSent": false,
+  "entries": [
+    {
+      "name": "README.md",
+      "source": "submission/README.md",
+      "bytes": 2728,
+      "sha256": "33a7ffc9de65a349f332020d1df3ebef280eb1e1e31877fa70290b2e374111e2"
+    },
+    {
+      "name": "TEAM.json",
+      "source": "TEAM.json",
+      "bytes": 201,
+      "sha256": "2576dcbda7dd38aaf7cd38d8dfd70d77c2d228fe9b362f7c90d000868aea9164"
+    },
+    {
+      "name": "description.md",
+      "source": "submission/description.md",
+      "bytes": 1737,
+      "sha256": "98a425fb97b214177b150d2a2d46916f3df1464aee467db1adb2903b1e8016cd"
+    },
+    {
+      "name": "SwapCircle.pdf",
+      "source": "submission/SwapCircle.pdf",
+      "bytes": 352008,
+      "sha256": "7703f692f134ac694c268f9c1ef7ff83720932975d430dc76dea1b5837defd01"
+    },
+    {
+      "name": "demo-localnet.mp4",
+      "source": "submission/demo-localnet.mp4",
+      "bytes": 6738281,
+      "sha256": "9b06027ebcdaaef0bf7d0fee2910ba8ad7155727ad4c0fcc6c68f0e004871e77"
+    },
+    {
+      "name": "demo-localnet.evidence.json",
+      "source": "submission/demo-localnet.evidence.json",
+      "bytes": 12115,
+      "sha256": "a3f67ef24a6c776a9cc107ee50b26907b6099bfdb9f4f9391e0ea043eb6c0a84"
+    },
+    {
+      "name": "links.json",
+      "source": "submission/links.json",
+      "bytes": 726,
+      "sha256": "57a90492ae9292edeb82d20f9e22a195621295ba6a3d198ac95a479868050fb0"
+    },
+    {
+      "name": "formal-status.md",
+      "source": "submission/formal-status.md",
+      "bytes": 1766,
+      "sha256": "27c9f5c3627d51d73a444a75c1e35cac8d26130e6fc46b3abcc09ae74163969f"
+    },
+    {
+      "name": "speaker-notes.txt",
+      "source": "submission/speaker-notes.txt",
+      "bytes": 2139,
+      "sha256": "e3884b81952a5960c065f3d611a2072c239a724c5d47bf1140839f5285a3ff80"
+    }
+  ],
+  "verification": {
+    "entryAllowlistExact": true,
+    "crcReadbackPassed": true,
+    "allEntriesByteIdenticalToSourceSnapshot": true,
+    "sourcesUnchangedDuringPackaging": true,
+    "pdfAndVideoNotModified": true,
+    "textEntriesContainNoAbsolutePrivatePathsOrPrivateKeyMarkers": true,
+    "pdf": {
+      "pages": 10,
+      "maxPages": 10,
+      "sha256": "7703f692f134ac694c268f9c1ef7ff83720932975d430dc76dea1b5837defd01",
+      "evidence": "docs/evidence/public-pdf.json",
+      "method": "Existing page count bound to the current file by SHA-256; no PDF regeneration"
+    },
+    "video": {
+      "durationSeconds": 114.7,
+      "maxSeconds": 180,
+      "sha256": "9b06027ebcdaaef0bf7d0fee2910ba8ad7155727ad4c0fcc6c68f0e004871e77",
+      "evidence": [
+        "docs/evidence/video-independent-qc.json",
+        "docs/evidence/public-video.json",
+        "submission/demo-localnet.evidence.json"
+      ],
+      "method": "Existing ffprobe duration and reviewed candidate bound to the current file by matching SHA-256; no video re-render"
+    }
+  },
+  "openGates": [
+    "devnet deployment pending test SOL",
+    "real Phantom and Solflare extension acceptance",
+    "separate deployed immutable release with verified absent upgrade authority",
+    "independent user replay",
+    "recovery through a second RPC provider",
+    "confirmed HackTribe fields, deadline, eligibility and final submission"
+  ],
+  "complete": true
+}
