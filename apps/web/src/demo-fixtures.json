@@ -1,0 +1,199 @@
+{
+  "context": {
+    "genesisHash": "Efd5ewPvrfaBjcrMUGkE3zjwHqbH45FgWLtST6MKDy7b",
+    "programId": "E2L4wcbFEZ8jW5Ac7uTYecpsKFPQKxsxAg9Q3AdFB6P3",
+    "now": 1800000000
+  },
+  "mints": [
+    {
+      "symbol": "dX",
+      "mint": "BCU77VRzCKdijD9z2rJnzHy9sRmjUt2WWpLt3pMJPcKk",
+      "decimals": 0
+    },
+    {
+      "symbol": "dY",
+      "mint": "4CtVWGVjtJX5xSzm4vets3uaiqhZD8KMLMRafbH6qDNB",
+      "decimals": 0
+    },
+    {
+      "symbol": "dZ",
+      "mint": "Hnbf9hG3xc84nWXCRWx41SrWkAn2uG3o8JHHjeexDohq",
+      "decimals": 0
+    },
+    {
+      "symbol": "dW",
+      "mint": "BegJ14AvWbH7rsTCwizeVZiYjikNBYrJCjsVYxh6UZB4",
+      "decimals": 0
+    }
+  ],
+  "participants": [
+    {
+      "name": "Alicja",
+      "owner": "A42eUHQKoVuLkCWtPwnpuhCjCxrdkxJNoNjZ6epQJjYi"
+    },
+    {
+      "name": "Bartek",
+      "owner": "B1H4YHHxKCD6gG3gjr5JtWTU7zynMMBWTTVfncUwUvpP"
+    },
+    {
+      "name": "Celina",
+      "owner": "6q9ADJ7uX4Nm4aidnKswxbZgUbxgZLU2mfwLzgQKV343"
+    },
+    {
+      "name": "Daniel",
+      "owner": "D2TyoqnFEKfzyoUGYJHZFiX8vp7Jrxgy1D7yRxjpCPr6"
+    }
+  ],
+  "scenarios": {
+    "2": [
+      {
+        "payload": {
+          "version": 1,
+          "domain": "swapcircle:offer",
+          "genesisHash": "Efd5ewPvrfaBjcrMUGkE3zjwHqbH45FgWLtST6MKDy7b",
+          "programId": "E2L4wcbFEZ8jW5Ac7uTYecpsKFPQKxsxAg9Q3AdFB6P3",
+          "owner": "A42eUHQKoVuLkCWtPwnpuhCjCxrdkxJNoNjZ6epQJjYi",
+          "nonce": "20000000000000000000000000000000",
+          "giveMint": "BCU77VRzCKdijD9z2rJnzHy9sRmjUt2WWpLt3pMJPcKk",
+          "giveAmount": "100",
+          "wantMint": "4CtVWGVjtJX5xSzm4vets3uaiqhZD8KMLMRafbH6qDNB",
+          "wantAmount": "40",
+          "expiresAt": 1800086400
+        },
+        "signature": "5YfsBN3VQjApRLVNjXhR1L8sN8BYSYZCBedLkcsyhtiJdUg2qXaKvv16bHBURhDXe343YuC7HMAX57KQE7WNbdYs"
+      },
+      {
+        "payload": {
+          "version": 1,
+          "domain": "swapcircle:offer",
+          "genesisHash": "Efd5ewPvrfaBjcrMUGkE3zjwHqbH45FgWLtST6MKDy7b",
+          "programId": "E2L4wcbFEZ8jW5Ac7uTYecpsKFPQKxsxAg9Q3AdFB6P3",
+          "owner": "B1H4YHHxKCD6gG3gjr5JtWTU7zynMMBWTTVfncUwUvpP",
+          "nonce": "21000000000000000000000000000000",
+          "giveMint": "4CtVWGVjtJX5xSzm4vets3uaiqhZD8KMLMRafbH6qDNB",
+          "giveAmount": "40",
+          "wantMint": "BCU77VRzCKdijD9z2rJnzHy9sRmjUt2WWpLt3pMJPcKk",
+          "wantAmount": "100",
+          "expiresAt": 1800086400
+        },
+        "signature": "4ovGHMAkLmBfdQzYfz6rYas47QoJiNs29TZpJzFqSpAxoxAo4dThukCntQiMRC99Wm9NgwausNFnHRQWChz45SaU"
+      }
+    ],
+    "3": [
+      {
+        "payload": {
+          "version": 1,
+          "domain": "swapcircle:offer",
+          "genesisHash": "Efd5ewPvrfaBjcrMUGkE3zjwHqbH45FgWLtST6MKDy7b",
+          "programId": "E2L4wcbFEZ8jW5Ac7uTYecpsKFPQKxsxAg9Q3AdFB6P3",
+          "owner": "A42eUHQKoVuLkCWtPwnpuhCjCxrdkxJNoNjZ6epQJjYi",
+          "nonce": "30000000000000000000000000000000",
+          "giveMint": "BCU77VRzCKdijD9z2rJnzHy9sRmjUt2WWpLt3pMJPcKk",
+          "giveAmount": "100",
+          "wantMint": "4CtVWGVjtJX5xSzm4vets3uaiqhZD8KMLMRafbH6qDNB",
+          "wantAmount": "40",
+          "expiresAt": 1800086400
+        },
+        "signature": "2fJE183SgWvPNyGkFHWzrcPdWNLaCRoyH59EBQndevCfFP4NcT8hKzf9Rtf9DXX7GuU2WpotTcNUJ86Bhjm5NC5J"
+      },
+      {
+        "payload": {
+          "version": 1,
+          "domain": "swapcircle:offer",
+          "genesisHash": "Efd5ewPvrfaBjcrMUGkE3zjwHqbH45FgWLtST6MKDy7b",
+          "programId": "E2L4wcbFEZ8jW5Ac7uTYecpsKFPQKxsxAg9Q3AdFB6P3",
+          "owner": "B1H4YHHxKCD6gG3gjr5JtWTU7zynMMBWTTVfncUwUvpP",
+          "nonce": "31000000000000000000000000000000",
+          "giveMint": "4CtVWGVjtJX5xSzm4vets3uaiqhZD8KMLMRafbH6qDNB",
+          "giveAmount": "40",
+          "wantMint": "Hnbf9hG3xc84nWXCRWx41SrWkAn2uG3o8JHHjeexDohq",
+          "wantAmount": "250",
+          "expiresAt": 1800086400
+        },
+        "signature": "2uJNvgWQZawHENsTdqj6mZ8jzepNJ5i6JfLptxEEBKBoMttsBRJU1APwtJhWw1fAkeh3DZdAfnhc7yWx4kzL1oLs"
+      },
+      {
+        "payload": {
+          "version": 1,
+          "domain": "swapcircle:offer",
+          "genesisHash": "Efd5ewPvrfaBjcrMUGkE3zjwHqbH45FgWLtST6MKDy7b",
+          "programId": "E2L4wcbFEZ8jW5Ac7uTYecpsKFPQKxsxAg9Q3AdFB6P3",
+          "owner": "6q9ADJ7uX4Nm4aidnKswxbZgUbxgZLU2mfwLzgQKV343",
+          "nonce": "32000000000000000000000000000000",
+          "giveMint": "Hnbf9hG3xc84nWXCRWx41SrWkAn2uG3o8JHHjeexDohq",
+          "giveAmount": "250",
+          "wantMint": "BCU77VRzCKdijD9z2rJnzHy9sRmjUt2WWpLt3pMJPcKk",
+          "wantAmount": "100",
+          "expiresAt": 1800086400
+        },
+        "signature": "54f3Uzw9xwJQq16vXrhWXjqHiM9ANDLFLecHmWk12WftiK8Vjv63GJESWsBTwL5csCp8GEUjHLhnKrVigZ47ZNiE"
+      }
+    ],
+    "4": [
+      {
+        "payload": {
+          "version": 1,
+          "domain": "swapcircle:offer",
+          "genesisHash": "Efd5ewPvrfaBjcrMUGkE3zjwHqbH45FgWLtST6MKDy7b",
+          "programId": "E2L4wcbFEZ8jW5Ac7uTYecpsKFPQKxsxAg9Q3AdFB6P3",
+          "owner": "A42eUHQKoVuLkCWtPwnpuhCjCxrdkxJNoNjZ6epQJjYi",
+          "nonce": "40000000000000000000000000000000",
+          "giveMint": "BCU77VRzCKdijD9z2rJnzHy9sRmjUt2WWpLt3pMJPcKk",
+          "giveAmount": "100",
+          "wantMint": "4CtVWGVjtJX5xSzm4vets3uaiqhZD8KMLMRafbH6qDNB",
+          "wantAmount": "40",
+          "expiresAt": 1800086400
+        },
+        "signature": "5xAAu851vvcHratsiNLp2Mdk4tsHWA17rEb3z9EfUTLf3KmSH7sscUo2FyeTN5kWWdiV8xVvCZkNjkW8tDiGU6vH"
+      },
+      {
+        "payload": {
+          "version": 1,
+          "domain": "swapcircle:offer",
+          "genesisHash": "Efd5ewPvrfaBjcrMUGkE3zjwHqbH45FgWLtST6MKDy7b",
+          "programId": "E2L4wcbFEZ8jW5Ac7uTYecpsKFPQKxsxAg9Q3AdFB6P3",
+          "owner": "B1H4YHHxKCD6gG3gjr5JtWTU7zynMMBWTTVfncUwUvpP",
+          "nonce": "41000000000000000000000000000000",
+          "giveMint": "4CtVWGVjtJX5xSzm4vets3uaiqhZD8KMLMRafbH6qDNB",
+          "giveAmount": "40",
+          "wantMint": "Hnbf9hG3xc84nWXCRWx41SrWkAn2uG3o8JHHjeexDohq",
+          "wantAmount": "250",
+          "expiresAt": 1800086400
+        },
+        "signature": "39SKd5PtDTvKZMgdxwyzLCN4PK1uz7sk1Pvw6A61R7XRyHwAjrGf174GybEkaLCpMCTGGUdBY2arSdDCrtGm3Xvd"
+      },
+      {
+        "payload": {
+          "version": 1,
+          "domain": "swapcircle:offer",
+          "genesisHash": "Efd5ewPvrfaBjcrMUGkE3zjwHqbH45FgWLtST6MKDy7b",
+          "programId": "E2L4wcbFEZ8jW5Ac7uTYecpsKFPQKxsxAg9Q3AdFB6P3",
+          "owner": "6q9ADJ7uX4Nm4aidnKswxbZgUbxgZLU2mfwLzgQKV343",
+          "nonce": "42000000000000000000000000000000",
+          "giveMint": "Hnbf9hG3xc84nWXCRWx41SrWkAn2uG3o8JHHjeexDohq",
+          "giveAmount": "250",
+          "wantMint": "BegJ14AvWbH7rsTCwizeVZiYjikNBYrJCjsVYxh6UZB4",
+          "wantAmount": "75",
+          "expiresAt": 1800086400
+        },
+        "signature": "3yaHppdvnigWuyz65L1LhRuJAaddy3WwtEWkzXXiHKpogy81cRvMYDHKXSA5hnWQLVdSMXCv4j4yNVBAWYfr3Sve"
+      },
+      {
+        "payload": {
+          "version": 1,
+          "domain": "swapcircle:offer",
+          "genesisHash": "Efd5ewPvrfaBjcrMUGkE3zjwHqbH45FgWLtST6MKDy7b",
+          "programId": "E2L4wcbFEZ8jW5Ac7uTYecpsKFPQKxsxAg9Q3AdFB6P3",
+          "owner": "D2TyoqnFEKfzyoUGYJHZFiX8vp7Jrxgy1D7yRxjpCPr6",
+          "nonce": "43000000000000000000000000000000",
+          "giveMint": "BegJ14AvWbH7rsTCwizeVZiYjikNBYrJCjsVYxh6UZB4",
+          "giveAmount": "75",
+          "wantMint": "BCU77VRzCKdijD9z2rJnzHy9sRmjUt2WWpLt3pMJPcKk",
+          "wantAmount": "100",
+          "expiresAt": 1800086400
+        },
+        "signature": "7cjmhQLGDszbdUwsnqzHZx3RGb8Fzfd7NpTy7jkhrLU9phzkGHGx46pZD2yYfyLGLfSa38B2hVBSVusLjN2nTEr"
+      }
+    ]
+  }
+}

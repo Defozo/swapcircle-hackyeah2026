@@ -9,6 +9,7 @@ test-results/
 test-results*/
 playwright-report/
 .local/
+.state/
 *.keypair.json
 *-keypair.json
 .psst/

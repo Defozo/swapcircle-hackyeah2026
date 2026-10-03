@@ -114,7 +114,7 @@ test('deadline expiring while the wallet awaits a signature rejects the late dep
   const { client, alice, bob, send, create, mint } = await setup();
   const context = await browser.newContext({ viewport: { width: 1440, height: 1050 }, locale: 'pl-PL', reducedMotion: 'reduce' });
   const page = await context.newPage(); page.setDefaultTimeout(45_000); page.setDefaultNavigationTimeout(120_000);
-  await installTestWallet(page, bob); await page.goto(baseURL!, { waitUntil: 'domcontentloaded' }); await connectTestWallet(page);
+  await installTestWallet(page, bob); await page.goto(`${baseURL}/?mode=app`, { waitUntil: 'domcontentloaded' }); await connectTestWallet(page);
   await expect(page.locator('.network-ready')).toBeVisible();
   const deadline = await client.readChainTime() + 45;
   const address = await create(deadline);

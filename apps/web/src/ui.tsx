@@ -1,8 +1,8 @@
 import type { ReactNode } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { ArrowUpRight, Check, Copy as CopyIcon, X, CircleHelp, ShieldCheck } from 'lucide-react';
-import { useRef, useState } from 'react';
-import { Background, ReactFlow, MarkerType, Position, type Node, type Edge } from '@xyflow/react';
+import { useEffect, useRef, useState } from 'react';
+import { Background, ReactFlow, MarkerType, Position, useNodesInitialized, useReactFlow, useStore, type Node, type Edge } from '@xyflow/react';
 import type { Leg, Manifest } from '@swapcircle/sdk';
 import { formatAmount } from '@swapcircle/sdk';
 import { useTranslation, type Copy } from './i18n';
@@ -18,12 +18,12 @@ export function download(name: string, data: unknown) {
 export function Address({ value, full = false }: { value: string; full?: boolean }) {
   const { f } = useTranslation();
   const [copied, setCopied] = useState(false);
-  return <span className="address"><code title={value}>{full ? value : short(value)}</code><button className="icon-button" aria-label={f("Kopiuj {0}", value)} onClick={() => { void navigator.clipboard.writeText(value).then(() => { setCopied(true); setTimeout(() => setCopied(false), 1800); }); }}>{copied ? <Check size={13} /> : <CopyIcon size={13} />}</button></span>;
+  return <span className={`address ${full ? 'address-full' : 'address-short'}`}><code title={value}>{full ? value : short(value)}</code><button className="icon-button" aria-label={f("Kopiuj {0}", value)} onClick={() => { void navigator.clipboard.writeText(value).then(() => { setCopied(true); setTimeout(() => setCopied(false), 1800); }); }}>{copied ? <Check size={13} /> : <CopyIcon size={13} />}</button></span>;
 }
-export function Modal({ open, setOpen, title, description, children, wide = false, error }: { open: boolean; setOpen: (open: boolean) => void; title: string; description?: string; children: ReactNode; wide?: boolean; error?: string }) {
+export function Modal({ open, setOpen, title, description, children, wide = false, error, onCloseFocus }: { open: boolean; setOpen: (open: boolean) => void; title: string; description?: string; children: ReactNode; wide?: boolean; error?: string; onCloseFocus?: () => boolean }) {
   const { p } = useTranslation();
   const trigger = useRef<HTMLElement | null>(null);
-  return <Dialog.Root open={open} onOpenChange={setOpen}><Dialog.Portal><Dialog.Overlay className="modal-overlay" /><Dialog.Content className={`modal ${wide ? 'modal-wide' : ''}`} onOpenAutoFocus={() => { trigger.current = document.activeElement as HTMLElement; }} onCloseAutoFocus={event => { event.preventDefault(); trigger.current?.focus(); }}><div className="modal-heading"><div><Dialog.Title>{title}</Dialog.Title>{description ? <Dialog.Description>{description}</Dialog.Description> : <Dialog.Description className="sr-only">{p("Warunki i szczegóły operacji")}</Dialog.Description>}</div><Dialog.Close className="icon-button" aria-label={p("Zamknij")}><X /></Dialog.Close></div>{error ? <div className="toast toast-error" role="alert">{error}</div> : null}{children}</Dialog.Content></Dialog.Portal></Dialog.Root>;
+  return <Dialog.Root open={open} onOpenChange={setOpen}><Dialog.Portal><Dialog.Overlay className="modal-overlay" /><Dialog.Content className={`modal ${wide ? 'modal-wide' : ''}`} onOpenAutoFocus={() => { trigger.current = document.activeElement as HTMLElement; }} onFocusCapture={event => { const focused = event.target as HTMLElement; requestAnimationFrame(() => focused.scrollIntoView({ block: 'nearest', inline: 'nearest' })); }} onCloseAutoFocus={event => { event.preventDefault(); if (!onCloseFocus?.()) trigger.current?.focus(); }}><div className="modal-heading"><div><Dialog.Title>{title}</Dialog.Title>{description ? <Dialog.Description>{description}</Dialog.Description> : <Dialog.Description className="sr-only">{p("Warunki i szczegóły operacji")}</Dialog.Description>}</div><Dialog.Close className="icon-button" aria-label={p("Zamknij")}><X /></Dialog.Close></div>{error ? <div className="toast toast-error" role="alert">{error}</div> : null}{children}</Dialog.Content></Dialog.Portal></Dialog.Root>;
 }
 export function Empty({ title, text, children }: { title: string; text: string; children?: ReactNode }) {
   return <div className="empty"><div className="empty-symbol"><CircleHelp size={28} /></div><h3>{title}</h3><p>{text}</p>{children}</div>;
@@ -34,12 +34,27 @@ export function Notice({ children, danger = false }: { children: ReactNode; dang
 export function Explorer({ signature, cluster }: { signature: string; cluster: string }) {
   return <a className="external-link" target="_blank" rel="noreferrer" href={`https://explorer.solana.com/tx/${encodeURIComponent(signature)}?cluster=${cluster === 'localnet' ? 'custom&customUrl=http%3A%2F%2F127.0.0.1%3A8899' : 'devnet'}`}>{short(signature, 8)}<ArrowUpRight size={14} /></a>;
 }
-export function CycleGraph({ legs, manifest, copy }: { legs: Leg[]; manifest: Manifest | null; copy: Copy }) {
+function FitStaticGraph({ padding = 0.2 }: { padding?: number }) {
+  const width = useStore(state => state.width);
+  const height = useStore(state => state.height);
+  const initialized = useNodesInitialized();
+  const { fitView } = useReactFlow();
+  useEffect(() => {
+    if (!initialized || width <= 0 || height <= 0) return;
+    // React Flow observes its container. Refit only after measured dimensions
+    // or container size change, preserving node state on ordinary UI updates.
+    const frame = requestAnimationFrame(() => { void fitView({ padding, minZoom: 0.2, duration: 0 }); });
+    return () => cancelAnimationFrame(frame);
+  }, [width, height, initialized, fitView, padding]);
+  return null;
+}
+export function CycleGraph({ legs, manifest, copy, showAddresses = true }: { legs: Leg[]; manifest: Manifest | null; copy: Copy; showAddresses?: boolean }) {
   const { p } = useTranslation();
   // This read-only graph owns its measured dimensions. Recreating controlled
   // nodes on every clock/RPC render would discard them before ResizeObserver
   // can settle. Remount only when the actual terms or visible labels change.
   const graphKey = JSON.stringify(legs.map(leg => [leg.owner, leg.mint, leg.amount, leg.decimals, ownerName(leg.owner, manifest), symbol(leg.mint, manifest)]));
+  const graphPadding = showAddresses ? 0.2 : 0.55;
   const nodes: Node[] = legs.map((leg, i) => {
     const angle = (2 * Math.PI * i / legs.length) - Math.PI / 2;
     // Reciprocal transfers need separate sides so amounts and arrowheads do not overlap.
@@ -50,5 +65,5 @@ export function CycleGraph({ legs, manifest, copy }: { legs: Leg[]; manifest: Ma
     return { id: String(i), type: 'default', ...pairHandles, position: { x: 290 + Math.cos(angle) * 230, y: 160 + Math.sin(angle) * 120 }, data: { label: <div className="graph-person"><span className={`avatar avatar-${i}`}>{ownerName(leg.owner, manifest).slice(0, 1)}</span><div><strong>{ownerName(leg.owner, manifest)}</strong><span>{formatAmount(leg.amount, leg.decimals)} {symbol(leg.mint, manifest)}</span></div></div> }, draggable: false, selectable: false };
   });
   const edges: Edge[] = legs.map((leg, i) => ({ id: `e${i}`, source: String(i), target: String((i + 1) % legs.length), type: 'smoothstep', label: `${formatAmount(leg.amount, leg.decimals)} ${symbol(leg.mint, manifest)}`, markerEnd: { type: MarkerType.ArrowClosed, color: '#b5de79' }, style: { stroke: '#86a85b', strokeWidth: 1.5 }, labelStyle: { fill: '#d4edb2', fontSize: 11 }, labelBgStyle: { fill: '#151c24' }, labelBgPadding: [8, 5], labelBgBorderRadius: 6, animated: false }));
-  return <><div className="cycle-graph" role="img" aria-label={p("Kierunek przekazywania aktywów. Równoważna tabela znajduje się poniżej.")}><ReactFlow key={graphKey} defaultNodes={nodes} defaultEdges={edges} fitView fitViewOptions={{ padding: 0.2 }} nodesDraggable={false} nodesConnectable={false} elementsSelectable={false} panOnDrag={false} zoomOnScroll={false} zoomOnPinch={false} zoomOnDoubleClick={false} preventScrolling={false} proOptions={{ hideAttribution: true }}><Background gap={24} color="#26303b" /></ReactFlow></div><div className="table-wrap"><table><caption className="sr-only">{p("Dokładne przekazania w cyklu")}</caption><thead><tr><th>{copy.owner}</th><th>{copy.give}</th><th>{p("Odbiorca")}</th><th>{copy.want}</th></tr></thead><tbody>{legs.map((leg, i) => { const before = legs[(i + legs.length - 1) % legs.length]!; return <tr key={leg.owner}><td><strong>{ownerName(leg.owner, manifest)}</strong><Address value={leg.owner} /></td><td>{formatAmount(leg.amount, leg.decimals)} {symbol(leg.mint, manifest)}<Address value={leg.mint} /></td><td>{ownerName(legs[(i + 1) % legs.length]!.owner, manifest)}</td><td>{formatAmount(before.amount, before.decimals)} {symbol(before.mint, manifest)}</td></tr>; })}</tbody></table></div></>;
+  return <><div className="cycle-graph" role="img" aria-label={p("Kierunek przekazywania aktywów. Równoważna tabela znajduje się poniżej.")}><ReactFlow key={graphKey} defaultNodes={nodes} defaultEdges={edges} fitView fitViewOptions={{ padding: graphPadding, minZoom: 0.2 }} minZoom={0.2} nodesDraggable={false} nodesConnectable={false} elementsSelectable={false} panOnDrag={false} zoomOnScroll={false} zoomOnPinch={false} zoomOnDoubleClick={false} preventScrolling={false} proOptions={{ hideAttribution: true }}><FitStaticGraph padding={graphPadding} /><Background gap={24} color="#26303b" /></ReactFlow></div><div className="table-wrap"><table><caption className="sr-only">{p("Dokładne przekazania w cyklu")}</caption><thead><tr><th>{copy.owner}</th><th>{copy.give}</th><th>{p("Odbiorca")}</th><th>{copy.want}</th></tr></thead><tbody>{legs.map((leg, i) => { const before = legs[(i + legs.length - 1) % legs.length]!; return <tr key={leg.owner}><td><strong>{ownerName(leg.owner, manifest)}</strong>{showAddresses ? <Address value={leg.owner} /> : null}</td><td>{formatAmount(leg.amount, leg.decimals)} {symbol(leg.mint, manifest)}{showAddresses ? <Address value={leg.mint} /> : null}</td><td>{ownerName(legs[(i + 1) % legs.length]!.owner, manifest)}</td><td>{formatAmount(before.amount, before.decimals)} {symbol(before.mint, manifest)}</td></tr>; })}</tbody></table></div></>;
 }

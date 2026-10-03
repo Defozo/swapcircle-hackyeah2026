@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test('educational flow, matching table, keyboard modal and mobile layout stay accessible', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', e => errors.push(e.message));
-  await page.goto('/', { waitUntil: 'domcontentloaded' });
+  await page.goto('/?mode=app', { waitUntil: 'domcontentloaded' });
   await expect(page.getByRole('heading', { name: 'Dobre wymiany łączą ludzi.' })).toBeVisible();
   await page.getByRole('button', { name: 'Zobacz przykład', exact: true }).click();
   await expect(page.getByRole('dialog')).toBeVisible();
@@ -31,7 +31,7 @@ test('educational flow, matching table, keyboard modal and mobile layout stay ac
 });
 
 test('malformed imports and unavailable manifests never produce financial success', async ({ page }) => {
-  await page.goto('/', { waitUntil: 'domcontentloaded' });
+  await page.goto('/?mode=app', { waitUntil: 'domcontentloaded' });
   await page.getByRole('button', { name: 'Importuj', exact: true }).click();
   await page.getByLabel('Treść JSON albo pełny link').fill('{"format":"bad"}');
   await page.getByRole('button', { name: 'Zweryfikuj i importuj', exact: true }).click();
@@ -47,7 +47,7 @@ test('malformed imports and unavailable manifests never produce financial succes
 });
 
 test('English covers offer consent, manual cycle risks and independent recovery and persists after reload', async ({ page }) => {
-  await page.goto('/', { waitUntil: 'domcontentloaded' });
+  await page.goto('/?mode=app', { waitUntil: 'domcontentloaded' });
   await page.locator('.language-button').click();
   await expect(page.getByRole('heading', { name: 'Good exchanges bring people together.' })).toBeVisible();
   await page.getByRole('button', { name: 'Add an offer', exact: true }).click();
@@ -68,4 +68,3 @@ test('English covers offer consent, manual cycle risks and independent recovery 
   await expect(page.getByRole('heading', { name: 'Your funds. Your right to a refund.' })).toBeVisible();
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
 });
-

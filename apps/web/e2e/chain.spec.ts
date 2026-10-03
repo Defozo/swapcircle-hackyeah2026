@@ -25,7 +25,8 @@ async function ensureLocalTestFees(connection: Connection, manifest: Manifest, s
 async function actorPage(browser: Browser, signer: Keypair, url: string): Promise<Page> {
   const context = await browser.newContext({ viewport: { width: 1440, height: 1050 } });
   const page = await context.newPage(); page.setDefaultTimeout(45_000); page.setDefaultNavigationTimeout(120_000); await installTestWallet(page, signer);
-  await page.goto(url, { waitUntil: 'domcontentloaded' }); await connectTestWallet(page);
+  const appUrl = new URL(url); appUrl.searchParams.set('mode', 'app');
+  await page.goto(appUrl.href, { waitUntil: 'domcontentloaded' }); await connectTestWallet(page);
   await expect(page.locator('.network-ready')).toBeVisible();
   return page;
 }
@@ -202,5 +203,3 @@ test.describe('actual localnet program via browser wallet adapter', () => {
     await page.context().close();
   });
 });
-
-
