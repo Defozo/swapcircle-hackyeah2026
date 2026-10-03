@@ -1,0 +1,10 @@
+{
+  "command": "pnpm test",
+  "runner": "Vitest 3.2.4",
+  "startedAt": "2026-10-03T13:53:38Z",
+  "durationSeconds": 322.45,
+  "filesPassed": 7,
+  "testsPassed": 56,
+  "testsFailed": 0,
+  "scope": "SDK, real Anchor IDL byte compatibility, transport uncertainty, CLI recovery journal, signed offers and exact graph matching. Browser and SBF suites have separate reports."
+}

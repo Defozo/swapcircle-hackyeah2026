@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "cluster": "localnet",
+  "rpcUrl": "http://127.0.0.1:8899",
+  "genesisHash": "7Mazo1FTCvbNmW1xM4U9xMFYv97V8k3kN72vMzgNcv3t",
+  "programId": "HkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGun",
+  "idlVersion": "0.1.0",
+  "mints": [
+    {
+      "symbol": "dX",
+      "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+      "decimals": 0
+    },
+    {
+      "symbol": "dY",
+      "mint": "9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr",
+      "decimals": 0
+    },
+    {
+      "symbol": "dZ",
+      "mint": "9XcSs5vihWmt6gJHBNen6Nknikb9FWEejFDdpBrsjrvS",
+      "decimals": 0
+    },
+    {
+      "symbol": "dSIX",
+      "mint": "q9DqytGyDUpES4b9Xfjknmuv7RUqq5XpHUtAzkYx7Ea",
+      "decimals": 6
+    }
+  ],
+  "participants": [
+    {
+      "name": "Alicja",
+      "owner": "HypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDD"
+    },
+    {
+      "name": "Bartek",
+      "owner": "45qmRtxe5BVuHvKUKiDjkDESamko8XYtHBAicEbAvhoc"
+    },
+    {
+      "name": "Celina",
+      "owner": "82KkzKamXN7X3D6GhtWX3Ecw1V6i2WuyNdbdaeYKTjjR"
+    },
+    {
+      "name": "Recovery",
+      "owner": "7Dw3cN8zQxyYPJiC45eJaZpGwR8qKAYMPYpZLiu9CRM"
+    }
+  ],
+  "deployed": true,
+  "artifactHash": "0425e951600e3ddc2f14bcbc98e05daa22799afaf19c51b3e2344b4f8e5af137",
+  "programData": "J8CaRpxMc7NLhaBaeWMEuZXM7tQGCVmnaFANkTX2Bf7q",
+  "upgradeAuthority": "11111111111111111111111111111111"
+}

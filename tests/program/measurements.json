@@ -1,0 +1,14 @@
+{
+  "create": {
+    "bytes": 854,
+    "computeUnits": 72831
+  },
+  "cycleRentLamports": 3807120,
+  "environment": "LiteSVM0.9.1, real compiled SBF, legacy transaction",
+  "finalFund": {
+    "bytes": 802,
+    "computeUnits": 79896
+  },
+  "participants": 4,
+  "vaultRentLamports": 2039280
+}

@@ -1,0 +1,30 @@
+services:
+  toolchain:
+    build: .
+    image: swapcircle-dev:1.1.2
+    container_name: swapcircle-toolchain
+    working_dir: /workspace
+    command: sleep infinity
+    volumes:
+      - ..:/workspace
+      - cargo-registry:/root/.cargo/registry
+  validator:
+    image: quay.io/ottersec/anchor:v1.1.2@sha256:4ef4cf067fb1332ddd2b997a48ed05257854f51067ade342d63ebdc1039fe72e
+    container_name: swapcircle-validator
+    # Agave3.1 needs io_uring. Docker's default seccomp profile denies it.
+    security_opt:
+      - seccomp=unconfined
+    ports:
+      - 127.0.0.1:8899:8899
+      - 127.0.0.1:8900:8900
+    volumes:
+      - ../target/deploy:/programs:ro
+      - local-ledger:/ledger
+    command:
+      - bash
+      - -lc
+      - solana-test-validator --quiet --limit-ledger-size 1000000 --ledger /ledger --bind-address "$$(hostname -i | awk '{print $$1}')" --rpc-port 8899 --bpf-program HkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGun /programs/swapcircle.so
+volumes:
+  cargo-registry:
+  local-ledger:
+    name: swapcircle-local-ledger

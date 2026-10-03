@@ -1,0 +1,9 @@
+{
+  "name": "SwapCircle / Superteam pinned Solana toolchain",
+  "build": { "dockerfile": "Dockerfile", "context": "." },
+  "remoteUser": "root",
+  "forwardPorts": [5173, 8899, 8900],
+  "postCreateCommand": "corepack enable && pnpm install --frozen-lockfile",
+  "mounts": ["source=swapcircle-cargo-registry,target=/root/.cargo/registry,type=volume"],
+  "customizations": { "vscode": { "extensions": ["rust-lang.rust-analyzer", "tamasfe.even-better-toml"] } }
+}

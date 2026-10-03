@@ -1,0 +1,44 @@
+{
+  "genesisHash": "7Mazo1FTCvbNmW1xM4U9xMFYv97V8k3kN72vMzgNcv3t",
+  "programId": "HkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGun",
+  "mints": [
+    {
+      "symbol": "dX",
+      "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+      "decimals": 0
+    },
+    {
+      "symbol": "dY",
+      "mint": "9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr",
+      "decimals": 0
+    },
+    {
+      "symbol": "dZ",
+      "mint": "9XcSs5vihWmt6gJHBNen6Nknikb9FWEejFDdpBrsjrvS",
+      "decimals": 0
+    },
+    {
+      "symbol": "dSIX",
+      "mint": "q9DqytGyDUpES4b9Xfjknmuv7RUqq5XpHUtAzkYx7Ea",
+      "decimals": 6
+    }
+  ],
+  "participants": [
+    {
+      "name": "Alicja",
+      "owner": "HypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDD"
+    },
+    {
+      "name": "Bartek",
+      "owner": "45qmRtxe5BVuHvKUKiDjkDESamko8XYtHBAicEbAvhoc"
+    },
+    {
+      "name": "Celina",
+      "owner": "82KkzKamXN7X3D6GhtWX3Ecw1V6i2WuyNdbdaeYKTjjR"
+    },
+    {
+      "name": "Recovery",
+      "owner": "7Dw3cN8zQxyYPJiC45eJaZpGwR8qKAYMPYpZLiu9CRM"
+    }
+  ]
+}

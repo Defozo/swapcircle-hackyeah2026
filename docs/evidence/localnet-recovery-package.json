@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "protocol": "SwapCircle",
+  "cluster": "localnet",
+  "genesisHash": "7Mazo1FTCvbNmW1xM4U9xMFYv97V8k3kN72vMzgNcv3t",
+  "programId": "HkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGun",
+  "cycle": "12PXzHFtaRaAZPUJiBTt9U3Qe5SQCgo3eQidSrjDGNYL",
+  "leg": 0,
+  "owner": "DTMdgweSt1GY1jF15k6HfUwFht4WBMQoGYwChfR6q4of",
+  "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+  "amount": "10",
+  "decimals": 0,
+  "deadline": 1791034879,
+  "termsHash": "73ada3d7210aab481fb4200c5e716666d4356d91177254f74d248a9eb68de2b5",
+  "sdkVersion": "0.1.0",
+  "idlVersion": "0.1.0",
+  "command": "pnpm recover -- --cycle 12PXzHFtaRaAZPUJiBTt9U3Qe5SQCgo3eQidSrjDGNYL --leg 0 --rpc http://127.0.0.1:8899 --manifest deployments/localnet.json"
+}

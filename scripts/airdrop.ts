@@ -1,0 +1,3 @@
+import {key,network} from './common';
+const {connection,genesisHash}=await network();const payer=key();console.log(JSON.stringify({address:payer.publicKey.toBase58(),genesisHash,balance:await connection.getBalance(payer.publicKey)}));
+try{const signature=await connection.requestAirdrop(payer.publicKey,2_000_000_000);const latest=await connection.getLatestBlockhash();await connection.confirmTransaction({...latest,signature},'confirmed');console.log(JSON.stringify({signature,balance:await connection.getBalance(payer.publicKey)}));}catch(error){console.error('Faucet request failed: '+String(error));process.exitCode=1;}

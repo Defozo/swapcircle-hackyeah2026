@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-10-03T13:38:36.4676566Z",
+  "environment": "LiteSVM 0.9.1, real SBF and SPL Token CPI",
+  "command": "cd tests/program && cargo test --locked -- --nocapture",
+  "passed": 15,
+  "failed": 0,
+  "ignored": 0,
+  "durationSeconds": 32.98,
+  "artifact": "target/deploy/swapcircle.so",
+  "artifactHash": "0425e951600e3ddc2f14bcbc98e05daa22799afaf19c51b3e2344b4f8e5af137",
+  "programId": "HkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGun"
+}

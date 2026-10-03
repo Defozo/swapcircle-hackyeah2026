@@ -1,0 +1,113 @@
+{
+  "environment": "localnet",
+  "genesisHash": "7Mazo1FTCvbNmW1xM4U9xMFYv97V8k3kN72vMzgNcv3t",
+  "artifactHash": "0425e951600e3ddc2f14bcbc98e05daa22799afaf19c51b3e2344b4f8e5af137",
+  "verifiedAt": "2026-10-03T13:52:16.599Z",
+  "cycles": [
+    {
+      "participants": 2,
+      "transactions": 5,
+      "signatures": 5,
+      "networkFeesLamports": 25000,
+      "createBytes": 576,
+      "finalFundBytes": 508,
+      "finalFundComputeUnits": 47784,
+      "recipientAtas": "Already prepared by the demo seed; no ATA creation cost in this run."
+    },
+    {
+      "participants": 3,
+      "transactions": 7,
+      "signatures": 7,
+      "networkFeesLamports": 35000,
+      "createBytes": 715,
+      "finalFundBytes": 607,
+      "finalFundComputeUnits": 74957,
+      "recipientAtas": "Already prepared by the demo seed; no ATA creation cost in this run."
+    },
+    {
+      "participants": 4,
+      "transactions": 9,
+      "signatures": 9,
+      "networkFeesLamports": 45000,
+      "createBytes": 854,
+      "finalFundBytes": 706,
+      "finalFundComputeUnits": 82630,
+      "recipientAtas": "Already prepared by the demo seed; no ATA creation cost in this run."
+    }
+  ],
+  "refund": [
+    {
+      "label": "refund-create",
+      "bytes": 715,
+      "computeUnits": 54914,
+      "feeLamports": 5000,
+      "confirmedMs": 364,
+      "finalizedMs": 14385
+    },
+    {
+      "label": "refund-fund-0",
+      "bytes": 607,
+      "computeUnits": 28795,
+      "feeLamports": 5000,
+      "confirmedMs": 376,
+      "finalizedMs": 14197
+    },
+    {
+      "label": "refund-fund-2",
+      "bytes": 607,
+      "computeUnits": 28795,
+      "feeLamports": 5000,
+      "confirmedMs": 383,
+      "finalizedMs": 14345
+    },
+    {
+      "label": "refund-fresh-account-third-party",
+      "bytes": 568,
+      "computeUnits": 22910,
+      "feeLamports": 10000,
+      "confirmedMs": 142,
+      "finalizedMs": 13959
+    },
+    {
+      "label": "refund-independent-second",
+      "bytes": 343,
+      "computeUnits": 19786,
+      "feeLamports": 5000,
+      "confirmedMs": 400,
+      "finalizedMs": 14181
+    },
+    {
+      "label": "refund-close-0",
+      "bytes": 310,
+      "computeUnits": 14101,
+      "feeLamports": 5000,
+      "confirmedMs": 358,
+      "finalizedMs": 14201
+    },
+    {
+      "label": "refund-close-1",
+      "bytes": 310,
+      "computeUnits": 15597,
+      "feeLamports": 5000,
+      "confirmedMs": 438,
+      "finalizedMs": 14589
+    },
+    {
+      "label": "refund-close-2",
+      "bytes": 310,
+      "computeUnits": 15601,
+      "feeLamports": 5000,
+      "confirmedMs": 286,
+      "finalizedMs": 14525
+    }
+  ],
+  "rent": {
+    "cycleLamports": 3807120,
+    "vaultLamports": 2039280,
+    "cycleRefundable": false,
+    "vaultRefundableWhenEmptyAndDischarged": true
+  },
+  "transactionLimitBytes": 1232,
+  "largestMeasuredBytes": 854,
+  "maximumMeasuredComputeUnits": 82630
+}

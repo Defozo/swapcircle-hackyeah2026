@@ -1,0 +1,16 @@
+{
+  "artifactHash": "dc9446536fd0ca03b5fcd2d2dbc3cb8b2720bf9c6f0e2d6e43e7f92a384a6bf9",
+  "create": {
+    "bytes": 854,
+    "computeUnits": 71331
+  },
+  "cycleRentLamports": 3807120,
+  "environment": "LiteSVM0.9.1, real compiled SBF, legacy transaction",
+  "finalFund": {
+    "bytes": 802,
+    "computeUnits": 84396
+  },
+  "participants": 4,
+  "programId": "Eof8Zk6Y6GkaeawM6grb3gQQFcXEikhEHuEnT4nLyzv4",
+  "vaultRentLamports": 2039280
+}

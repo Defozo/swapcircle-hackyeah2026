@@ -1,0 +1,1 @@
+{"name":"@swapcircle/sdk","version":"0.1.0","type":"module","exports":"./src/index.ts","dependencies":{"@anchor-lang/core":"1.1.2","@solana/web3.js":"1.99.0","@solana/spl-token":"0.4.15","@noble/hashes":"1.8.0","buffer":"6.0.3","bs58":"6.0.0","zod":"3.24.2"}}

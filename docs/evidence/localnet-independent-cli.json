@@ -1,0 +1,75 @@
+{
+  "complete": true,
+  "network": "localnet",
+  "genesisHash": "7Mazo1FTCvbNmW1xM4U9xMFYv97V8k3kN72vMzgNcv3t",
+  "programId": "HkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGun",
+  "verifiedAt": "2026-10-03T13:43:58.232Z",
+  "cycle": "12PXzHFtaRaAZPUJiBTt9U3Qe5SQCgo3eQidSrjDGNYL",
+  "owner": "DTMdgweSt1GY1jF15k6HfUwFht4WBMQoGYwChfR6q4of",
+  "payer": "7Dw3cN8zQxyYPJiC45eJaZpGwR8qKAYMPYpZLiu9CRM",
+  "originalAta": "HSLqDqpuYZrxyGV9r2UkmpDtNQ8V3L7bCJN4Gqwz18g3",
+  "destination": "DcEqCUc1hiQR7idYXNLzoUvVyrhAHQQLeEoZSeAjWMAt",
+  "signature": "3SoBr1N2w2fcwnwAW7VZy9mP2DJFy6gBzo75wS7SU84wpnWn5ZnxeGpUDScQbBpLvQw2Z2mbvAzC8PSGAYnvd3sa",
+  "confirmation": "finalized",
+  "amount": "10",
+  "packageOnly": true,
+  "separateProcess": true,
+  "noManifestFile": true,
+  "noOwnerKey": true,
+  "noFrontendOrBoardAccess": true,
+  "recoveryRpc": "http://localhost:8899",
+  "receipt": {
+    "operation": "refund",
+    "cycleAddress": "12PXzHFtaRaAZPUJiBTt9U3Qe5SQCgo3eQidSrjDGNYL",
+    "leg": 0,
+    "genesisHash": "7Mazo1FTCvbNmW1xM4U9xMFYv97V8k3kN72vMzgNcv3t",
+    "programId": "HkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGun",
+    "payer": "7Dw3cN8zQxyYPJiC45eJaZpGwR8qKAYMPYpZLiu9CRM",
+    "destination": "DcEqCUc1hiQR7idYXNLzoUvVyrhAHQQLeEoZSeAjWMAt",
+    "before": null,
+    "balanceVerified": true,
+    "confirmation": "confirmed",
+    "progress": {
+      "phase": "confirmed",
+      "at": 1791035024468,
+      "signature": "3SoBr1N2w2fcwnwAW7VZy9mP2DJFy6gBzo75wS7SU84wpnWn5ZnxeGpUDScQbBpLvQw2Z2mbvAzC8PSGAYnvd3sa",
+      "blockhash": "HpH12BbEizKbMNB9jybUrJCX1pY9hpBEo9tSnByYrN4z",
+      "lastValidBlockHeight": 2299
+    },
+    "signature": "3SoBr1N2w2fcwnwAW7VZy9mP2DJFy6gBzo75wS7SU84wpnWn5ZnxeGpUDScQbBpLvQw2Z2mbvAzC8PSGAYnvd3sa",
+    "after": {
+      "amount": "10",
+      "decimals": 0,
+      "uiAmount": 10,
+      "uiAmountString": "10"
+    },
+    "cycle": {
+      "address": "12PXzHFtaRaAZPUJiBTt9U3Qe5SQCgo3eQidSrjDGNYL",
+      "version": 1,
+      "creator": "DTMdgweSt1GY1jF15k6HfUwFht4WBMQoGYwChfR6q4of",
+      "rentPayer": "DTMdgweSt1GY1jF15k6HfUwFht4WBMQoGYwChfR6q4of",
+      "nonce": "14926891543592557708",
+      "termsHash": "73ada3d7210aab481fb4200c5e716666d4356d91177254f74d248a9eb68de2b5",
+      "deadline": 1791034879,
+      "legs": [
+        {
+          "owner": "DTMdgweSt1GY1jF15k6HfUwFht4WBMQoGYwChfR6q4of",
+          "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+          "amount": "10",
+          "decimals": 0
+        },
+        {
+          "owner": "3WTLxLaYS43WtNNw2KP6VAxNmhHgC1ViZvLMsV636A34",
+          "mint": "9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr",
+          "amount": "40",
+          "decimals": 0
+        }
+      ],
+      "state": "Refunded",
+      "fundedMask": 1,
+      "refundedMask": 1,
+      "closedMask": 0,
+      "bump": 254
+    }
+  }
+}

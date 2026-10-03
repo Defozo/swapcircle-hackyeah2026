@@ -1,0 +1,1 @@
+{"name":"@swapcircle/matching","version":"0.1.0","private":true,"type":"module","exports":{".":"./src/index.ts","./board":"./src/board.ts"},"scripts":{"typecheck":"tsc --noEmit"},"dependencies":{"tweetnacl":"1.0.3","bs58":"6.0.0","zod":"3.24.2","convex":"1.46.0"}}

@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-03T13:55:23.1587360Z",
+  "environment": "LiteSVM 0.9.1, real compiled final SBF and SPL Token CPI",
+  "command": "SWAPCIRCLE_TEST_PROGRAM_ID=Eof8Zk6Y6GkaeawM6grb3gQQFcXEikhEHuEnT4nLyzv4 SWAPCIRCLE_TEST_ARTIFACT=/workspace/target/releases/Eof8Zk6Y6GkaeawM6grb3gQQFcXEikhEHuEnT4nLyzv4/swapcircle.so SWAPCIRCLE_TEST_MEASUREMENTS=measurements-final.json cargo test --locked -- --nocapture",
+  "passed": 15,
+  "failed": 0,
+  "ignored": 0,
+  "durationSeconds": 32.66,
+  "artifact": "target/releases/Eof8Zk6Y6GkaeawM6grb3gQQFcXEikhEHuEnT4nLyzv4/swapcircle.so",
+  "artifactHash": "dc9446536fd0ca03b5fcd2d2dbc3cb8b2720bf9c6f0e2d6e43e7f92a384a6bf9",
+  "programId": "Eof8Zk6Y6GkaeawM6grb3gQQFcXEikhEHuEnT4nLyzv4",
+  "deployed": false,
+  "scope": "Prepared final artifact tested locally. No devnet deployment or immutability claim."
+}

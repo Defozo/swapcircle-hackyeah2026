@@ -1,0 +1,23 @@
+import { writeFileSync, mkdirSync } from 'node:fs';
+import { SwapCircleClient, parseAmount, type Leg } from '@swapcircle/sdk';
+import { key, loadManifest, network, send } from '../common';
+
+const manifest = loadManifest('deployments/localnet.json');
+if (manifest.cluster !== 'localnet') throw new Error('This recording fixture is exclusively localnet');
+const { connection } = await network('localnet', manifest.rpcUrl);
+const client = new SwapCircleClient(connection, manifest);
+await client.verifyNetwork();
+const alice = key('SWAPCIRCLE_DEVNET_ALICE_KEY'), bob = key('SWAPCIRCLE_DEVNET_BOB_KEY'), celine = key('SWAPCIRCLE_DEVNET_CELINE_KEY');
+const mint = (symbol: string) => { const value = manifest.mints.find(m => m.symbol === symbol); if (!value) throw new Error('Missing mint'); return value; };
+const legs: Leg[] = [[alice, 'dX', '100'], [celine, 'dZ', '250'], [bob, 'dY', '40']].map(([owner, symbol, amount]) => ({ owner: (owner as typeof alice).publicKey.toBase58(), mint: mint(symbol as string).mint, decimals: mint(symbol as string).decimals, amount: parseAmount(amount as string, mint(symbol as string).decimals).toString() }));
+const deadline = await client.readChainTime() + 45;
+const created = await client.buildCreate({ creator: alice.publicKey.toBase58(), legs, deadline });
+const createSignature = await send(connection, created, alice);
+const setup = await client.prepareDestinations(created.cycleAddress, alice.publicKey.toBase58());
+if (setup.transaction.instructions.length) await send(connection, setup, alice);
+const first = await send(connection, await client.buildFund(created.cycleAddress, 0, alice.publicKey.toBase58()), alice);
+const second = await send(connection, await client.buildFund(created.cycleAddress, 2, bob.publicKey.toBase58()), bob);
+mkdirSync('submission/_video_work/manifests', { recursive: true });
+const result = { cluster: 'localnet', cycle: created.cycleAddress, deadline, preparedAt: new Date().toISOString(), signatures: [createSignature, first, second], fundedMask: (await client.readCycle(created.cycleAddress)).fundedMask, preparedTimeoutScenario: true };
+writeFileSync('submission/_video_work/manifests/prepared-refund.json', JSON.stringify(result, null, 2) + '\n');
+console.log(JSON.stringify(result));

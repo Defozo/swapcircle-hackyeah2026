@@ -1,0 +1,26 @@
+[package]
+name = "swapcircle"
+version = "1.0.0"
+edition = "2021"
+description = "Exact 2-4 party SPL swaps with atomic final funding and independent refunds"
+license = "MIT"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "swapcircle"
+
+[features]
+default = []
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
+
+[dependencies]
+anchor-lang = "=1.1.2"
+anchor-spl = { version = "=1.1.2", features = ["token", "associated_token"] }
+solana-sha256-hasher = "=3.1.0"
+
+[lints.rust]
+unexpected_cfgs = { level = "allow", check-cfg = ['cfg(target_os, values("solana"))'] }

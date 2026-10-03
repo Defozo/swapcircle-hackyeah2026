@@ -1,0 +1,47 @@
+{
+  "name": "swapcircle",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {"node": ">=24"},
+  "scripts": {
+    "dev": "pnpm --filter @swapcircle/web dev",
+    "setup:localnet": "node scripts/setup-localnet.mjs",
+    "build": "pnpm typecheck && pnpm --filter @swapcircle/web build",
+    "typecheck": "tsc --noEmit && pnpm --filter @swapcircle/web typecheck",
+    "test": "vitest run",
+    "test:sdk": "vitest run tests/sdk",
+    "test:matching": "vitest run tests/matching",
+    "test:program": "node scripts/program-tests.mjs",
+    "test:e2e": "pnpm --filter @swapcircle/web test:e2e",
+    "doctor": "tsx scripts/doctor.ts",
+    "recover": "tsx scripts/recover.ts",
+    "verify:recovery": "tsx scripts/verify-independent-cli.ts",
+    "deploy:devnet": "node scripts/deploy.mjs --cluster devnet",
+    "seed:devnet": "tsx scripts/seed.ts --cluster devnet",
+    "verify:devnet": "tsx scripts/verify.ts --cluster devnet",
+    "seed:localnet": "tsx scripts/seed.ts --cluster localnet",
+    "verify:localnet": "tsx scripts/verify.ts --cluster localnet"
+  },
+  "dependencies": {
+    "@swapcircle/sdk": "workspace:*",
+    "@swapcircle/matching": "workspace:*",
+    "@solana/web3.js": "1.99.0",
+    "@solana/spl-token": "0.4.15",
+    "@anchor-lang/core": "1.1.2",
+    "@noble/hashes": "1.8.0",
+    "bs58": "6.0.0",
+    "buffer": "6.0.3",
+    "convex": "1.46.0",
+    "tweetnacl": "1.0.3",
+    "zod": "3.24.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.58.2",
+    "@types/node": "24.10.1",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3",
+    "vitest": "3.2.4"
+  }
+}

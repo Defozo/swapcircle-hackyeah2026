@@ -1,0 +1,29 @@
+1. Wymiana, która domyka krąg
+Naszym odbiorcą są małe społeczności Solany. Szukamy wymian, których nie udaje się dopasować parami. Program zastępuje powiernika depozytów.
+
+2. Każda osoba ma coś dla kogoś innego
+Kwoty są uzgodnione, nie wynikają z kursu. dX, dY i dZ są testowymi tokenami bez wartości pieniężnej. Ten zestaw służy do sprawdzenia mechanizmu, nie dowodzi popytu.
+
+3. Trzy potrzeby, jeden cykl
+Uruchamiamy wyszukiwanie na tych samych ofertach. Kierunek grafu oznacza kierunek tokenów. Odnaleziony cykl zaspokaja potrzeby wszystkich trzech osób.
+
+4. Od oferty do potwierdzonego wyniku
+W tym miejscu pokazujemy aplikację na żywo. Podpis wiadomości publikuje ofertę i nie daje prawa do transferu. Uczestnik akceptuje konkretny cykl dopiero przez własną wpłatę.
+
+5. Ostatnia wpłata rozlicza cały cykl
+To miejsce, w którym znika powiernik. Program sprawdza podpis, minty, konta, właścicieli i hash warunków. Nie ma osobnego przycisku administratora zatwierdzającego wypłaty.
+
+6. Niezależny zwrot po terminie
+Drugi scenariusz używa wcześniej przygotowanego cyklu z brakującą wpłatą. Jeden zwrot wykonujemy w aplikacji, drugi z niezależnego klienta. Nie potrzebujemy podpisu twórcy ani nieobecnej strony.
+
+7. Kto może zmienić warunki
+Brak funkcji admina nie jest tym samym co brak uprawnienia do aktualizacji. Na pokazie odczytujemy właściwy program z sieci. Nie deklarujemy niezmienności, której nie potwierdza odczyt.
+
+8. Wyniki wykonanych prób
+Pokazujemy wynik wykonania, stan cyklu i salda. Sygnatura wysłania sama nie dowodzi sukcesu. Lokalne testy i transakcje devnet są rozróżnione.
+
+9. Asynchroniczność ma cenę
+Nie obiecujemy najlepszej ceny ani płynności. Nasza gwarancja dotyczy dokładnych tokenów i zapisanych reguł. Decyzja o wartości tej wygody należy do użytkowników.
+
+10. Kod, aplikacja i odzyskiwanie
+Kod zawiera program, SDK, algorytm, frontend i niezależne narzędzia. Uruchomienie oraz ograniczenia opisuje README. W zgłoszeniu używamy wyłącznie sprawdzonych publicznych adresów i potwierdzonych wyników.

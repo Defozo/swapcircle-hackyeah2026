@@ -1,0 +1,403 @@
+{
+  "network": "localnet",
+  "programId": "HkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGun",
+  "startedAt": "2026-10-03T13:41:05.766Z",
+  "transactions": [
+    {
+      "label": "2-create",
+      "signature": "3sCMXAYUQr6Qg9EqRexp4u1wnWKW1GnQM9cSqqSxwLkn8yprByrZdgCRxLd67xuJNeSi8u1VoAJhXfgpEDKAdH4q",
+      "bytes": 576,
+      "feeLamports": 5000,
+      "computeUnits": 39426,
+      "confirmedMs": 307,
+      "finalizedMs": 14201,
+      "slot": 1799,
+      "status": "finalized"
+    },
+    {
+      "label": "2-fund-1",
+      "signature": "2U1ki91hG1U4VH1BxCJYT8W6dQ7MTkYUDaz9jWjw4sJkvtt1NUPkUtLxqvWLDUedS6gdXY6meueZZ2dcWERSSrDy",
+      "bytes": 508,
+      "feeLamports": 5000,
+      "computeUnits": 23881,
+      "confirmedMs": 174,
+      "finalizedMs": 14068,
+      "slot": 1831,
+      "status": "finalized"
+    },
+    {
+      "label": "2-fund-0",
+      "signature": "kMbfVXTxPePMTdNG44fntsiP7yQ4GA4qAc358Vc4jJTKbdGvabW791EjzyztNPa7D5Pk7RXYpoB9FuMRP8HVj9C",
+      "bytes": 508,
+      "feeLamports": 5000,
+      "computeUnits": 47784,
+      "confirmedMs": 360,
+      "finalizedMs": 14303,
+      "slot": 1863,
+      "status": "finalized"
+    },
+    {
+      "label": "2-close-0",
+      "signature": "2Ti2RyaBjLJ4E1aF1744AmGnZmpEH1H72d81RtAogzebropkEdogfLqFoUM23k4ts6qXscuDPV7b3YgNyMwsidHN",
+      "bytes": 310,
+      "feeLamports": 5000,
+      "computeUnits": 15588,
+      "confirmedMs": 298,
+      "finalizedMs": 14319,
+      "slot": 1895,
+      "status": "finalized"
+    },
+    {
+      "label": "2-close-1",
+      "signature": "4Bqc9MRoz9jkjuadqSJhWsFw4w8PfFTKaZyrG1PZVxgtxPUt4ZdRDXQDYSMPbzhBn64ZdBj1j8CvL9feqpTnUTwR",
+      "bytes": 310,
+      "feeLamports": 5000,
+      "computeUnits": 15588,
+      "confirmedMs": 432,
+      "finalizedMs": 14252,
+      "slot": 1927,
+      "status": "finalized"
+    },
+    {
+      "label": "3-create",
+      "signature": "2bFVNjBHcbeqka27E5LTQRbN8ZdMmq3DxmVYoDyBNLYccZPM88MCb8uWuMG7w47i3drqxck11fpnnY26GdUpapTC",
+      "bytes": 715,
+      "feeLamports": 5000,
+      "computeUnits": 60914,
+      "confirmedMs": 352,
+      "finalizedMs": 14239,
+      "slot": 1959,
+      "status": "finalized"
+    },
+    {
+      "label": "3-fund-2",
+      "signature": "2WrwEd84vrwUpaF8ECd5ihsdjoneQ48MWGjyyhdBH2m4q7sGyiAxz5Ei3vnbp28A6dVtxD1jTApfQHnsuhbt9tPj",
+      "bytes": 607,
+      "feeLamports": 5000,
+      "computeUnits": 34795,
+      "confirmedMs": 399,
+      "finalizedMs": 14431,
+      "slot": 1991,
+      "status": "finalized"
+    },
+    {
+      "label": "3-fund-1",
+      "signature": "3LykH1ghcwJiakZUPbZSCDmPjN1cNj6qtvTYtuUoNkXURNkSVV7AHRdhc8rwfLAhkKFCKZGtpazR8QWyqAYmpjBW",
+      "bytes": 607,
+      "feeLamports": 5000,
+      "computeUnits": 34795,
+      "confirmedMs": 408,
+      "finalizedMs": 14588,
+      "slot": 2023,
+      "status": "finalized"
+    },
+    {
+      "label": "3-fund-0",
+      "signature": "3QK3ym4LehQrHYC6oGuNNBGWGfKdLsHXWAT9tjtsv89cRXegtv7icybJ87mftLXCXZBa56hNh2detT4UdzHp5H5K",
+      "bytes": 607,
+      "feeLamports": 5000,
+      "computeUnits": 74957,
+      "confirmedMs": 441,
+      "finalizedMs": 14379,
+      "slot": 2055,
+      "status": "finalized"
+    },
+    {
+      "label": "3-close-0",
+      "signature": "5MF3C2p3xK91JVWJwNAWRwPXqSeRaAVFCmij4YxWcwQgvmuPH9wQXDpdymtYGQUF9gavR1DUtAoBwz292frK234c",
+      "bytes": 310,
+      "feeLamports": 5000,
+      "computeUnits": 17088,
+      "confirmedMs": 381,
+      "finalizedMs": 14185,
+      "slot": 2087,
+      "status": "finalized"
+    },
+    {
+      "label": "3-close-1",
+      "signature": "4Ms7F2dADDeadUW9TVhDDKtr4ZGZ2XKVRoBc3sCekjoCLWwu2iBDpdPK2pJ9pGvDDFsWBL1tZBDoL1pG7Kyzqko4",
+      "bytes": 310,
+      "feeLamports": 5000,
+      "computeUnits": 17088,
+      "confirmedMs": 408,
+      "finalizedMs": 14430,
+      "slot": 2119,
+      "status": "finalized"
+    },
+    {
+      "label": "3-close-2",
+      "signature": "5EBRdR9ZBWyLs6T2pzdSFPJPuYRogFDWzEcfRYcMUTxZy3HBtxBKNRgfAj4ZXuN649vtHJWBpE9jrEzvyaSz8apx",
+      "bytes": 310,
+      "feeLamports": 5000,
+      "computeUnits": 23088,
+      "confirmedMs": 411,
+      "finalizedMs": 14246,
+      "slot": 2151,
+      "status": "finalized"
+    },
+    {
+      "label": "4-create",
+      "signature": "2Ct19LbRVmM9V5s46qiBFMzoq3vcSckN71shrfJYu4cSS6KyqHsM2uKSw2gsVsNLqx6egYtNGRtkkAhr6bsZhYYY",
+      "bytes": 854,
+      "feeLamports": 5000,
+      "computeUnits": 73413,
+      "confirmedMs": 322,
+      "finalizedMs": 14108,
+      "slot": 2183,
+      "status": "finalized"
+    },
+    {
+      "label": "4-fund-3",
+      "signature": "5wzn9xPd767S7dbBcKMP9pGbL3pUhy3qVX8dfriHmuMnSEStacpHupUPKbFYVYkqZr48T3XJDFQwzdkQXrFr143P",
+      "bytes": 706,
+      "feeLamports": 5000,
+      "computeUnits": 36709,
+      "confirmedMs": 371,
+      "finalizedMs": 14184,
+      "slot": 2215,
+      "status": "finalized"
+    },
+    {
+      "label": "4-fund-2",
+      "signature": "66MfQ2ReQeQCMMfibaWJ8GVeTucXQRpdTBHXFARNhR8TsDhRMieSUUHyyzcXJ9qKyCQg3dgPmm2zR16gqzr5VSv7",
+      "bytes": 706,
+      "feeLamports": 5000,
+      "computeUnits": 36709,
+      "confirmedMs": 300,
+      "finalizedMs": 14068,
+      "slot": 2247,
+      "status": "finalized"
+    },
+    {
+      "label": "4-fund-1",
+      "signature": "2g38jgQ1PrKCpPfnmJfnvpwVKphgZAWXkNzbeJ7Sr9xomy72NLG7gtMCSqQcSeUcu4aVpM19D779m4LL8Byoaqn9",
+      "bytes": 706,
+      "feeLamports": 5000,
+      "computeUnits": 36709,
+      "confirmedMs": 353,
+      "finalizedMs": 14266,
+      "slot": 2279,
+      "status": "finalized"
+    },
+    {
+      "label": "4-fund-0",
+      "signature": "5v8MR9p5WvQBskRYWeqFwSctefWsWLpdypTYApCq4xMRhsJU77zgiXdF6vFQUBnTAkLxhKTQzZnA6jYsGYVB4dmf",
+      "bytes": 706,
+      "feeLamports": 5000,
+      "computeUnits": 82630,
+      "confirmedMs": 370,
+      "finalizedMs": 14349,
+      "slot": 2311,
+      "status": "finalized"
+    },
+    {
+      "label": "4-close-0",
+      "signature": "4CiThFJgS7uNsrM8BxmLTDaqKUB9rZWXBPJFpgrEsVYW9h1bgeAC2hAb5SZh6rP1bbUZegYCJxFuDRUUdN4VaWXX",
+      "bytes": 310,
+      "feeLamports": 5000,
+      "computeUnits": 15588,
+      "confirmedMs": 129,
+      "finalizedMs": 14114,
+      "slot": 2343,
+      "status": "finalized"
+    },
+    {
+      "label": "4-close-1",
+      "signature": "2mSqSqYWDsS21m7epj7A64XzC7tW1rPpZSNd3i5gg5dncaYaX11AhNpn8HwpkEEwK7TDca1HpYajMdwVEDaYfoGc",
+      "bytes": 310,
+      "feeLamports": 5000,
+      "computeUnits": 18588,
+      "confirmedMs": 446,
+      "finalizedMs": 14194,
+      "slot": 2375,
+      "status": "finalized"
+    },
+    {
+      "label": "4-close-2",
+      "signature": "28BEHv7JgVPRk3FwgPnpCChdHXDjbtDo1THT6g6LpMdjWdtoSnaiqcLETu2HPnbWuLrT4bLVFVyNxAM9q5a3tU7h",
+      "bytes": 310,
+      "feeLamports": 5000,
+      "computeUnits": 15588,
+      "confirmedMs": 441,
+      "finalizedMs": 14424,
+      "slot": 2407,
+      "status": "finalized"
+    },
+    {
+      "label": "4-close-3",
+      "signature": "2AytJE67B9WPYhG4Ao8egxfitDsULAbmDu2HhnTy5BmthuD6bAk7NRnkLm99d4gNmqBQ2N9Q4GevfHdvPZx6Y78C",
+      "bytes": 310,
+      "feeLamports": 5000,
+      "computeUnits": 18588,
+      "confirmedMs": 445,
+      "finalizedMs": 14226,
+      "slot": 2439,
+      "status": "finalized"
+    },
+    {
+      "label": "refund-create",
+      "signature": "4squruZJy4fngjY6HRBoqnoxmvkPH3HdQupZRVhWkq5o2QChqAgxw4wBxUUzosZhncLSYAQCSRg74rWtySchKzE",
+      "bytes": 715,
+      "feeLamports": 5000,
+      "computeUnits": 54914,
+      "confirmedMs": 364,
+      "finalizedMs": 14385,
+      "slot": 2471,
+      "status": "finalized"
+    },
+    {
+      "label": "refund-fund-0",
+      "signature": "21hw8o7pX3RWwxHNko71zTeLioJLWM5hsfq19RGEaaW8LVNKw7CztNvprDUK99Aney257wXpdvExQYScCCbix9hi",
+      "bytes": 607,
+      "feeLamports": 5000,
+      "computeUnits": 28795,
+      "confirmedMs": 376,
+      "finalizedMs": 14197,
+      "slot": 2503,
+      "status": "finalized"
+    },
+    {
+      "label": "refund-fund-2",
+      "signature": "3SkMWkAEk8TJ5KJ5cdv7uwwReRgK6qVrz8uWJjJdTYYwqfFa1nSxvUdw9dC7TPVBunXcF1eyqiXA46zY9abtrNMs",
+      "bytes": 607,
+      "feeLamports": 5000,
+      "computeUnits": 28795,
+      "confirmedMs": 383,
+      "finalizedMs": 14345,
+      "slot": 2535,
+      "status": "finalized"
+    },
+    {
+      "label": "refund-fresh-account-third-party",
+      "signature": "UWM79dLuZsCdQ5EaobCdZMBpT3k3SPaP3aWbMQtq8r4KAKakGxi1Kfcb9Z1hzF7B18wp6UwKtTiUZaqRavPtn9d",
+      "bytes": 568,
+      "feeLamports": 10000,
+      "computeUnits": 22910,
+      "confirmedMs": 142,
+      "finalizedMs": 13959,
+      "slot": 2640,
+      "status": "finalized"
+    },
+    {
+      "label": "refund-independent-second",
+      "signature": "jPSnkB8gq5jLuDgMoCUzHE8US6KzaKywAnah3RfwhYorpZ97MxggWh3NFui6926bEE5qKf4S12A7xjQ7GPcvfCz",
+      "bytes": 343,
+      "feeLamports": 5000,
+      "computeUnits": 19786,
+      "confirmedMs": 400,
+      "finalizedMs": 14181,
+      "slot": 2672,
+      "status": "finalized"
+    },
+    {
+      "label": "refund-close-0",
+      "signature": "5q4amwKFzCPejyTWNgeSApcWQHnqNpMiFLfW2CHqeUDbW4BMmwMMGfb5ckWKpFYnzrRz32mrPa8Uu9TNncUmoqPu",
+      "bytes": 310,
+      "feeLamports": 5000,
+      "computeUnits": 14101,
+      "confirmedMs": 358,
+      "finalizedMs": 14201,
+      "slot": 2705,
+      "status": "finalized"
+    },
+    {
+      "label": "refund-close-1",
+      "signature": "2ME69kTCruTZp6g3V6zMj8q4ReraCK1EPAVWGZrhLfup4knNsKm7N51SYBeFVRzikiDJFUJwbeJK2GmFhu9CpwiR",
+      "bytes": 310,
+      "feeLamports": 5000,
+      "computeUnits": 15597,
+      "confirmedMs": 438,
+      "finalizedMs": 14589,
+      "slot": 2737,
+      "status": "finalized"
+    },
+    {
+      "label": "refund-close-2",
+      "signature": "512ReHGNH4Cc7LQPEnxc2kJrzWZnHxXHYaDfySFFMcMDtho9AWarv94AQq6qZhUGrmMuymp6JJDymqdEXrtJmRjG",
+      "bytes": 310,
+      "feeLamports": 5000,
+      "computeUnits": 15601,
+      "confirmedMs": 286,
+      "finalizedMs": 14525,
+      "slot": 2769,
+      "status": "finalized"
+    }
+  ],
+  "cycles": [
+    {
+      "address": "64sNU1STusSf4nGxYEx7FRHCgDkKdncrAz7BeibZC1Nj",
+      "legs": 2,
+      "state": "Settled",
+      "balancesVerified": true,
+      "termsHash": "743a606bc2b0a245b2d778ffc8cac60be81ef0fd1977037c215ba56f4103f267"
+    },
+    {
+      "address": "5FWmsPEFwAUhN4Tf5bUK5amfoYgyEnFoCHgHrRQop62r",
+      "legs": 3,
+      "state": "Settled",
+      "balancesVerified": true,
+      "termsHash": "a26e517e7ba9280a7d5e5c6e8631570d415fe358cc81a405d1a92852753ae33b"
+    },
+    {
+      "address": "8w7BWC6nYiiwxbvXvewjR9St2QkhryG4EhMK3ScNi6aU",
+      "legs": 4,
+      "state": "Settled",
+      "balancesVerified": true,
+      "termsHash": "185e9b9e43b407f953b7071b73ff0e10445daeb8fe469e6323fc703bfe333a37"
+    }
+  ],
+  "refund": {
+    "address": "9CTY55kAp3qcxr26ZYRKxRYYAKVCeLcpuN2RX2emnr9K",
+    "state": "Refunded",
+    "independent": true,
+    "ownerAbsent": true,
+    "freshAccount": "8PPPy1u1AvJ7PB75RkgU7XgCLNuXGjwPxFq4DN3TghNn",
+    "signature": "UWM79dLuZsCdQ5EaobCdZMBpT3k3SPaP3aWbMQtq8r4KAKakGxi1Kfcb9Z1hzF7B18wp6UwKtTiUZaqRavPtn9d",
+    "balancesVerified": true
+  },
+  "authority": {
+    "programData": "J8CaRpxMc7NLhaBaeWMEuZXM7tQGCVmnaFANkTX2Bf7q",
+    "upgradeAuthority": "11111111111111111111111111111111"
+  },
+  "complete": true,
+  "changedAta": {
+    "address": "BywVtLCpeK8gKXJ9X13q34t8BMUKMfEtX3VGfhs2Scve",
+    "signature": "KYBJkFXZ5VHHEgnx6t7AfULH29nWPPYy6m9WiUMMGNn2ACk1LddxWvNNPT6PVF4DoZ72HNY6WZ1q2xutzW7Vddh"
+  },
+  "completedAt": "2026-10-03T13:48:35.855Z",
+  "genesisHash": "7Mazo1FTCvbNmW1xM4U9xMFYv97V8k3kN72vMzgNcv3t",
+  "artifactHash": "0425e951600e3ddc2f14bcbc98e05daa22799afaf19c51b3e2344b4f8e5af137",
+  "provenanceVerifiedAt": "2026-10-03T13:52:16.599Z",
+  "provenanceMethod": "Re-read executable bytes and all completed cycle accounts on this genesis. Each transaction was read at finalized during the original execution; historical receipt availability is recorded separately.",
+  "historyReadback": {
+    "read": 4,
+    "unavailable": [
+      "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"
+    ],
+    "limitation": "Local validator pruned older transaction history. Current cycle accounts and executable bytes remain verified."
+  }
+}
