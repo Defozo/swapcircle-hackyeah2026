@@ -1,0 +1,13 @@
+{
+  "cluster": "devnet",
+  "payer": "CLKMQnkDaXizoUcuY4UhxYhmFDA4zhfPMRderJqf5m6V",
+  "balanceCheckedAt": "2026-10-03T14:20:56.305Z",
+  "balanceLamports": 0,
+  "airdropRequestedAt": "2026-10-03T14:47:21.383Z",
+  "airdropRequestedLamports": 2000000000,
+  "airdropHttpStatus": 429,
+  "retryAfterSeconds": 86400,
+  "automaticRetryNotBefore": "2026-10-04T14:47:21.383Z",
+  "airdropConfirmed": false,
+  "status": "Deployment awaits test SOL; no mainnet funds are required."
+}

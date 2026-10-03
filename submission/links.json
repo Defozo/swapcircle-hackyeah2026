@@ -1,7 +1,9 @@
 {
   "repository": "https://github.com/Defozo/swapcircle-hackyeah2026",
-  "app": null,
-  "video": null,
+  "app": "https://defozo.github.io/swapcircle-hackyeah2026/",
+  "video": "https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-localnet-2026-10-03/demo-localnet.mp4",
+  "videoRelease": "https://github.com/Defozo/swapcircle-hackyeah2026/releases/tag/demo-localnet-2026-10-03",
+  "pdf": "https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-localnet-2026-10-03/SwapCircle.pdf",
   "network": "localnet verified; devnet deployment pending test SOL",
   "submissionSent": false
 }

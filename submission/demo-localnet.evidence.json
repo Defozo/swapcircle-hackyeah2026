@@ -1,0 +1,352 @@
+{
+  "capturedAt": "2026-10-03T14:22:57.488Z",
+  "cluster": "localnet",
+  "genesisHash": "7Mazo1FTCvbNmW1xM4U9xMFYv97V8k3kN72vMzgNcv3t",
+  "programId": "HkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGun",
+  "testWallet": true,
+  "before": {
+    "ALICE": [
+      {
+        "mint": "9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr",
+        "account": "44Sdhnyc5JzeiQDwmFx8ck67JjcQACpekmoeuHBC6Uk2",
+        "amount": "1000080",
+        "decimals": 0
+      },
+      {
+        "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+        "account": "8PPPy1u1AvJ7PB75RkgU7XgCLNuXGjwPxFq4DN3TghNn",
+        "amount": "0",
+        "decimals": 0
+      },
+      {
+        "mint": "q9DqytGyDUpES4b9Xfjknmuv7RUqq5XpHUtAzkYx7Ea",
+        "account": "9eJY8U4H6MChkUXzMKBZSYjrrQJa3Cqw6B7i7MmoAtCp",
+        "amount": "1000001250000",
+        "decimals": 6
+      },
+      {
+        "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+        "account": "BywVtLCpeK8gKXJ9X13q34t8BMUKMfEtX3VGfhs2Scve",
+        "amount": "999590",
+        "decimals": 0
+      },
+      {
+        "mint": "9XcSs5vihWmt6gJHBNen6Nknikb9FWEejFDdpBrsjrvS",
+        "account": "GWnuCEzAVoPBb2shXNhKnnEnJKYSh85mpN5Eaemc44oq",
+        "amount": "1000000",
+        "decimals": 0
+      }
+    ],
+    "BOB": [
+      {
+        "mint": "9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr",
+        "account": "3YVRqxS4iaWbXt2iTGXTv56zyqL3Tx7wDHiWmdxxvVps",
+        "amount": "999840",
+        "decimals": 0
+      },
+      {
+        "mint": "q9DqytGyDUpES4b9Xfjknmuv7RUqq5XpHUtAzkYx7Ea",
+        "account": "3vFhagLWG9hkZkFNZZ5vS9iAGfVNchB4tfT5889ThdaA",
+        "amount": "1000000000000",
+        "decimals": 6
+      },
+      {
+        "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+        "account": "7rCcTNTCwuCGKfFotyZx1uUiTjCXWrXvJXFmANt8sD6d",
+        "amount": "1000200",
+        "decimals": 0
+      },
+      {
+        "mint": "9XcSs5vihWmt6gJHBNen6Nknikb9FWEejFDdpBrsjrvS",
+        "account": "Gto8oaZBKcZGKF5q9NYXMo5Wn8vY1FG82RjLFLSNBLny",
+        "amount": "1000250",
+        "decimals": 0
+      }
+    ],
+    "CELINE": [
+      {
+        "mint": "9XcSs5vihWmt6gJHBNen6Nknikb9FWEejFDdpBrsjrvS",
+        "account": "5rLdb7iDXczshLMeoBBvxq37snKM67oRiVLzXotJYSzS",
+        "amount": "999500",
+        "decimals": 0
+      },
+      {
+        "mint": "q9DqytGyDUpES4b9Xfjknmuv7RUqq5XpHUtAzkYx7Ea",
+        "account": "7pFxWv18473naPq5o2PyFDmnhAuoNLPGPjq83Gj4qeCV",
+        "amount": "1000000000000",
+        "decimals": 6
+      },
+      {
+        "mint": "9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr",
+        "account": "BNz6M751x8QM28qVQNKSdKTC2GXLnbZHx7wYGv477siD",
+        "amount": "1000040",
+        "decimals": 0
+      },
+      {
+        "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+        "account": "FRK5bcGknYjehydADQR4X51HxPoTZZzqtTrg8PWxmHck",
+        "amount": "1000100",
+        "decimals": 0
+      }
+    ],
+    "RECOVERY": [
+      {
+        "mint": "q9DqytGyDUpES4b9Xfjknmuv7RUqq5XpHUtAzkYx7Ea",
+        "account": "5Scudsy3zxJSpvdAqYNdJr67Lnuc9owEGfU1m1joSwrd",
+        "amount": "999998750000",
+        "decimals": 6
+      },
+      {
+        "mint": "9XcSs5vihWmt6gJHBNen6Nknikb9FWEejFDdpBrsjrvS",
+        "account": "5su2rGDXoMg4CpQgoPnNSjLbPDDgxxxjxLGGZXgHJQ2K",
+        "amount": "1000250",
+        "decimals": 0
+      },
+      {
+        "mint": "9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr",
+        "account": "CbqpMmwdEm2jBC6zrKZjKXth2i3DyLabyTxoAnVTbyTw",
+        "amount": "1000000",
+        "decimals": 0
+      },
+      {
+        "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+        "account": "GS3nLL9vTm1bvjuPswda1GiQfXWdD1JKei1ox8CFBnQn",
+        "amount": "1000000",
+        "decimals": 0
+      },
+      {
+        "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+        "account": "HSLqDqpuYZrxyGV9r2UkmpDtNQ8V3L7bCJN4Gqwz18g3",
+        "amount": "0",
+        "decimals": 0
+      }
+    ]
+  },
+  "after": {
+    "ALICE": [
+      {
+        "mint": "9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr",
+        "account": "44Sdhnyc5JzeiQDwmFx8ck67JjcQACpekmoeuHBC6Uk2",
+        "amount": "1000120",
+        "decimals": 0
+      },
+      {
+        "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+        "account": "8PPPy1u1AvJ7PB75RkgU7XgCLNuXGjwPxFq4DN3TghNn",
+        "amount": "0",
+        "decimals": 0
+      },
+      {
+        "mint": "q9DqytGyDUpES4b9Xfjknmuv7RUqq5XpHUtAzkYx7Ea",
+        "account": "9eJY8U4H6MChkUXzMKBZSYjrrQJa3Cqw6B7i7MmoAtCp",
+        "amount": "1000001250000",
+        "decimals": 6
+      },
+      {
+        "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+        "account": "BywVtLCpeK8gKXJ9X13q34t8BMUKMfEtX3VGfhs2Scve",
+        "amount": "999490",
+        "decimals": 0
+      },
+      {
+        "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+        "account": "F47hDKi4Kbnq5PYPd9exmJVTZDEsykXz3Ufr2qtXC87S",
+        "amount": "100",
+        "decimals": 0
+      },
+      {
+        "mint": "9XcSs5vihWmt6gJHBNen6Nknikb9FWEejFDdpBrsjrvS",
+        "account": "GWnuCEzAVoPBb2shXNhKnnEnJKYSh85mpN5Eaemc44oq",
+        "amount": "1000000",
+        "decimals": 0
+      }
+    ],
+    "BOB": [
+      {
+        "mint": "9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr",
+        "account": "3YVRqxS4iaWbXt2iTGXTv56zyqL3Tx7wDHiWmdxxvVps",
+        "amount": "999800",
+        "decimals": 0
+      },
+      {
+        "mint": "q9DqytGyDUpES4b9Xfjknmuv7RUqq5XpHUtAzkYx7Ea",
+        "account": "3vFhagLWG9hkZkFNZZ5vS9iAGfVNchB4tfT5889ThdaA",
+        "amount": "1000000000000",
+        "decimals": 6
+      },
+      {
+        "mint": "9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr",
+        "account": "5PT8jmRuuPAgwZDLLUmkYjTM1AVknvduPVVWYVxR3Mvt",
+        "amount": "40",
+        "decimals": 0
+      },
+      {
+        "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+        "account": "7rCcTNTCwuCGKfFotyZx1uUiTjCXWrXvJXFmANt8sD6d",
+        "amount": "1000200",
+        "decimals": 0
+      },
+      {
+        "mint": "9XcSs5vihWmt6gJHBNen6Nknikb9FWEejFDdpBrsjrvS",
+        "account": "Gto8oaZBKcZGKF5q9NYXMo5Wn8vY1FG82RjLFLSNBLny",
+        "amount": "1000500",
+        "decimals": 0
+      }
+    ],
+    "CELINE": [
+      {
+        "mint": "9XcSs5vihWmt6gJHBNen6Nknikb9FWEejFDdpBrsjrvS",
+        "account": "5rLdb7iDXczshLMeoBBvxq37snKM67oRiVLzXotJYSzS",
+        "amount": "999250",
+        "decimals": 0
+      },
+      {
+        "mint": "q9DqytGyDUpES4b9Xfjknmuv7RUqq5XpHUtAzkYx7Ea",
+        "account": "7pFxWv18473naPq5o2PyFDmnhAuoNLPGPjq83Gj4qeCV",
+        "amount": "1000000000000",
+        "decimals": 6
+      },
+      {
+        "mint": "9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr",
+        "account": "BNz6M751x8QM28qVQNKSdKTC2GXLnbZHx7wYGv477siD",
+        "amount": "1000040",
+        "decimals": 0
+      },
+      {
+        "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+        "account": "FRK5bcGknYjehydADQR4X51HxPoTZZzqtTrg8PWxmHck",
+        "amount": "1000200",
+        "decimals": 0
+      }
+    ],
+    "RECOVERY": [
+      {
+        "mint": "q9DqytGyDUpES4b9Xfjknmuv7RUqq5XpHUtAzkYx7Ea",
+        "account": "5Scudsy3zxJSpvdAqYNdJr67Lnuc9owEGfU1m1joSwrd",
+        "amount": "999998750000",
+        "decimals": 6
+      },
+      {
+        "mint": "9XcSs5vihWmt6gJHBNen6Nknikb9FWEejFDdpBrsjrvS",
+        "account": "5su2rGDXoMg4CpQgoPnNSjLbPDDgxxxjxLGGZXgHJQ2K",
+        "amount": "1000250",
+        "decimals": 0
+      },
+      {
+        "mint": "9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr",
+        "account": "CbqpMmwdEm2jBC6zrKZjKXth2i3DyLabyTxoAnVTbyTw",
+        "amount": "1000000",
+        "decimals": 0
+      },
+      {
+        "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+        "account": "GS3nLL9vTm1bvjuPswda1GiQfXWdD1JKei1ox8CFBnQn",
+        "amount": "1000000",
+        "decimals": 0
+      },
+      {
+        "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+        "account": "HSLqDqpuYZrxyGV9r2UkmpDtNQ8V3L7bCJN4Gqwz18g3",
+        "amount": "0",
+        "decimals": 0
+      }
+    ]
+  },
+  "settled": {
+    "address": "8qt1kCBAaHPLeipbcpm3svtNB6aAZQCz2euez23L2eTF",
+    "version": 1,
+    "creator": "HypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDD",
+    "rentPayer": "HypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDD",
+    "nonce": "6596223716649518191",
+    "termsHash": "b23189edf751ed721692f23b419438ca84d314a153752ee4a08c2e7e32054933",
+    "deadline": 1791038100,
+    "legs": [
+      {
+        "owner": "45qmRtxe5BVuHvKUKiDjkDESamko8XYtHBAicEbAvhoc",
+        "mint": "9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr",
+        "amount": "40",
+        "decimals": 0
+      },
+      {
+        "owner": "HypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDD",
+        "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+        "amount": "100",
+        "decimals": 0
+      },
+      {
+        "owner": "82KkzKamXN7X3D6GhtWX3Ecw1V6i2WuyNdbdaeYKTjjR",
+        "mint": "9XcSs5vihWmt6gJHBNen6Nknikb9FWEejFDdpBrsjrvS",
+        "amount": "250",
+        "decimals": 0
+      }
+    ],
+    "state": "Settled",
+    "fundedMask": 7,
+    "refundedMask": 0,
+    "closedMask": 0,
+    "bump": 255
+  },
+  "returned": {
+    "address": "6fQDhbZbrf926UtRuvtukyeXmQWUUagh35TH3JNhu35S",
+    "version": 1,
+    "creator": "HypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDD",
+    "rentPayer": "HypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDD",
+    "nonce": "5019415486552358227",
+    "termsHash": "b8e690a13603d1240ae49ab685520516ee6dcc58f4b5f0e1d388db9757bce756",
+    "deadline": 1791036748,
+    "legs": [
+      {
+        "owner": "HypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDD",
+        "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+        "amount": "100",
+        "decimals": 0
+      },
+      {
+        "owner": "82KkzKamXN7X3D6GhtWX3Ecw1V6i2WuyNdbdaeYKTjjR",
+        "mint": "9XcSs5vihWmt6gJHBNen6Nknikb9FWEejFDdpBrsjrvS",
+        "amount": "250",
+        "decimals": 0
+      },
+      {
+        "owner": "45qmRtxe5BVuHvKUKiDjkDESamko8XYtHBAicEbAvhoc",
+        "mint": "9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr",
+        "amount": "40",
+        "decimals": 0
+      }
+    ],
+    "state": "Refunded",
+    "fundedMask": 5,
+    "refundedMask": 5,
+    "closedMask": 0,
+    "bump": 254
+  },
+  "signatures": [
+    "2jg6S3bGvC8RfxoPbv9SErLyVQy5rQYXa21ADMLvc6dYpXq1ExfstQrLGvNGXQy8uYzQyisJvokicJbhe9TGmnrD",
+    "2M4pEsfPvsyKXAjuMpVwMaXpRubwJzLfGhhgJUMea9zjMcCVn3RLBmhADqRnuLH9tEKNh2hMGWpGK9DY9mgKUQA4",
+    "2bbKmCk97rJ1PrxPfnpWmmPLeivWhnK2iAVzdGqQoBxaxZcz3arqMoBoK1BwaAMhyv5FaBBJexXMf6obGFvBuNrX",
+    "4k3nZ3c5FgM9F33A942QLsAUHEwnJ5SasiShZXejAYzxbSGdzfYmxdLgd1H2fazcoKVPyuTqD3ow9abZQy7ue282"
+  ],
+  "refundSignatures": [
+    "63GyEsbxzhoedKv5AStmemnPy6osALAW3wZUAVmD4KbM2p9zVBCH1H6RRvWZ7hQuFXpmksnWDJMHwNfeDVBA88vV",
+    "f3m2bK6A4nMk4tL9FwPmKJoZRxRgL8i3PcqUuLGRm8qBTqBe9TDkEyKRkjgLDvqr8gsQmtJrYqaUN8L9xQeTvK3"
+  ],
+  "exactBalanceDeltasVerified": true,
+  "allFinalized": true,
+  "successfulFinalizationIndependentlyRead": true,
+  "preparation": {
+    "cluster": "localnet",
+    "cycle": "6fQDhbZbrf926UtRuvtukyeXmQWUUagh35TH3JNhu35S",
+    "deadline": 1791036748,
+    "preparedAt": "2026-10-03T14:11:44.635Z",
+    "signatures": [
+      "4eAhCZ72T54nvDitfJgcVrcB9nFLBpiFmwTMzyU7X2UNAoGNEiyQRCZ1HJoV85GVddccCAW9wPFiEFB3a1F7kwvR",
+      "2WJ5RD466o1DC14zm28zqyAwsgF1EBHekvV6C9ZnjxXqrUEQFLo3z5kCWJa76qwkQJnsRTHmSc9UKy4gPNqrxB4A",
+      "Z2Nbv7ceEYRYghMpvEM2NkLY9CV8skG3RvXzBZZqj1WayFEHhiUb44utWaX5VNefFFFqCWUGKxz9hzaurE7dxXc"
+    ],
+    "fundedMask": 5,
+    "preparedTimeoutScenario": true
+  },
+  "recordingSha256": "9b06027ebcdaaef0bf7d0fee2910ba8ad7155727ad4c0fcc6c68f0e004871e77",
+  "recordingDurationSeconds": 114.7,
+  "finalizedScope": "The six recorded UI transactions. Earlier timeout-scenario preparation is listed separately; its old RPC history was no longer retained at this later readback."
+}

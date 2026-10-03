@@ -1,0 +1,12 @@
+{
+  "cluster": "localnet",
+  "realValidator": true,
+  "cycle": "M3ZNNWr4bXhU2qvsCys5dpMBcjnkwQ9AMHweUbHmBrK",
+  "state": "Refunded",
+  "separatePayer": "7Dw3cN8zQxyYPJiC45eJaZpGwR8qKAYMPYpZLiu9CRM",
+  "beneficiary": "HypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDD",
+  "amountReturned": "10",
+  "freshSafeAccount": true,
+  "recoveryExportVerified": true,
+  "verifiedAt": "2026-10-03T15:13:29.625Z"
+}

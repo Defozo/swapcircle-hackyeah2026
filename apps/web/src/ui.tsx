@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import * as Dialog from '@radix-ui/react-dialog';
 import { ArrowUpRight, Check, Copy as CopyIcon, X, CircleHelp, ShieldCheck } from 'lucide-react';
 import { useRef, useState } from 'react';
-import { Background, ReactFlow, MarkerType, type Node, type Edge } from '@xyflow/react';
+import { Background, ReactFlow, MarkerType, Position, type Node, type Edge } from '@xyflow/react';
 import type { Leg, Manifest } from '@swapcircle/sdk';
 import { formatAmount } from '@swapcircle/sdk';
 import { useTranslation, type Copy } from './i18n';
@@ -38,7 +38,12 @@ export function CycleGraph({ legs, manifest, copy }: { legs: Leg[]; manifest: Ma
   const { p } = useTranslation();
   const nodes: Node[] = legs.map((leg, i) => {
     const angle = (2 * Math.PI * i / legs.length) - Math.PI / 2;
-    return { id: String(i), type: 'default', position: { x: 290 + Math.cos(angle) * 230, y: 160 + Math.sin(angle) * 120 }, data: { label: <div className="graph-person"><span className={`avatar avatar-${i}`}>{ownerName(leg.owner, manifest).slice(0, 1)}</span><div><strong>{ownerName(leg.owner, manifest)}</strong><span>{formatAmount(leg.amount, leg.decimals)} {symbol(leg.mint, manifest)}</span></div></div> }, draggable: false, selectable: false };
+    // Reciprocal transfers need separate sides so amounts and arrowheads do not overlap.
+    const pairHandles = legs.length === 2 ? {
+      sourcePosition: i === 0 ? Position.Left : Position.Right,
+      targetPosition: i === 0 ? Position.Right : Position.Left,
+    } : {};
+    return { id: String(i), type: 'default', ...pairHandles, position: { x: 290 + Math.cos(angle) * 230, y: 160 + Math.sin(angle) * 120 }, data: { label: <div className="graph-person"><span className={`avatar avatar-${i}`}>{ownerName(leg.owner, manifest).slice(0, 1)}</span><div><strong>{ownerName(leg.owner, manifest)}</strong><span>{formatAmount(leg.amount, leg.decimals)} {symbol(leg.mint, manifest)}</span></div></div> }, draggable: false, selectable: false };
   });
   const edges: Edge[] = legs.map((leg, i) => ({ id: `e${i}`, source: String(i), target: String((i + 1) % legs.length), type: 'smoothstep', label: `${formatAmount(leg.amount, leg.decimals)} ${symbol(leg.mint, manifest)}`, markerEnd: { type: MarkerType.ArrowClosed, color: '#b5de79' }, style: { stroke: '#86a85b', strokeWidth: 1.5 }, labelStyle: { fill: '#d4edb2', fontSize: 11 }, labelBgStyle: { fill: '#151c24' }, labelBgPadding: [8, 5], labelBgBorderRadius: 6, animated: false }));
   return <><div className="cycle-graph" role="img" aria-label={p("Kierunek przekazywania aktywów. Równoważna tabela znajduje się poniżej.")}><ReactFlow nodes={nodes} edges={edges} fitView fitViewOptions={{ padding: 0.2 }} nodesDraggable={false} nodesConnectable={false} elementsSelectable={false} panOnDrag={false} zoomOnScroll={false} zoomOnPinch={false} zoomOnDoubleClick={false} preventScrolling={false} proOptions={{ hideAttribution: true }}><Background gap={24} color="#26303b" /></ReactFlow></div><div className="table-wrap"><table><caption className="sr-only">{p("Dokładne przekazania w cyklu")}</caption><thead><tr><th>{copy.owner}</th><th>{copy.give}</th><th>{p("Odbiorca")}</th><th>{copy.want}</th></tr></thead><tbody>{legs.map((leg, i) => { const before = legs[(i + legs.length - 1) % legs.length]!; return <tr key={leg.owner}><td><strong>{ownerName(leg.owner, manifest)}</strong><Address value={leg.owner} /></td><td>{formatAmount(leg.amount, leg.decimals)} {symbol(leg.mint, manifest)}<Address value={leg.mint} /></td><td>{ownerName(legs[(i + 1) % legs.length]!.owner, manifest)}</td><td>{formatAmount(before.amount, before.decimals)} {symbol(before.mint, manifest)}</td></tr>; })}</tbody></table></div></>;

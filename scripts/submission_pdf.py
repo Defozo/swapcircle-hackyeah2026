@@ -1,5 +1,6 @@
 """Rebuild the 10-slide submission PDF from the verified evidence files."""
 import json
+from xml.sax.saxutils import escape
 from pathlib import Path
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import HexColor
@@ -7,6 +8,7 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import Paragraph
 from reportlab.lib.styles import ParagraphStyle
+from reportlab.lib.utils import ImageReader
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'submission'; OUT.mkdir(exist_ok=True)
 FONT=Path('C:/Windows/Fonts/segoeui.ttf')
@@ -57,7 +59,16 @@ for number,(section,title,content,note) in enumerate(slides,1):
             y-=20
         elif kind=='image':
             image=ROOT/value
-            if image.exists():c.drawImage(str(image),84,y-300,width=1112,height=300,preserveAspectRatio=True,anchor='c');y-=328
+            if image.exists():
+                # Place the actual offer cards at a readable size. Clip the PDF
+                # drawing to this region; the source screenshot is unchanged.
+                source=ImageReader(str(image));iw,ih=source.getSize()
+                sx,sy,sw,sh=iw*0.19,ih*0.54,iw*0.78,ih*0.29
+                scale=min(1112/sw,300/sh);width,height=sw*scale,sh*scale
+                left=84+(1112-width)/2;bottom=y-height
+                c.saveState();clip=c.beginPath();clip.rect(left,bottom,width,height);c.clipPath(clip,stroke=0)
+                c.drawImage(source,left-sx*scale,bottom-(ih-sy-sh)*scale,width=iw*scale,height=ih*scale)
+                c.restoreState();y-=height+28
         elif kind=='evidence':
             y=text(environment,84,y,30,accent,font='DeckBold')
             if evidence.get('complete'):
@@ -73,7 +84,10 @@ for number,(section,title,content,note) in enumerate(slides,1):
             links=read('submission/links.json',{})
             for label,keyname in [('Aplikacja','app'),('Repozytorium','repository'),('Film','video')]:
                 value=links.get(keyname)
-                y=text(f'{label}: {value or "adres publikacji oczekuje na weryfikację"}',84,y,22)
+                shown=escape(value) if value else 'adres publikacji oczekuje na weryfikację'
+                if value:
+                    shown=f'<link href="{escape(value)}" color="#b8ef6c">{shown}</link>'
+                y=text(f'{label}: {shown}',84,y,22)
             y=text('Program: '+manifest.get('programId','brak manifestu'),84,y,19,muted)
             y=text('Zespół: '+(team.get('team_name') or 'dane oczekują na uzupełnienie'),84,y,23)
             if team.get('members'):y=text(', '.join(team['members']),84,y,21,muted)

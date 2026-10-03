@@ -115,6 +115,35 @@ oświadczeniem wymienionego obserwatora, a nie wnioskiem z samych sygnatur.
 
 ## Kontrola kodu bramki
 
+Nowy `release prepare` wymaga czystego repozytorium z istniejącym commitem,
+również bez nieśledzonych plików. Zapisuje commit oraz porównanie każdego pliku
+przygotowanego źródła z tym commitem. `deploy`, `finalize` i `publish` ponownie
+sprawdzają to powiązanie przed kontaktem z RPC.
+
+Istniejący kandydat został zbudowany przed utworzeniem repozytorium Git.
+Jego historyczne `commit: null` nie jest przepisywane na późniejszy commit.
+Po zapisaniu i przeglądzie ostatecznego commitu wykonaj najpierw kontrolę:
+
+```sh
+node scripts/release.mjs bind-source --release target/releases/Eof8Zk6Y6GkaeawM6grb3gQQFcXEikhEHuEnT4nLyzv4/release.json --commit FULL_40_CHARACTER_COMMIT
+```
+
+Powtórzenie tego polecenia z `--execute` zapisuje `sourceCommit` i
+`sourceProvenance`. Nie buduje ani nie wdraża programu. Skrypt wymaga identycznej
+listy plików i treści, dopuszczając wyłącznie zamianę deweloperskiego Program ID
+na końcowy ID w `declare_id!` i `Anchor.toml` oraz równoważność zakończeń linii
+CRLF/LF. Zachowuje pierwotne daty i hashe artefaktów. Jeśli kod się różni, trzeba
+przygotować i odebrać nowy artefakt; nie wolno dopisywać commitu ręcznie.
+
+Finalny manifest otrzymuje zweryfikowany `sourceCommit` jako `commit`.
+Publiczny `release.json` zachowuje osobno oryginalny commit kompilacji,
+późniejsze powiązanie źródeł oraz czas jego weryfikacji. Samo powiązanie nie
+stanowi nowej kompilacji ani niezależnego dowodu odtwarzalności pliku ELF.
+
+`node --test tests/release-provenance.test.mjs` sprawdza rzeczywiste repozytoria
+Git: brudny katalog, istniejący kandydat, jawne przekształcenia Program ID i linii,
+zmianę źródła, zmianę listy plików i zachowanie oryginalnego `commit: null`.
+
 `tests/sdk/release-evidence.test.ts` sprawdza odrzucenie starego wdrożenia,
 niedostępnego pokwitowania, podpisu nieobecnego właściciela, niewłaściwej kwoty,
 testowego odbioru portfela, brakującego Solflare i powtórzonego profilu. Kontroluje

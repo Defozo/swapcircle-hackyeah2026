@@ -2,6 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './e2e',
+  outputDir: process.env.E2E_OUTPUT_DIR || '../../.local/test-runs/web',
   timeout: 90_000,
   expect: { timeout: 15_000 },
   fullyParallel: false,

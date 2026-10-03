@@ -1,0 +1,9 @@
+{
+  "cluster": "localnet",
+  "cycle": "4pX4e7nEQNApd5YhW2nUU4e9hPjrNPheiYYvm8ioipGC",
+  "signature": "5Jd7vjPSfFyyECsqWqFjzYhMRVnvpinEK9EbKM3RurxjVoDfJXykkmG6Xs12i5pHdERMw5WCXpvzdvhHSibZBcGY",
+  "state": "Refunded",
+  "refundedMask": 2,
+  "reason": "Cleanup after test harness assertion failure",
+  "checkedAt": "2026-10-03T15:02:09.612Z"
+}

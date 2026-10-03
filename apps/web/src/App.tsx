@@ -8,6 +8,7 @@ import { createOffer, createOfferLink, exportOffers, findCycles, importOfferLink
 import { dictionaries, LanguageContext, createTranslator, useTranslation, localizeText, operationIdentity, type Language } from './i18n';
 import { Address, CycleGraph, Empty, Explorer, Modal, Notice, download, ownerName, short, symbol, time } from './ui';
 import { loadTransactions, message, reconcileTransaction, STORAGE, type PendingTransaction } from './transactions';
+import { persistTransactionUpdates } from './transaction-journal';
 
 type Route = 'board' | 'matches' | 'deposits' | 'recovery' | 'rules' | 'cycle';
 type MintAuthoritySnapshot = { mint: string; authority: string | null };
@@ -135,7 +136,6 @@ export function App() {
     }
   }, [context, storeKey, mergeBundle]);
   useEffect(() => { if (storeKey && (offers.length || revocations.length)) localStorage.setItem(storeKey, exportOffers(offers, revocations)); }, [offers, revocations, storeKey]);
-  useEffect(() => { localStorage.setItem(STORAGE, JSON.stringify(transactions.slice(0, 100))); }, [transactions]);
 
   const refreshBoard = useCallback(async () => {
     if (!boardUrl || !context) { setBoardStatus('local'); return; }
@@ -184,7 +184,7 @@ export function App() {
       }
       return reconcileTransaction(connection, tx, cycleChecked);
     }));
-    setTransactions(previous => previous.map(tx => { const i = pending.findIndex(p => p.id === tx.id); const result = checked[i]; return result?.status === 'fulfilled' ? result.value : tx; }));
+    setTransactions(persistTransactionUpdates(localStorage, STORAGE, checked.flatMap(result => result.status === 'fulfilled' ? [result.value] : [])));
     if (cycleAddress && client) await readCycle(cycleAddress);
     await refreshWallet();
   }, [connection, cycleAddress, client, networkKey, readCycle, refreshWallet]);
@@ -208,7 +208,7 @@ export function App() {
     if (!client || !owner || !wallet.signTransaction) { toast(p("Połącz portfel obsługujący podpis transakcji."), true); return; }
     if (network !== 'ready') { toast(p("Najpierw zweryfikuj sieć i program."), true); return; }
     const operationKey = operationIdentity(label);
-    if (scopedTransactions.some(tx => (!options.cycle || tx.cycle === options.cycle) && (options.leg === undefined || tx.leg === undefined || options.leg === tx.leg) && (tx.operationKey || operationIdentity(tx.label)) === operationKey && ['sent', 'unknown'].includes(tx.status))) { toast(p("Ta operacja ma nieznany wynik. Sprawdź istniejącą sygnaturę i stan cyklu przed kolejnym podpisem."), true); return; }
+    if (loadTransactions().some(tx => tx.networkKey === networkKey && (!options.cycle || tx.cycle === options.cycle) && (options.leg === undefined || tx.leg === undefined || options.leg === tx.leg) && (tx.operationKey || operationIdentity(tx.label)) === operationKey && ['sent', 'unknown'].includes(tx.status))) { toast(p("Ta operacja ma nieznany wynik. Sprawdź istniejącą sygnaturę i stan cyklu przed kolejnym podpisem."), true); return; }
     setBusy(label);
     try {
       const built = await builder();
@@ -226,16 +226,14 @@ export function App() {
     const operation = confirmation; setConfirmation(null); setBusy(operation.label);
     const id = crypto.randomUUID();
     const initial: PendingTransaction = { id, label: operation.label, operationKey: operation.operationKey, leg: operation.leg, networkKey: networkKey!, cycle: operation.cycle, status: 'awaiting-signature', createdAt: Date.now() };
-    setTransactions(previous => [initial, ...previous]);
     try {
+      setTransactions(persistTransactionUpdates(localStorage, STORAGE, [initial]));
       await submitAndConfirm(connection, operation.built, wallet.publicKey, wallet.signTransaction, status => {
         const normalized: PendingTransaction['status'] = status.phase === 'submitted' ? 'sent' : status.phase === 'failed' ? 'error' : status.phase;
         const persisted = loadTransactions();
         const prior = persisted.find(tx => tx.id === id) || initial;
         const updated = { ...prior, status: normalized, signature: status.signature ?? prior.signature, error: status.error, blockhash: status.blockhash ?? prior.blockhash, lastValidBlockHeight: status.lastValidBlockHeight ?? prior.lastValidBlockHeight };
-        const next = [updated, ...persisted.filter(tx => tx.id !== id)].slice(0, 100);
-        localStorage.setItem(STORAGE, JSON.stringify(next));
-        setTransactions(next);
+        setTransactions(persistTransactionUpdates(localStorage, STORAGE, [updated]));
       });
       let cycleBalancesVerified = false;
       if (operation.cycle) { const readback = await readCycle(operation.cycle); cycleBalancesVerified = readback.balancesVerified; setRoute('cycle'); location.hash = `/cycle/${operation.cycle}`; }
@@ -243,7 +241,11 @@ export function App() {
       toast(balancesRead && cycleBalancesVerified ? p("Transakcja confirmed. Stan programu i salda wszystkich uczestników zostały ponownie odczytane.") : p("Transakcja confirmed i stan programu odczytany. Nie udało się potwierdzić wszystkich sald; odśwież portfel."));
     } catch (e) {
       fail(e);
-      setTransactions(previous => previous.map(tx => tx.id === id && tx.status === 'awaiting-signature' ? { ...tx, status: 'error', error: message(e) } : tx));
+      const pending = loadTransactions().find(tx => tx.id === id);
+      if (pending?.status === 'awaiting-signature') {
+        try { setTransactions(persistTransactionUpdates(localStorage, STORAGE, [{ ...pending, status: 'error', error: message(e) }])); }
+        catch (journalError) { fail(journalError); }
+      }
     } finally { setBusy(''); }
   }
 

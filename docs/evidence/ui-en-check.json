@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-03T15:07:17.973Z",
+  "checks": [
+    "English landing and document language",
+    "English educational explanation and accessible transfer table",
+    "English manual form, labels and participant controls",
+    "Real RPC mint reads and three null issuance authorities in English terms",
+    "English custody rules and supported assets",
+    "English mobile recovery without horizontal overflow"
+  ],
+  "errors": [],
+  "complete": true,
+  "scope": "Read-only localnet browser verification; no wallet transaction sent"
+}

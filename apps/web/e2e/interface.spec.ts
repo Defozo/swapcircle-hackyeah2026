@@ -46,3 +46,26 @@ test('malformed imports and unavailable manifests never produce financial succes
   await expect(page.getByText('Transakcja confirmed.', { exact: false })).toHaveCount(0);
 });
 
+test('English covers offer consent, manual cycle risks and independent recovery and persists after reload', async ({ page }) => {
+  await page.goto('/', { waitUntil: 'domcontentloaded' });
+  await page.locator('.language-button').click();
+  await expect(page.getByRole('heading', { name: 'Good exchanges bring people together.' })).toBeVisible();
+  await page.getByRole('button', { name: 'Add an offer', exact: true }).click();
+  const offer = page.getByRole('dialog');
+  await expect(offer).toContainText('It does not transfer or reserve tokens.');
+  await expect(offer.getByRole('checkbox')).toHaveAccessibleName('I agree to publish my wallet address and exact offer terms. The offer does not guarantee a match.');
+  await expect(offer.getByRole('button', { name: 'Sign and publish', exact: true })).toBeDisabled();
+  await page.keyboard.press('Escape');
+  await page.getByRole('button', { name: 'Matches', exact: true }).click();
+  await page.getByRole('button', { name: 'Build a cycle manually', exact: true }).click();
+  await expect(page.getByRole('dialog')).toContainText("Entering someone else's address does not constitute their consent.");
+  await expect(page.getByRole('group')).toHaveCount(2);
+  await expect(page.getByRole('button', { name: 'Verify and create cycle', exact: true })).toBeDisabled();
+  await page.keyboard.press('Escape');
+  await page.getByRole('button', { name: 'Recovery', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Your funds. Your right to a refund.' })).toBeVisible();
+  await page.reload({ waitUntil: 'domcontentloaded' });
+  await expect(page.getByRole('heading', { name: 'Your funds. Your right to a refund.' })).toBeVisible();
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+});
+

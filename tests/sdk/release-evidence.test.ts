@@ -8,7 +8,7 @@ import {assertReceiptDeploymentSlot,validateEvidenceHeader,verifyAdditionalRelea
 const key=(byte:number)=>new PublicKey(new Uint8Array(32).fill(byte));
 const disc=(name:string)=>createHash('sha256').update(name).digest().subarray(0,8);
 const signature=(byte:number)=>bs58.encode(new Uint8Array(64).fill(byte));
-function fixture(){
+function fixture(initializeKind:1|18=1){
  const id=key(20),owners=[key(1),key(2),key(3)],mints=[key(11),key(12),key(13)],helper=key(4),destination=key(5);
  const identity={programId:id.toBase58(),genesisHash:key(21).toBase58(),artifactHash:'a'.repeat(64),deploymentSlot:100};
  const accounts=new Map<string,any>(),transactions=new Map<string,any>();
@@ -29,7 +29,7 @@ function fixture(){
   transactions.set(sig,{slot:101,meta:{err:null,preTokenBalances:[],postTokenBalances:withBalance?[{accountIndex:destinationIndex,mint:mints[0].toBase58(),owner:owners[0].toBase58(),uiTokenAmount:{amount:'10',decimals:0}}]:[]},transaction:{message:{header:{numRequiredSignatures:signers.length},accountKeys:keys,instructions:instructions.map(ix=>({programIdIndex:keys.findIndex(k=>k.equals(ix.program)),accounts:ix.accounts.map(a=>keys.findIndex(k=>k.toBase58()===a)),data:bs58.encode(ix.data)}))}}});
  }
  const createAccount=Buffer.alloc(52);createAccount.writeBigUInt64LE(165n,12);TOKEN_PROGRAM_ID.toBuffer().copy(createAccount,20);
- transaction(signature(50),[helper,destination],[{program:PublicKey.default,accounts:[helper.toBase58(),destination.toBase58()],data:createAccount},{program:TOKEN_PROGRAM_ID,accounts:[destination.toBase58(),mints[0].toBase58()],data:Buffer.concat([Buffer.from([18]),owners[0].toBuffer()])},instruction('refund',recovered)],true);
+ transaction(signature(50),[helper,destination],[{program:PublicKey.default,accounts:[helper.toBase58(),destination.toBase58()],data:createAccount},{program:TOKEN_PROGRAM_ID,accounts:[destination.toBase58(),mints[0].toBase58(),...(initializeKind===1?[owners[0].toBase58(),'SysvarRent111111111111111111111111111111111']:[])],data:initializeKind===1?Buffer.from([1]):Buffer.concat([Buffer.from([18]),owners[0].toBuffer()])},instruction('refund',recovered)],true);
  const token=Buffer.alloc(165);mints[0].toBuffer().copy(token,0);owners[0].toBuffer().copy(token,32);token.writeBigUInt64LE(10n,64);token[108]=1;
  accounts.set(destination.toBase58(),{data:token,owner:TOKEN_PROGRAM_ID,lamports:2039280,executable:false,rentEpoch:0});
  transaction(signature(51),[owners[0]],[{program:id,accounts:[owners[0].toBase58(),settlement],data:disc('global:create_cycle')}]);
@@ -44,6 +44,7 @@ function fixture(){
 
 describe('release evidence gates (RPC fixtures test validation, not chain execution)',()=>{
  it('accepts complete independent refund and three real-wallet instruction records',async()=>{const f=fixture();await expect(verifyAdditionalReleaseEvidence(f.rpc,f.identity,f.recovery,f.wallets)).resolves.toBeUndefined();});
+ it('also accepts InitializeAccount3 with owner in instruction data',async()=>{const f=fixture(18);await expect(verifyAdditionalReleaseEvidence(f.rpc,f.identity,f.recovery,f.wallets)).resolves.toBeUndefined();});
  it('rejects previous-deployment receipts even if success booleans are true',async()=>{const f=fixture();f.transactions.get(f.recovery.signature).slot=99;await expect(verifyAdditionalReleaseEvidence(f.rpc,f.identity,f.recovery,f.wallets)).rejects.toThrow('predates');});
  it('rejects an unavailable finalized receipt',async()=>{const f=fixture();f.transactions.delete(f.recovery.signature);await expect(verifyAdditionalReleaseEvidence(f.rpc,f.identity,f.recovery,f.wallets)).rejects.toThrow('available successful');});
  it('rejects a refund whose owner had to sign',async()=>{const f=fixture();const tx=f.transactions.get(f.recovery.signature);tx.transaction.message.accountKeys[0]=new PublicKey(f.recovery.owner);await expect(verifyAdditionalReleaseEvidence(f.rpc,f.identity,f.recovery,f.wallets)).rejects.toThrow('without the owner');});

@@ -1,11 +1,13 @@
 {
   "checkedAt": "2026-10-03",
-  "command": "pnpm exec vitest run tests/sdk/release-evidence.test.ts tests/sdk/recovery-journal.test.ts",
-  "passed": 13,
+  "command": "pnpm exec vitest run tests/sdk/release-evidence.test.ts",
+  "passed": 10,
   "failed": 0,
-  "releaseGateTests": 9,
-  "recoveryJournalTests": 4,
+  "releaseGateTests": 10,
+  "durationSeconds": 315.86,
+  "previousRecoveryJournalRun": {"command":"pnpm exec vitest run tests/sdk/release-evidence.test.ts tests/sdk/recovery-journal.test.ts","recoveryJournalTestsPassed":4,"failed":0},
+  "acceptedInitializeAccountVariants": ["InitializeAccount, matching current SDK", "InitializeAccount3"],
   "nativeNode24TypeScriptImport": "passed",
   "releaseMjsSyntax": "passed",
-  "scope": "Validation logic exercised with controlled RPC fixtures. This report is not devnet, wallet-extension, deployment or immutable-release acceptance."
+  "scope": "Ten current release validation tests passed. The four unchanged recovery journal tests passed in the preceding combined run. Validation uses controlled RPC fixtures; this is not devnet, wallet-extension, deployment or immutable-release acceptance."
 }

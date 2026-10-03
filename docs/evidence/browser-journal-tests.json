@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-10-03T15:13:36Z",
+  "command": "node --test tests/transaction-journal.test.mjs",
+  "passed": 5,
+  "failed": 0,
+  "durationMilliseconds": 302.6444,
+  "additionalRetentionRun": {
+    "checkedAt": "2026-10-03 15:22:59 UTC",
+    "command": "node --test --test-name-pattern=retention tests/transaction-journal.test.mjs",
+    "passed": 1,
+    "failed": 0,
+    "durationMilliseconds": 275.6033,
+    "scope": "Only the new retention test ran: an old signed unknown keeps its signature, blockhash and validity height after 101 later finalized operations. Both load and merge use the same retention helper, keeping all unresolved operations and the 100 newest completed records."
+  },
+  "scope": "Pure journal and storage tests prove stale unsigned React state cannot erase a signed receipt, old RPC results cannot replace newer SDK confirmation, legacy metadata and observed success survive weaker reads, legitimate current finalization/failure remains possible, transaction identity cannot be replaced, and persistence failure is propagated. Browser integration and actual chain behavior are verified separately."
+}

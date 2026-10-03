@@ -28,7 +28,8 @@ jobs:
           name: web-verification
           path: |
             docs/evidence/playwright-report/
-            apps/web/test-results/
+            .local/test-runs/web/
+          include-hidden-files: true
           if-no-files-found: ignore
   program:
     runs-on: ubuntu-latest

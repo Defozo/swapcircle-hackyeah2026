@@ -1,10 +1,11 @@
 import type { Connection, Transaction, Keypair } from '@solana/web3.js';
 import { PublicKey } from '@solana/web3.js';
+import { retainTransactionHistory } from './transaction-journal';
 
-export type PendingTransaction = { id: string; label: string; operationKey?: string; leg?: number; networkKey?: string; cycle?: string; signature?: string; status: 'awaiting-signature' | 'sent' | 'confirmed' | 'finalized' | 'error' | 'unknown'; error?: string; createdAt: number; blockhash?: string; lastValidBlockHeight?: number };
+export type PendingTransaction = { id: string; label: string; operationKey?: string; leg?: number; networkKey?: string; cycle?: string; signature?: string; status: 'awaiting-signature' | 'sent' | 'confirmed' | 'finalized' | 'error' | 'unknown'; error?: string; createdAt: number; blockhash?: string; lastValidBlockHeight?: number; journalRevision?: number };
 export const STORAGE = 'swapcircle:transactions:v1';
 export function loadTransactions(): PendingTransaction[] {
-  try { const list: unknown = JSON.parse(localStorage.getItem(STORAGE) || '[]'); return Array.isArray(list) ? list.filter(x => x && typeof x.id === 'string' && typeof x.status === 'string').slice(0, 100) : []; } catch { return []; }
+  try { const list: unknown = JSON.parse(localStorage.getItem(STORAGE) || '[]'); return Array.isArray(list) ? retainTransactionHistory(list.filter(x => x && typeof x.id === 'string' && typeof x.status === 'string')) : []; } catch { return []; }
 }
 export function message(error: unknown): string { return error instanceof Error ? error.message : String(error); }
 

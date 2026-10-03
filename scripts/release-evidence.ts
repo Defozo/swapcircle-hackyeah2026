@@ -65,7 +65,10 @@ export async function verifyAdditionalReleaseEvidence(rpc:EvidenceRpc,identity:R
  required(recoveryTx.signers[0]===recovery.payer&&!recoveryTx.signers.includes(leg.owner),'Independent recovery must be paid without the owner signature');
  required(recoveryTx.calls.some((call:any)=>call.data.subarray(0,8).equals(discriminator('global:refund'))&&call.data[8]===legIndex&&call.accounts[0]===recovery.cycle&&call.accounts[3]===recovery.destination),'Independent recovery receipt lacks the claimed refund instruction');
  required(recoveryTx.signers.includes(recovery.destination)&&recoveryTx.instructions.some((call:any)=>call.program==='11111111111111111111111111111111'&&call.accounts[0]===recovery.payer&&call.accounts[1]===recovery.destination&&call.data.length===52&&call.data.readUInt32LE(0)===0&&call.data.readBigUInt64LE(12)===165n&&new PublicKey(call.data.subarray(20,52)).equals(TOKEN_PROGRAM_ID)),'Recovery receipt must atomically create the fresh SPL account with the independent fee payer');
- required(recoveryTx.instructions.some((call:any)=>call.program===TOKEN_PROGRAM_ID.toBase58()&&call.data[0]===18&&call.accounts[0]===recovery.destination&&call.accounts[1]===leg.mint&&call.data.length===33&&new PublicKey(call.data.subarray(1)).toBase58()===leg.owner),'Recovery receipt must initialize the fresh account for the original owner');
+ required(recoveryTx.instructions.some((call:any)=>call.program===TOKEN_PROGRAM_ID.toBase58()&&call.accounts[0]===recovery.destination&&call.accounts[1]===leg.mint&&(
+  call.data[0]===1&&call.data.length===1&&call.accounts[2]===leg.owner&&call.accounts[3]==='SysvarRent111111111111111111111111111111111'||
+  call.data[0]===18&&call.data.length===33&&new PublicKey(call.data.subarray(1)).toBase58()===leg.owner
+ )),'Recovery receipt must initialize the fresh account for the original owner');
  const destinationIndex=recoveryTx.keys.findIndex(key=>key.toBase58()===recovery.destination);
  const pre=recoveryTx.tx.meta!.preTokenBalances?.find(balance=>balance.accountIndex===destinationIndex);
  const post=recoveryTx.tx.meta!.postTokenBalances?.find(balance=>balance.accountIndex===destinationIndex);

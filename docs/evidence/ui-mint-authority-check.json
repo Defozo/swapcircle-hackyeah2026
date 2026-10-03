@@ -1,0 +1,33 @@
+{
+  "mint": "97SkC4MZYUnyMs7yaQDvpBqBJotqhRcCpPnM4yAigegQ",
+  "authority": "82V7nsaNUBdVHBB55joFixL4t18ECJ3GT6DKjUhfseVa",
+  "genesisHash": "7Mazo1FTCvbNmW1xM4U9xMFYv97V8k3kN72vMzgNcv3t",
+  "scope": "Isolated localnet test mint. No real funds, no participant balances modified, no promise of available offer balance.",
+  "checkedAt": "2026-10-03T15:22:02.771Z",
+  "activeAuthorityDisplayed": true,
+  "nullAuthorityDisplayed": true,
+  "unfundedOffersClearlyMarked": true,
+  "pairEdgeLabelsSeparated": true,
+  "pairEdgeLabels": [
+    {
+      "left": 601.60791015625,
+      "right": 657.44580078125,
+      "top": 312.9508056640625,
+      "bottom": 324.9508056640625,
+      "text": "1 97Sk…gegQ"
+    },
+    {
+      "left": 801.7373657226562,
+      "right": 819.208984375,
+      "top": 312.9508056640625,
+      "bottom": 324.9508056640625,
+      "text": "1 dX"
+    }
+  ],
+  "tableRows": [
+    "82V7n…fseVa82V7n…fseVa1 97Sk…gegQ97SkC…igegQF4f3o…YD6vu1 dX",
+    "F4f3o…YD6vuF4f3o…YD6vu1 dX7BSvC…dEzGV82V7n…fseVa1 97Sk…gegQ"
+  ],
+  "errors": [],
+  "complete": true
+}

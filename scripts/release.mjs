@@ -1,5 +1,5 @@
 import {spawnSync} from 'node:child_process';
-import {cpSync,copyFileSync,existsSync,mkdirSync,readFileSync,writeFileSync,readdirSync} from 'node:fs';
+import {cpSync,copyFileSync,existsSync,mkdirSync,readFileSync,writeFileSync} from 'node:fs';
 import {resolve,relative,join,dirname,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {createHash} from 'node:crypto';
@@ -7,6 +7,7 @@ import {Connection,Keypair,PublicKey} from '@solana/web3.js';
 import {getMint} from '@solana/spl-token';
 import bs58 from 'bs58';
 import {assertReceiptDeploymentSlot,verifyAdditionalReleaseEvidence} from './release-evidence.ts';
+import {sourceDigest,requireCleanCommit,verifySourceCommit} from './release-provenance.mjs';
 
 try {
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');process.chdir(root);
@@ -21,9 +22,9 @@ const secret=name=>{if(!process.env[name])throw new Error(`Inject ${name} using 
 function workspacePath(path){const absolute=resolve(path);if(absolute!==root&&!absolute.startsWith(root+sep))throw new Error('Release paths must remain inside the project');return absolute;}
 const posix=path=>relative(root,path).split(sep).join('/');
 function runDocker(args,{input,secretOutput=false}={}){const r=spawnSync('docker',args,{input,encoding:'utf8',stdio:secretOutput?'pipe':'inherit',windowsHide:true,maxBuffer:8*1024*1024});if(r.status!==0)throw new Error(secretOutput?'Solana release operation failed; raw output withheld because interrupted deployment may contain a buffer recovery phrase.':'Docker build command failed');return r.stdout;}
-function sourceDigest(directory){const files=[];const walk=(path)=>{for(const item of readdirSync(path,{withFileTypes:true})){if(['target','.git'].includes(item.name))continue;const child=join(path,item.name);if(item.isDirectory())walk(child);else files.push({path:relative(directory,child).split(sep).join('/'),sha256:sha(readFileSync(child))});}};walk(directory);files.sort((a,b)=>a.path.localeCompare(b.path));return {sha256:sha(JSON.stringify(files)),files};}
 
 if(command==='prepare'){
+ const commit=requireCleanCommit(root);
  const id=publicId(flag('program-id','Eof8Zk6Y6GkaeawM6grb3gQQFcXEikhEHuEnT4nLyzv4'));
  const output=workspacePath(flag('out',`target/releases/${id}`));const source=join(output,'source');
  // Never overwrite a prepared release. Its digest is an explicit review input.
@@ -41,17 +42,26 @@ if(command==='prepare'){
  copyFileSync(join(source,'target/idl/swapcircle.json'),join(output,'swapcircle.json'));
  copyFileSync(join(source,'target/types/swapcircle.ts'),join(output,'swapcircle.ts'));
  const digest=sourceDigest(source);
- const commit=spawnSync('git',['rev-parse','HEAD'],{encoding:'utf8',windowsHide:true});
- const release={version:1,cluster:'devnet',genesisHash:genesis,programId:id,developmentProgramId:old,preparedAt:new Date().toISOString(),commit:commit.status===0?commit.stdout.trim():null,artifact:'swapcircle.so',artifactHash:sha(readFileSync(join(output,'swapcircle.so'))),idl:'swapcircle.json',idlHash:sha(readFileSync(join(output,'swapcircle.json'))),sourceHash:digest.sha256,sourceFiles:digest.files,status:'prepared',deployed:false,upgradeAuthority:null,immutabilityVerified:false};
+ const release={version:1,cluster:'devnet',genesisHash:genesis,programId:id,developmentProgramId:old,preparedAt:new Date().toISOString(),commit,artifact:'swapcircle.so',artifactHash:sha(readFileSync(join(output,'swapcircle.so'))),idl:'swapcircle.json',idlHash:sha(readFileSync(join(output,'swapcircle.json'))),sourceHash:digest.sha256,sourceFiles:digest.files,status:'prepared',deployed:false,upgradeAuthority:null,immutabilityVerified:false};
+ release.sourceProvenance=verifySourceCommit(root,source,release,commit);release.sourceCommit=release.sourceProvenance.commit;
  write(join(output,'release.json'),release);
  console.log(JSON.stringify({prepared:true,release:posix(join(output,'release.json')),programId:id,artifactHash:release.artifactHash,next:'Deploy mutable final program, run full devnet acceptance, inspect release, then explicitly finalize.'},null,2));
-}else if(command==='deploy'||command==='finalize'||command==='publish'){
+}else if(['bind-source','deploy','finalize','publish'].includes(command)){
  const releasePath=workspacePath(flag('release',`target/releases/Eof8Zk6Y6GkaeawM6grb3gQQFcXEikhEHuEnT4nLyzv4/release.json`));
  const directory=dirname(releasePath),release=json(releasePath),id=publicId(release.programId);
  if(release.version!==1||release.cluster!=='devnet'||release.genesisHash!==genesis)throw new Error('Only a prepared devnet release is allowed');
  const artifactPath=workspacePath(join(directory,release.artifact)),artifact=readFileSync(artifactPath);
  if(sha(artifact)!==release.artifactHash||sha(readFileSync(join(directory,release.idl)))!==release.idlHash||json(join(directory,release.idl)).address!==id)throw new Error('Prepared release artifacts changed');
  if(sourceDigest(join(directory,'source')).sha256!==release.sourceHash)throw new Error('Prepared release source changed');
+ if(command==='bind-source'){
+  const provenance=verifySourceCommit(root,join(directory,'source'),release,flag('commit','HEAD'));
+  const execute=process.argv.includes('--execute');
+  if(execute){release.sourceCommit=provenance.commit;release.sourceProvenance=provenance;write(releasePath,release);}
+  console.log(JSON.stringify({action:'bind-existing-prepared-source-to-commit',execute,programId:id,artifactHash:release.artifactHash,originalBuildCommit:release.commit,sourceCommit:provenance.commit,sourceHash:release.sourceHash,matchedFiles:provenance.files.length},null,2));
+ }else{
+ if(!release.sourceCommit||!release.sourceProvenance)throw new Error('Bind the prepared source to a reviewed commit before deployment, finalization or publication');
+ const provenance=verifySourceCommit(root,join(directory,'source'),release,release.sourceCommit);
+ if(release.sourceProvenance.commit!==provenance.commit||release.sourceProvenance.preparedSourceHash!==provenance.preparedSourceHash||release.sourceProvenance.normalizedSourceHash!==provenance.normalizedSourceHash)throw new Error('Stored source provenance differs from the verified commit');
  const rpc=flag('rpc','https://api.devnet.solana.com'),connection=new Connection(rpc,'finalized');
  if(await connection.getGenesisHash()!==genesis)throw new Error('RPC is not Solana devnet');
  const loader=new PublicKey('BPFLoaderUpgradeab1e11111111111111111111111');
@@ -136,7 +146,7 @@ if(command==='prepare'){
    for(const entry of manifest.mints){const mint=await getMint(connection,new PublicKey(entry.mint),'finalized');if(mint.decimals!==entry.decimals||mint.mintAuthority||mint.freezeAuthority)throw new Error('Final demo mint retains authority or differs from manifest');}
    console.log(JSON.stringify({action:'publish-verified-final-manifest',execute,programId:id,artifactHash:release.artifactHash,evidenceHash:sha(readFileSync(evidencePath)),upgradeAuthority:null},null,2));
    if(execute){
-    Object.assign(manifest,{programData:inspection.programData,upgradeAuthority:null,artifactHash:release.artifactHash,commit:release.commit??undefined,deployed:true,verifiedAt:new Date().toISOString()});
+    Object.assign(manifest,{programData:inspection.programData,upgradeAuthority:null,artifactHash:release.artifactHash,commit:release.sourceCommit,deployed:true,verifiedAt:new Date().toISOString()});
     write('deployments/devnet.json',manifest);write('apps/web/public/deployments/devnet.json',manifest);
     Object.assign(release,{status:'verified-immutable-release',postFinalizationEvidenceHash:sha(readFileSync(evidencePath)),postFinalizationAdditionalEvidenceHashes:additionalEvidenceHashes,publishedAt:new Date().toISOString()});write(releasePath,release);
     const publicDir=join(root,'deployments/releases',id);mkdirSync(publicDir,{recursive:true});
@@ -159,5 +169,6 @@ if(command==='prepare'){
   }
   }
  }
-}else throw new Error('Usage: node scripts/release.mjs prepare|deploy|finalize|publish [--release path] [--execute]. Finalize also requires --confirm-immutable <Program ID>.');
+ }
+}else throw new Error('Usage: node scripts/release.mjs prepare|bind-source|deploy|finalize|publish [--release path] [--execute]. Finalize also requires --confirm-immutable <Program ID>.');
 } catch(error) {console.error(error instanceof Error?error.message:String(error));process.exitCode=1;}

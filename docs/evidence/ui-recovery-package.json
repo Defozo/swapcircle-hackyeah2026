@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "protocol": "SwapCircle",
+  "cluster": "localnet",
+  "genesisHash": "7Mazo1FTCvbNmW1xM4U9xMFYv97V8k3kN72vMzgNcv3t",
+  "programId": "HkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGun",
+  "cycle": "M3ZNNWr4bXhU2qvsCys5dpMBcjnkwQ9AMHweUbHmBrK",
+  "leg": 0,
+  "owner": "HypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDD",
+  "mint": "7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV",
+  "amount": "10",
+  "decimals": 0,
+  "deadline": 1791040392,
+  "termsHash": "701fc71d5d4031eabf7a0b986bfb7509716cb48e415364b8e4f7b4b8145c052c",
+  "sdkVersion": "0.1.0",
+  "idlVersion": "0.1.0",
+  "command": "pnpm recover -- --package swapcircle-recovery-M3ZNNWr4bXhU2qvsCys5dpMBcjnkwQ9AMHweUbHmBrK-0.json --rpc http://127.0.0.1:8899"
+}

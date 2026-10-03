@@ -14,13 +14,14 @@ during preparation, capture and verification.
 2. Start Vite on a free strict port with the localnet manifest and RPC settings.
    The capture defaults to `http://127.0.0.1:5184`; override `SWAPCIRCLE_VIDEO_URL`
    when necessary.
-3. Inject `SWAPCIRCLE_DEVNET_ALICE_KEY`, `SWAPCIRCLE_DEVNET_BOB_KEY` and
+3. Run `node scripts/video/build.mjs` to create the local capture tools. Inject
+   `SWAPCIRCLE_DEVNET_ALICE_KEY`, `SWAPCIRCLE_DEVNET_BOB_KEY` and
    `SWAPCIRCLE_DEVNET_CELINE_KEY` through psst and run
-   `pnpm exec tsx scripts/video/prepare-refund.ts`. These named demo actors are
+   `node submission/_video_work/prepare-refund.mjs`. These named demo actors are
    also used on localnet. This creates a separate timeout scenario and really
    deposits two token legs. It does not transfer ownership of those deposits.
 4. Inject the same keys plus `SWAPCIRCLE_DEVNET_RECOVERY_KEY` through psst and run
-   `pnpm exec tsx scripts/video/capture.ts`. It records matching, cycle creation,
+   `node submission/_video_work/capture.mjs`. It records matching, cycle creation,
    three actual deposits, atomic settlement, and independent refunds into newly
    created owner accounts, paid by a helper. The capture downloads a recovery
    package and verifies cycle states and finalized signatures through RPC.

@@ -10,11 +10,15 @@ Przykład: Alicja oddaje 100 dX za 40 dY, Bartek 40 dY za 250 dZ, Celina 250 dZ 
 
 Kod implementuje program, SDK, tablicę podpisanych ofert Convex, wyszukiwanie cykli, aplikację i niezależne odzyskiwanie. Aktualny stan odbioru opisuje [raport wykonania](docs/ACCEPTANCE.md). Wyniki lokalne nie oznaczają wykonania transakcji devnet. Manifest `deployments/devnet.json` jawnie wskazuje `deployed: false`, dopóki wdrożenie nie zostanie odczytane z sieci. Interfejs nie przedstawia tego programu jako działającego ani niezmiennego.
 
+[Publiczna aplikacja](https://defozo.github.io/swapcircle-hackyeah2026/) otwiera się bez logowania i pokazuje aktualny status wdrożenia. [Repozytorium](https://github.com/Defozo/swapcircle-hackyeah2026) zawiera odtwarzalny lokalny przepływ. Działający hosting nie oznacza wdrożonego programu devnet.
+
 - [Model protokołu i zaufania](docs/protocol.md)
 - [Pomiary rzeczywistych transakcji localnet](docs/evidence/localnet-flows.json)
 - [Pomiary programu SBF w LiteSVM](tests/program/measurements.json)
 - [Weryfikacja działającej tablicy Convex](tests/matching/live-result.json)
 - [Opis zgłoszenia](submission/description.md), [prezentacja PDF](submission/SwapCircle.pdf), [scenariusz pokazu](docs/demo.md)
+- [Film: rzeczywisty localnet, 1:55](https://github.com/Defozo/swapcircle-hackyeah2026/releases/tag/demo-localnet-2026-10-03), [salda i sygnatury nagrania](submission/demo-localnet.evidence.json)
+- [Pełny zakres pomiarów kosztów i limitów](docs/measurements.md)
 - [Hipoteza potrzeby i plan walidacji](docs/validation-research.md)
 
 ## Uruchomienie lokalne

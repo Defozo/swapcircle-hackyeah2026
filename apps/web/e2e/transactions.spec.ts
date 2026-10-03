@@ -13,3 +13,14 @@ test('unknown transactions require signature search, finalized expiry and cycle 
   expect((await reconcileTransaction(rpc({ confirmationStatus: 'confirmed', err: null }), pending, true)).status).toBe('confirmed');
   expect((await reconcileTransaction(rpc({ err: { InstructionError: [0, 'Custom'] } }), pending, true)).status).toBe('error');
 });
+
+test('pruned signature history preserves observed success and interrupted signing permits only deliberate retry after readback', async () => {
+  for (const status of ['confirmed', 'finalized'] as const) {
+    expect((await reconcileTransaction(rpc(null, 500), { ...pending, status }, true)).status).toBe(status);
+  }
+  const unsigned: PendingTransaction = { ...pending, signature: undefined, status: 'awaiting-signature' };
+  const interrupted = await reconcileTransaction(rpc(null), unsigned, false);
+  expect(interrupted.status).toBe('unknown');
+  expect((await reconcileTransaction(rpc(null), interrupted, true)).status).toBe('error');
+  expect((await reconcileTransaction(rpc(null), unsigned, true)).error).toContain('przed wysłaniem');
+});

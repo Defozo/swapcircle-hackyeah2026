@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-10-03T15:13:36Z",
+  "command": "node --test tests/release-provenance.test.mjs",
+  "passed": 4,
+  "failed": 0,
+  "durationMilliseconds": 30523.6656,
+  "existingCandidateReadOnlyCheck": {
+    "command": "node scripts/release.mjs bind-source --commit HEAD",
+    "executedWrite": false,
+    "sourceCommit": "4800308d6ebf67f1fbce410868b43c6ad67f44b5",
+    "originalBuildCommit": null,
+    "programId": "Eof8Zk6Y6GkaeawM6grb3gQQFcXEikhEHuEnT4nLyzv4",
+    "artifactHash": "dc9446536fd0ca03b5fcd2d2dbc3cb8b2720bf9c6f0e2d6e43e7f92a384a6bf9",
+    "sourceHash": "e45338eb84a94c4154573b7d63a3a69679f1fb622ef32e545ba3742b1f94f3dd",
+    "matchedFiles": 6
+  },
+  "scope": "Real temporary Git repositories validate clean preparation, exact source and inventory matching, explicit Program ID and line ending transformations, and retained historical build provenance. The existing artifact was inspected without rebuilding, deploying, binding or mutating on-chain state. A later reviewed commit must be bound explicitly before final release."
+}

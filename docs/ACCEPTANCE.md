@@ -2,7 +2,7 @@
 
 Zespół: **DEFOZO SOFTWARE HOUSE**. Jedyny członek: **Michał Kiełtyka**.
 
-Ten dokument rozróżnia implementację, rzeczywiste wykonanie i nieukończone bramki. Docelowy zakres pochodzi z `official-2026-10-03/PLAN.md`; nie został zmniejszony. Oryginalny plan pozostaje dokumentem historycznym wymagań.
+Ten dokument rozróżnia implementację, rzeczywiste wykonanie i nieukończone bramki. Wiążący zakres pochodzi z `official-2026-10-03/PLAN.md`; nie został zmniejszony. Historyczny `PLAN.md` z katalogu głównego nie wyznacza zakresu.
 
 | Obszar | Zapisany dowód | Stan |
 | --- | --- | --- |
@@ -13,10 +13,10 @@ Ten dokument rozróżnia implementację, rzeczywiste wykonanie i nieukończone b
 | Pełne cykle 2, 3, 4 i fallback refund na RPC | `docs/evidence/localnet-flows.json` | Aktualny artefakt przeszedł odbiór; 29 transakcji odczytanych jako finalized podczas wykonania, dokładne salda potwierdzone |
 | CLI w osobnym procesie z publicznego pakietu | `docs/evidence/localnet-independent-cli.json` | Finalized; nowy bezpieczny rachunek otrzymał 10 tokenów, bez klucza właściciela i bez manifestu/WWW/Convex |
 | UI i rzeczywiste transakcje w przeglądarce | `apps/web/e2e` | Próby i poprawki w toku |
-| Publiczny frontend i repozytorium | `submission/links.json` po weryfikacji | Publikacja w przygotowaniu |
+| Publiczny frontend i repozytorium | `submission/links.json`, `docs/evidence/public-web.json` | HTTPS i publiczny kod dostępne; świeża sesja bez logowania sprawdziła nawigację i mobile. Program devnet nadal niewdrożony |
 | Program devnet i rzeczywiste portfele | `deployments/devnet.json` | Niewdrożony; płatnik ma 0 testowych SOL |
 | Osobny finalny program bez upgrade authority | `target/releases/`, `scripts/release.mjs` | Osobny artefakt przygotowany; niewdrożony, authority nieodebrane |
-| Opis, PDF do 10 slajdów, film do 3 minut | `submission/` | Opis i PDF gotowe do aktualizacji wyników; nagranie w przygotowaniu |
+| Opis, PDF do 10 slajdów, film do 3 minut | `submission/`, `docs/evidence/video-independent-qc.json` | Opis i 10 stron PDF; film 114,7 s z rzeczywistymi transakcjami localnet. Pełne dekodowanie i niezależny przegląd wybranych kadrów, bez deklaracji pełnego oglądu ruchu |
 | Dane zespołu | `TEAM.json` | Potwierdzone przez użytkownika |
 | Wysłanie zgłoszenia HackTribe | Brak potwierdzenia wysłania | Nie wykonano; przygotowanie pakietu nie oznacza zgłoszenia |
 
