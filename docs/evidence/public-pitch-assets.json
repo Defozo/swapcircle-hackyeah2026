@@ -1,0 +1,156 @@
+{
+  "verifiedAt": "2026-10-03T21:56:41.851916+00:00",
+  "status": "verified",
+  "release": {
+    "tag": "demo-pitch-2026-10-03",
+    "targetCommit": "d23ed4d029b7c4247aace2f2ed764aed7c59fb9b",
+    "url": "https://github.com/Defozo/swapcircle-hackyeah2026/releases/tag/demo-pitch-2026-10-03",
+    "draft": false,
+    "prerelease": false
+  },
+  "method": {
+    "client": "curl.exe -q -4",
+    "authentication": "none",
+    "cookies": "none",
+    "defaultCurlConfig": "disabled",
+    "signedRedirectUrlsRecorded": false,
+    "integrity": "SHA-256 against local originals and release API digest; ZipFile.testzip reads all ZIP members and checks CRC"
+  },
+  "summary": {
+    "assets": 5,
+    "anonymousDownloadsPassed": 5,
+    "sha256Matches": 5,
+    "zipArchivesChecked": 2,
+    "zipCrcPassed": 2
+  },
+  "assets": [
+    {
+      "name": "SwapCircle.pdf",
+      "url": "https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-pitch-2026-10-03/SwapCircle.pdf",
+      "localFile": "submission/pitch/SwapCircle.pdf",
+      "httpStatus": 200,
+      "anonymousDownload": true,
+      "bytes": 479303,
+      "sha256": "c747f6fcb953c4d37a229e725f28ebc36b3c33e0f19234a91928ad7d8ef8ec60",
+      "localSha256": "c747f6fcb953c4d37a229e725f28ebc36b3c33e0f19234a91928ad7d8ef8ec60",
+      "releaseApiSha256": "c747f6fcb953c4d37a229e725f28ebc36b3c33e0f19234a91928ad7d8ef8ec60",
+      "matchesLocal": true,
+      "matchesReleaseDigest": true,
+      "downloadAttempts": {
+        "initialHttpStatus": 503,
+        "finalHttpStatus": 200,
+        "redirectsFollowed": 1,
+        "transient503OnSecondAttempt": false
+      }
+    },
+    {
+      "name": "SwapCircle.pptx",
+      "url": "https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-pitch-2026-10-03/SwapCircle.pptx",
+      "localFile": "submission/pitch/SwapCircle.pptx",
+      "httpStatus": 200,
+      "anonymousDownload": true,
+      "bytes": 1002416,
+      "sha256": "ce73a891c069865f05e8f869ddad91d4f0f04106f59590f3a31b1e84d308dbb0",
+      "localSha256": "ce73a891c069865f05e8f869ddad91d4f0f04106f59590f3a31b1e84d308dbb0",
+      "releaseApiSha256": "ce73a891c069865f05e8f869ddad91d4f0f04106f59590f3a31b1e84d308dbb0",
+      "matchesLocal": true,
+      "matchesReleaseDigest": true,
+      "downloadAttempts": {
+        "initialHttpStatus": 503,
+        "finalHttpStatus": 200,
+        "redirectsFollowed": 1,
+        "transient503OnSecondAttempt": false
+      }
+    },
+    {
+      "name": "SwapCircle-demo.mp4",
+      "url": "https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-pitch-2026-10-03/SwapCircle-demo.mp4",
+      "localFile": "submission/pitch/SwapCircle-demo.mp4",
+      "httpStatus": 200,
+      "anonymousDownload": true,
+      "bytes": 9962189,
+      "sha256": "78d8d1e36760be0740e07f7db40246fd001ace736aca42e81874436ec5657481",
+      "localSha256": "78d8d1e36760be0740e07f7db40246fd001ace736aca42e81874436ec5657481",
+      "releaseApiSha256": "78d8d1e36760be0740e07f7db40246fd001ace736aca42e81874436ec5657481",
+      "matchesLocal": true,
+      "matchesReleaseDigest": true,
+      "downloadAttempts": {
+        "initialHttpStatus": 503,
+        "finalHttpStatus": 200,
+        "redirectsFollowed": 1,
+        "transient503OnSecondAttempt": false
+      }
+    },
+    {
+      "name": "SwapCircle-package.zip",
+      "url": "https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-pitch-2026-10-03/SwapCircle-package.zip",
+      "localFile": ".local/SwapCircle-package.zip",
+      "httpStatus": 200,
+      "anonymousDownload": true,
+      "bytes": 11061823,
+      "sha256": "0d7537db212ece4ab59b2cecbd0f687cd6fa56e112717ed25a40ca5a955e9fb5",
+      "localSha256": "0d7537db212ece4ab59b2cecbd0f687cd6fa56e112717ed25a40ca5a955e9fb5",
+      "releaseApiSha256": "0d7537db212ece4ab59b2cecbd0f687cd6fa56e112717ed25a40ca5a955e9fb5",
+      "matchesLocal": true,
+      "matchesReleaseDigest": true,
+      "downloadAttempts": {
+        "initialHttpStatus": 503,
+        "finalHttpStatus": 200,
+        "redirectsFollowed": 1,
+        "transient503OnSecondAttempt": false
+      },
+      "crc": {
+        "downloaded": {
+          "status": "passed",
+          "entries": 13,
+          "files": 13,
+          "firstInvalidEntry": null
+        },
+        "local": {
+          "status": "passed",
+          "entries": 13,
+          "files": 13,
+          "firstInvalidEntry": null
+        }
+      }
+    },
+    {
+      "name": "SwapCircle-video-sources.zip",
+      "url": "https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-pitch-2026-10-03/SwapCircle-video-sources.zip",
+      "localFile": "submission/_video_work/pitch-2026-10-03/render/SwapCircle-video-sources.zip",
+      "httpStatus": 200,
+      "anonymousDownload": true,
+      "bytes": 31281291,
+      "sha256": "ce7d74e4d2632eb2327da755c46e2e58d1088e35698e3be655a562f1db0f1c2a",
+      "localSha256": "ce7d74e4d2632eb2327da755c46e2e58d1088e35698e3be655a562f1db0f1c2a",
+      "releaseApiSha256": "ce7d74e4d2632eb2327da755c46e2e58d1088e35698e3be655a562f1db0f1c2a",
+      "matchesLocal": true,
+      "matchesReleaseDigest": true,
+      "downloadAttempts": {
+        "initialHttpStatus": 503,
+        "finalHttpStatus": 200,
+        "redirectsFollowed": 1,
+        "transient503OnSecondAttempt": true
+      },
+      "crc": {
+        "downloaded": {
+          "status": "passed",
+          "entries": 23,
+          "files": 23,
+          "firstInvalidEntry": null
+        },
+        "local": {
+          "status": "passed",
+          "entries": 23,
+          "files": 23,
+          "firstInvalidEntry": null
+        }
+      }
+    }
+  ],
+  "observations": [
+    "All five original public download URLs initially returned HTTP 503. A later attempt succeeded for every asset, with one additional transient 503 for the video-source archive.",
+    "Every successful download used its original public URL and followed one redirect without authentication.",
+    "This report confirms these downloads at the recorded time; it does not establish continuous availability or browser video playback."
+  ]
+}

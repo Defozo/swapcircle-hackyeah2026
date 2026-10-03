@@ -1,0 +1,143 @@
+{
+  "checkedAt": "2026-10-03T22:00:57.954Z",
+  "base": "https://defozo.github.io/swapcircle-hackyeah2026/",
+  "browser": "fresh Chromium context without login or wallet",
+  "checks": [
+    {
+      "name": "pl: default public entry is Demo",
+      "passed": true
+    },
+    {
+      "name": "pl: earlier deposits do not pay recipients",
+      "passed": true
+    },
+    {
+      "name": "pl: last deposit settles the exchange",
+      "passed": true
+    },
+    {
+      "name": "pl: final balance 0",
+      "passed": true
+    },
+    {
+      "name": "pl: final balance 1",
+      "passed": true
+    },
+    {
+      "name": "pl: final balance 2",
+      "passed": true
+    },
+    {
+      "name": "pl: missing participant has no refund",
+      "passed": true
+    },
+    {
+      "name": "pl: independent refunds complete",
+      "passed": true
+    },
+    {
+      "name": "pl: no document overflow",
+      "passed": true
+    },
+    {
+      "name": "pl: no external requests in Demo",
+      "passed": true
+    },
+    {
+      "name": "pl: no network writes in Demo",
+      "passed": true
+    },
+    {
+      "name": "pl: language switch survives reload",
+      "passed": true
+    },
+    {
+      "name": "en: default public entry is Demo",
+      "passed": true
+    },
+    {
+      "name": "en: earlier deposits do not pay recipients",
+      "passed": true
+    },
+    {
+      "name": "en: last deposit settles the exchange",
+      "passed": true
+    },
+    {
+      "name": "en: final balance 0",
+      "passed": true
+    },
+    {
+      "name": "en: final balance 1",
+      "passed": true
+    },
+    {
+      "name": "en: final balance 2",
+      "passed": true
+    },
+    {
+      "name": "en: missing participant has no refund",
+      "passed": true
+    },
+    {
+      "name": "en: independent refunds complete",
+      "passed": true
+    },
+    {
+      "name": "en: no document overflow",
+      "passed": true
+    },
+    {
+      "name": "en: no external requests in Demo",
+      "passed": true
+    },
+    {
+      "name": "en: no network writes in Demo",
+      "passed": true
+    },
+    {
+      "name": "en: language switch survives reload",
+      "passed": true
+    },
+    {
+      "name": "public player decodes and plays the film",
+      "passed": true
+    },
+    {
+      "name": "public film stays within 3 minutes",
+      "passed": true
+    },
+    {
+      "name": "public film is Full HD",
+      "passed": true
+    },
+    {
+      "name": "Polish captions load all 26 cues",
+      "passed": true
+    },
+    {
+      "name": "public player mobile has no overflow",
+      "passed": true
+    },
+    {
+      "name": "no page errors",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "video": {
+    "duration": 108,
+    "width": 1920,
+    "height": 1080,
+    "playedSeconds": 1.339822,
+    "error": null,
+    "captions": [
+      {
+        "language": "pl",
+        "kind": "captions",
+        "cues": 26
+      }
+    ]
+  },
+  "complete": true
+}

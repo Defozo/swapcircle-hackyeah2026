@@ -1,0 +1,89 @@
+{
+  "verifiedAt": "2026-10-03T21:53:14.670230+00:00",
+  "source": {
+    "repository": "Defozo/swapcircle-hackyeah2026",
+    "workflow": "verify",
+    "runId": 37155888267,
+    "attempt": 1,
+    "url": "https://github.com/Defozo/swapcircle-hackyeah2026/actions/runs/37155888267",
+    "commit": "d894c1e9a7115bd45649d759cd80db44a8f8c723",
+    "status": "completed",
+    "conclusion": "success",
+    "completedAt": "2026-10-03T21:47:18Z",
+    "logsUrl": "https://api.github.com/repos/Defozo/swapcircle-hackyeah2026/actions/runs/37155888267/logs",
+    "downloadedLogArchiveSha256": "193c85d0d10abd25d994b71fa8d6aa8b80ab0c762a8cbf0ffff330484f7be264"
+  },
+  "results": {
+    "vitest": {
+      "passed": 75,
+      "failed": 0,
+      "filesPassed": 10,
+      "command": "pnpm test",
+      "log": "1_web-and-sdk.txt:225-227"
+    },
+    "nodeTests": {
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "command": "pnpm test:node",
+      "log": "1_web-and-sdk.txt:242-250"
+    },
+    "playwright": {
+      "total": 28,
+      "passed": 21,
+      "failed": 0,
+      "skipped": 7,
+      "durationSeconds": 57.5,
+      "command": "pnpm test:e2e",
+      "log": "1_web-and-sdk.txt:555-587"
+    },
+    "sbf": {
+      "passed": 16,
+      "failed": 0,
+      "ignored": 0,
+      "durationSeconds": 17.11,
+      "environment": "LiteSVM 0.9.1 executing the compiled SBF program",
+      "command": "cargo test --locked --manifest-path tests/program/Cargo.toml -- --nocapture",
+      "log": "0_program.txt:812-840"
+    },
+    "build": {
+      "typescript": "passed",
+      "viteProductionBuild": "passed",
+      "anchorSbfBuild": "passed",
+      "commands": [
+        "pnpm build",
+        "anchor build --no-idl --ignore-keys"
+      ]
+    }
+  },
+  "configuredSkips": [
+    {
+      "file": "apps/web/e2e/chain.spec.ts",
+      "count": 3,
+      "guard": "SWAPCIRCLE_CHAIN_E2E=1",
+      "requires": "Local validator and participant wallet keys injected through psst",
+      "scope": "Wallet-signed publication, three-party settlement, independent refund"
+    },
+    {
+      "file": "apps/web/e2e/resilience.spec.ts",
+      "count": 2,
+      "guard": "SWAPCIRCLE_CHAIN_E2E=1",
+      "requires": "Local validator and participant wallet keys injected through psst",
+      "scope": "WebSocket interruption and deadline during wallet signing"
+    },
+    {
+      "file": "apps/web/e2e/ux.spec.ts",
+      "count": 2,
+      "guard": "SWAPCIRCLE_UX_LOCALNET=1",
+      "requires": "Existing localnet cycle accounts",
+      "scope": "Terminal-cycle presentation and account-derived Funding presentation fixture"
+    }
+  ],
+  "limits": [
+    "The seven configured skips are not passing executions.",
+    "The interactive Demo uses simulated transfers and a deterministic clock.",
+    "SBF tests execute in LiteSVM, not Devnet or mainnet.",
+    "This run does not prove new public-network transactions, public deployment availability or full accessibility compliance."
+  ],
+  "scope": "CI results for the exact commit above; publication and submission verification are recorded separately."
+}

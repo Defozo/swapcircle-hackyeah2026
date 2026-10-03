@@ -18,12 +18,17 @@ The signed offer fixtures use isolated public addresses, an isolated network/pro
 
 ## Verification
 
-- `pnpm exec vitest run tests/frontend/demo-state.test.ts`: 4 passing tests, including all 32 deposit permutations across two, three and four participants, replay-safe state restoration, terminal guards and independent refunds.
-- `pnpm --filter @swapcircle/web exec playwright test --reporter=list`: 19 passing tests and 7 configured skips on the local Vite preview. This includes six new demo tests and the existing read-only client suite. A further focused test passed for the zero-deposit outcome, current-page navigation semantics and recovery explanations in PL/EN.
-- Demo browser checks cover PL/EN, desktop/mobile, missing-offer matching, successful settlement, independent refunds, refresh, reset, keyboard focus and complete graph edge/label bounds at 390 and 1440 px. The two desktop complete flows observed zero requests outside the preview origin and zero non-GET requests.
-- Screenshot evidence: `docs/evidence/demo-*.png`. Native product crops for the pitch: `docs/evidence/pitch-*.png`.
+Verified from the logs of [GitHub Actions run 37155888267](https://github.com/Defozo/swapcircle-hackyeah2026/actions/runs/37155888267), completed successfully on 3 October 2026 at 21:47 UTC for commit `d894c1e9a7115bd45649d759cd80db44a8f8c723`. The structured report, source and downloaded-log hash are in [pitch-ci.json](../../docs/evidence/pitch-ci.json).
 
-These checks validate the simulated product flow and selected UI behavior. They are not new chain transactions, a full accessibility audit or proof of public deployment. Production build and publication evidence are recorded by the release task.
+- Vitest: **75 passed** across 10 files, including the four demo-state tests and all 32 deposit permutations across two, three and four participants.
+- Node tests: **10 passed**, zero failures or skips.
+- Playwright: **21 passed, 7 configured skips**, zero failures. This includes eight demo tests covering PL/EN, desktop/mobile, missing offers, settlement, independent refunds, reload/reset, keyboard focus, graph bounds and language persistence after reload. The two desktop demo flows observed no external requests or non-GET requests.
+- Program: **16 SBF tests passed** in LiteSVM 0.9.1, zero failures or ignored tests. These execute the compiled program, including settlement, rollback, deadline boundaries and independent refunds.
+- Root/web TypeScript checks, Vite production build and Anchor SBF build passed.
+
+The seven skipped browser scenarios require additional localnet state: three wallet transaction tests and two transport/deadline tests require `SWAPCIRCLE_CHAIN_E2E=1`, a local validator and participant keys injected through psst; two UI tests require `SWAPCIRCLE_UX_LOCALNET=1` and existing cycle accounts. They are not counted as passing executions.
+
+Screenshot evidence is in `docs/evidence/demo-*.png`; native pitch crops are in `docs/evidence/pitch-*.png`. The Demo remains a simulation, and the SBF tests run in LiteSVM. This CI run is not proof of new Devnet transactions, full accessibility compliance or public deployment availability. Publication and submission verification are recorded separately by the release task.
 
 ## CopilotKit decision
 

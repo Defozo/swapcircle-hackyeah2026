@@ -128,7 +128,7 @@ Deployment wymaga testowego SOL na wydzielonym płatniku. Seed tworzy dX/dY/dZ (
 
 Finalne wydanie ma osobny Program ID. Procedura `scripts/release.mjs` przygotowuje oddzielny, sprawdzalny artefakt, wdraża go jako aktualizowalny i wymaga pełnych wyników devnet przed odebraniem authority. Odebranie jest nieodwracalne i wymaga osobnego polecenia z dokładnym Program ID. Po nim trzeba ponowić odbiór. Nie jest częścią zwykłego deployu ani uruchomienia aplikacji. Zobacz [instrukcję wydania](docs/release.md).
 
-GitHub Actions wykonuje testy i build. Osobny workflow `publish-web` publikuje statyczny frontend przez GitHub Pages. Publiczne adresy i zweryfikowany status publikacji znajdują się w `submission/links.json`, gdy publikacja zostanie ukończona.
+GitHub Actions wykonuje testy i build. Osobny workflow `publish-web` publikuje statyczny frontend przez GitHub Pages. Publiczne adresy znajdują się w `submission/links.json`, a [dowód publikacji](docs/evidence/pitch-publication.json) łączy zakończone wdrożenie, testy publicznego Demo i kontrolę pobranych materiałów.
 
 ## Granice gwarancji
 
@@ -145,4 +145,4 @@ GitHub Actions wykonuje testy i build. Osobny workflow `publish-web` publikuje s
 
 Anchor 1.1.2, Agave 3.1.10, Rust 1.96.0, legacy web3.js 1.99.0, React 19.1.1, Vite 6.3.6. Konkretne zależności są w Cargo.lock, pnpm-lock.yaml i obrazie z digestem. Bazę środowiska wskazuje komentarz z przypiętym commitem kursu Superteam w Dockerfile.
 
-Kod projektu: MIT, autor Michał Kiełtyka / DEFOZO SOFTWARE HOUSE. Zależności zachowują własne licencje. Oryginalne materiały zadania, dostępne w lokalnym `official-2026-10-03`, nie są kodem projektu ani częścią jego licencji. Przygotowanie materiałów nie oznacza wysłania zgłoszenia do HackTribe.
+Kod projektu: MIT, autor Michał Kiełtyka / DEFOZO SOFTWARE HOUSE. Zależności zachowują własne licencje. Oryginalne materiały zadania, dostępne w lokalnym `official-2026-10-03`, nie są kodem projektu ani częścią jego licencji. Aktualizację istniejącego projektu HackTribe zapisano i odczytano ponownie; [wynik](HACKTRIBE_UPDATE_RESULT.json) potwierdza zachowanie etapu i widoczności. Osobnej finalizacji zgłoszenia nie wykonano.

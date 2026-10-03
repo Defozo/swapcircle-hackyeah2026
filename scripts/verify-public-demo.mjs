@@ -64,19 +64,21 @@ try {
   page.on('pageerror', error => report.errors.push(error.message));
   await page.goto(new URL('watch.html', base).href);
   await page.waitForFunction(() => { const v = document.querySelector('video'); return v && v.readyState >= 2 && v.duration > 0; }, null, { timeout: 90000 });
+  await page.evaluate(() => { document.querySelector('video').textTracks[0].mode = 'showing'; });
+  await page.waitForFunction(() => document.querySelector('video').textTracks[0].cues?.length > 0);
   const video = await page.evaluate(async () => {
     const v = document.querySelector('video');
     v.muted = true;
     await v.play();
     await new Promise(resolve => setTimeout(resolve, 1600));
     v.pause();
-    return { duration: v.duration, width: v.videoWidth, height: v.videoHeight, playedSeconds: v.currentTime, error: v.error?.message || null, captions: [...v.textTracks].map(t => ({ language: t.language, kind: t.kind })) };
+    return { duration: v.duration, width: v.videoWidth, height: v.videoHeight, playedSeconds: v.currentTime, error: v.error?.message || null, captions: [...v.textTracks].map(t => ({ language: t.language, kind: t.kind, cues: t.cues?.length || 0 })) };
   });
   report.video = video;
   check('public player decodes and plays the film', video.playedSeconds > 0.5 && !video.error);
   check('public film stays within 3 minutes', video.duration > 0 && video.duration <= 180);
   check('public film is Full HD', video.width === 1920 && video.height === 1080);
-  check('Polish captions are available', video.captions.some(t => t.language === 'pl'));
+  check('Polish captions load all 26 cues', video.captions.some(t => t.language === 'pl' && t.cues === 26));
   await page.screenshot({ path: 'docs/evidence/public-watch-desktop.png', fullPage: true });
   await page.setViewportSize({ width: 390, height: 844 });
   check('public player mobile has no overflow', await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
