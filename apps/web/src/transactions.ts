@@ -1,7 +1,7 @@
 import type { Connection, Transaction, Keypair } from '@solana/web3.js';
 import { PublicKey } from '@solana/web3.js';
 
-export type PendingTransaction = { id: string; label: string; networkKey?: string; cycle?: string; signature?: string; status: 'awaiting-signature' | 'sent' | 'confirmed' | 'finalized' | 'error' | 'unknown'; error?: string; createdAt: number; blockhash?: string; lastValidBlockHeight?: number };
+export type PendingTransaction = { id: string; label: string; operationKey?: string; leg?: number; networkKey?: string; cycle?: string; signature?: string; status: 'awaiting-signature' | 'sent' | 'confirmed' | 'finalized' | 'error' | 'unknown'; error?: string; createdAt: number; blockhash?: string; lastValidBlockHeight?: number };
 export const STORAGE = 'swapcircle:transactions:v1';
 export function loadTransactions(): PendingTransaction[] {
   try { const list: unknown = JSON.parse(localStorage.getItem(STORAGE) || '[]'); return Array.isArray(list) ? list.filter(x => x && typeof x.id === 'string' && typeof x.status === 'string').slice(0, 100) : []; } catch { return []; }
@@ -19,9 +19,18 @@ export async function prepareTransaction(connection: Connection, transaction: Tr
 }
 
 export async function reconcileTransaction(connection: Connection, tx: PendingTransaction, liveCycleChecked = false): Promise<PendingTransaction> {
-  if (!tx.signature) return tx.status === 'awaiting-signature' ? { ...tx, status: 'unknown', error: 'Przerwano oczekiwanie na podpis. Sprawdź portfel i stan cyklu przed ponowieniem.' } : tx;
+  if (!tx.signature) {
+    if (!['awaiting-signature', 'unknown'].includes(tx.status)) return tx;
+    // The SDK persists the signed signature synchronously before broadcasting.
+    // A restored unsigned operation therefore never reached submission here.
+    return liveCycleChecked
+      ? { ...tx, status: 'error', error: 'Przerwano operację przed wysłaniem podpisanej transakcji. Stan cyklu sprawdzono ponownie. Możesz świadomie przygotować nową operację.' }
+      : { ...tx, status: 'unknown', error: 'Przerwano oczekiwanie na podpis. Sprawdź portfel i stan cyklu przed ponowieniem.' };
+  }
   const result = (await connection.getSignatureStatuses([tx.signature], { searchTransactionHistory: true })).value[0];
   if (!result) {
+    // Pruned RPC history is not evidence that an observed confirmation failed.
+    if (tx.status === 'confirmed' || tx.status === 'finalized') return tx;
     if (liveCycleChecked && tx.lastValidBlockHeight !== undefined && await connection.getBlockHeight('finalized') > tx.lastValidBlockHeight) {
       // Expiry is definitive only after the finalized chain passed the validity
       // bound, the old signature was searched, and the cycle was read anew.

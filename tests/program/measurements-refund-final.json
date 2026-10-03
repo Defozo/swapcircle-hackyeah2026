@@ -1,0 +1,65 @@
+{
+  "artifactHash": "dc9446536fd0ca03b5fcd2d2dbc3cb8b2720bf9c6f0e2d6e43e7f92a384a6bf9",
+  "balancesAndFinalRefundedStateVerified": true,
+  "create": {
+    "accountRentLamports": 11964240,
+    "accounts": 13,
+    "bytes": 854,
+    "computeUnits": 71331,
+    "feeLamports": 5000,
+    "payerLamportsCharged": 11969240,
+    "signatures": 1
+  },
+  "environment": "LiteSVM 0.9.1, actual SBF, SPL Token and Associated Token CPI; legacy transactions",
+  "fundedLegs": 2,
+  "funding": [
+    {
+      "accountRentLamports": 0,
+      "accounts": 18,
+      "bytes": 802,
+      "computeUnits": 33763,
+      "feeLamports": 10000,
+      "payerLamportsCharged": 10000,
+      "signatures": 2
+    },
+    {
+      "accountRentLamports": 0,
+      "accounts": 18,
+      "bytes": 802,
+      "computeUnits": 33763,
+      "feeLamports": 10000,
+      "payerLamportsCharged": 10000,
+      "signatures": 2
+    }
+  ],
+  "ownerSignaturesOnRefund": 0,
+  "participants": 4,
+  "prepareFourMissingAtas": {
+    "accountRentLamports": 8157120,
+    "accounts": 16,
+    "bytes": 654,
+    "computeUnits": 93788,
+    "feeLamports": 5000,
+    "payerLamportsCharged": 8162120,
+    "signatures": 1
+  },
+  "programId": "Eof8Zk6Y6GkaeawM6grb3gQQFcXEikhEHuEnT4nLyzv4",
+  "refundExistingAta": {
+    "accountRentLamports": 0,
+    "accounts": 7,
+    "bytes": 343,
+    "computeUnits": 18340,
+    "feeLamports": 5000,
+    "payerLamportsCharged": 5000,
+    "signatures": 1
+  },
+  "refundFreshAccountAtomically": {
+    "accountRentLamports": 2039280,
+    "accounts": 10,
+    "bytes": 568,
+    "computeUnits": 22962,
+    "feeLamports": 10000,
+    "payerLamportsCharged": 2049280,
+    "signatures": 2
+  }
+}

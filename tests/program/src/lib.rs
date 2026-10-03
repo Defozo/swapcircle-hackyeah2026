@@ -696,6 +696,156 @@ mod tests {
         }
     }
     #[test]
+    fn four_party_missing_atas_and_independent_refund_measurement() {
+        fn measure(
+            svm: &mut LiteSVM,
+            payer: &Keypair,
+            instructions: Vec<Instruction>,
+            additional_signers: &[&Keypair],
+            rent_accounts: &[Address],
+        ) -> serde_json::Value {
+            svm.expire_blockhash();
+            let before = svm.get_account(&payer.pubkey()).unwrap().lamports;
+            let rent_before: u64 = rent_accounts
+                .iter()
+                .map(|address| svm.get_account(address).map(|a| a.lamports).unwrap_or(0))
+                .sum();
+            let mut signers = vec![payer];
+            signers.extend_from_slice(additional_signers);
+            let tx = Transaction::new(
+                &signers,
+                Message::new(&instructions, Some(&payer.pubkey())),
+                svm.latest_blockhash(),
+            );
+            let bytes = bincode::serialize(&tx).unwrap().len();
+            let accounts = tx.message.account_keys.len();
+            let signatures = tx.message.header.num_required_signatures;
+            assert!(bytes <= 1232);
+            let result = svm.send_transaction(tx).unwrap();
+            let rent_after: u64 = rent_accounts
+                .iter()
+                .map(|address| svm.get_account(address).unwrap().lamports)
+                .sum();
+            let rent = rent_after - rent_before;
+            let charged = before - svm.get_account(&payer.pubkey()).unwrap().lamports;
+            let fee = charged - rent;
+            assert_eq!(fee, u64::from(signatures) * 5_000);
+            serde_json::json!({"bytes":bytes,"accounts":accounts,"signatures":signatures,"computeUnits":result.compute_units_consumed,"feeLamports":fee,"accountRentLamports":rent,"payerLamportsCharged":charged})
+        }
+        let mut f = Fixture::new(4);
+        for address in &f.destinations {
+            // A zero-lamport, empty System account is absent from bank state.
+            f.svm.set_account(*address, Account::default()).unwrap();
+        }
+        let create_ix = f.create_ix();
+        let mut cycle_rent_accounts = vec![f.cycle];
+        cycle_rent_accounts.extend(&f.vaults);
+        let create = measure(
+            &mut f.svm,
+            &f.payer,
+            vec![create_ix],
+            &[],
+            &cycle_rent_accounts,
+        );
+        let prepare: Vec<_> = (0..4)
+            .map(|i| Instruction {
+                program_id: addr("ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL"),
+                accounts: vec![
+                    AccountMeta::new(f.payer.pubkey(), true),
+                    rw(f.destinations[i]),
+                    ro(f.owners[(i + 1) % 4].pubkey()),
+                    ro(f.mints[i]),
+                    ro(system()),
+                    ro(token()),
+                ],
+                data: vec![1], // Associated Token Program CreateIdempotent.
+            })
+            .collect();
+        let ata_preparation = measure(&mut f.svm, &f.payer, prepare, &[], &f.destinations);
+        for i in 0..4 {
+            let account = f.svm.get_account(&f.destinations[i]).unwrap();
+            assert_eq!(account.owner, token());
+            assert_eq!(account.data.len(), 165);
+            assert_eq!(&account.data[..32], f.mints[i].as_ref());
+            assert_eq!(
+                &account.data[32..64],
+                f.owners[(i + 1) % 4].pubkey().as_ref()
+            );
+            assert_eq!(f.balance(f.destinations[i]), 0);
+        }
+        let mut funding = vec![];
+        for i in 0..2 {
+            let fund = f.fund_ix(i);
+            funding.push(measure(
+                &mut f.svm,
+                &f.payer,
+                vec![fund],
+                &[&f.owners[i]],
+                &[],
+            ));
+        }
+        f.time(f.deadline);
+        let refund = f.return_ix("refund", 0, f.sources[0]);
+        let refund_ata = measure(&mut f.svm, &f.payer, vec![refund], &[], &[]);
+        assert_eq!(f.balance(f.sources[0]), f.amounts[0]);
+        assert_eq!(f.svm.get_account(&f.cycle).unwrap().data[414], 2);
+        assert_eq!(f.balance(f.vaults[1]), f.amounts[1]);
+        let fresh = Keypair::new();
+        let rent = f.svm.get_account(&f.destinations[0]).unwrap().lamports;
+        let mut create_data = 0u32.to_le_bytes().to_vec();
+        create_data.extend(rent.to_le_bytes());
+        create_data.extend(165u64.to_le_bytes());
+        create_data.extend(token().as_ref());
+        let fresh_create = Instruction {
+            program_id: system(),
+            accounts: vec![
+                AccountMeta::new(f.payer.pubkey(), true),
+                AccountMeta::new(fresh.pubkey(), true),
+            ],
+            data: create_data,
+        };
+        let initialize = Instruction {
+            program_id: token(),
+            accounts: vec![
+                rw(fresh.pubkey()),
+                ro(f.mints[1]),
+                ro(f.owners[1].pubkey()),
+                ro(addr("SysvarRent111111111111111111111111111111111")),
+            ],
+            data: vec![1], // SPL Token InitializeAccount, matching the SDK builder.
+        };
+        let refund = f.return_ix("refund", 1, fresh.pubkey());
+        let refund_fresh = measure(
+            &mut f.svm,
+            &f.payer,
+            vec![fresh_create, initialize, refund],
+            &[&fresh],
+            &[fresh.pubkey()],
+        );
+        let recovered = f.svm.get_account(&fresh.pubkey()).unwrap();
+        assert_eq!(&recovered.data[32..64], f.owners[1].pubkey().as_ref());
+        assert_eq!(f.balance(fresh.pubkey()), f.amounts[1]);
+        assert_eq!(&recovered.data[72..76], &[0; 4]); // No delegate.
+        assert_eq!(&recovered.data[129..133], &[0; 4]); // No close authority.
+        assert_eq!(f.svm.get_account(&f.cycle).unwrap().data[414], 3);
+        assert_eq!(f.svm.get_account(&f.cycle).unwrap().data[416], 3);
+        assert!(f.refund(0).is_err());
+        assert!(f.refund(1).is_err());
+        let artifact_hash = format!(
+            "{:x}",
+            Sha256::digest(std::fs::read(artifact_path()).unwrap())
+        );
+        let output = serde_json::json!({"environment":"LiteSVM 0.9.1, actual SBF, SPL Token and Associated Token CPI; legacy transactions","programId":program().to_string(),"artifactHash":artifact_hash,"participants":4,"fundedLegs":2,"create":create,"prepareFourMissingAtas":ata_preparation,"funding":funding,"refundExistingAta":refund_ata,"refundFreshAccountAtomically":refund_fresh,"ownerSignaturesOnRefund":0,"balancesAndFinalRefundedStateVerified":true});
+        std::fs::write(
+            std::env::var("SWAPCIRCLE_TEST_REFUND_MEASUREMENTS")
+                .unwrap_or_else(|_| "measurements-refund.json".to_string()),
+            serde_json::to_string_pretty(&output).unwrap(),
+        )
+        .unwrap();
+        println!("{output}");
+    }
+
+    #[test]
     fn maximum_cycle_measurement() {
         let mut f = Fixture::new(4);
         let create = f.create_ix();

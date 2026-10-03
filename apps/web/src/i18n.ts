@@ -1,3 +1,4 @@
+import { createContext, useContext } from 'react';
 export const dictionaries = {
   pl: {
     board: 'Tablica ofert', matches: 'Dopasowania', deposits: 'Moje depozyty', recovery: 'Odzyskiwanie', rules: 'Sprawdź zasady',
@@ -50,3 +51,308 @@ export const dictionaries = {
 } as const;
 export type Language = keyof typeof dictionaries;
 export type Copy = { [K in keyof typeof dictionaries.pl]: string };
+
+// Both directions require matching PL/EN navigation keys at compile time.
+const englishKeys: Record<keyof typeof dictionaries.pl, string> = dictionaries.en;
+const polishKeys: Record<keyof typeof dictionaries.en, string> = dictionaries.pl;
+void englishKeys; void polishKeys;
+
+// Complete source phrases are typed keys; every phrase requires its English value.
+const phraseTranslations = {
+  "Manifest wdrożenia niedostępny (HTTP {0}).": "Deployment manifest unavailable (HTTP {0}).",
+  "Nieprawidłowy manifest wdrożenia.": "Invalid deployment manifest.",
+  "Program ID różni się od manifestu.": "Program ID differs from the manifest.",
+  "Odczyt portfela niekompletny: {0}": "Wallet read incomplete: {0}",
+  "Nie można odtworzyć zapisanych ofert: {0}": "Cannot restore saved offers: {0}",
+  "Podpisane oferty z linku zostały zaimportowane.": "Signed offers from the link have been imported.",
+  "Tablica jest niedostępna. Import i cykle działają niezależnie. {0}": "The board is unavailable. Imports and cycles work independently. {0}",
+  "Najpierw potrzebny jest poprawny manifest sieci.": "A valid network manifest is required first.",
+  "{0} jednostek bazowych": "{0} base units",
+  "Brak połączenia z programem.": "No connection to the program.",
+  "Połącz portfel obsługujący podpis transakcji.": "Connect a wallet that supports transaction signing.",
+  "Najpierw zweryfikuj sieć i program.": "Verify the network and program first.",
+  "Ta operacja ma nieznany wynik. Sprawdź istniejącą sygnaturę i stan cyklu przed kolejnym podpisem.": "The result of this operation is unknown. Check the existing signature and cycle state before signing again.",
+  "Wszystkie konta są już przygotowane.": "All accounts are already prepared.",
+  "Brak wystarczającego SOL na opłatę i utworzenie kont.": "Insufficient SOL for the fee and account creation.",
+  "Transakcja confirmed. Stan programu i salda wszystkich uczestników zostały ponownie odczytane.": "Transaction confirmed. Program state and all participant balances have been read again.",
+  "Transakcja confirmed i stan programu odczytany. Nie udało się potwierdzić wszystkich sald; odśwież portfel.": "Transaction confirmed and program state read. Some balances could not be verified; refresh the wallet.",
+  "Połącz portfel obsługujący podpis wiadomości.": "Connect a wallet that supports message signing.",
+  "Podpis oferty": "Signing an offer",
+  "Wybierz różne minty wymiany.": "Choose different exchange mints.",
+  "Ważność oferty musi pozostawiać czas na podpisy.": "Offer validity must allow enough time for signatures.",
+  "Podpisana oferta została opublikowana.": "The signed offer has been published.",
+  "Podpisana oferta zapisana lokalnie. Udostępnij ją przez eksport lub link.": "The signed offer was saved locally. Share it through an export or a link.",
+  "Wycofanie oferty": "Withdrawing an offer",
+  "Publikacja wycofana. Wcześniejsze depozyty zachowują warunki swojego cyklu.": "Publication withdrawn. Existing deposits retain their cycle terms.",
+  "Import wymaga manifestu określającego sieć i program.": "Import requires a manifest identifying the network and program.",
+  "Zweryfikowano podpisy. Zaimportowano {0} ofert i {1} wycofań.": "Signatures verified. Imported {0} offers and {1} withdrawals.",
+  "Sprawdzanie dokładnej precyzji mintów": "Checking exact mint precision",
+  "Najpierw potrzebny jest manifest wdrożenia.": "A deployment manifest is required first.",
+  "Brak podpisanych ofert demonstracyjnych dla tej sieci.": "No signed demonstration offers are available for this network.",
+  "Przejdź do treści": "Skip to content",
+  "Społeczność Solana": "Solana community",
+  "Wymieniaj na własnych zasadach": "Exchange on your own terms",
+  "PRZESTRZEŃ WYMIANY": "EXCHANGE SPACE",
+  "Nawigacja główna": "Main navigation",
+  "Warunki zapisane w kodzie.": "Terms recorded in code.",
+  "Twoje aktywa trafiają do ustalonego odbiorcy albo wracają do Ciebie.": "Your assets go to the agreed recipient or return to you.",
+  "Jak działa SwapCircle": "How SwapCircle works",
+  "Zamknij menu": "Close menu",
+  "Otwórz menu": "Open menu",
+  "Przestrzeń wymiany": "Exchange space",
+  "Przełącz na polski": "Switch to Polish",
+  "Zamknij powiadomienie": "Dismiss notification",
+  "Oferty lokalne i podgląd pozostają dostępne.": "Local offers and the preview remain available.",
+  "WYMIANA BEZ POŚREDNIKA": "EXCHANGE WITHOUT A CUSTODIAN",
+  "Jak działa krąg": "How the circle works",
+  "Dokładne kwoty. Wspólne rozliczenie. Niezależny zwrot.": "Exact amounts. Shared settlement. Independent refunds.",
+  "PRZYKŁAD · TOKENY TESTOWE": "EXAMPLE · TEST TOKENS",
+  "Stan tablicy": "Board status",
+  "podpisane i niewygasłe": "signed and unexpired",
+  "różne adresy portfeli": "different wallet addresses",
+  "2–4 uczestników": "2–4 participants",
+  "opłaty sieci są osobne": "network fees are separate",
+  "Odśwież tablicę": "Refresh board",
+  "Skopiuj link oferty": "Copy offer link",
+  "Link oferty skopiowany.": "Offer link copied.",
+  "Współdzielona tablica Convex": "Shared Convex board",
+  "Tablica offline · kopia lokalna": "Board offline · local copy",
+  "· podpisy sprawdzane w przeglądarce": "· signatures verified in the browser",
+  "Znajdź zgodny krąg": "Find a compatible circle",
+  "Oferty łączą się wtedy, gdy dokładnie spełniają wzajemne potrzeby.": "Offers connect when they exactly satisfy each other's needs.",
+  "Zaakceptuj swoją wpłatą": "Accept by making your deposit",
+  "Każdy sam podpisuje transakcję. Warunki zapisują się na Solanie.": "Each person signs their own transaction. Terms are recorded on Solana.",
+  "Wymiana albo zwrot": "Exchange or refund",
+  "Komplet wpłat rozlicza krąg. Po terminie odzyskasz swój depozyt.": "The complete set of deposits settles the circle. After the deadline, recover your own deposit.",
+  "DOKŁADNE DOPASOWANIE": "EXACT MATCHING",
+  "Pary": "Pairs",
+  "Cykle 3–4 osób": "Cycles of 3–4 people",
+  "Różne dopasowane oferty": "Distinct matched offers",
+  "Przeszukane oferty": "Offers searched",
+  "Oferty nie rezerwują aktywów. Salda nie zostały jeszcze zweryfikowane. Przed wpłatą aplikacja ponownie sprawdzi stan programu, tokeny i konta odbiorców. Wycofania offline są aktualne tylko na moment eksportu.": "Offers do not reserve assets. Balances have not yet been verified. Before a deposit, the app checks the program state, tokens and recipient accounts again. Offline withdrawals are current only as of export time.",
+  "Krąg": "Circle of",
+  "osób": "people",
+  "Dokładne dopasowanie": "Exact match",
+  "Termin najpóźniej": "Latest deadline",
+  "Sprawdzono": "Searched",
+  "z": "of",
+  "ofert. Limit zbioru: 1000; limit wyników: 100.": "offers. Input limit: 1000; result limit: 100.",
+  "Osiągnięto limit przeszukiwania. Wyniki nie są kompletne.": "Search limit reached. Results are incomplete.",
+  "Przeszukiwanie ukończone w podanym zakresie.": "Search completed within the stated scope.",
+  "Brak obietnicy optymalności ceny lub globalnej płynności.": "No promise of optimal pricing or global liquidity.",
+  "HISTORIA W SIECI": "ON-CHAIN HISTORY",
+  "Połączony portfel": "Connected wallet",
+  "SOL na opłaty": "SOL for fees",
+  "Nie odczytano": "Not read",
+  "Salda odczytano:": "Balances read at:",
+  ". Odczyt nie rezerwuje aktywów.": ". Reading balances does not reserve assets.",
+  "NIEZALEŻNOŚĆ OD OPERATORA": "INDEPENDENT OF THE OPERATOR",
+  "Publiczny adres PDA cyklu": "Public cycle PDA address",
+  "lub odczytaj adres z pakietu": "or read the address from a package",
+  "Wybierz publiczny pakiet odzyskiwania": "Choose a public recovery package",
+  "Plik jest zbyt duży.": "The file is too large.",
+  "Pakiet pochodzi z innej sieci lub programu.": "The package belongs to another network or program.",
+  "Co jest Twoim prawem?": "What are you entitled to?",
+  "Dokładna kwota depozytu": "The exact deposited amount",
+  "Zwrot obejmuje zdeponowane tokeny. Opłaty sieciowe i utracone korzyści nie są zwracane.": "A refund returns the deposited tokens. Network fees and lost opportunities are not reimbursed.",
+  "Bez zgody pozostałych osób": "No approval from other participants",
+  "Po terminie wystarczy własny skarbiec i bezpieczne konto docelowe. Dowolna osoba może opłacić operację.": "After the deadline, only the deposit's own vault and a safe destination account are needed. Anyone may pay for the operation.",
+  "Konto zastępcze, gdy potrzebne": "A replacement account when needed",
+  "Gdy ATA jest uszkodzone, utwórz nowe konto tokenowe. Właściciel i mint pozostają zgodne z cyklem.": "If an ATA is unsafe, create a new token account. Its owner and mint must still match the cycle.",
+  "Dostęp również bez tej strony": "Access without this website",
+  "Pakiet zawiera adresy i komendę niezależnego klienta. Nie zawiera żadnych sekretów.": "The package contains public addresses and a command for an independent client. It contains no secrets.",
+  "WARUNKI ZAPISANE W SIECI": "TERMS RECORDED ON CHAIN",
+  "Odczyt programu jest źródłem praw do tokenów. Samo wskazanie adresu w cyklu nie oznacza zgody właściciela.": "Program state determines rights to tokens. Listing an address in a cycle does not mean its owner has consented.",
+  "uczestników": "participants",
+  "Pozostało około {0} min": "Approximately {0} min remaining",
+  "Termin minął według zegara przeglądarki": "The deadline has passed according to the browser clock",
+  "Wszystkie uzgodnione przekazania wykonano w tej samej transakcji co ostatnią wpłatę. Stan Settled został odczytany z programu. Historia poniżej zawiera sygnatury zapisane w tej przeglądarce.": "All agreed transfers executed in the same transaction as the final deposit. The Settled state was read from the program. The history below contains signatures saved in this browser.",
+  "Wpłata blokuje tokeny do sukcesu albo terminu": "A deposit locks tokens until success or the deadline",
+  ". Ostatnia osoba może zrezygnować, gdy zmieni się cena. Zwrot po terminie wymaga transakcji i SOL na opłatę. O czasie decyduje zegar sieci.": ". The final participant may decline after a price change. A refund after the deadline requires a transaction and SOL for its fee. The network clock determines eligibility.",
+  "Twoje operacje w cyklu": "Your cycle operations",
+  "Zwrot i sprzątanie mogą zostać opłacone przez inny portfel. Tokeny nadal trafiają do zapisanych właścicieli.": "Another wallet may pay for refunds and cleanup. Tokens still go to the recorded owners.",
+  "Tryb konta zwrotu": "Refund account mode",
+  "Domyślne konto ATA": "Default associated token account",
+  "Nowe bezpieczne konto tego właściciela": "New safe account for this owner",
+  "Istniejące konto tego właściciela": "Existing account of this owner",
+  "Adres konta docelowego": "Destination account address",
+  "Konto klasycznego SPL": "Classic SPL token account",
+  "Skarbiec zamknięty": "Vault closed",
+  "Depozyt zwrócony": "Deposit refunded",
+  "Depozyt wpłacony": "Deposit funded",
+  "Bez depozytu": "No deposit",
+  "Przygotuj konta odbiorców": "Prepare recipient accounts",
+  "Przygotuj brakujące konta odbiorców": "Prepare missing recipient accounts",
+  "Wcześniejsza wpłata jest nieodwołalna do rozliczenia lub deadline. Brak osobnej operacji settle. Nadwyżki trafiają wyłącznie do właściciela danej nogi; zamknięcie pustych skarbców zwraca rent do": "An earlier deposit cannot be revoked before settlement or the deadline. There is no separate settle operation. Surplus goes only to the original owner of that leg; closing empty vaults returns account rent to",
+  "Salda uczestników po odczycie": "Participant balances after readback",
+  "Bieżące salda wszystkich kont tego właściciela, osobno dla oddawanego i otrzymywanego mintu.": "Current balances across all accounts of each owner, separately for the outgoing and incoming mint.",
+  "Właściciel": "Owner",
+  "Saldo tokenów": "Token balance",
+  "Odczyt": "Read at",
+  "Odczyt nieudany": "Read failed",
+  "Zapisz publiczne dane i instrukcję niezależnego klienta.": "Save public data and instructions for the independent client.",
+  "Uczestnik pakietu odzyskiwania": "Recovery package participant",
+  "Pobierz JSON": "Download JSON",
+  "Link cyklu skopiowany.": "Cycle link copied.",
+  "Kopiuj link": "Copy link",
+  "Sprawdź niezmienne warunki": "Verify immutable terms",
+  "Hash warunków": "Terms hash",
+  "Twórca": "Creator",
+  "Czas ostatniego odczytu": "Last read time",
+  "Odczytaj cykl z sieci": "Read the on-chain cycle",
+  "Podaj publiczny adres cyklu w sekcji odzyskiwania. Stan finansowy nie jest symulowany.": "Enter the public cycle address in Recovery. Financial state is not simulated.",
+  "PRZEJRZYSTE ZASADY": "TRANSPARENT RULES",
+  "Wspólne rozliczenie": "Shared settlement",
+  "Każda osoba oddaje jedną ustaloną ilość aktywa i otrzymuje aktywo poprzednika. Ostatnia poprawna wpłata wykonuje wszystkie przekazania atomowo. Błąd cofa całą ostatnią transakcję, wcześniejsze depozyty pozostają.": "Each participant gives one exact asset amount and receives the previous participant's asset. The final valid deposit executes all transfers atomically. An error reverts that entire final transaction; earlier deposits remain.",
+  "Blokada ma termin": "A lock with a deadline",
+  "Nie można wcześniej odwołać depozytu ani przedłużyć terminu. Ostatni uczestnik może czekać na zmianę ceny. Po deadline każdy wniesiony depozyt można zwrócić osobno, bez zgody operatora i kontrahentów.": "A deposit cannot be revoked early and the deadline cannot be extended. The final participant may wait for a price change. After the deadline, each funded deposit can be refunded separately, without operator or counterparty approval.",
+  "Odbiorca jest ustalony": "The recipient is fixed",
+  "Program sprawdza rzeczywistego właściciela kont tokenowych, mint, delegata i stan zamrożenia. Refund na nowe konto zachowuje właściciela depozytu. Operator tablicy nie posiada kluczy do Twoich tokenów.": "The program checks the actual token-account owner, mint, delegate and frozen state. A refund to a new account preserves the deposit owner. The board operator has no keys to your tokens.",
+  "Koszty są osobne": "Separate costs",
+  "Protokół nie pobiera prowizji. Sieć pobiera opłaty, także za część nieudanych transakcji. Twórca płaci rent kont, rent pustych skarbców można odzyskać. Rekord cyklu pozostaje. Zwrot tokenów nie rekompensuje kosztów i zmiany ceny.": "The protocol charges no commission. The network charges fees, including for some failed transactions. The creator pays account rent; rent from empty vaults can be recovered. The cycle record remains. Returning tokens does not reimburse costs or price changes.",
+  "Sprawdź program i środowisko": "Verify the program and environment",
+  "Odczyt uprawnienia do aktualizacji pochodzi bezpośrednio z Solany.": "Upgrade authority is read directly from Solana.",
+  "Nie ustalono": "Not determined",
+  "Brak manifestu": "No manifest",
+  "Brak. Program nie może być aktualizowany.": "None. The program cannot be upgraded.",
+  "Program może być aktualizowany przez:": "The program can be upgraded by:",
+  "Hash artefaktu": "Artifact hash",
+  "Nie podano": "Not provided",
+  "Gwarancje zakładają poprawność programu i dostępność sieci. SwapCircle nie gwarantuje rynkowej opłacalności, płynności, przyszłej wartości tokenów ani bezpieczeństwa portfela. dX, dY i dZ są tokenami demonstracyjnymi bez wartości pieniężnej.": "Guarantees assume correct program code and network availability. SwapCircle does not guarantee profitability, liquidity, future token value or wallet security. dX, dY and dZ are demonstration tokens with no monetary value.",
+  "Obsługiwane aktywa": "Supported assets",
+  "Klasyczne SPL Token, bez freeze authority i rozszerzeń Token-2022. Wrapped SOL nie jest obsługiwany. Nazwa i logo są tylko pomocą; aktywo identyfikuje mint.": "Classic SPL Token without freeze authority or Token-2022 extensions. Wrapped SOL is not supported. Names and logos are only aids; the mint identifies the asset.",
+  "miejsc dziesiętnych": "decimal places",
+  "Każdy wnosi swoją część.": "Everyone brings their part.",
+  "Twoja część następnego kręgu": "Your part in the next circle",
+  "Podpis wiadomości publikuje warunki. Nie przenosi i nie rezerwuje tokenów.": "Signing a message publishes terms. It does not transfer or reserve tokens.",
+  "Adres mintu SPL": "SPL mint address",
+  "Zgadzam się na publikację adresu portfela i dokładnych warunków oferty. Oferta nie gwarantuje dopasowania.": "I agree to publish my wallet address and exact offer terms. The offer does not guarantee a match.",
+  "Przed podpisem odczytamy minty i precyzję z sieci. Wszystkie ilości są przeliczane dokładnie, bez zaokrąglania.": "Before signing, we read mint data and precision from the network. All amounts are converted exactly, without rounding.",
+  "Połącz portfel, aby podpisać ofertę.": "Connect a wallet to sign an offer.",
+  "Oferty podróżują razem z Tobą": "Offers travel with you",
+  "Zaimportuj podpisany pakiet JSON lub link. Sprawdzimy każdą sygnaturę, domenę, program i sieć.": "Import a signed JSON package or link. We verify every signature, domain, program and network.",
+  "Wybierz plik z ofertami": "Choose an offers file",
+  "JSON · maks. 2 MB": "JSON · maximum 2 MB",
+  "Plik przekracza 2 MB.": "The file exceeds 2 MB.",
+  "Treść JSON albo pełny link": "JSON content or a full link",
+  "Kopia offline może nie zawierać ostatnich wycofań publikacji. Oferta nie uprawnia nikogo do transferu tokenów.": "An offline copy may omit recent publication withdrawals. An offer does not authorize anyone to transfer tokens.",
+  "Importuj oferty demonstracyjne (": "Import demonstration offers (",
+  "sieć": "network",
+  "Zweryfikuj i importuj": "Verify and import",
+  "Warunki wspólnej wymiany": "Terms of the shared exchange",
+  "Kolejność poniżej określa przepływ aktywów. Cykl zostanie zapisany na Solanie i nie będzie edytowalny.": "The order below determines the flow of assets. The cycle will be recorded on Solana and cannot be edited.",
+  "saldo wystarczające": "sufficient balance",
+  "brak wystarczającego salda na jednym koncie": "insufficient balance in a single account",
+  ", odczyt": ", read at",
+  ". Aktywa nie są zarezerwowane.": ". Assets are not reserved.",
+  "Utworzenie cyklu nie pobiera tokenów uczestników. Każdy akceptuje warunki dopiero własną wpłatą. Wcześniejsze wpłaty są zablokowane do rozliczenia albo terminu.": "Creating a cycle does not take participants' tokens. Each person accepts the terms only by making their own deposit. Earlier deposits remain locked until settlement or the deadline.",
+  "Podaj 2–4 różnych właścicieli w kolejności przepływu. Token każdej osoby otrzyma kolejna, a ostatniej pierwsza.": "Enter 2–4 different owners in transfer order. Each person's token goes to the next owner, and the last person's token goes to the first.",
+  "Potwierdź operację": "Confirm operation",
+  "Sprawdź odbiorców i koszty. Portfel poprosi o osobny podpis transakcji.": "Check recipients and costs. Your wallet will request a separate transaction signature.",
+  "Cykl": "Cycle",
+  "Konto docelowe zwrotu": "Refund destination account",
+  "Twoje tokeny mogą pozostać zablokowane do": "Your tokens may remain locked until",
+  ". Brak gwarancji, że pozostali uczestnicy wpłacą.": ". There is no guarantee the other participants will deposit.",
+  "Szacowana opłata sieci": "Estimated network fee",
+  "Utworzenie kont / rent": "Account creation / rent",
+  "Prowizja protokołu": "Protocol fee",
+  "Rozmiar transakcji": "Transaction size",
+  "Sprawdziłem minty, właścicieli, dokładne kwoty i termin. Rozumiem, że zwrot tokenów nie zwraca opłat sieciowych.": "I checked the mints, owners, exact amounts and deadline. I understand that returning tokens does not reimburse network fees.",
+  "Podpisz w portfelu": "Sign in wallet",
+  "Trzy osoby. Jeden zgodny krąg.": "Three people. One compatible circle.",
+  "Dodaj własną ofertę": "Add your own offer",
+  "Wysłana sygnatura nie oznacza jeszcze wykonania. Nie ponawiaj nieznanej operacji przed sprawdzeniem.": "A submitted signature does not yet mean execution. Do not repeat an unknown operation before checking it.",
+  "Sprawdź potwierdzenia": "Check confirmations",
+  "Oczekiwanie na podpis": "Awaiting signature",
+  "Wysłano": "Submitted",
+  "Błąd": "Error",
+  "Wynik nieznany": "Result unknown",
+  "Brak operacji zapisanych w tej przeglądarce. Stan cyklu można odczytać po jego adresie.": "No operations saved in this browser. The cycle can be read using its address.",
+  "Właściciele muszą być różni.": "Owners must be different.",
+  "Uczestnik": "Participant",
+  "Adres właściciela": "Owner address",
+  "Adres mintu": "Mint address",
+  "Ilość tokenów": "Token amount",
+  "Decimals mintu": "Mint decimals",
+  "Dodaj uczestnika": "Add participant",
+  "Usuń ostatniego": "Remove last participant",
+  "Termin wpłat": "Funding deadline",
+  "Przed przygotowaniem transakcji odczytamy minty i sprawdzimy decimals. Wpisanie cudzego adresu nie stanowi zgody tej osoby.": "Before preparing the transaction, we read mint data and verify decimals. Entering someone else's address does not constitute their consent.",
+  "Sprawdź i utwórz cykl": "Verify and create cycle",
+  "Przykład syntetyczny": "Synthetic example",
+  "Alicja chce 40 dY, Bartek 250 dZ, a Celina 100 dX. Żadna para nie spełnia obu swoich potrzeb. Wspólny cykl spełnia wszystkie trzy.": "Alicja wants 40 dY, Bartek wants 250 dZ, and Celina wants 100 dX. No pair satisfies both people's needs. One shared cycle satisfies all three.",
+  "1. Uzgodnienie": "1. Agreement",
+  "Każdy widzi dokładne ilości, odbiorców i termin.": "Everyone sees exact amounts, recipients and the deadline.",
+  "2. Niezależne wpłaty": "2. Independent deposits",
+  "Wcześniejsze depozyty czekają w skarbcach programu.": "Earlier deposits wait in program vaults.",
+  "3. Ostatnia wpłata": "3. Final deposit",
+  "Wszystkie tokeny trafiają do ustalonych odbiorców w jednej transakcji.": "All tokens go to the agreed recipients in one transaction.",
+  "To ilustracja mechanizmu, nie transakcja ani dowód popytu. Gdy zabraknie wpłaty, po terminie właściciele odzyskują swoje depozyty. Ilości nie oznaczają równej wartości rynkowej.": "This illustrates the mechanism; it is not a transaction or evidence of demand. If a deposit is missing, owners recover their deposits after the deadline. These amounts do not imply equal market values.",
+  "Warunki i szczegóły operacji": "Operation terms and details",
+  "Zamknij": "Close",
+  "Kierunek przekazywania aktywów. Równoważna tabela znajduje się poniżej.": "Direction of asset transfers. An equivalent table is provided below.",
+  "Dokładne przekazania w cyklu": "Exact transfers in the cycle",
+  "Odbiorca": "Recipient",
+  "Kopiuj {0}": "Copy {0}",
+  "Nie można ustalić opłaty. Odśwież stan sieci i spróbuj ponownie.": "Cannot determine the fee. Refresh the network state and try again.",
+  "Brak SOL na opłatę transakcyjną.": "Insufficient SOL for the transaction fee.",
+  "Przerwano operację przed wysłaniem podpisanej transakcji. Stan cyklu sprawdzono ponownie. Możesz świadomie przygotować nową operację.": "The operation stopped before sending a signed transaction. Cycle state was checked again. You may deliberately prepare a new operation.",
+  "Przerwano oczekiwanie na podpis. Sprawdź portfel i stan cyklu przed ponowieniem.": "Waiting for a signature was interrupted. Check the wallet and cycle state before trying again.",
+  "RPC nie odnalazł sygnatury, blockhash wygasł, a stan cyklu sprawdzono ponownie. Możesz świadomie przygotować nową operację, jeśli bieżący stan nadal na nią pozwala.": "RPC did not find the signature, the blockhash expired, and cycle state was checked again. You may deliberately prepare a new operation if the current state still permits it.",
+  "Sygnatura nie ma jeszcze potwierdzenia. Brak odpowiedzi nie dowodzi niepowodzenia. Najpierw sprawdź stan cyklu.": "The signature is not yet confirmed. A missing response does not prove failure. Check the cycle state first.",
+  "Uprawnienia do emisji tokenów": "Token issuance authority",
+  "Odczytano z sieci przed podpisem. Aktywne mintAuthority pozwala jego posiadaczowi zwiększyć podaż tokena.": "Read from the network before signing. An active mintAuthority allows its holder to increase the token supply.",
+  "Brak uprawnienia do dalszej emisji.": "No authority to issue additional tokens.",
+  "Może wyemitować dodatkowe tokeny:": "May issue additional tokens:",
+  "Przełącz na angielski": "Switch to English"
+} as const;
+
+export type Phrase = keyof typeof phraseTranslations;
+export const phraseDictionaries = {
+  pl: Object.fromEntries(Object.keys(phraseTranslations).map(key => [key, key])) as Record<Phrase, string>,
+  en: phraseTranslations,
+} satisfies Record<Language, Record<Phrase, string>>;
+
+export const LanguageContext = createContext<Language>('pl');
+export function createTranslator(language: Language) {
+  const p = (source: Phrase): string => phraseDictionaries[language][source];
+  const f = (source: Phrase, ...values: (string | number)[]): string => p(source).replace(/\{(\d+)\}/g, (match, index: string) => String(values[Number(index)] ?? match));
+  return { p, f };
+}
+export function useTranslation() { return createTranslator(useContext(LanguageContext)); }
+
+const exactPairs: [string, string][] = [
+  ...Object.keys(dictionaries.pl).map(key => [dictionaries.pl[key as keyof Copy], dictionaries.en[key as keyof Copy]] as [string, string]),
+  ...Object.entries(phraseTranslations),
+];
+const escapeRegex = (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const templates = exactPairs.filter(([pl]) => /\{\d+\}/.test(pl)).flatMap(([pl, en]) => (['pl', 'en'] as const).map(sourceLanguage => {
+  const source = sourceLanguage === 'pl' ? pl : en;
+  const indices: string[] = [];
+  const parts = source.split(/(\{\d+\})/).map(part => {
+    const index = /^\{(\d+)\}$/.exec(part);
+    if (index) { indices.push(index[1]!); return '([\\s\\S]*?)'; }
+    return escapeRegex(part);
+  });
+  return { pattern: new RegExp(`^${parts.join('')}$`), indices, pl, en };
+}));
+
+/** Also localizes public messages and operation labels restored from storage. */
+export function localizeText(language: Language, value: string): string {
+  const exact = exactPairs.find(([pl, en]) => value === pl || value === en);
+  if (exact) return exact[language === 'pl' ? 0 : 1];
+  for (const template of templates) {
+    const matched = template.pattern.exec(value);
+    if (!matched) continue;
+    const params = Object.fromEntries(template.indices.map((index, position) => [index, matched[position + 1]]));
+    return template[language].replace(/\{(\d+)\}/g, (token, index: string) => params[index] ?? token);
+  }
+  return value;
+}
+
+/** A language change must never permit resubmitting an operation of unknown status. */
+export function operationIdentity(label: string): string {
+  const canonical = localizeText('pl', label);
+  const operations = { create: dictionaries.pl.create, fund: dictionaries.pl.fund, refund: dictionaries.pl.refund, surplus: dictionaries.pl.surplus, close: dictionaries.pl.cleanup, prepare: 'Przygotuj konta odbiorców' };
+  return Object.entries(operations).find(([, text]) => text === canonical)?.[0] ?? canonical;
+}
