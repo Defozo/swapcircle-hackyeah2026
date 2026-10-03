@@ -38,7 +38,7 @@ export function App() {
   const [network, setNetwork] = useState<'checking' | 'ready' | 'error'>('checking');
   const [networkError, setNetworkError] = useState('');
   const [authority, setAuthority] = useState<string | null | undefined>();
-  const [notice, setNotice] = useState<{ text: string; error?: boolean } | null>(null);
+  const [notice, setNotice] = useState<{ text: string; error?: boolean; source?: 'cycle-read' } | null>(null);
   const [busy, setBusy] = useState('');
   const [lastSync, setLastSync] = useState<number | null>(null);
   const [sol, setSol] = useState<number | null>(null);
@@ -63,6 +63,7 @@ export function App() {
   const [cycleBalances, setCycleBalances] = useState<{ owner: string; mint: string; amount: string | null; decimals: number; checkedAt: number }[]>([]);
   const [cycles, setCycles] = useState<Cycle[]>([]);
   const [cycleAddress, setCycleAddress] = useState(() => location.hash.startsWith('#/cycle/') ? decodeURIComponent(location.hash.slice(8)) : '');
+  const [cycleAddressInvalid, setCycleAddressInvalid] = useState(false);
   const [transactions, setTransactions] = useState<PendingTransaction[]>(loadTransactions);
   const [confirmation, setConfirmation] = useState<Confirmation | null>(null);
   const [consent, setConsent] = useState(false);
@@ -181,7 +182,7 @@ export function App() {
   const readCycle = useCallback(async (address: string) => {
     if (!client) throw new Error(p("Najpierw potrzebny jest poprawny manifest sieci."));
     new PublicKey(address);
-    const next = await client.readCycle(address); setCycle(next); setCycleAddress(address); setLastSync(Date.now());
+    const next = await client.readCycle(address); setCycle(next); setCycleAddress(address); setCycleAddressInvalid(false); setLastSync(Date.now());
     const snapshots = await Promise.allSettled(next.legs.map(leg => client.readBalances(leg.owner)));
     setCycleBalances(next.legs.flatMap((leg, index) => {
       const result = snapshots[index]!;
@@ -192,7 +193,14 @@ export function App() {
     }));
     return { ...next, balancesVerified: snapshots.every(result => result.status === 'fulfilled') };
   }, [client]);
-  useEffect(() => { if (route === 'cycle' && cycleAddress && client) void readCycle(cycleAddress).catch(e => setNotice({ text: message(e), error: true })); }, [route, cycleAddress, client, readCycle]);
+  useEffect(() => {
+    if (route !== 'cycle' || !cycleAddress || !client) return;
+    let active = true;
+    void readCycle(cycleAddress)
+      .then(() => { if (active) setNotice(current => current?.source === 'cycle-read' ? null : current); })
+      .catch(e => { if (active) setNotice({ text: message(e), error: true, source: 'cycle-read' }); });
+    return () => { active = false; };
+  }, [route, cycleAddress, client, readCycle]);
   useEffect(() => {
     if (!client || !cycle?.address) return;
     const address = cycle.address;
@@ -334,7 +342,27 @@ export function App() {
     try { const response = await fetch(`./fixtures/${manifest.cluster}-offers.json`, { cache: 'no-store' }); if (!response.ok) throw new Error(p("Brak podpisanych ofert demonstracyjnych dla tej sieci.")); doImport(await response.text()); }
     catch (error) { fail(error); }
   }
-  const openCycle = async (address: string) => { setBusy(t.read); try { await readCycle(address); setRoute('cycle'); location.hash = `/cycle/${address}`; } catch (e) { fail(e); } finally { setBusy(''); } };
+  const openCycle = async (address: string) => {
+    setBusy(t.read);
+    try {
+      await readCycle(address);
+      setNotice(current => current?.source === 'cycle-read' ? null : current);
+      setRoute('cycle'); location.hash = `/cycle/${address}`;
+    } catch (e) { setNotice({ text: message(e), error: true, source: 'cycle-read' }); }
+    finally { setBusy(''); }
+  };
+  const submitRecoveryAddress = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const address = cycleAddress.trim();
+    try { new PublicKey(address); }
+    catch {
+      setCycleAddressInvalid(true);
+      event.currentTarget.querySelector('input')?.focus();
+      return;
+    }
+    setCycleAddressInvalid(false);
+    void openCycle(address);
+  };
   const stateLabel = (c: Cycle) => c.state === 'Settled' ? t.settled : c.state === 'Refunded' ? t.returned : c.state === 'Refunding' ? p("Zwroty w toku") : c.deadline <= tick ? p("Termin minął (zegar przeglądarki)") : t.waiting;
   const participantStatus = (c: Cycle, index: number) => c.refundedMask & 1 << index ? t.returned : c.state === 'Settled' ? t.settled : c.fundedMask & 1 << index ? c.state === 'Refunding' ? p("Do zwrotu") : t.deposited : c.state === 'Funding' && c.deadline > tick ? t.waiting : p("Bez depozytu");
   const deadlineDescription = (c: Cycle) => c.state === 'Settled' || c.state === 'Refunded' ? p("Historyczny termin wpłat. Wynik odczytano z programu.") : c.state === 'Refunding' ? p("Termin wpłat zakończony. Program potwierdził rozpoczęcie zwrotów.") : c.deadline > tick ? f("Pozostało około {0} min według zegara przeglądarki.", Math.ceil((c.deadline - tick) / 60)) : p("Termin minął według zegara przeglądarki. O dopuszczeniu operacji decyduje zegar sieci.");
@@ -372,7 +400,7 @@ export function App() {
 
         {route === 'deposits' ? <><PageHeading eyebrow={p("HISTORIA W SIECI")} title={t.depositsTitle} text={t.depositsBody} action={<button className="button button-secondary" onClick={() => void refreshWallet()}><RefreshCw size={16} />{t.refresh}</button>} />{owner ? <div className="wallet-panel panel"><div><Wallet size={22} /><div><strong>{p("Połączony portfel")}</strong><Address value={owner} /></div></div><div><small>{p("SOL na opłaty")}</small><strong>{sol === null ? p("Nie odczytano") : `${formatAmount(BigInt(sol), 9)} SOL`}</strong></div></div> : null}{balanceSync ? <p className="fine-print">{p("Salda odczytano:")} {new Date(balanceSync).toLocaleTimeString(locale)}{p(". Odczyt nie rezerwuje aktywów.")}</p> : null}{balances.length ? <div className="balances-grid">{balances.map(balance => <div className="panel balance-card" key={balance.account}><span>{symbol(balance.mint, manifest)}</span><strong>{formatAmount(balance.amount, balance.decimals)}</strong><Address value={balance.account} /></div>)}</div> : null}<CycleList cycles={cycles} manifest={manifest} stateLabel={stateLabel} open={address => void openCycle(address)} empty={<Empty title={t.noDeposits} text={t.noDepositsBody}><button className="button button-secondary" onClick={() => go('recovery')}>{t.read}<ArrowRight size={16} /></button></Empty>} />{transactionPanel()}</> : null}
 
-        {route === 'recovery' ? <><PageHeading eyebrow={p("NIEZALEŻNOŚĆ OD OPERATORA")} title={t.recoveryTitle} text={t.recoveryBody} /><section className="recovery-layout"><div className="panel recovery-form"><div className="large-icon"><ShieldCheck size={30} /></div><h2>{t.read}</h2><form onSubmit={e => { e.preventDefault(); void openCycle(cycleAddress.trim()); }}><label>{t.cycleAddress}<input required value={cycleAddress} onChange={e => setCycleAddress(e.target.value)} placeholder={p("Publiczny adres cyklu")} aria-describedby="cycle-address-help" /></label><p id="cycle-address-help">{p("Skopiuj adres ze szczegółów cyklu lub wczytaj pobrany pakiet odzyskiwania. Ten publiczny identyfikator wskazuje zapis warunków w sieci.")}</p><button className="button button-primary" disabled={!!busy || !client}><Search size={16} />{t.read}</button></form><div className="or-divider">{p("lub odczytaj adres z pakietu")}</div><label className="file-drop"><FileJson size={22} /><span>{p("Wybierz publiczny pakiet odzyskiwania")}</span><input type="file" accept="application/json,.json" onChange={async e => { try { const file = e.target.files?.[0]; if (!file) return; if (file.size > 2_000_000) throw new Error(p("Plik jest zbyt duży.")); const pack = JSON.parse(await file.text()); if (pack.protocol !== 'SwapCircle' || !manifest || pack.genesisHash !== manifest.genesisHash || pack.programId !== manifest.programId) throw new Error(p("Pakiet pochodzi z innej sieci lub programu.")); setRecoveryLeg(pack.leg || 0); await openCycle(pack.cycle); } catch (error) { fail(error); } }} /></label></div><div className="recovery-explainer"><h3>{p("Co jest Twoim prawem?")}</h3><ol><li><strong>{p("Dokładna kwota depozytu")}</strong><p>{p("Zwrot obejmuje zdeponowane tokeny. Opłaty sieciowe i utracone korzyści nie są zwracane.")}</p></li><li><strong>{p("Bez zgody pozostałych osób")}</strong><p>{p("Po terminie wystarczy własny skarbiec i bezpieczne konto docelowe. Dowolna osoba może opłacić operację.")}</p></li><li><strong>{p("Konto zastępcze, gdy potrzebne")}</strong><p>{p("Domyślne konto tokenowe (ATA) przechowuje dany token w Twoim portfelu. Jeśli jest zamrożone lub jego uprawnienia się zmieniły, wybierz nowe bezpieczne konto. Program sprawdzi właściciela i token.")}</p></li><li><strong>{p("Dostęp również bez tej strony")}</strong><p>{p("Pakiet zawiera adresy i komendę niezależnego klienta. Nie zawiera żadnych sekretów.")}</p></li></ol></div></section>{transactionPanel()}</> : null}
+        {route === 'recovery' ? <><PageHeading eyebrow={p("NIEZALEŻNOŚĆ OD OPERATORA")} title={t.recoveryTitle} text={t.recoveryBody} /><section className="recovery-layout"><div className="panel recovery-form"><div className="large-icon"><ShieldCheck size={30} /></div><h2>{t.read}</h2><form onSubmit={submitRecoveryAddress}><label>{t.cycleAddress}<input required value={cycleAddress} onChange={e => { setCycleAddress(e.target.value); setCycleAddressInvalid(false); setNotice(current => current?.source === 'cycle-read' ? null : current); }} placeholder={p("Publiczny adres cyklu")} aria-invalid={cycleAddressInvalid || undefined} aria-describedby={cycleAddressInvalid ? "cycle-address-help cycle-address-error" : "cycle-address-help"} /></label>{cycleAddressInvalid ? <div id="cycle-address-error" className="toast toast-error" role="alert">{p("Nieprawidłowy adres cyklu. Skopiuj pełny adres ze szczegółów cyklu lub wczytaj pakiet odzyskiwania.")}</div> : null}<p id="cycle-address-help">{p("Skopiuj adres ze szczegółów cyklu lub wczytaj pobrany pakiet odzyskiwania. Ten publiczny identyfikator wskazuje zapis warunków w sieci.")}</p><button className="button button-primary" disabled={!!busy || !client}><Search size={16} />{t.read}</button></form><div className="or-divider">{p("lub odczytaj adres z pakietu")}</div><label className="file-drop"><FileJson size={22} /><span>{p("Wybierz publiczny pakiet odzyskiwania")}</span><input type="file" accept="application/json,.json" onChange={async e => { try { const file = e.target.files?.[0]; if (!file) return; if (file.size > 2_000_000) throw new Error(p("Plik jest zbyt duży.")); const pack = JSON.parse(await file.text()); if (pack.protocol !== 'SwapCircle' || !manifest || pack.genesisHash !== manifest.genesisHash || pack.programId !== manifest.programId) throw new Error(p("Pakiet pochodzi z innej sieci lub programu.")); setRecoveryLeg(pack.leg || 0); await openCycle(pack.cycle); } catch (error) { fail(error); } }} /></label></div><div className="recovery-explainer"><h3>{p("Co jest Twoim prawem?")}</h3><ol><li><strong>{p("Dokładna kwota depozytu")}</strong><p>{p("Zwrot obejmuje zdeponowane tokeny. Opłaty sieciowe i utracone korzyści nie są zwracane.")}</p></li><li><strong>{p("Bez zgody pozostałych osób")}</strong><p>{p("Po terminie wystarczy własny skarbiec i bezpieczne konto docelowe. Dowolna osoba może opłacić operację.")}</p></li><li><strong>{p("Konto zastępcze, gdy potrzebne")}</strong><p>{p("Domyślne konto tokenowe (ATA) przechowuje dany token w Twoim portfelu. Jeśli jest zamrożone lub jego uprawnienia się zmieniły, wybierz nowe bezpieczne konto. Program sprawdzi właściciela i token.")}</p></li><li><strong>{p("Dostęp również bez tej strony")}</strong><p>{p("Pakiet zawiera adresy i komendę niezależnego klienta. Nie zawiera żadnych sekretów.")}</p></li></ol></div></section>{transactionPanel()}</> : null}
 
         {route === 'cycle' ? <><PageHeading eyebrow={p("WARUNKI ZAPISANE W SIECI")} title={t.cycle} text={p("Odczyt programu jest źródłem praw do tokenów. Samo wskazanie adresu w cyklu nie oznacza zgody właściciela.")} action={<button className="button button-secondary" disabled={!cycleAddress || !!busy} onClick={() => void openCycle(cycleAddress)}><RefreshCw size={16} />{t.refresh}</button>} />{cycle ? <><section className="panel cycle-panel"><div className="cycle-heading"><div><span className={`badge ${cycle.state === 'Settled' ? 'badge-green' : 'badge-neutral'}`}>{stateLabel(cycle)}</span><h2>{p("Krąg")} {cycle.legs.length} {p("uczestników")}</h2><Address value={cycle.address} full /></div><div className="deadline-card"><Clock3 size={20} /><div><small>{t.deadline}</small><strong>{time(cycle.deadline)}</strong><span>{deadlineDescription(cycle)}</span></div></div></div><CycleGraph legs={cycle.legs} manifest={manifest} copy={t} /><div className="cycle-progress">{cycle.legs.map((leg, i) => <div key={leg.owner}><span className={cycle.fundedMask & 1 << i ? 'step-done' : ''}>{cycle.fundedMask & 1 << i ? <Check size={14} /> : i + 1}</span><strong>{ownerName(leg.owner, manifest)}</strong><small>{participantStatus(cycle, i)}</small></div>)}</div></section>
           {cycle.state === 'Settled' ? <Notice>{p("Wymiana zakończona. Wszystkie uzgodnione przekazania wykonano w tej samej transakcji co ostatnią wpłatę. Wynik odczytano z programu. Historia poniżej zawiera sygnatury zapisane w tej przeglądarce.")}</Notice>

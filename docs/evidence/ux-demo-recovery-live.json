@@ -1,0 +1,80 @@
+{
+  "checkedAt": "2026-10-03T22:25:20.697Z",
+  "base": "http://127.0.0.1:5187/",
+  "mode": "read-only existing localnet cycle, fresh browser, no wallet",
+  "checks": [
+    {
+      "name": "pl: address marked invalid",
+      "passed": true
+    },
+    {
+      "name": "pl: error associated with input",
+      "passed": true
+    },
+    {
+      "name": "pl: localized actionable error",
+      "passed": true
+    },
+    {
+      "name": "pl: active error follows language",
+      "passed": true
+    },
+    {
+      "name": "pl: editing clears invalid state",
+      "passed": true
+    },
+    {
+      "name": "pl: real localnet cycle is settled",
+      "passed": true
+    },
+    {
+      "name": "pl: stale alert is absent",
+      "passed": true
+    },
+    {
+      "name": "pl: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "name": "pl: no transaction submitted",
+      "passed": true
+    },
+    {
+      "name": "en: address marked invalid",
+      "passed": true
+    },
+    {
+      "name": "en: error associated with input",
+      "passed": true
+    },
+    {
+      "name": "en: localized actionable error",
+      "passed": true
+    },
+    {
+      "name": "en: active error follows language",
+      "passed": true
+    },
+    {
+      "name": "en: editing clears invalid state",
+      "passed": true
+    },
+    {
+      "name": "en: real localnet cycle is settled",
+      "passed": true
+    },
+    {
+      "name": "en: stale alert is absent",
+      "passed": true
+    },
+    {
+      "name": "en: no horizontal page overflow",
+      "passed": true
+    },
+    {
+      "name": "en: no transaction submitted",
+      "passed": true
+    }
+  ],
+  "complete": true
+}

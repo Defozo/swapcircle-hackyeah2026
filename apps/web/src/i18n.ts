@@ -60,6 +60,7 @@ void englishKeys; void polishKeys;
 // Complete source phrases are typed keys; every phrase requires its English value.
 const phraseTranslations = {
   "Publiczny adres cyklu": "Public circle address",
+  "Nieprawidłowy adres cyklu. Skopiuj pełny adres ze szczegółów cyklu lub wczytaj pakiet odzyskiwania.": "Invalid circle address. Copy the full address from the circle details or load a recovery package.",
   "Skopiuj adres ze szczegółów cyklu lub wczytaj pobrany pakiet odzyskiwania. Ten publiczny identyfikator wskazuje zapis warunków w sieci.": "Copy the address from the circle details or load a downloaded recovery package. This public identifier points to the terms recorded on the network.",
   "Domyślne konto tokenowe (ATA) przechowuje dany token w Twoim portfelu. Jeśli jest zamrożone lub jego uprawnienia się zmieniły, wybierz nowe bezpieczne konto. Program sprawdzi właściciela i token.": "The default associated token account (ATA) holds a particular token in your wallet. If it is frozen or its permissions have changed, choose a new safe account. The program checks the owner and token.",
   "Domyślne konto tokenowe portfela": "Default wallet token account",

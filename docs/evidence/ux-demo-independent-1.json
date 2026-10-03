@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "status": "partial",
+  "reason": "Obejrzano wszystkie wskazane ekrany. Testy interakcji i dostępności były próbkowe. Brak podłączonego portfela ograniczył sprawdzenie publikacji i operacji na tokenach; nie potwierdzono rzeczywistego zoomu 200%.",
+  "firstImpression": {
+    "purpose": "Demonstracja wymiany tokenów między kilkoma osobami.",
+    "audience": "Prawdopodobnie osoby zainteresowane kryptowalutami.",
+    "firstAction": "Wybrać oferty i nacisnąć „Znajdź wymianę”.",
+    "expectedOutcome": "Propozycja zgodnego cyklu wymiany.",
+    "uncertainties": [
+      "Jak przebiegają wpłaty?",
+      "Co zabezpiecza wymianę?",
+      "Jak demonstracja wiąże się z rzeczywistym użyciem?"
+    ],
+    "recordedBeforeExploration": true
+  },
+  "coverage": {
+    "entryUrl": "http://127.0.0.1:5187/",
+    "routesRequested": [
+      "http://127.0.0.1:5187/?lang=en",
+      "http://127.0.0.1:5187/watch.html",
+      "http://127.0.0.1:5187/?mode=app#/board",
+      "http://127.0.0.1:5187/?mode=app#/matches",
+      "http://127.0.0.1:5187/?mode=app#/deposits",
+      "http://127.0.0.1:5187/?mode=app#/recovery",
+      "http://127.0.0.1:5187/?mode=app#/rules",
+      "http://127.0.0.1:5187/?mode=app#/cycle/AikkwU6i7MZhJyu94op9pBmEhMRTgYGZ9ve6qZGJGQVi"
+    ],
+    "routesChecked": [
+      "http://127.0.0.1:5187/",
+      "http://127.0.0.1:5187/?lang=en",
+      "http://127.0.0.1:5187/watch.html",
+      "http://127.0.0.1:5187/?mode=app#/board",
+      "http://127.0.0.1:5187/?mode=app#/matches",
+      "http://127.0.0.1:5187/?mode=app#/deposits",
+      "http://127.0.0.1:5187/?mode=app#/recovery",
+      "http://127.0.0.1:5187/?mode=app#/rules",
+      "http://127.0.0.1:5187/?mode=app#/cycle/AikkwU6i7MZhJyu94op9pBmEhMRTgYGZ9ve6qZGJGQVi"
+    ],
+    "checks": [
+      {
+        "area": "first-impression",
+        "result": "checked",
+        "evidence": "Przed eksploracją obejrzano zrzut 1440 × 900 i drzewo dostępności. Oferty, etapy oraz przycisk „Znajdź wymianę” komunikowały pierwszą czynność.",
+        "limitations": "Pierwsze wrażenie dotyczy wyłącznie początkowego widoku demonstracji."
+      },
+      {
+        "area": "navigation",
+        "result": "checked",
+        "evidence": "Link „Klient Solana” prowadził z demonstracji do tablicy. Nawigacja klienta otworzyła dopasowania, depozyty, odzyskiwanie i zasady. Link prezentacji otworzył watch.html. Cykl odczytano formularzem odzyskiwania.",
+        "limitations": "Adres konkretnego cyklu pochodził z parametrów audytu. Nie odnaleziono go samodzielnie na pustej tablicy. Wersję ?lang=en otwarto bezpośrednio."
+      },
+      {
+        "area": "language",
+        "result": "checked",
+        "evidence": "Polskie i angielskie ekrany demonstracji wyjaśniają dokładne ilości oraz cykl. Angielski klient miał lang=en. Polski formularz odzyskiwania zwrócił angielski błąd „Invalid public key input”.",
+        "limitations": "Nie sprawdzono wszystkich tłumaczeń ani całego nagrania."
+      },
+      {
+        "area": "cognitive-load",
+        "result": "checked",
+        "evidence": "Demonstracja dzieli proces na cztery etapy. Dopasowanie ma diagram i równoważną tabelę. Puste dopasowania wyjaśniają brak wyniku, a zasady opisują blokadę, koszty i zwrot.",
+        "limitations": "Nie oceniono pracy z dużą liczbą ofert. Terminologia Solany wskazuje na odbiorców znających tokeny."
+      },
+      {
+        "area": "forms-and-feedback",
+        "result": "checked",
+        "evidence": "Obejrzano formularz oferty i potwierdzenie utworzenia cyklu demo. Sprawdzono błędny adres „test” oraz poprawny odczyt wskazanego cyklu. Oceniono puste tablice, dopasowania i historię oraz rozliczony cykl.",
+        "limitations": "Nie publikowano ofert, nie importowano plików ani nie wykonywano wpłat i zwrotów. Nie sprawdzono pełnego przebiegu demonstracji."
+      },
+      {
+        "area": "keyboard-and-focus",
+        "result": "checked",
+        "evidence": "Rzeczywiste Tab, Shift+Tab i Enter ujawniły widoczny fokus linku pomijającego nawigację i przeniosły fokus do nagłówka. W oknie demo Shift+Tab zawijał fokus, Escape zamykał okno i przywracał fokus przyciskowi.",
+        "limitations": "Nie wykonano pełnego przejścia klawiaturą przez każdą trasę i menu mobilne."
+      },
+      {
+        "area": "semantics-and-names",
+        "result": "checked",
+        "evidence": "Drzewo dostępności zawiera nagłówki, nazwane pola, przyciski, dialog z opisem i checkboxy ofert. Tabele cyklu mają komórki nagłówkowe. Błąd adresu nie jest powiązany z polem.",
+        "limitations": "Inspekcja drzewa i DOM nie stanowi testu czytnikiem ekranu."
+      },
+      {
+        "area": "contrast",
+        "result": "checked",
+        "evidence": "Na watch.html obliczono kontrast akapitu rgb(196, 209, 221) względem jednolitego tła rgb(7, 20, 33): około 11,95:1.",
+        "limitations": "Pomiar dotyczył jednej pary kolorów. Nie zmierzono wszystkich kontrolek, gradientów i stanów."
+      },
+      {
+        "area": "zoom-and-mobile",
+        "result": "checked",
+        "evidence": "Obejrzano demonstrację, prezentację i tablicę w emulacji 390 × 844. Tablica i prezentacja miały szerokość dokumentu 390 px bez poziomego przepełnienia. Prezentację obejrzano także przy 720 × 450 jako przybliżenie mniejszego obszaru roboczego.",
+        "limitations": "Control++ nie zmieniło raportowanej skali. Nie potwierdzono zoomu ani powiększenia tekstu do 200%. Szczegóły cyklu obejrzano przy rzeczywistej szerokości 512 px, mimo żądania 390 px przez narzędzie resize."
+      },
+      {
+        "area": "status-announcements",
+        "result": "checked",
+        "evidence": "Błąd adresu występował jako role=alert z ogłaszaniem assertive. Po udanym odczycie cyklu ten sam alert nadal był obecny.",
+        "limitations": "Nie testowano ogłoszeń czytnikiem ekranu ani komunikatów po transakcjach."
+      }
+    ],
+    "limitations": [
+      "Audyt oparto wyłącznie na izolowanym ux_browser, renderowanym interfejsie i dozwolonej inspekcji semantyki oraz stylów.",
+      "Nie podłączano portfela ani nie zmieniano istniejącego cyklu.",
+      "Nie sprawdzono zewnętrznych plików prezentacji, pobierania pakietów ani pełnej jakości napisów wideo.",
+      "Wynik nie stanowi potwierdzenia pełnej zgodności z WCAG."
+    ]
+  },
+  "findings": [
+    {
+      "id": "F01",
+      "priority": "medium",
+      "confidence": "high",
+      "area": "forms-and-feedback",
+      "location": {
+        "url": "http://127.0.0.1:5187/?mode=app#/recovery",
+        "target": "Pole „Adres cyklu” i komunikat walidacji"
+      },
+      "evidence": "Wpisanie „test” i wybranie „Odczytaj cykl” wyświetla „Invalid public key input”. Pole nie otrzymuje aria-invalid, a aria-describedby wskazuje wyłącznie tekst pomocy.",
+      "reproduction": [
+        "Otwórz polski ekran „Odzyskiwanie”.",
+        "Wpisz „test” w pole „Adres cyklu”.",
+        "Naciśnij „Odczytaj cykl”."
+      ],
+      "impact": "Użytkownik otrzymuje techniczny komunikat w innym języku, bez jasnej instrukcji poprawy. Po ponownym wejściu w pole technologia asystująca nie odczyta powiązanego błędu.",
+      "recommendation": "Pokaż polski komunikat przy polu, wyjaśniający, że adres cyklu jest niepoprawny i należy skopiować pełny adres. Powiąż błąd z polem oraz oznacz jego niepoprawność.",
+      "acceptanceCriteria": [
+        "W polskiej wersji niepoprawny adres wywołuje polski komunikat z instrukcją poprawy.",
+        "Pole ma aria-invalid=true i programowe powiązanie z komunikatem.",
+        "Poprawienie i zaakceptowanie adresu usuwa oznaczenie błędu."
+      ]
+    },
+    {
+      "id": "F02",
+      "priority": "medium",
+      "confidence": "high",
+      "area": "forms-and-feedback",
+      "location": {
+        "url": "http://127.0.0.1:5187/?mode=app#/cycle/AikkwU6i7MZhJyu94op9pBmEhMRTgYGZ9ve6qZGJGQVi",
+        "target": "Alert ponad szczegółami poprawnie odczytanego cyklu"
+      },
+      "evidence": "Po błędnym adresie i następnym poprawnym odczycie ekran pokazał szczegóły oraz status „Rozliczono”, ale zachował alert „Invalid public key input”. Potwierdzono go w drzewie dostępności i na zrzucie.",
+      "reproduction": [
+        "W odzyskiwaniu odczytaj niepoprawny adres „test”.",
+        "Zastąp go adresem cyklu podanym w audycie.",
+        "Ponownie wybierz „Odczytaj cykl”.",
+        "Sprawdź alert ponad otwartymi szczegółami."
+      ],
+      "impact": "Nieaktualny błąd podważa wiarygodność udanego odczytu. Użytkownik może nie wiedzieć, czy wyświetlone dane są poprawne i czy powinien ponowić operację.",
+      "recommendation": "Usuń błąd poprzedniej próby po udanym odczycie i ogranicz jego obecność do operacji, której dotyczył.",
+      "acceptanceCriteria": [
+        "Sekwencja błędny adres, poprawny adres kończy się szczegółami cyklu bez starego alertu.",
+        "Nowy błąd odczytu nadal jest widoczny i programowo ogłaszany.",
+        "Poprawny odczyt nie wymaga ręcznego zamykania błędu poprzedniej próby."
+      ]
+    }
+  ],
+  "overall": {
+    "understandable": true,
+    "summary": "Cel demonstracji i pierwszy krok są zrozumiałe. Etapy, potwierdzenie warunków i opisane puste stany pomagają w orientacji. Najbardziej konkretne problemy dotyczą technicznego błędu adresu oraz pozostawiania go po udanym odczycie. Pełne operacje portfela i dostępność przy 200% wymagają dalszego sprawdzenia."
+  }
+}
