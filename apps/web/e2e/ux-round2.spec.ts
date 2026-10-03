@@ -1,4 +1,4 @@
-import { test, expect, type Page } from '@playwright/test';
+import { test, expect, type Locator, type Page } from '@playwright/test';
 import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
@@ -6,6 +6,7 @@ import { resolve } from 'node:path';
 const root = resolve(import.meta.dirname, '../../..');
 const evidence = resolve(root, 'docs/evidence');
 const localnet = process.env.SWAPCIRCLE_UX_ROUND2_LOCALNET === '1';
+const unavailableRpc = process.env.SWAPCIRCLE_UX_RPC_OFFLINE === '1';
 const runId = process.env.SWAPCIRCLE_UX_RUN_ID || `playwright-${process.ppid}`;
 const outcomes: { test: string; status: string | undefined }[] = [];
 const measurements: Record<string, unknown> = {};
@@ -42,20 +43,33 @@ async function focusedDescription(page: Page) {
   });
 }
 
+async function firstTabbable(main: Locator) {
+  const controls = main.locator('a[href], area[href], button, input, select, textarea, iframe, summary, [tabindex], [contenteditable="true"]');
+  const index = await controls.evaluateAll(elements => elements
+    .map((element, index) => ({ element: element as HTMLElement, index }))
+    .filter(({ element }) => element.tabIndex >= 0 && !element.matches(':disabled, [aria-disabled="true"]')
+      && !element.closest('[inert]') && element.getClientRects().length > 0
+      && getComputedStyle(element).visibility === 'visible')
+    .sort((a, b) => (a.element.tabIndex || Number.MAX_SAFE_INTEGER) - (b.element.tabIndex || Number.MAX_SAFE_INTEGER) || a.index - b.index)[0]?.index ?? -1);
+  expect(index, 'The current main content must contain an enabled, visible keyboard control').toBeGreaterThanOrEqual(0);
+  return controls.nth(index);
+}
+
 for (const width of [390, 1440]) for (const lang of ['pl', 'en'] as const) {
   test(`skip link retains each route and keyboard position (${lang}, ${width}px)`, async ({ page }) => {
     await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 });
     await page.addInitScript(language => localStorage.setItem('swapcircle:language', language), lang);
+    if (unavailableRpc) await page.route('http://127.0.0.1:8899/**', route => route.abort('connectionrefused'));
     const samples = [];
     const routes = [
-      { route: 'board', first: lang === 'pl' ? 'Dodaj ofertę' : 'Add an offer' },
-      { route: 'matches', first: lang === 'pl' ? 'Ułóż cykl ręcznie' : 'Build a cycle manually' },
-      { route: 'deposits', first: lang === 'pl' ? 'Odśwież' : 'Refresh' },
-      { route: 'recovery', first: null },
-      { route: 'rules', first: lang === 'pl' ? 'Odśwież' : 'Refresh' },
+      { route: 'board' },
+      { route: 'matches' },
+      { route: 'deposits' },
+      { route: 'recovery' },
+      { route: 'rules' },
       ...(localnet ? [
-        { route: `cycle/${settled}`, first: lang === 'pl' ? 'Odśwież' : 'Refresh', state: lang === 'pl' ? 'Rozliczono' : 'Settled' },
-        { route: `cycle/${refunded}`, first: lang === 'pl' ? 'Odśwież' : 'Refresh', state: lang === 'pl' ? 'Zwrócono' : 'Refunded' },
+        { route: `cycle/${settled}`, state: lang === 'pl' ? 'Rozliczono' : 'Settled' },
+        { route: `cycle/${refunded}`, state: lang === 'pl' ? 'Zwrócono' : 'Refunded' },
       ] : []),
     ];
     for (const [index, route] of routes.entries()) {
@@ -64,6 +78,11 @@ for (const width of [390, 1440]) for (const lang of ['pl', 'en'] as const) {
       await page.goto(`/?ux-skip=${lang}-${width}-${index}#/${route.route}`, { waitUntil: 'domcontentloaded' });
       const main = page.getByRole('main');
       await expect(main.getByRole('heading', { level: 1 })).toBeVisible();
+      // Wait for the network read to resolve before checking the keyboard order.
+      // When RPC is unavailable, the banner's Refresh button is correctly the
+      // first control in main, ahead of route-specific actions such as Add offer.
+      await expect(page.locator('.network-ready, .connection-banner')).toHaveCount(1);
+      if (unavailableRpc) await expect(main.locator('.connection-banner')).toBeVisible();
       if ('state' in route) await expect(page.locator('.cycle-heading')).toContainText(route.state!);
       const before = { url: page.url(), heading: await main.getByRole('heading', { level: 1 }).innerText() };
       await page.keyboard.press('Tab');
@@ -75,15 +94,17 @@ for (const width of [390, 1440]) for (const lang of ['pl', 'en'] as const) {
       await expect(main.getByRole('heading', { level: 1 })).toHaveText(before.heading);
       await expect.poll(() => main.evaluate(element => document.activeElement === element || document.activeElement === element.querySelector('h1'))).toBe(true);
       const focusAfterSkip = await focusedDescription(page);
+      const firstControl = await firstTabbable(main);
+      await expect(firstControl).toBeEnabled();
+      await expect(firstControl).toBeVisible();
       await page.keyboard.press('Tab');
-      const firstControl = route.first === null ? main.getByRole('textbox').first() : main.getByRole('button', { name: route.first, exact: true }).first();
       await expect(firstControl).toBeFocused();
       await expect(firstControl).toBeVisible();
       await expect(page).toHaveURL(before.url);
       const focusAfterTab = await focusedDescription(page);
       expect(focusAfterTab.mainContainsFocus).toBe(true);
-      samples.push({ route: `#/${route.route}`, heading: before.heading, exactUrlUnchanged: true, focusAfterSkip, focusAfterTab });
-      if (width === 390 && lang === 'pl' && route.route === 'matches') await page.screenshot({ path: resolve(evidence, 'ui-ux-round2-skip-mobile.png'), fullPage: false });
+      samples.push({ route: `#/${route.route}`, heading: before.heading, exactUrlUnchanged: true, unavailableRpc, focusAfterSkip, focusAfterTab });
+      if (width === 390 && lang === 'pl' && route.route === 'matches') await page.screenshot({ path: resolve(evidence, unavailableRpc ? 'ui-ux-ci-offline-skip-mobile.png' : 'ui-ux-round2-skip-mobile.png'), fullPage: false });
     }
     measurements[`skip-${lang}-${width}`] = samples;
   });

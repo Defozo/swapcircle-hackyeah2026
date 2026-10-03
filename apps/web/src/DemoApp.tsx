@@ -36,6 +36,13 @@ export function DemoApp() {
   const finalDeposit = confirmation?.type === 'fund' && state.funded.length === state.size - 1;
   const change = (action: DemoAction) => { actionApplied.current = !!confirmation; dispatch(action); setConfirmation(null); };
   const confirm = (action: DemoAction) => { actionApplied.current = false; setConsent(false); setConfirmation(action); };
+  const switchLanguage = () => {
+    const next = language === 'pl' ? 'en' : 'pl';
+    const url = new URL(location.href);
+    url.searchParams.set('lang', next);
+    history.replaceState(history.state, '', url);
+    setLanguage(next);
+  };
   const title = inOffers ? d('Każdy szuka czegoś innego.', 'Everyone wants something different.')
     : inMatches ? (matches.cycles.length ? d('Te oferty tworzą pełny cykl.', 'These offers complete the circle.') : d('Te oferty nie tworzą pełnego cyklu.', 'These offers do not complete a circle.'))
     : settled ? d('Każdy otrzymał to, czego chciał.', 'Everyone received what they wanted.')
@@ -57,7 +64,7 @@ export function DemoApp() {
 
   return <LanguageContext.Provider value={language}><div className="demo-app">
     <a className="skip-link" href="#main-content" onClick={event => { event.preventDefault(); heading.current?.focus(); }}>{d('Przejdź do treści', 'Skip to content')}</a>
-    <header className="demo-header"><a href="?mode=demo" className="brand" aria-label="SwapCircle"><span className="brand-icon"><GitBranch size={24} /></span>SwapCircle<span className="brand-dot">.</span></a><span className="demo-badge">Demo</span><div className="demo-header-actions"><button className="language-button" aria-label={d('Switch to English', 'Przełącz na polski')} onClick={() => setLanguage(language === 'pl' ? 'en' : 'pl')}><Globe2 size={16} />{language.toUpperCase()}</button><button className="button button-secondary" onClick={() => change({ type: 'reset' })}><RotateCcw size={15} />{d('Od początku', 'Start over')}</button></div></header>
+    <header className="demo-header"><a href="?mode=demo" className="brand" aria-label="SwapCircle"><span className="brand-icon"><GitBranch size={24} /></span>SwapCircle<span className="brand-dot">.</span></a><span className="demo-badge">Demo</span><div className="demo-header-actions"><button className="language-button" aria-label={d('Switch to English', 'Przełącz na polski')} onClick={switchLanguage}><Globe2 size={16} />{language.toUpperCase()}</button><button className="button button-secondary" onClick={() => change({ type: 'reset' })}><RotateCcw size={15} />{d('Od początku', 'Start over')}</button></div></header>
     <main id="main-content" className="demo-main">
       <nav className="demo-steps" aria-label={d('Etapy wymiany', 'Exchange steps')}>{[d('Oferty', 'Offers'), d('Dopasowanie', 'Match'), d('Wpłaty', 'Deposits'), d('Wynik', 'Outcome')].map((name, i) => <span key={i} className={`${step === i ? 'current' : ''} ${step > i ? 'complete' : ''}`} aria-current={step === i ? 'step' : undefined}><b>{step > i ? <Check size={14} /> : `0${i + 1}`}</b>{name}{i < 3 ? <ArrowRight size={15} /> : null}</span>)}</nav>
 

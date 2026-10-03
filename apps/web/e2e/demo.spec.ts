@@ -154,3 +154,28 @@ test('empty circle closes without claiming refunds, and client navigation and re
   await page.getByRole('button', { name: 'Offer board', exact: true }).click();
   await expect(page.locator('[aria-current="page"]')).toHaveText('Offer board');
 });
+
+test('language switch survives reload in both directions and preserves demo state and URL context', async ({ page }) => {
+  await page.goto('/?mode=demo&lang=pl&source=locale-test&context=one%20two#/demo');
+  await create(page);
+  await fund(page, 0);
+  for (const language of ['en', 'pl']) {
+    await page.locator('.language-button').click();
+    await expect(page.locator('html')).toHaveAttribute('lang', language);
+    let url = new URL(page.url());
+    expect(url.searchParams.get('lang')).toBe(language);
+    expect(url.searchParams.get('mode')).toBe('demo');
+    expect(url.searchParams.get('source')).toBe('locale-test');
+    expect(url.searchParams.get('context')).toBe('one two');
+    expect(url.hash).toBe('#/demo');
+    await page.reload();
+    await expect(page.locator('html')).toHaveAttribute('lang', language);
+    await expect(page.locator('.language-button')).toHaveText(language.toUpperCase());
+    await expect(page.getByTestId('cycle-state')).toHaveText(language === 'en' ? '1 of 3 deposits' : '1 z 3 wpłat');
+    await expect(page.getByTestId('fund-0')).not.toBeVisible();
+    await expect(page.getByTestId('fund-1')).toBeVisible();
+    await expect(page.getByTestId('balance-0').locator('td').nth(2)).toHaveText('100 dX');
+    url = new URL(page.url());
+    expect(url.searchParams.get('lang')).toBe(language);
+  }
+});
