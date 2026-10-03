@@ -35,7 +35,7 @@ test('stored SDK errors are readable in PL and EN after reload without modifying
     if (!localStorage.getItem(key)) localStorage.setItem(key, JSON.stringify(records));
   }, { key: storageKey, records });
   await page.goto('/#/deposits', { waitUntil: 'domcontentloaded' });
-  const errors = page.locator('.tx-error');
+  const errors = page.locator('p.tx-error');
   await expect(errors).toHaveText([
     'RPC ogranicza liczbę odczytów. Odczekaj lub wybierz inny endpoint tego samego klastra.',
     'Podpis został odrzucony. Sprawdź stan operacji przed ponowieniem.',
