@@ -1,0 +1,16 @@
+{
+  "checkedAt": "2026-10-03T22:59:38.965Z",
+  "sourceFingerprint": "cea56cfd3685650087d398b4df838b6dc3773dce6a6624925de37402b75d71d1",
+  "finalFingerprint": "dd4e1bce2838c10ab0d416cf385c8cffa7ff17bf089b64bacd59b7464180a537",
+  "currentFingerprint": "dd4e1bce2838c10ab0d416cf385c8cffa7ff17bf089b64bacd59b7464180a537",
+  "excludingUnrelatedNewFile": "cea56cfd3685650087d398b4df838b6dc3773dce6a6624925de37402b75d71d1",
+  "matchesExactly": true,
+  "addedFile": {
+    "path": "_video_work/song-pitch-2026-10-04/review/player-v1/review.html",
+    "sha256": "02773b9579e41cba96f9a0cdf873e528c503cda21f203fb60e22145da1205559",
+    "createdAt": "2026-10-03T22:50:14.836Z",
+    "modifiedAt": "2026-10-03T22:50:16.086Z"
+  },
+  "runtimeFilesChangedDuringAudit": false,
+  "interpretation": "The workspace scanner included a newly created unrelated video review HTML. Removing only that entry reproduces the original fingerprint exactly. No application source or line-ending adjustment is needed. The independent audit warning is retained; audit remains partial because of unresolved findings and limited coverage."
+}

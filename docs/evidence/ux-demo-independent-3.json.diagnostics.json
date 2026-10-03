@@ -1,0 +1,57 @@
+{
+  "exitCode": 0,
+  "timedOut": false,
+  "interrupted": false,
+  "errorCategory": null,
+  "eventCounts": {
+    "thread.started": 1,
+    "item.completed": 99,
+    "turn.started": 1,
+    "item.started": 91,
+    "turn.completed": 1
+  },
+  "itemTypeCounts": {
+    "error": 1,
+    "agent_message": 7,
+    "mcp_tool_call": 182
+  },
+  "startupWarnings": [
+    "Under-development features enabled: skip_host_skill_discovery. Under-development features are incomplete and may behave unpredictably. To suppress this warning, set `suppress_unstable_features_warning = true` in C:\\Users\\defoz\\.codex\\config.toml."
+  ],
+  "firstImpressionCheckpoint": true,
+  "firstImpressionCheckpointBeforeExploration": true,
+  "browserCalls": 89,
+  "browserToolCounts": {
+    "new_page": 1,
+    "resize_page": 2,
+    "take_snapshot": 12,
+    "take_screenshot": 11,
+    "press_key": 16,
+    "evaluate_script": 11,
+    "click": 26,
+    "fill": 4,
+    "fill_form": 1,
+    "emulate": 4,
+    "navigate_page": 3
+  },
+  "stderrBytes": 0,
+  "firstImpressionCheckpointAt": 1791067373685,
+  "browserEvidenceSource": "isolated_mcp_transport",
+  "sessionId": "01a10198-fe7c-71e2-abee-39a05000217c",
+  "cycleId": "cf22000a-e316-4fe1-8f5a-5439ec8095f5",
+  "sourceFingerprint": "cea56cfd3685650087d398b4df838b6dc3773dce6a6624925de37402b75d71d1",
+  "finalFingerprint": "dd4e1bce2838c10ab0d416cf385c8cffa7ff17bf089b64bacd59b7464180a537",
+  "durationMs": 594737,
+  "browserPackage": "chrome-devtools-mcp@1.10.1",
+  "requestModel": "gpt-6-astra",
+  "isolation": {
+    "freshEphemeralSession": true,
+    "userConfigIgnored": true,
+    "existingExecPolicyPreserved": true,
+    "productInstructionsDisabled": true,
+    "hooksDisabled": true,
+    "memoryDisabled": true,
+    "isolatedHeadlessBrowser": true,
+    "environmentAllowlisted": true
+  }
+}

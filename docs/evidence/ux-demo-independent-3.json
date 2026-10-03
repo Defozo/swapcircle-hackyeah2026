@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "status": "partial",
+  "reason": "Obejrzano wszystkie wskazane ekrany. Kontrole dostępności były próbkowane; nie sprawdzono operacji wymagających podłączonego portfela ani rzeczywistego powiększenia 200%.",
+  "firstImpression": {
+    "purpose": "Demonstracja wymiany tokenów między kilkoma osobami.",
+    "audience": "Prawdopodobnie osoby zainteresowane kryptowalutami.",
+    "firstAction": "Pozostawić wybrane oferty i nacisnąć „Znajdź wymianę”.",
+    "expectedOutcome": "Propozycja połączenia trzech ofert i kolejne kroki symulacji.",
+    "uncertainties": [
+      "Nie wiadomo jeszcze, jak wyglądają wpłaty.",
+      "Nie jest jeszcze jasne, co dokładnie oznacza brak powiernika."
+    ],
+    "recordedBeforeExploration": true
+  },
+  "coverage": {
+    "entryUrl": "http://127.0.0.1:5187/",
+    "routesRequested": [
+      "http://127.0.0.1:5187/?lang=en",
+      "http://127.0.0.1:5187/watch.html",
+      "http://127.0.0.1:5187/?mode=app#/board",
+      "http://127.0.0.1:5187/?mode=app#/matches",
+      "http://127.0.0.1:5187/?mode=app#/deposits",
+      "http://127.0.0.1:5187/?mode=app#/recovery",
+      "http://127.0.0.1:5187/?mode=app#/rules",
+      "http://127.0.0.1:5187/?mode=app#/cycle/AikkwU6i7MZhJyu94op9pBmEhMRTgYGZ9ve6qZGJGQVi"
+    ],
+    "routesChecked": [
+      "http://127.0.0.1:5187/",
+      "http://127.0.0.1:5187/?lang=en",
+      "http://127.0.0.1:5187/watch.html",
+      "http://127.0.0.1:5187/?mode=app#/board",
+      "http://127.0.0.1:5187/?mode=app#/matches",
+      "http://127.0.0.1:5187/?mode=app#/deposits",
+      "http://127.0.0.1:5187/?mode=app#/recovery",
+      "http://127.0.0.1:5187/?mode=app#/rules",
+      "http://127.0.0.1:5187/?mode=app#/cycle/AikkwU6i7MZhJyu94op9pBmEhMRTgYGZ9ve6qZGJGQVi"
+    ],
+    "checks": [
+      {
+        "area": "first-impression",
+        "result": "checked",
+        "evidence": "Zrzut i drzewo dostępności przy 1440 × 900 sprawdzono przed interakcjami. Cel demonstracji, wybór ofert i przycisk „Znajdź wymianę” były widoczne.",
+        "limitations": "Ocena jednej pierwszej wizyty."
+      },
+      {
+        "area": "navigation",
+        "result": "checked",
+        "evidence": "Z demo przejście do prezentacji i klienta Solana; z nawigacji klienta do dopasowań, depozytów, odzyskiwania i zasad. Cykl otwarto formularzem odzyskiwania, podając dostarczony adres. Wariant ?lang=en otwarto bezpośrednio.",
+        "limitations": "Adres konkretnego cyklu pochodził z parametrów audytu, nie z pustej tablicy. Nie otwierano zewnętrznych dokumentów."
+      },
+      {
+        "area": "language",
+        "result": "checked",
+        "evidence": "Sprawdzono polskie ekrany i angielskie demo. Demo wyjaśnia cykl przykładem; zasady opisują blokadę, koszty i ograniczenia. Okno wyboru portfela pozostaje po angielsku w polskiej wersji.",
+        "limitations": "Nie sprawdzono wszystkich komunikatów w obu językach."
+      },
+      {
+        "area": "cognitive-load",
+        "result": "checked",
+        "evidence": "Demo dzieli zadanie na cztery etapy. Puste tablica i dopasowania podają dalsze działania. Szczegóły cyklu oddzielają wynik, operacje, salda i odzyskiwanie.",
+        "limitations": "Nie oceniono pracy z dużą liczbą ofert lub cykli."
+      },
+      {
+        "area": "forms-and-feedback",
+        "result": "checked",
+        "evidence": "Sprawdzono formularz oferty, ręcznego cyklu i odzyskiwania. Wartość -1 w ilości oraz niepoprawny adres cyklu wywołały konkretne błędy. W demo wykonano utworzenie cyklu, jedną wpłatę, upływ terminu i zwrot z potwierdzeniami.",
+        "limitations": "Bez podpisywania ofert, transakcji sieciowych, importu plików i pełnej ścieżki udanej wymiany w demo. Obejrzano istniejący rozliczony cykl."
+      },
+      {
+        "area": "keyboard-and-focus",
+        "result": "checked",
+        "evidence": "Wykonano Tab, Shift+Tab, Enter i Escape. Link pomijający treść miał widoczny obrys 2 px. Dialog warunków demo zatrzymywał fokus i zwracał go po Escape. Dialog portfela pozostawiał fokus w tle.",
+        "limitations": "Próbkowane kontrolki, bez pełnego przejścia klawiaturą przez każdy ekran."
+      },
+      {
+        "area": "semantics-and-names",
+        "result": "checked",
+        "evidence": "Sprawdzono nagłówki, nazwy pól, checkboxy, dialogi i tabelaryczne odpowiedniki diagramów. Wybór portfela ma nienazwany dialog i nienazwany przycisk zamknięcia.",
+        "limitations": "Inspekcja drzewa dostępności i semantyki DOM, bez testu czytnikiem ekranu."
+      },
+      {
+        "area": "contrast",
+        "result": "checked",
+        "evidence": "Z obliczonych kolorów CSS wyliczono: tekst zasad RGB(145,155,170) na RGB(24,28,37) 6,07:1; tekst nawigacji RGB(140,152,169) na RGB(20,24,33) 6,07:1; główny przycisk RGB(23,32,27) na RGB(202,245,137) 13,45:1.",
+        "limitations": "Trzy próbki, bez pełnego pomiaru gradientów, ikon, obramowań i wszystkich stanów."
+      },
+      {
+        "area": "zoom-and-mobile",
+        "result": "checked",
+        "evidence": "Sprawdzono mobilny widok 390 × 844, tablicę, menu i fragmenty szczegółów cyklu oraz zasad. Dla zasad szerokość dokumentu wynosiła 390 px. Angielski wynik demo sprawdzono przy 720 × 450, bez poziomego przepełnienia dokumentu.",
+        "limitations": "Control++ nie zmienił skali. 720 × 450 stanowi jedynie symulację zmniejszonego obszaru roboczego względem 1440 × 900, nie test rzeczywistego zoomu lub tekstu 200%. Nie sprawdzono wszystkich ekranów mobilnie."
+      },
+      {
+        "area": "status-announcements",
+        "result": "checked",
+        "evidence": "Status demo miał role=status i aria-live=polite, a jego treść zmieniała się po wpłacie i zwrocie. Błędy ilości oraz adresu miały role=alert i powiązanie z polem; błąd adresu kierował fokus do pola.",
+        "limitations": "Zweryfikowano oznaczenia i zmiany treści, nie rzeczywiste wypowiedzi czytnika ani komunikaty transakcji sieciowych."
+      }
+    ],
+    "limitations": [
+      "Nie podłączano portfela ani nie pobierano danych uwierzytelniających.",
+      "Nie sprawdzono stanów podpisywania, odrzucenia i potwierdzenia transakcji sieciowych.",
+      "Uruchomiono odtwarzacz filmu i potwierdzono obecność polskiej ścieżki napisów, ale nie oceniono całego nagrania ani synchronizacji napisów.",
+      "Ocena próbkowana nie potwierdza pełnej zgodności z WCAG.",
+      "Source files changed during this audit, or the final source fingerprint could not be verified."
+    ]
+  },
+  "findings": [
+    {
+      "id": "UX-01",
+      "priority": "high",
+      "confidence": "high",
+      "area": "keyboard-and-focus",
+      "location": {
+        "url": "http://127.0.0.1:5187/?mode=app#/board",
+        "target": "Dialog otwierany przyciskiem „Połącz portfel”"
+      },
+      "evidence": "Po otwarciu dialogu fokus pozostawał na „Połącz portfel”. Następny Tab przeniósł go do „Dodaj ofertę” pod nakładką. Escape zamknął dialog, pozostawiając fokus na tej kontrolce. Potwierdzono w polskiej i angielskiej wersji przy 390 × 844.",
+      "reproduction": [
+        "Otwórz tablicę ofert bez podłączonego portfela.",
+        "Przejdź klawiaturą do „Połącz portfel” i naciśnij Enter.",
+        "Naciśnij Tab i sprawdź aktywny element.",
+        "Naciśnij Escape."
+      ],
+      "impact": "Użytkownik klawiatury trafia do zasłoniętych kontrolek zamiast wyboru portfela i traci orientację w aktywnym oknie.",
+      "recommendation": "Przenieść fokus do dialogu, ograniczyć Tab i Shift+Tab do jego kontrolek, wyłączyć tło z interakcji i przy zamknięciu przywrócić fokus do przycisku otwierającego.",
+      "acceptanceCriteria": [
+        "Po otwarciu fokus znajduje się wewnątrz dialogu.",
+        "Tab i Shift+Tab nie przechodzą do tła.",
+        "Escape zamyka dialog i przywraca fokus do „Połącz portfel”.",
+        "Fokus jest widoczny na każdej kontrolce dialogu."
+      ]
+    },
+    {
+      "id": "UX-02",
+      "priority": "medium",
+      "confidence": "high",
+      "area": "semantics-and-names",
+      "location": {
+        "url": "http://127.0.0.1:5187/?mode=app#/board",
+        "target": "Nazwa dialogu wyboru portfela i przycisk X"
+      },
+      "evidence": "Drzewo dostępności pokazuje „dialog modal” bez nazwy oraz pustą nazwę przycisku zamknięcia. aria-labelledby wskazuje wallet-adapter-modal-title, ale element o tym ID nie istnieje. Przycisk X nie ma tekstu, aria-label ani title.",
+      "reproduction": [
+        "Otwórz „Połącz portfel”.",
+        "Sprawdź nazwę dialogu i przycisku X w drzewie dostępności.",
+        "Sprawdź docelowy element aria-labelledby."
+      ],
+      "impact": "Technologia asystująca nie otrzymuje nazwy okna ani informacji, że przycisk X służy do jego zamknięcia.",
+      "recommendation": "Powiązać dialog z istniejącym nagłówkiem i nadać przyciskowi zamknięcia nazwę zgodną z językiem interfejsu.",
+      "acceptanceCriteria": [
+        "Dialog ma nazwę wynikającą z widocznego nagłówka.",
+        "aria-labelledby wskazuje istniejący element.",
+        "Przycisk X ma nazwę „Zamknij” w PL i „Close” w EN."
+      ]
+    },
+    {
+      "id": "UX-03",
+      "priority": "low",
+      "confidence": "high",
+      "area": "language",
+      "location": {
+        "url": "http://127.0.0.1:5187/?mode=app#/board",
+        "target": "Nagłówek dialogu wyboru portfela"
+      },
+      "evidence": "Po wybraniu języka polskiego „Połącz portfel” otwiera nagłówek „Connect a wallet on Solana to continue”. Tekst dziedziczy lang=pl.",
+      "reproduction": [
+        "Ustaw język polski na tablicy.",
+        "Otwórz „Połącz portfel”.",
+        "Odczytaj nagłówek dialogu."
+      ],
+      "impact": "W ważnym kroku interfejs niespodziewanie wymaga angielskiego; oznaczenie języka może też powodować nieprawidłową wymowę.",
+      "recommendation": "Przetłumaczyć komunikat zgodnie z wybranym językiem. Nazwy dostawców portfeli pozostawić bez zmian.",
+      "acceptanceCriteria": [
+        "Polska wersja pokazuje polski komunikat wyboru portfela.",
+        "Angielska wersja zachowuje angielski komunikat.",
+        "Język tekstu jest poprawnie oznaczony."
+      ]
+    }
+  ],
+  "overall": {
+    "understandable": true,
+    "summary": "Cel i podstawowy przebieg wymiany są zrozumiałe dzięki konkretnemu demo, etapom i opisom skutków. Sprawdzone błędy formularzy pomagają poprawić dane. Najważniejsza poprawka dotyczy obsługi fokusu w wyborze portfela; ten dialog wymaga też dostępnych nazw i polskiego tłumaczenia."
+  }
+}

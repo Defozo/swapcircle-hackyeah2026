@@ -128,7 +128,7 @@ Deployment wymaga testowego SOL na wydzielonym płatniku. Seed tworzy dX/dY/dZ (
 
 Finalne wydanie ma osobny Program ID. Procedura `scripts/release.mjs` przygotowuje oddzielny, sprawdzalny artefakt, wdraża go jako aktualizowalny i wymaga pełnych wyników devnet przed odebraniem authority. Odebranie jest nieodwracalne i wymaga osobnego polecenia z dokładnym Program ID. Po nim trzeba ponowić odbiór. Nie jest częścią zwykłego deployu ani uruchomienia aplikacji. Zobacz [instrukcję wydania](docs/release.md).
 
-GitHub Actions wykonuje testy i build. Osobny workflow `publish-web` publikuje statyczny frontend przez GitHub Pages. Publiczne adresy znajdują się w `submission/links.json`, a [dowód publikacji](docs/evidence/pitch-publication.json) łączy zakończone wdrożenie, testy publicznego Demo i kontrolę pobranych materiałów.
+GitHub Actions wykonuje testy i build. Osobny workflow `publish-web` publikuje statyczny frontend przez GitHub Pages. Publiczne adresy znajdują się w `submission/links.json`, a [dowód publikacji materiałów](docs/evidence/pitch-publication.json) łączy zakończone wdrożenie, testy publicznego Demo i kontrolę pobranych materiałów. [Najnowsza aktualizacja formularzy](docs/evidence/ux-demo-publication.json) potwierdza publikację `48c7494` i 22 kontrole publicznego adresu. [Odrębny raport UX](docs/UX-AUDIT-2026-10-04.md) opisuje dwie rundy poprawek i pozostałe uwagi okna wyboru portfela.
 
 ## Granice gwarancji
 

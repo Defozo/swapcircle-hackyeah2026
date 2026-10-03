@@ -12,7 +12,7 @@
 - Bieżący pokaz: interaktywne Demo / Symulacja, zgodnie z najnowszym jawnym zleceniem użytkownika; nie czeka na SOL ani wdrożenie Devnet.
 - Wydanie: [`demo-pitch-2026-10-03`](https://github.com/Defozo/swapcircle-hackyeah2026/releases/tag/demo-pitch-2026-10-03), target `d23ed4d`, opublikowane materiały PDF/PPTX/MP4/ZIP. Adresy w `submission/links.json`.
 - Archiwum: poprzedni PDF `submission/SwapCircle.pdf` ma 10 stron, a `submission/demo-localnet.mp4` 114,7 s. Zachowano je jako wcześniejsze materiały z rzeczywistymi transakcjami localnet.
-- Publiczny frontend Demo i odtwarzacz: wdrożone przez Pages dla `d23ed4d`, run `37156634563`; 30 sprawdzeń świeżej przeglądarki przeszło. Dowód: `docs/evidence/public-pitch-demo.json`.
+- Publiczny frontend Demo i odtwarzacz: wydanie materiałów wdrożono dla `d23ed4d`, run `37156634563`, z 30 poprawnymi sprawdzeniami świeżej przeglądarki. Późniejsze poprawki formularzy opublikowano dla `48c7494`, run `37160218806`, z 22/22 kontrolami PL desktop / EN mobile. Dowody: `docs/evidence/public-pitch-demo.json` i `docs/evidence/ux-demo-publication.json`. Wynik odrębnego audytu UX pozostaje częściowy.
 - Zapis aktualizacji HackTribe i odczyt po zapisie: potwierdzone 4.10.2026 o 00:01 Europe/Warsaw w `HACKTRIBE_UPDATE_RESULT.json`.
 - Osobna nieodwracalna finalizacja zgłoszenia: nie wykonana i nieobjęta aktualnym poleceniem.
 

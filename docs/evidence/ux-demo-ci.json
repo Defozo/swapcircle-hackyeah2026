@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-10-03T22:54:12.359623+00:00",
+  "scope": "CI verification of the exact final UX round-2 commit. The previous round is recorded separately. No local tests were rerun for this evidence.",
+  "round": 2,
+  "source": {
+    "repository": "Defozo/swapcircle-hackyeah2026",
+    "workflow": "verify",
+    "runId": 37159406838,
+    "attempt": 1,
+    "url": "https://github.com/Defozo/swapcircle-hackyeah2026/actions/runs/37159406838",
+    "commit": "48c7494d15d7bce0d6c170c17d961bf4de351784",
+    "status": "completed",
+    "conclusion": "success",
+    "startedAt": "2026-10-03T22:43:34Z",
+    "completedAt": "2026-10-03T22:51:20Z",
+    "logsUrl": "https://api.github.com/repos/Defozo/swapcircle-hackyeah2026/actions/runs/37159406838/logs",
+    "downloadedLogArchiveSha256": "9f4018d86802f8f9f6cb8e43558cf7b12ccb1c5fddcc09949b783029ea64b13b",
+    "logArchiveCrcVerified": true
+  },
+  "results": {
+    "vitest": {
+      "passed": 75,
+      "failed": 0,
+      "filesPassed": 10,
+      "command": "pnpm test",
+      "log": "1_web-and-sdk.txt:226"
+    },
+    "nodeTests": {
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "command": "pnpm test:node",
+      "logs": [
+        "1_web-and-sdk.txt:246",
+        "1_web-and-sdk.txt:247",
+        "1_web-and-sdk.txt:249"
+      ]
+    },
+    "playwright": {
+      "total": 32,
+      "passed": 25,
+      "failed": 0,
+      "skipped": 7,
+      "durationReported": "1.1m",
+      "command": "pnpm test:e2e",
+      "logs": [
+        "1_web-and-sdk.txt:555",
+        "1_web-and-sdk.txt:590",
+        "1_web-and-sdk.txt:591"
+      ]
+    },
+    "sbf": {
+      "passed": 16,
+      "failed": 0,
+      "ignored": 0,
+      "durationSeconds": 28.26,
+      "environment": "LiteSVM 0.9.1 executing the compiled SBF program",
+      "command": "cargo test --locked --manifest-path tests/program/Cargo.toml -- --nocapture",
+      "log": "0_program.txt:834"
+    },
+    "build": {
+      "typescript": "passed",
+      "viteProductionBuild": "passed",
+      "anchorSbfBuild": "passed",
+      "commands": [
+        "pnpm build",
+        "anchor build --no-idl --ignore-keys"
+      ],
+      "viteDurationReported": "5m 25s",
+      "viteLog": "1_web-and-sdk.txt:298"
+    }
+  },
+  "jobs": [
+    {
+      "id": 111309505751,
+      "name": "web-and-sdk",
+      "url": "https://github.com/Defozo/swapcircle-hackyeah2026/actions/runs/37159406838/job/111309505751",
+      "conclusion": "success",
+      "completedAt": "2026-10-03T22:51:20Z"
+    },
+    {
+      "id": 111309505912,
+      "name": "program",
+      "url": "https://github.com/Defozo/swapcircle-hackyeah2026/actions/runs/37159406838/job/111309505912",
+      "conclusion": "success",
+      "completedAt": "2026-10-03T22:49:10Z"
+    }
+  ],
+  "targetedRegressions": [
+    {
+      "file": "apps/web/e2e/recovery-errors.spec.ts",
+      "languages": [
+        "pl",
+        "en"
+      ],
+      "passed": 2,
+      "log": "1_web-and-sdk.txt:585-586",
+      "scope": "Field validation, error localization, controlled RPC failure and retry, preservation of other errors and transaction journal."
+    },
+    {
+      "file": "apps/web/e2e/offer-amount-errors.spec.ts",
+      "languages": [
+        "pl",
+        "en"
+      ],
+      "passed": 2,
+      "log": "1_web-and-sdk.txt:583-584",
+      "scope": "Amount syntax explanations after blur/invalid, field association, correction, active language change and disabled publishing without a wallet."
+    }
+  ],
+  "previousRound": {
+    "source": {
+      "repository": "Defozo/swapcircle-hackyeah2026",
+      "workflow": "verify",
+      "runId": 37158627423,
+      "attempt": 1,
+      "url": "https://github.com/Defozo/swapcircle-hackyeah2026/actions/runs/37158627423",
+      "commit": "76a60f75e78bef9ec3589504b0a719861aebc3d8",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-10-03T22:29:37Z",
+      "completedAt": "2026-10-03T22:37:32Z",
+      "logsUrl": "https://api.github.com/repos/Defozo/swapcircle-hackyeah2026/actions/runs/37158627423/logs",
+      "downloadedLogArchiveSha256": "7ab953dafbac5bbf1d7e892cc1ff833de44d1525574d5bf0dc3023f24992a70f",
+      "logArchiveCrcVerified": true
+    },
+    "results": {
+      "vitest": {
+        "passed": 75,
+        "failed": 0,
+        "filesPassed": 10,
+        "command": "pnpm test",
+        "log": "0_web-and-sdk.txt:227"
+      },
+      "nodeTests": {
+        "passed": 10,
+        "failed": 0,
+        "skipped": 0,
+        "command": "pnpm test:node",
+        "logs": [
+          "0_web-and-sdk.txt:247",
+          "0_web-and-sdk.txt:248",
+          "0_web-and-sdk.txt:250"
+        ]
+      },
+      "playwright": {
+        "total": 30,
+        "passed": 23,
+        "failed": 0,
+        "skipped": 7,
+        "durationReported": "1.1m",
+        "command": "pnpm test:e2e",
+        "logs": [
+          "0_web-and-sdk.txt:556",
+          "0_web-and-sdk.txt:589",
+          "0_web-and-sdk.txt:590"
+        ]
+      },
+      "sbf": {
+        "passed": 16,
+        "failed": 0,
+        "ignored": 0,
+        "durationSeconds": 28.25,
+        "environment": "LiteSVM 0.9.1 executing the compiled SBF program",
+        "command": "cargo test --locked --manifest-path tests/program/Cargo.toml -- --nocapture",
+        "log": "1_program.txt:835"
+      },
+      "build": {
+        "typescript": "passed",
+        "viteProductionBuild": "passed",
+        "anchorSbfBuild": "passed",
+        "commands": [
+          "pnpm build",
+          "anchor build --no-idl --ignore-keys"
+        ],
+        "viteDurationReported": "5m 28s",
+        "viteLog": "0_web-and-sdk.txt:299"
+      }
+    },
+    "jobs": [
+      {
+        "id": 111307166646,
+        "name": "program",
+        "url": "https://github.com/Defozo/swapcircle-hackyeah2026/actions/runs/37158627423/job/111307166646",
+        "conclusion": "success",
+        "completedAt": "2026-10-03T22:34:58Z"
+      },
+      {
+        "id": 111307166868,
+        "name": "web-and-sdk",
+        "url": "https://github.com/Defozo/swapcircle-hackyeah2026/actions/runs/37158627423/job/111307166868",
+        "conclusion": "success",
+        "completedAt": "2026-10-03T22:37:32Z"
+      }
+    ],
+    "round": 1
+  },
+  "configuredSkips": [
+    {
+      "file": "apps/web/e2e/chain.spec.ts",
+      "count": 3,
+      "guard": "SWAPCIRCLE_CHAIN_E2E=1",
+      "requires": "Local validator and participant wallet keys injected through psst",
+      "scope": "Wallet-signed publication, three-party settlement, independent refund"
+    },
+    {
+      "file": "apps/web/e2e/resilience.spec.ts",
+      "count": 2,
+      "guard": "SWAPCIRCLE_CHAIN_E2E=1",
+      "requires": "Local validator and participant wallet keys injected through psst",
+      "scope": "WebSocket interruption and deadline during wallet signing"
+    },
+    {
+      "file": "apps/web/e2e/ux.spec.ts",
+      "count": 2,
+      "guard": "SWAPCIRCLE_UX_LOCALNET=1",
+      "requires": "Existing localnet cycle accounts",
+      "scope": "Terminal-cycle presentation and account-derived Funding presentation fixture"
+    }
+  ],
+  "limits": [
+    "Seven configured E2E skips are not passing executions: five require a validator and wallet keys; two require existing localnet cycle accounts.",
+    "The recovery regression uses controlled RPC responses and a synthetic account; the interactive Demo uses simulated transfers. These tests do not prove wallet-signed or public-network transactions.",
+    "SBF tests execute the compiled program in LiteSVM, not Devnet or mainnet.",
+    "The offer dialog language check invokes the existing handler while its background control is inert; it verifies localization of active errors, not background interaction through a modal.",
+    "CI does not establish public deployment availability or full accessibility compliance. Publication and independent UX audits are separate evidence."
+  ]
+}
