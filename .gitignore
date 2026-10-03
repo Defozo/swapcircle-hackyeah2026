@@ -16,7 +16,10 @@ playwright-report/
 *.log
 test-ledger/
 *.tmp
+__pycache__/
+*.pyc
 submission/_video_work/
+/submission/pitch/SwapCircle-demo.mp4
 **/target/
 # Original task downloads and historical planning remain in the local workspace.
 /.plans/

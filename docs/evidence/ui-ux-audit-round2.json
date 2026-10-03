@@ -1,0 +1,1653 @@
+{
+  "checkedAt": "2026-10-03T17:23:06.097Z",
+  "runId": "audit-round2",
+  "audit": "docs/evidence/ux-independent-2.json",
+  "plan": "docs/UX-AUDIT-2026-10-03.md",
+  "execution": "Standardowy Playwright na źródłach TypeScript, jeden worker, Chrome",
+  "scope": "Wyłącznie odczyt i nawigacja klawiaturą. Pięć głównych tras i dwa istniejące konta cykli localnet, PL/EN, 390/1440 px. Bez portfela, podpisów, transakcji i resetu rejestru.",
+  "outcomes": [
+    {
+      "test": "skip link retains each route and keyboard position (pl, 390px)",
+      "status": "passed"
+    },
+    {
+      "test": "skip link retains each route and keyboard position (en, 390px)",
+      "status": "passed"
+    },
+    {
+      "test": "skip link retains each route and keyboard position (pl, 1440px)",
+      "status": "passed"
+    },
+    {
+      "test": "skip link retains each route and keyboard position (en, 1440px)",
+      "status": "passed"
+    },
+    {
+      "test": "statistic descriptions remain readable and complete in both languages and viewport sizes",
+      "status": "passed"
+    }
+  ],
+  "measurements": {
+    "skip-pl-390": [
+      {
+        "route": "#/board",
+        "heading": "Dobre wymiany łączą ludzi.",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "WYMIANA BEZ POŚREDNIKADobre wymiany łączą ludzi.Połącz potrzeby w jeden krąg. Wymieniaj tokeny na dokładnych warunkach, bez powierzania ich pośrednikowi.Dodaj ofertęJak działa krągDokładne kwoty. Wspólne rozliczenie. Niezależny zwrot.everyonecomes full circle.X100 dXAlicjaY40 dYBartekZ250 dZCelinaPRZYKŁAD · TOKENY TESTOWEWażne oferty0podpisane i niewygasłeWłaściciele0różne adresy portfeliDopasowane cykle02–4 uczestnikówProwizja protokołu0%opłaty sieci są osobneZnajdź swoją część wymianyKażda oferta to konkretna ilość. Podpis oferty nie przenosi tokenów.ImportujEksportujWszystkie oferty0Moje ofertyTwój kolejny krąg zaczyna się tutajDodaj podpisaną ofertę lub zaimportuj oferty swojej społeczności. Możesz też obejrzeć, jak działa cykl trzech osób.Zobacz przykładTablica lokalna · podpisy sprawdzane w przeglądarceZnajdź cykle01Znajdź zgodny krągOferty łączą się wtedy, gdy dokładnie spełniają wzajemne potrzeby.02Zaakceptuj swoją wpłatąKażdy sam podpisuje transakcję. Warunki zapisują się na Solanie.03Wymiana albo zwrotKomplet wpłat rozlicza krąg. Po terminie odzyskasz swój depozyt.SwapCircle · Każdy wnosi swoją część.Ostatni odczyt: 19:22:44·localnet / Środki testowe",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Dodaj ofertę",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/matches",
+        "heading": "Więcej możliwości w kręgu",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "DOKŁADNE DOPASOWANIEWięcej możliwości w kręguDokładne dopasowanie 2–4 różnych właścicieli. Bez dzielenia ofert i wyceny tokenów.Ułóż cykl ręcznie0Pary0Cykle 3–4 osób0Różne dopasowane oferty0Przeszukane ofertyOferty nie rezerwują aktywów. Salda nie zostały jeszcze zweryfikowane. Przed wpłatą aplikacja ponownie sprawdzi stan programu, tokeny i konta odbiorców. Wycofania offline są aktualne tylko na moment eksportu.Nie ma jeszcze zgodnego cykluTo poprawny wynik. Dodaj inne oferty lub sprawdź minty i dokładne ilości. Aplikacja nie gwarantuje znalezienia partnerów.Dodaj ofertęZobacz przykładSprawdzono 0 z 0 ofert. Limit zbioru: 1000; limit wyników: 100. Przeszukiwanie ukończone w podanym zakresie. Brak obietnicy optymalności ceny lub globalnej płynności.SwapCircle · Każdy wnosi swoją część.Ostatni odczyt: 19:22:44·localnet / Środki testowe",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Ułóż cykl ręcznie",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/deposits",
+        "heading": "Każda wpłata ma swój ślad",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "HISTORIA W SIECIKażda wpłata ma swój śladStan odczytujemy bezpośrednio z programu. Lokalna historia przechowuje wyłącznie publiczne adresy i sygnatury.OdświeżNie odnaleziono cykli tego portfelaPołącz portfel lub otwórz cykl po jego publicznym adresie.Odczytaj cyklOperacje i potwierdzeniaWysłana sygnatura nie oznacza jeszcze wykonania. Nie ponawiaj nieznanej operacji przed sprawdzeniem.Sprawdź potwierdzeniaBrak operacji zapisanych w tej przeglądarce. Stan cyklu można odczytać po jego adresie.SwapCircle · Każdy wnosi swoją część.Ostatni odczyt: 19:22:45·localnet / Środki testowe",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Odśwież",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/recovery",
+        "heading": "Twoje środki. Twoje prawo do zwrotu.",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "NIEZALEŻNOŚĆ OD OPERATORATwoje środki. Twoje prawo do zwrotu.Odczytaj cykl po adresie. Nie potrzebujesz tablicy ofert ani lokalnej historii. Po terminie każdy wniesiony depozyt można zwrócić niezależnie.Odczytaj cyklAdres cykluOdczytaj cykllub odczytaj adres z pakietuWybierz publiczny pakiet odzyskiwaniaCo jest Twoim prawem?Dokładna kwota depozytuZwrot obejmuje zdeponowane tokeny. Opłaty sieciowe i utracone korzyści nie są zwracane.Bez zgody pozostałych osóbPo terminie wystarczy własny skarbiec i bezpieczne konto docelowe. Dowolna osoba może opłacić operację.Konto zastępcze, gdy potrzebneGdy ATA jest uszkodzone, utwórz nowe konto tokenowe. Właściciel i mint pozostają zgodne z cyklem.Dostęp również bez tej stronyPakiet zawiera adresy i komendę niezależnego klienta. Nie zawiera żadnych sekretów.Operacje i potwierdzeniaWysłana sygnatura nie oznacza jeszcze wykonania. Nie ponawiaj nieznanej operacji przed sprawdzeniem.Sprawdź potwierdzeniaBrak operacji zapisanych w tej przeglądarce. Stan cyklu można odczytać po jego adresie.SwapCircle · Każdy wnosi swoją część.Ostatni odczyt: 19:22:46·localnet / Środki testowe",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "INPUT",
+          "id": "",
+          "name": "",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/rules",
+        "heading": "Jasne reguły od pierwszej wpłaty",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "PRZEJRZYSTE ZASADYJasne reguły od pierwszej wpłatyOstatnia wpłata przekazuje wszystkie uzgodnione aktywa w jednej transakcji. Jeżeli zabraknie uczestnika, po terminie odzyskasz własny depozyt.Wspólne rozliczenieKażda osoba oddaje jedną ustaloną ilość aktywa i otrzymuje aktywo poprzednika. Ostatnia poprawna wpłata wykonuje wszystkie przekazania atomowo. Błąd cofa całą ostatnią transakcję, wcześniejsze depozyty pozostają.Blokada ma terminNie można wcześniej odwołać depozytu ani przedłużyć terminu. Ostatni uczestnik może czekać na zmianę ceny. Po terminie każdy wniesiony depozyt można zwrócić osobno, bez zgody operatora i kontrahentów.Odbiorca jest ustalonyProgram sprawdza rzeczywistego właściciela kont tokenowych, mint, delegata i stan zamrożenia. Refund na nowe konto zachowuje właściciela depozytu. Operator tablicy nie posiada kluczy do Twoich tokenów.Koszty są osobneProtokół nie pobiera prowizji. Sieć pobiera opłaty, także za część nieudanych transakcji. Twórca przeznacza SOL na przechowywanie kont. Zamknięcie pustego skarbca zwraca znajdujące się w nim SOL pierwotnemu płatnikowi. Rekord cyklu pozostaje, więc jego koszt nie jest zwracany. Zwrot tokenów nie rekompensuje opłat ani zmiany ceny.Sprawdź program i środowiskoOdczyt uprawnienia do aktualizacji pochodzi bezpośrednio z Solany.OdświeżSiećlocalnet · Środki testoweProgram IDHkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGunGenesis hash7Mazo1FTCvbNmW1xM4U9xMFYv97V8k3kN72vMzgNcv3tUprawnienie do aktualizacjiProgram może być aktualizowany przez: 11111111111111111111111111111111Hash artefaktu0425e951600e3ddc2f14bcbc98e05daa22799afaf19c51b3e2344b4f8e5af137CommitNie podanoRPChttp://127.0.0.1:8899Gwarancje zakładają poprawność programu i dostępność sieci. SwapCircle nie gwarantuje rynkowej opłacalności, płynności, przyszłej wartości tokenów ani bezpieczeństwa portfela. dX, dY i dZ są tokenami demonstracyjnymi bez wartości pieniężnej.Obsługiwane aktywaKlasyczne SPL Token, bez freeze authority i rozszerzeń Token-2022. Wrapped SOL nie jest obsługiwany. Nazwa i logo są tylko pomocą; aktywo identyfikuje mint.dX7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV0 miejsc dziesiętnychdY9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr0 miejsc dziesiętnychdZ9XcSs5vihWmt6gJHBNen6Nknikb9FWEejFDdpBrsjrvS0 miejsc dziesiętnychdSIXq9DqytGyDUpES4b9Xfjknmuv7RUqq5XpHUtAzkYx7Ea6 miejsc dziesiętnychSwapCircle · Każdy wnosi swoją część.Ostatni odczyt: 19:22:46·localnet / Środki testowe",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Odśwież",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/cycle/AikkwU6i7MZhJyu94op9pBmEhMRTgYGZ9ve6qZGJGQVi",
+        "heading": "Szczegóły cyklu",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "WARUNKI ZAPISANE W SIECISzczegóły cykluOdczyt programu jest źródłem praw do tokenów. Samo wskazanie adresu w cyklu nie oznacza zgody właściciela.OdświeżRozliczonoKrąg 3 uczestnikówAikkwU6i7MZhJyu94op9pBmEhMRTgYGZ9ve6qZGJGQViTermin wpłat3.10.2026, 17:39Historyczny termin wpłat. Wynik odczytano z programu.40 dY100 dX250 dZBBartek40 dYAAlicja100 dXCCelina250 dZPress enter or space to select a node. You can then use the arrow keys to move the node around. Press delete to remove it and escape to cancel.Press enter or space to select an edge. You can then press delete to remove it or escape to cancel.Dokładne przekazania w cykluWłaścicielOddajeszOdbiorcaOtrzymujeszBartek45qmR…Avhoc40 dY9DVnL…5rWfrAlicja250 dZAlicjaHypnR…nkEDD100 dX7BSvC…dEzGVCelina40 dYCelina82Kkz…KTjjR250 dZ9XcSs…sjrvSBartek100 dXBartekRozliczonoAlicjaRozliczonoCelinaRozliczonoWymiana zakończona. Wszystkie uzgodnione przekazania wykonano w tej samej transakcji co ostatnią wpłatę. Wynik odczytano z programu. Historia poniżej zawiera sygnatury zapisane w tej przeglądarce.Twoje operacje w cykluZwrot i sprzątanie mogą zostać opłacone przez inny portfel. Tokeny nadal trafiają do zapisanych właścicieli.Tryb konta zwrotuDomyślne konto ATANowe bezpieczne konto tego właścicielaIstniejące konto tego właścicielaBartek40 dYDepozyt wpłaconyZwróć nadwyżkęZamknij pusty skarbiecAlicja100 dXDepozyt wpłaconyZwróć nadwyżkęZamknij pusty skarbiecCelina250 dZDepozyt wpłaconyZwróć nadwyżkęZamknij pusty skarbiecZasady cyklu: wpłaty pozostają zablokowane do zakończenia wymiany albo zwrotu po terminie. Ostatnia wpłata automatycznie rozlicza całą wymianę.Dodatkowe tokeny w skarbcu trafiają wyłącznie do pierwotnego właściciela zapisanego dla tego skarbca, nawet gdy przesłał je ktoś inny.Zamknięcie pustego skarbca zwraca znajdujące się w nim SOL do zapisanego pierwotnego płatnika: HypnR…nkEDD.Rekord cyklu pozostaje. SOL przeznaczony na jego przechowywanie i opłaty transakcyjne nie są zwracane.Salda uczestników po odczycieBieżące salda wszystkich kont tego właściciela, osobno dla oddawanego i otrzymywanego mintu.WłaścicielMintSaldo tokenówOdczytBartekdY9DVnL…5rWfr99979219:22:47BartekdZ9XcSs…sjrvS100075019:22:47AlicjadX7BSvC…dEzGV99947019:22:47AlicjadY9DVnL…5rWfr100016819:22:47CelinadZ9XcSs…sjrvS99900019:22:47CelinadX7BSvC…dEzGV100030019:22:47Pobierz pakiet odzyskiwaniaZapisz publiczne dane i instrukcję niezależnego klienta.Uczestnik pakietu odzyskiwaniaBartekAlicjaCelinaPobierz JSONKopiuj linkSprawdź niezmienne warunkiProgram IDHkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGunHash warunkówe2e4ee3a404c941e711aae363b112fe903b0fa987990fa8cd1b4870e2f4a5d52TwórcaHypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDDNonce11141700639637550126Czas ostatniego odczytu3.10.2026, 19:22:47Operacje i potwierdzeniaWysłana sygnatura nie oznacza jeszcze wykonania. Nie ponawiaj nieznanej operacji przed sprawdzeniem.Sprawdź potwierdzeniaBrak operacji zapisanych w tej przeglądarce. Stan cyklu można odczytać po jego adresie.SwapCircle · Każdy wnosi swoją część.Ostatni odczyt: 19:22:47·localnet / Środki testowe",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Odśwież",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/cycle/2XiE3MLZhFVLeo6NQhK72sjUx4GzokY4BYYDn7YPdHgB",
+        "heading": "Szczegóły cyklu",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "WARUNKI ZAPISANE W SIECISzczegóły cykluOdczyt programu jest źródłem praw do tokenów. Samo wskazanie adresu w cyklu nie oznacza zgody właściciela.OdświeżZwróconoKrąg 2 uczestników2XiE3MLZhFVLeo6NQhK72sjUx4GzokY4BYYDn7YPdHgBTermin wpłat3.10.2026, 17:55Historyczny termin wpłat. Wynik odczytano z programu.10 dX4 dYAAlicja10 dXBBartek4 dYPress enter or space to select a node. You can then use the arrow keys to move the node around. Press delete to remove it and escape to cancel.Press enter or space to select an edge. You can then press delete to remove it or escape to cancel.Dokładne przekazania w cykluWłaścicielOddajeszOdbiorcaOtrzymujeszAlicjaHypnR…nkEDD10 dX7BSvC…dEzGVBartek4 dYBartek45qmR…Avhoc4 dY9DVnL…5rWfrAlicja10 dXAlicjaZwrócono2BartekBez depozytuWymiana nie doszła do skutku. Wszystkie wpłacone do tego cyklu depozyty tokenów zostały zwrócone ich pierwotnym właścicielom. Osoby bez wpłaty nie miały depozytu do zwrotu. Dodatkowe tokeny w skarbcach i zamykanie pustych kont obsługuje się osobno.Twoje operacje w cykluZwrot i sprzątanie mogą zostać opłacone przez inny portfel. Tokeny nadal trafiają do zapisanych właścicieli.Tryb konta zwrotuDomyślne konto ATANowe bezpieczne konto tego właścicielaIstniejące konto tego właścicielaAlicja10 dXDepozyt zwróconyZwróć nadwyżkęZamknij pusty skarbiecBartek4 dYBez depozytuZwróć nadwyżkęZamknij pusty skarbiecZasady cyklu: wpłaty pozostają zablokowane do zakończenia wymiany albo zwrotu po terminie. Ostatnia wpłata automatycznie rozlicza całą wymianę.Dodatkowe tokeny w skarbcu trafiają wyłącznie do pierwotnego właściciela zapisanego dla tego skarbca, nawet gdy przesłał je ktoś inny.Zamknięcie pustego skarbca zwraca znajdujące się w nim SOL do zapisanego pierwotnego płatnika: HypnR…nkEDD.Rekord cyklu pozostaje. SOL przeznaczony na jego przechowywanie i opłaty transakcyjne nie są zwracane.Salda uczestników po odczycieBieżące salda wszystkich kont tego właściciela, osobno dla oddawanego i otrzymywanego mintu.WłaścicielMintSaldo tokenówOdczytAlicjadX7BSvC…dEzGV99947019:22:48AlicjadY9DVnL…5rWfr100016819:22:48BartekdY9DVnL…5rWfr99979219:22:48BartekdX7BSvC…dEzGV100022019:22:48Pobierz pakiet odzyskiwaniaZapisz publiczne dane i instrukcję niezależnego klienta.Uczestnik pakietu odzyskiwaniaAlicjaBartekPobierz JSONKopiuj linkSprawdź niezmienne warunkiProgram IDHkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGunHash warunków08c8433bcbfc044bc2038e1e548d1d76182f2f7a5ee47d92f49f5d63ac4c3e94TwórcaHypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDDNonce4304257319463498913Czas ostatniego odczytu3.10.2026, 19:22:47Operacje i potwierdzeniaWysłana sygnatura nie oznacza jeszcze wykonania. Nie ponawiaj nieznanej operacji przed sprawdzeniem.Sprawdź potwierdzeniaBrak operacji zapisanych w tej przeglądarce. Stan cyklu można odczytać po jego adresie.SwapCircle · Każdy wnosi swoją część.Ostatni odczyt: 19:22:47·localnet / Środki testowe",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Odśwież",
+          "mainContainsFocus": true
+        }
+      }
+    ],
+    "skip-en-390": [
+      {
+        "route": "#/board",
+        "heading": "Good exchanges bring people together.",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "EXCHANGE WITHOUT A CUSTODIANGood exchanges bring people together.Connect needs in a circle. Exchange exact token amounts without handing custody to an intermediary.Add an offerHow the circle worksExact amounts. Shared settlement. Independent refunds.everyonecomes full circle.X100 dXAlicjaY40 dYBartekZ250 dZCelinaEXAMPLE · TEST TOKENSActive offers0signed and unexpiredOwners0different wallet addressesMatching cycles02–4 participantsProtocol fee0%network fees are separateFind your part of the exchangeEvery offer has exact amounts. Signing an offer does not transfer tokens.ImportExportAll offers0My offersYour next circle starts hereAdd a signed offer or import your community’s offers. You can also explore a three-person exchange.Explore an exampleLocal board · signatures verified in the browserFind cycles01Find a compatible circleOffers connect when they exactly satisfy each other's needs.02Accept by making your depositEach person signs their own transaction. Terms are recorded on Solana.03Exchange or refundThe complete set of deposits settles the circle. After the deadline, recover your own deposit.SwapCircle · Everyone brings their part.Last read: 19:22:49·localnet / Test funds",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Add an offer",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/matches",
+        "heading": "More possibilities in a circle",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "EXACT MATCHINGMore possibilities in a circleExact matching between 2–4 different owners. No split offers or price discovery.Build a cycle manually0Pairs0Cycles of 3–4 people0Distinct matched offers0Offers searchedOffers do not reserve assets. Balances have not yet been verified. Before a deposit, the app checks the program state, tokens and recipient accounts again. Offline withdrawals are current only as of export time.No compatible cycle yetThis is a valid result. Add offers or check mints and exact amounts. Matching is not guaranteed.Add an offerExplore an exampleSearched 0 of 0 offers. Input limit: 1000; result limit: 100. Search completed within the stated scope. No promise of optimal pricing or global liquidity.SwapCircle · Everyone brings their part.Last read: 19:22:49·localnet / Test funds",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Build a cycle manually",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/deposits",
+        "heading": "Every deposit leaves a trail",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "ON-CHAIN HISTORYEvery deposit leaves a trailThe program is the source of truth. Local history only stores public addresses and signatures.RefreshNo cycles found for this walletConnect a wallet or open a cycle using its public address.Read cycleTransactions and confirmationsA submitted signature does not yet mean execution. Do not repeat an unknown operation before checking it.Check confirmationsNo operations saved in this browser. The cycle can be read using its address.SwapCircle · Everyone brings their part.Last read: 19:22:50·localnet / Test funds",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Refresh",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/recovery",
+        "heading": "Your funds. Your right to a refund.",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "INDEPENDENT OF THE OPERATORYour funds. Your right to a refund.Read any cycle by address. No offer board or local history needed. After the deadline, every deposit can be recovered independently.Read cycleCycle addressRead cycleor read the address from a packageChoose a public recovery packageWhat are you entitled to?The exact deposited amountA refund returns the deposited tokens. Network fees and lost opportunities are not reimbursed.No approval from other participantsAfter the deadline, only the deposit's own vault and a safe destination account are needed. Anyone may pay for the operation.A replacement account when neededIf an ATA is unsafe, create a new token account. Its owner and mint must still match the cycle.Access without this websiteThe package contains public addresses and a command for an independent client. It contains no secrets.Transactions and confirmationsA submitted signature does not yet mean execution. Do not repeat an unknown operation before checking it.Check confirmationsNo operations saved in this browser. The cycle can be read using its address.SwapCircle · Everyone brings their part.Last read: 19:22:51·localnet / Test funds",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "INPUT",
+          "id": "",
+          "name": "",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/rules",
+        "heading": "Clear rules from your first deposit",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "TRANSPARENT RULESClear rules from your first depositThe final deposit transfers all agreed assets in one transaction. If a participant is missing, recover your own deposit after the deadline.Shared settlementEach participant gives one exact asset amount and receives the previous participant's asset. The final valid deposit executes all transfers atomically. An error reverts that entire final transaction; earlier deposits remain.A lock with a deadlineA deposit cannot be revoked early and the deadline cannot be extended. The final participant may wait for a price change. After the deadline, each funded deposit can be refunded separately, without operator or counterparty approval.The recipient is fixedThe program checks the actual token-account owner, mint, delegate and frozen state. A refund to a new account preserves the deposit owner. The board operator has no keys to your tokens.Separate costsThe protocol charges no commission. The network charges fees, including for some failed transactions. The creator supplies SOL for account storage. Closing an empty vault returns its SOL to the original payer. The cycle record remains, so its storage cost is not returned. Returning tokens does not reimburse fees or price changes.Verify the program and environmentUpgrade authority is read directly from Solana.RefreshNetworklocalnet · Test fundsProgram IDHkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGunGenesis hash7Mazo1FTCvbNmW1xM4U9xMFYv97V8k3kN72vMzgNcv3tUpgrade authorityThe program can be upgraded by: 11111111111111111111111111111111Artifact hash0425e951600e3ddc2f14bcbc98e05daa22799afaf19c51b3e2344b4f8e5af137CommitNot providedRPChttp://127.0.0.1:8899Guarantees assume correct program code and network availability. SwapCircle does not guarantee profitability, liquidity, future token value or wallet security. dX, dY and dZ are demonstration tokens with no monetary value.Supported assetsClassic SPL Token without freeze authority or Token-2022 extensions. Wrapped SOL is not supported. Names and logos are only aids; the mint identifies the asset.dX7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV0 decimal placesdY9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr0 decimal placesdZ9XcSs5vihWmt6gJHBNen6Nknikb9FWEejFDdpBrsjrvS0 decimal placesdSIXq9DqytGyDUpES4b9Xfjknmuv7RUqq5XpHUtAzkYx7Ea6 decimal placesSwapCircle · Everyone brings their part.Last read: 19:22:51·localnet / Test funds",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Refresh",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/cycle/AikkwU6i7MZhJyu94op9pBmEhMRTgYGZ9ve6qZGJGQVi",
+        "heading": "Cycle details",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "TERMS RECORDED ON CHAINCycle detailsProgram state determines rights to tokens. Listing an address in a cycle does not mean its owner has consented.RefreshSettledCircle of 3 participantsAikkwU6i7MZhJyu94op9pBmEhMRTgYGZ9ve6qZGJGQViFunding deadline03/10/2026, 17:39Historical funding deadline. The outcome was read from the program.40 dY100 dX250 dZBBartek40 dYAAlicja100 dXCCelina250 dZPress enter or space to select a node. You can then use the arrow keys to move the node around. Press delete to remove it and escape to cancel.Press enter or space to select an edge. You can then press delete to remove it or escape to cancel.Exact transfers in the cycleOwnerYou giveRecipientYou receiveBartek45qmR…Avhoc40 dY9DVnL…5rWfrAlicja250 dZAlicjaHypnR…nkEDD100 dX7BSvC…dEzGVCelina40 dYCelina82Kkz…KTjjR250 dZ9XcSs…sjrvSBartek100 dXBartekSettledAlicjaSettledCelinaSettledExchange completed. All agreed transfers executed in the same transaction as the final deposit. The outcome was read from the program. The history below contains signatures saved in this browser.Your cycle operationsAnother wallet may pay for refunds and cleanup. Tokens still go to the recorded owners.Refund account modeDefault associated token accountNew safe account for this ownerExisting account of this ownerBartek40 dYDeposit fundedReturn surplusClose empty vaultAlicja100 dXDeposit fundedReturn surplusClose empty vaultCelina250 dZDeposit fundedReturn surplusClose empty vaultCycle rules: deposits remain locked until the exchange completes or they are refunded after the deadline. The final deposit automatically completes the entire exchange.Extra tokens in a vault go only to the original owner assigned to that vault, even if someone else sent them.Closing an empty vault returns the SOL held in that account to the recorded original payer: HypnR…nkEDD.The cycle record remains. SOL required to store that record and transaction fees are not returned.Participant balances after readbackCurrent balances across all accounts of each owner, separately for the outgoing and incoming mint.OwnerMintToken balanceRead atBartekdY9DVnL…5rWfr99979219:22:52BartekdZ9XcSs…sjrvS100075019:22:52AlicjadX7BSvC…dEzGV99947019:22:52AlicjadY9DVnL…5rWfr100016819:22:52CelinadZ9XcSs…sjrvS99900019:22:52CelinadX7BSvC…dEzGV100030019:22:52Download recovery packageSave public data and instructions for the independent client.Recovery package participantBartekAlicjaCelinaDownload JSONCopy linkVerify immutable termsProgram IDHkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGunTerms hashe2e4ee3a404c941e711aae363b112fe903b0fa987990fa8cd1b4870e2f4a5d52CreatorHypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDDNonce11141700639637550126Last read time03/10/2026, 19:22:52Transactions and confirmationsA submitted signature does not yet mean execution. Do not repeat an unknown operation before checking it.Check confirmationsNo operations saved in this browser. The cycle can be read using its address.SwapCircle · Everyone brings their part.Last read: 19:22:52·localnet / Test funds",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Refresh",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/cycle/2XiE3MLZhFVLeo6NQhK72sjUx4GzokY4BYYDn7YPdHgB",
+        "heading": "Cycle details",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "TERMS RECORDED ON CHAINCycle detailsProgram state determines rights to tokens. Listing an address in a cycle does not mean its owner has consented.RefreshRefundedCircle of 2 participants2XiE3MLZhFVLeo6NQhK72sjUx4GzokY4BYYDn7YPdHgBFunding deadline03/10/2026, 17:55Historical funding deadline. The outcome was read from the program.10 dX4 dYAAlicja10 dXBBartek4 dYPress enter or space to select a node. You can then use the arrow keys to move the node around. Press delete to remove it and escape to cancel.Press enter or space to select an edge. You can then press delete to remove it or escape to cancel.Exact transfers in the cycleOwnerYou giveRecipientYou receiveAlicjaHypnR…nkEDD10 dX7BSvC…dEzGVBartek4 dYBartek45qmR…Avhoc4 dY9DVnL…5rWfrAlicja10 dXAlicjaRefunded2BartekNo depositThe exchange did not complete. All token deposits made into this cycle have been returned to their original owners. Participants who did not deposit had nothing to refund. Extra tokens in vaults and closing empty accounts are handled separately.Your cycle operationsAnother wallet may pay for refunds and cleanup. Tokens still go to the recorded owners.Refund account modeDefault associated token accountNew safe account for this ownerExisting account of this ownerAlicja10 dXDeposit refundedReturn surplusClose empty vaultBartek4 dYNo depositReturn surplusClose empty vaultCycle rules: deposits remain locked until the exchange completes or they are refunded after the deadline. The final deposit automatically completes the entire exchange.Extra tokens in a vault go only to the original owner assigned to that vault, even if someone else sent them.Closing an empty vault returns the SOL held in that account to the recorded original payer: HypnR…nkEDD.The cycle record remains. SOL required to store that record and transaction fees are not returned.Participant balances after readbackCurrent balances across all accounts of each owner, separately for the outgoing and incoming mint.OwnerMintToken balanceRead atAlicjadX7BSvC…dEzGV99947019:22:53AlicjadY9DVnL…5rWfr100016819:22:53BartekdY9DVnL…5rWfr99979219:22:53BartekdX7BSvC…dEzGV100022019:22:53Download recovery packageSave public data and instructions for the independent client.Recovery package participantAlicjaBartekDownload JSONCopy linkVerify immutable termsProgram IDHkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGunTerms hash08c8433bcbfc044bc2038e1e548d1d76182f2f7a5ee47d92f49f5d63ac4c3e94CreatorHypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDDNonce4304257319463498913Last read time03/10/2026, 19:22:53Transactions and confirmationsA submitted signature does not yet mean execution. Do not repeat an unknown operation before checking it.Check confirmationsNo operations saved in this browser. The cycle can be read using its address.SwapCircle · Everyone brings their part.Last read: 19:22:53·localnet / Test funds",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Refresh",
+          "mainContainsFocus": true
+        }
+      }
+    ],
+    "skip-pl-1440": [
+      {
+        "route": "#/board",
+        "heading": "Dobre wymiany łączą ludzi.",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "WYMIANA BEZ POŚREDNIKADobre wymiany łączą ludzi.Połącz potrzeby w jeden krąg. Wymieniaj tokeny na dokładnych warunkach, bez powierzania ich pośrednikowi.Dodaj ofertęJak działa krągDokładne kwoty. Wspólne rozliczenie. Niezależny zwrot.everyonecomes full circle.X100 dXAlicjaY40 dYBartekZ250 dZCelinaPRZYKŁAD · TOKENY TESTOWEWażne oferty0podpisane i niewygasłeWłaściciele0różne adresy portfeliDopasowane cykle02–4 uczestnikówProwizja protokołu0%opłaty sieci są osobneZnajdź swoją część wymianyKażda oferta to konkretna ilość. Podpis oferty nie przenosi tokenów.ImportujEksportujWszystkie oferty0Moje ofertyTwój kolejny krąg zaczyna się tutajDodaj podpisaną ofertę lub zaimportuj oferty swojej społeczności. Możesz też obejrzeć, jak działa cykl trzech osób.Zobacz przykładTablica lokalna · podpisy sprawdzane w przeglądarceZnajdź cykle01Znajdź zgodny krągOferty łączą się wtedy, gdy dokładnie spełniają wzajemne potrzeby.02Zaakceptuj swoją wpłatąKażdy sam podpisuje transakcję. Warunki zapisują się na Solanie.03Wymiana albo zwrotKomplet wpłat rozlicza krąg. Po terminie odzyskasz swój depozyt.SwapCircle · Każdy wnosi swoją część.Ostatni odczyt: 19:22:54·localnet / Środki testowe",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Dodaj ofertę",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/matches",
+        "heading": "Więcej możliwości w kręgu",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "DOKŁADNE DOPASOWANIEWięcej możliwości w kręguDokładne dopasowanie 2–4 różnych właścicieli. Bez dzielenia ofert i wyceny tokenów.Ułóż cykl ręcznie0Pary0Cykle 3–4 osób0Różne dopasowane oferty0Przeszukane ofertyOferty nie rezerwują aktywów. Salda nie zostały jeszcze zweryfikowane. Przed wpłatą aplikacja ponownie sprawdzi stan programu, tokeny i konta odbiorców. Wycofania offline są aktualne tylko na moment eksportu.Nie ma jeszcze zgodnego cykluTo poprawny wynik. Dodaj inne oferty lub sprawdź minty i dokładne ilości. Aplikacja nie gwarantuje znalezienia partnerów.Dodaj ofertęZobacz przykładSprawdzono 0 z 0 ofert. Limit zbioru: 1000; limit wyników: 100. Przeszukiwanie ukończone w podanym zakresie. Brak obietnicy optymalności ceny lub globalnej płynności.SwapCircle · Każdy wnosi swoją część.Ostatni odczyt: 19:22:55·localnet / Środki testowe",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Ułóż cykl ręcznie",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/deposits",
+        "heading": "Każda wpłata ma swój ślad",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "HISTORIA W SIECIKażda wpłata ma swój śladStan odczytujemy bezpośrednio z programu. Lokalna historia przechowuje wyłącznie publiczne adresy i sygnatury.OdświeżNie odnaleziono cykli tego portfelaPołącz portfel lub otwórz cykl po jego publicznym adresie.Odczytaj cyklOperacje i potwierdzeniaWysłana sygnatura nie oznacza jeszcze wykonania. Nie ponawiaj nieznanej operacji przed sprawdzeniem.Sprawdź potwierdzeniaBrak operacji zapisanych w tej przeglądarce. Stan cyklu można odczytać po jego adresie.SwapCircle · Każdy wnosi swoją część.Ostatni odczyt: 19:22:55·localnet / Środki testowe",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Odśwież",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/recovery",
+        "heading": "Twoje środki. Twoje prawo do zwrotu.",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "NIEZALEŻNOŚĆ OD OPERATORATwoje środki. Twoje prawo do zwrotu.Odczytaj cykl po adresie. Nie potrzebujesz tablicy ofert ani lokalnej historii. Po terminie każdy wniesiony depozyt można zwrócić niezależnie.Odczytaj cyklAdres cykluOdczytaj cykllub odczytaj adres z pakietuWybierz publiczny pakiet odzyskiwaniaCo jest Twoim prawem?Dokładna kwota depozytuZwrot obejmuje zdeponowane tokeny. Opłaty sieciowe i utracone korzyści nie są zwracane.Bez zgody pozostałych osóbPo terminie wystarczy własny skarbiec i bezpieczne konto docelowe. Dowolna osoba może opłacić operację.Konto zastępcze, gdy potrzebneGdy ATA jest uszkodzone, utwórz nowe konto tokenowe. Właściciel i mint pozostają zgodne z cyklem.Dostęp również bez tej stronyPakiet zawiera adresy i komendę niezależnego klienta. Nie zawiera żadnych sekretów.Operacje i potwierdzeniaWysłana sygnatura nie oznacza jeszcze wykonania. Nie ponawiaj nieznanej operacji przed sprawdzeniem.Sprawdź potwierdzeniaBrak operacji zapisanych w tej przeglądarce. Stan cyklu można odczytać po jego adresie.SwapCircle · Każdy wnosi swoją część.Ostatni odczyt: 19:22:56·localnet / Środki testowe",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "INPUT",
+          "id": "",
+          "name": "",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/rules",
+        "heading": "Jasne reguły od pierwszej wpłaty",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "PRZEJRZYSTE ZASADYJasne reguły od pierwszej wpłatyOstatnia wpłata przekazuje wszystkie uzgodnione aktywa w jednej transakcji. Jeżeli zabraknie uczestnika, po terminie odzyskasz własny depozyt.Wspólne rozliczenieKażda osoba oddaje jedną ustaloną ilość aktywa i otrzymuje aktywo poprzednika. Ostatnia poprawna wpłata wykonuje wszystkie przekazania atomowo. Błąd cofa całą ostatnią transakcję, wcześniejsze depozyty pozostają.Blokada ma terminNie można wcześniej odwołać depozytu ani przedłużyć terminu. Ostatni uczestnik może czekać na zmianę ceny. Po terminie każdy wniesiony depozyt można zwrócić osobno, bez zgody operatora i kontrahentów.Odbiorca jest ustalonyProgram sprawdza rzeczywistego właściciela kont tokenowych, mint, delegata i stan zamrożenia. Refund na nowe konto zachowuje właściciela depozytu. Operator tablicy nie posiada kluczy do Twoich tokenów.Koszty są osobneProtokół nie pobiera prowizji. Sieć pobiera opłaty, także za część nieudanych transakcji. Twórca przeznacza SOL na przechowywanie kont. Zamknięcie pustego skarbca zwraca znajdujące się w nim SOL pierwotnemu płatnikowi. Rekord cyklu pozostaje, więc jego koszt nie jest zwracany. Zwrot tokenów nie rekompensuje opłat ani zmiany ceny.Sprawdź program i środowiskoOdczyt uprawnienia do aktualizacji pochodzi bezpośrednio z Solany.OdświeżSiećlocalnet · Środki testoweProgram IDHkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGunGenesis hash7Mazo1FTCvbNmW1xM4U9xMFYv97V8k3kN72vMzgNcv3tUprawnienie do aktualizacjiProgram może być aktualizowany przez: 11111111111111111111111111111111Hash artefaktu0425e951600e3ddc2f14bcbc98e05daa22799afaf19c51b3e2344b4f8e5af137CommitNie podanoRPChttp://127.0.0.1:8899Gwarancje zakładają poprawność programu i dostępność sieci. SwapCircle nie gwarantuje rynkowej opłacalności, płynności, przyszłej wartości tokenów ani bezpieczeństwa portfela. dX, dY i dZ są tokenami demonstracyjnymi bez wartości pieniężnej.Obsługiwane aktywaKlasyczne SPL Token, bez freeze authority i rozszerzeń Token-2022. Wrapped SOL nie jest obsługiwany. Nazwa i logo są tylko pomocą; aktywo identyfikuje mint.dX7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV0 miejsc dziesiętnychdY9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr0 miejsc dziesiętnychdZ9XcSs5vihWmt6gJHBNen6Nknikb9FWEejFDdpBrsjrvS0 miejsc dziesiętnychdSIXq9DqytGyDUpES4b9Xfjknmuv7RUqq5XpHUtAzkYx7Ea6 miejsc dziesiętnychSwapCircle · Każdy wnosi swoją część.Ostatni odczyt: 19:22:56·localnet / Środki testowe",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Odśwież",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/cycle/AikkwU6i7MZhJyu94op9pBmEhMRTgYGZ9ve6qZGJGQVi",
+        "heading": "Szczegóły cyklu",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "WARUNKI ZAPISANE W SIECISzczegóły cykluOdczyt programu jest źródłem praw do tokenów. Samo wskazanie adresu w cyklu nie oznacza zgody właściciela.OdświeżRozliczonoKrąg 3 uczestnikówAikkwU6i7MZhJyu94op9pBmEhMRTgYGZ9ve6qZGJGQViTermin wpłat3.10.2026, 17:39Historyczny termin wpłat. Wynik odczytano z programu.40 dY100 dX250 dZBBartek40 dYAAlicja100 dXCCelina250 dZPress enter or space to select a node. You can then use the arrow keys to move the node around. Press delete to remove it and escape to cancel.Press enter or space to select an edge. You can then press delete to remove it or escape to cancel.Dokładne przekazania w cykluWłaścicielOddajeszOdbiorcaOtrzymujeszBartek45qmR…Avhoc40 dY9DVnL…5rWfrAlicja250 dZAlicjaHypnR…nkEDD100 dX7BSvC…dEzGVCelina40 dYCelina82Kkz…KTjjR250 dZ9XcSs…sjrvSBartek100 dXBartekRozliczonoAlicjaRozliczonoCelinaRozliczonoWymiana zakończona. Wszystkie uzgodnione przekazania wykonano w tej samej transakcji co ostatnią wpłatę. Wynik odczytano z programu. Historia poniżej zawiera sygnatury zapisane w tej przeglądarce.Twoje operacje w cykluZwrot i sprzątanie mogą zostać opłacone przez inny portfel. Tokeny nadal trafiają do zapisanych właścicieli.Tryb konta zwrotuDomyślne konto ATANowe bezpieczne konto tego właścicielaIstniejące konto tego właścicielaBartek40 dYDepozyt wpłaconyZwróć nadwyżkęZamknij pusty skarbiecAlicja100 dXDepozyt wpłaconyZwróć nadwyżkęZamknij pusty skarbiecCelina250 dZDepozyt wpłaconyZwróć nadwyżkęZamknij pusty skarbiecZasady cyklu: wpłaty pozostają zablokowane do zakończenia wymiany albo zwrotu po terminie. Ostatnia wpłata automatycznie rozlicza całą wymianę.Dodatkowe tokeny w skarbcu trafiają wyłącznie do pierwotnego właściciela zapisanego dla tego skarbca, nawet gdy przesłał je ktoś inny.Zamknięcie pustego skarbca zwraca znajdujące się w nim SOL do zapisanego pierwotnego płatnika: HypnR…nkEDD.Rekord cyklu pozostaje. SOL przeznaczony na jego przechowywanie i opłaty transakcyjne nie są zwracane.Salda uczestników po odczycieBieżące salda wszystkich kont tego właściciela, osobno dla oddawanego i otrzymywanego mintu.WłaścicielMintSaldo tokenówOdczytBartekdY9DVnL…5rWfr99979219:22:57BartekdZ9XcSs…sjrvS100075019:22:57AlicjadX7BSvC…dEzGV99947019:22:57AlicjadY9DVnL…5rWfr100016819:22:57CelinadZ9XcSs…sjrvS99900019:22:57CelinadX7BSvC…dEzGV100030019:22:57Pobierz pakiet odzyskiwaniaZapisz publiczne dane i instrukcję niezależnego klienta.Uczestnik pakietu odzyskiwaniaBartekAlicjaCelinaPobierz JSONKopiuj linkSprawdź niezmienne warunkiProgram IDHkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGunHash warunkówe2e4ee3a404c941e711aae363b112fe903b0fa987990fa8cd1b4870e2f4a5d52TwórcaHypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDDNonce11141700639637550126Czas ostatniego odczytu3.10.2026, 19:22:57Operacje i potwierdzeniaWysłana sygnatura nie oznacza jeszcze wykonania. Nie ponawiaj nieznanej operacji przed sprawdzeniem.Sprawdź potwierdzeniaBrak operacji zapisanych w tej przeglądarce. Stan cyklu można odczytać po jego adresie.SwapCircle · Każdy wnosi swoją część.Ostatni odczyt: 19:22:57·localnet / Środki testowe",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Odśwież",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/cycle/2XiE3MLZhFVLeo6NQhK72sjUx4GzokY4BYYDn7YPdHgB",
+        "heading": "Szczegóły cyklu",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "WARUNKI ZAPISANE W SIECISzczegóły cykluOdczyt programu jest źródłem praw do tokenów. Samo wskazanie adresu w cyklu nie oznacza zgody właściciela.OdświeżZwróconoKrąg 2 uczestników2XiE3MLZhFVLeo6NQhK72sjUx4GzokY4BYYDn7YPdHgBTermin wpłat3.10.2026, 17:55Historyczny termin wpłat. Wynik odczytano z programu.10 dX4 dYAAlicja10 dXBBartek4 dYPress enter or space to select a node. You can then use the arrow keys to move the node around. Press delete to remove it and escape to cancel.Press enter or space to select an edge. You can then press delete to remove it or escape to cancel.Dokładne przekazania w cykluWłaścicielOddajeszOdbiorcaOtrzymujeszAlicjaHypnR…nkEDD10 dX7BSvC…dEzGVBartek4 dYBartek45qmR…Avhoc4 dY9DVnL…5rWfrAlicja10 dXAlicjaZwrócono2BartekBez depozytuWymiana nie doszła do skutku. Wszystkie wpłacone do tego cyklu depozyty tokenów zostały zwrócone ich pierwotnym właścicielom. Osoby bez wpłaty nie miały depozytu do zwrotu. Dodatkowe tokeny w skarbcach i zamykanie pustych kont obsługuje się osobno.Twoje operacje w cykluZwrot i sprzątanie mogą zostać opłacone przez inny portfel. Tokeny nadal trafiają do zapisanych właścicieli.Tryb konta zwrotuDomyślne konto ATANowe bezpieczne konto tego właścicielaIstniejące konto tego właścicielaAlicja10 dXDepozyt zwróconyZwróć nadwyżkęZamknij pusty skarbiecBartek4 dYBez depozytuZwróć nadwyżkęZamknij pusty skarbiecZasady cyklu: wpłaty pozostają zablokowane do zakończenia wymiany albo zwrotu po terminie. Ostatnia wpłata automatycznie rozlicza całą wymianę.Dodatkowe tokeny w skarbcu trafiają wyłącznie do pierwotnego właściciela zapisanego dla tego skarbca, nawet gdy przesłał je ktoś inny.Zamknięcie pustego skarbca zwraca znajdujące się w nim SOL do zapisanego pierwotnego płatnika: HypnR…nkEDD.Rekord cyklu pozostaje. SOL przeznaczony na jego przechowywanie i opłaty transakcyjne nie są zwracane.Salda uczestników po odczycieBieżące salda wszystkich kont tego właściciela, osobno dla oddawanego i otrzymywanego mintu.WłaścicielMintSaldo tokenówOdczytAlicjadX7BSvC…dEzGV99947019:22:58AlicjadY9DVnL…5rWfr100016819:22:58BartekdY9DVnL…5rWfr99979219:22:58BartekdX7BSvC…dEzGV100022019:22:58Pobierz pakiet odzyskiwaniaZapisz publiczne dane i instrukcję niezależnego klienta.Uczestnik pakietu odzyskiwaniaAlicjaBartekPobierz JSONKopiuj linkSprawdź niezmienne warunkiProgram IDHkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGunHash warunków08c8433bcbfc044bc2038e1e548d1d76182f2f7a5ee47d92f49f5d63ac4c3e94TwórcaHypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDDNonce4304257319463498913Czas ostatniego odczytu3.10.2026, 19:22:58Operacje i potwierdzeniaWysłana sygnatura nie oznacza jeszcze wykonania. Nie ponawiaj nieznanej operacji przed sprawdzeniem.Sprawdź potwierdzeniaBrak operacji zapisanych w tej przeglądarce. Stan cyklu można odczytać po jego adresie.SwapCircle · Każdy wnosi swoją część.Ostatni odczyt: 19:22:58·localnet / Środki testowe",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Odśwież",
+          "mainContainsFocus": true
+        }
+      }
+    ],
+    "skip-en-1440": [
+      {
+        "route": "#/board",
+        "heading": "Good exchanges bring people together.",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "EXCHANGE WITHOUT A CUSTODIANGood exchanges bring people together.Connect needs in a circle. Exchange exact token amounts without handing custody to an intermediary.Add an offerHow the circle worksExact amounts. Shared settlement. Independent refunds.everyonecomes full circle.X100 dXAlicjaY40 dYBartekZ250 dZCelinaEXAMPLE · TEST TOKENSActive offers0signed and unexpiredOwners0different wallet addressesMatching cycles02–4 participantsProtocol fee0%network fees are separateFind your part of the exchangeEvery offer has exact amounts. Signing an offer does not transfer tokens.ImportExportAll offers0My offersYour next circle starts hereAdd a signed offer or import your community’s offers. You can also explore a three-person exchange.Explore an exampleLocal board · signatures verified in the browserFind cycles01Find a compatible circleOffers connect when they exactly satisfy each other's needs.02Accept by making your depositEach person signs their own transaction. Terms are recorded on Solana.03Exchange or refundThe complete set of deposits settles the circle. After the deadline, recover your own deposit.SwapCircle · Everyone brings their part.Last read: 19:22:59·localnet / Test funds",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Add an offer",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/matches",
+        "heading": "More possibilities in a circle",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "EXACT MATCHINGMore possibilities in a circleExact matching between 2–4 different owners. No split offers or price discovery.Build a cycle manually0Pairs0Cycles of 3–4 people0Distinct matched offers0Offers searchedOffers do not reserve assets. Balances have not yet been verified. Before a deposit, the app checks the program state, tokens and recipient accounts again. Offline withdrawals are current only as of export time.No compatible cycle yetThis is a valid result. Add offers or check mints and exact amounts. Matching is not guaranteed.Add an offerExplore an exampleSearched 0 of 0 offers. Input limit: 1000; result limit: 100. Search completed within the stated scope. No promise of optimal pricing or global liquidity.SwapCircle · Everyone brings their part.Last read: 19:23:00·localnet / Test funds",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Build a cycle manually",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/deposits",
+        "heading": "Every deposit leaves a trail",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "ON-CHAIN HISTORYEvery deposit leaves a trailThe program is the source of truth. Local history only stores public addresses and signatures.RefreshNo cycles found for this walletConnect a wallet or open a cycle using its public address.Read cycleTransactions and confirmationsA submitted signature does not yet mean execution. Do not repeat an unknown operation before checking it.Check confirmationsNo operations saved in this browser. The cycle can be read using its address.SwapCircle · Everyone brings their part.Last read: 19:23:00·localnet / Test funds",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Refresh",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/recovery",
+        "heading": "Your funds. Your right to a refund.",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "INDEPENDENT OF THE OPERATORYour funds. Your right to a refund.Read any cycle by address. No offer board or local history needed. After the deadline, every deposit can be recovered independently.Read cycleCycle addressRead cycleor read the address from a packageChoose a public recovery packageWhat are you entitled to?The exact deposited amountA refund returns the deposited tokens. Network fees and lost opportunities are not reimbursed.No approval from other participantsAfter the deadline, only the deposit's own vault and a safe destination account are needed. Anyone may pay for the operation.A replacement account when neededIf an ATA is unsafe, create a new token account. Its owner and mint must still match the cycle.Access without this websiteThe package contains public addresses and a command for an independent client. It contains no secrets.Transactions and confirmationsA submitted signature does not yet mean execution. Do not repeat an unknown operation before checking it.Check confirmationsNo operations saved in this browser. The cycle can be read using its address.SwapCircle · Everyone brings their part.Last read: 19:23:01·localnet / Test funds",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "INPUT",
+          "id": "",
+          "name": "",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/rules",
+        "heading": "Clear rules from your first deposit",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "TRANSPARENT RULESClear rules from your first depositThe final deposit transfers all agreed assets in one transaction. If a participant is missing, recover your own deposit after the deadline.Shared settlementEach participant gives one exact asset amount and receives the previous participant's asset. The final valid deposit executes all transfers atomically. An error reverts that entire final transaction; earlier deposits remain.A lock with a deadlineA deposit cannot be revoked early and the deadline cannot be extended. The final participant may wait for a price change. After the deadline, each funded deposit can be refunded separately, without operator or counterparty approval.The recipient is fixedThe program checks the actual token-account owner, mint, delegate and frozen state. A refund to a new account preserves the deposit owner. The board operator has no keys to your tokens.Separate costsThe protocol charges no commission. The network charges fees, including for some failed transactions. The creator supplies SOL for account storage. Closing an empty vault returns its SOL to the original payer. The cycle record remains, so its storage cost is not returned. Returning tokens does not reimburse fees or price changes.Verify the program and environmentUpgrade authority is read directly from Solana.RefreshNetworklocalnet · Test fundsProgram IDHkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGunGenesis hash7Mazo1FTCvbNmW1xM4U9xMFYv97V8k3kN72vMzgNcv3tUpgrade authorityThe program can be upgraded by: 11111111111111111111111111111111Artifact hash0425e951600e3ddc2f14bcbc98e05daa22799afaf19c51b3e2344b4f8e5af137CommitNot providedRPChttp://127.0.0.1:8899Guarantees assume correct program code and network availability. SwapCircle does not guarantee profitability, liquidity, future token value or wallet security. dX, dY and dZ are demonstration tokens with no monetary value.Supported assetsClassic SPL Token without freeze authority or Token-2022 extensions. Wrapped SOL is not supported. Names and logos are only aids; the mint identifies the asset.dX7BSvCWkUNppqhzkXsBSpBBoBnywyibvX5YYx1bLdEzGV0 decimal placesdY9DVnLYQSYGruHzUp36zQQ7K92TeYg7Z7ZXkBvG45rWfr0 decimal placesdZ9XcSs5vihWmt6gJHBNen6Nknikb9FWEejFDdpBrsjrvS0 decimal placesdSIXq9DqytGyDUpES4b9Xfjknmuv7RUqq5XpHUtAzkYx7Ea6 decimal placesSwapCircle · Everyone brings their part.Last read: 19:23:02·localnet / Test funds",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Refresh",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/cycle/AikkwU6i7MZhJyu94op9pBmEhMRTgYGZ9ve6qZGJGQVi",
+        "heading": "Cycle details",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "TERMS RECORDED ON CHAINCycle detailsProgram state determines rights to tokens. Listing an address in a cycle does not mean its owner has consented.RefreshSettledCircle of 3 participantsAikkwU6i7MZhJyu94op9pBmEhMRTgYGZ9ve6qZGJGQViFunding deadline03/10/2026, 17:39Historical funding deadline. The outcome was read from the program.40 dY100 dX250 dZBBartek40 dYAAlicja100 dXCCelina250 dZPress enter or space to select a node. You can then use the arrow keys to move the node around. Press delete to remove it and escape to cancel.Press enter or space to select an edge. You can then press delete to remove it or escape to cancel.Exact transfers in the cycleOwnerYou giveRecipientYou receiveBartek45qmR…Avhoc40 dY9DVnL…5rWfrAlicja250 dZAlicjaHypnR…nkEDD100 dX7BSvC…dEzGVCelina40 dYCelina82Kkz…KTjjR250 dZ9XcSs…sjrvSBartek100 dXBartekSettledAlicjaSettledCelinaSettledExchange completed. All agreed transfers executed in the same transaction as the final deposit. The outcome was read from the program. The history below contains signatures saved in this browser.Your cycle operationsAnother wallet may pay for refunds and cleanup. Tokens still go to the recorded owners.Refund account modeDefault associated token accountNew safe account for this ownerExisting account of this ownerBartek40 dYDeposit fundedReturn surplusClose empty vaultAlicja100 dXDeposit fundedReturn surplusClose empty vaultCelina250 dZDeposit fundedReturn surplusClose empty vaultCycle rules: deposits remain locked until the exchange completes or they are refunded after the deadline. The final deposit automatically completes the entire exchange.Extra tokens in a vault go only to the original owner assigned to that vault, even if someone else sent them.Closing an empty vault returns the SOL held in that account to the recorded original payer: HypnR…nkEDD.The cycle record remains. SOL required to store that record and transaction fees are not returned.Participant balances after readbackCurrent balances across all accounts of each owner, separately for the outgoing and incoming mint.OwnerMintToken balanceRead atBartekdY9DVnL…5rWfr99979219:23:02BartekdZ9XcSs…sjrvS100075019:23:02AlicjadX7BSvC…dEzGV99947019:23:02AlicjadY9DVnL…5rWfr100016819:23:02CelinadZ9XcSs…sjrvS99900019:23:02CelinadX7BSvC…dEzGV100030019:23:02Download recovery packageSave public data and instructions for the independent client.Recovery package participantBartekAlicjaCelinaDownload JSONCopy linkVerify immutable termsProgram IDHkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGunTerms hashe2e4ee3a404c941e711aae363b112fe903b0fa987990fa8cd1b4870e2f4a5d52CreatorHypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDDNonce11141700639637550126Last read time03/10/2026, 19:23:02Transactions and confirmationsA submitted signature does not yet mean execution. Do not repeat an unknown operation before checking it.Check confirmationsNo operations saved in this browser. The cycle can be read using its address.SwapCircle · Everyone brings their part.Last read: 19:23:02·localnet / Test funds",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Refresh",
+          "mainContainsFocus": true
+        }
+      },
+      {
+        "route": "#/cycle/2XiE3MLZhFVLeo6NQhK72sjUx4GzokY4BYYDn7YPdHgB",
+        "heading": "Cycle details",
+        "exactUrlUnchanged": true,
+        "focusAfterSkip": {
+          "tag": "MAIN",
+          "id": "main-content",
+          "name": "TERMS RECORDED ON CHAINCycle detailsProgram state determines rights to tokens. Listing an address in a cycle does not mean its owner has consented.RefreshRefundedCircle of 2 participants2XiE3MLZhFVLeo6NQhK72sjUx4GzokY4BYYDn7YPdHgBFunding deadline03/10/2026, 17:55Historical funding deadline. The outcome was read from the program.10 dX4 dYAAlicja10 dXBBartek4 dYPress enter or space to select a node. You can then use the arrow keys to move the node around. Press delete to remove it and escape to cancel.Press enter or space to select an edge. You can then press delete to remove it or escape to cancel.Exact transfers in the cycleOwnerYou giveRecipientYou receiveAlicjaHypnR…nkEDD10 dX7BSvC…dEzGVBartek4 dYBartek45qmR…Avhoc4 dY9DVnL…5rWfrAlicja10 dXAlicjaRefunded2BartekNo depositThe exchange did not complete. All token deposits made into this cycle have been returned to their original owners. Participants who did not deposit had nothing to refund. Extra tokens in vaults and closing empty accounts are handled separately.Your cycle operationsAnother wallet may pay for refunds and cleanup. Tokens still go to the recorded owners.Refund account modeDefault associated token accountNew safe account for this ownerExisting account of this ownerAlicja10 dXDeposit refundedReturn surplusClose empty vaultBartek4 dYNo depositReturn surplusClose empty vaultCycle rules: deposits remain locked until the exchange completes or they are refunded after the deadline. The final deposit automatically completes the entire exchange.Extra tokens in a vault go only to the original owner assigned to that vault, even if someone else sent them.Closing an empty vault returns the SOL held in that account to the recorded original payer: HypnR…nkEDD.The cycle record remains. SOL required to store that record and transaction fees are not returned.Participant balances after readbackCurrent balances across all accounts of each owner, separately for the outgoing and incoming mint.OwnerMintToken balanceRead atAlicjadX7BSvC…dEzGV99947019:23:03AlicjadY9DVnL…5rWfr100016819:23:03BartekdY9DVnL…5rWfr99979219:23:03BartekdX7BSvC…dEzGV100022019:23:03Download recovery packageSave public data and instructions for the independent client.Recovery package participantAlicjaBartekDownload JSONCopy linkVerify immutable termsProgram IDHkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGunTerms hash08c8433bcbfc044bc2038e1e548d1d76182f2f7a5ee47d92f49f5d63ac4c3e94CreatorHypnRDosgPjCxwFmcncHNq1swZoT9JFpjbQ5Rm5nkEDDNonce4304257319463498913Last read time03/10/2026, 19:23:03Transactions and confirmationsA submitted signature does not yet mean execution. Do not repeat an unknown operation before checking it.Check confirmationsNo operations saved in this browser. The cycle can be read using its address.SwapCircle · Everyone brings their part.Last read: 19:23:03·localnet / Test funds",
+          "mainContainsFocus": true
+        },
+        "focusAfterTab": {
+          "tag": "BUTTON",
+          "id": "",
+          "name": "Refresh",
+          "mainContainsFocus": true
+        }
+      }
+    ],
+    "statistics": [
+      {
+        "language": "pl",
+        "width": 390,
+        "descriptions": [
+          {
+            "text": "podpisane i niewygasłe",
+            "foreground": [
+              173,
+              185,
+              200
+            ],
+            "background": [
+              24,
+              28,
+              37
+            ],
+            "contrast": 8.566090117532204,
+            "fontSize": 12,
+            "images": [],
+            "card": {
+              "x": 13,
+              "y": 430.921875,
+              "width": 177.5,
+              "height": 68,
+              "top": 430.921875,
+              "right": 190.5,
+              "bottom": 498.921875,
+              "left": 13
+            },
+            "lines": [
+              {
+                "x": 28,
+                "y": 466.921875,
+                "width": 128.609375,
+                "height": 16,
+                "top": 466.921875,
+                "right": 156.609375,
+                "bottom": 482.921875,
+                "left": 28
+              }
+            ],
+            "siblings": [
+              {
+                "x": 28,
+                "y": 445.921875,
+                "width": 132.25,
+                "height": 12,
+                "top": 445.921875,
+                "right": 160.25,
+                "bottom": 457.921875,
+                "left": 28
+              },
+              {
+                "x": 160.25,
+                "y": 445.921875,
+                "width": 15.25,
+                "height": 38,
+                "top": 445.921875,
+                "right": 175.5,
+                "bottom": 483.921875,
+                "left": 160.25
+              }
+            ],
+            "viewport": 390,
+            "documentWidth": 390,
+            "textOverflow": "clip",
+            "overflow": "visible",
+            "opacity": "1"
+          },
+          {
+            "text": "różne adresy portfeli",
+            "foreground": [
+              173,
+              185,
+              200
+            ],
+            "background": [
+              24,
+              28,
+              37
+            ],
+            "contrast": 8.566090117532204,
+            "fontSize": 12,
+            "images": [],
+            "card": {
+              "x": 199.5,
+              "y": 430.921875,
+              "width": 177.5,
+              "height": 68,
+              "top": 430.921875,
+              "right": 377,
+              "bottom": 498.921875,
+              "left": 199.5
+            },
+            "lines": [
+              {
+                "x": 214.5,
+                "y": 466.921875,
+                "width": 114.9375,
+                "height": 16,
+                "top": 466.921875,
+                "right": 329.4375,
+                "bottom": 482.921875,
+                "left": 214.5
+              }
+            ],
+            "siblings": [
+              {
+                "x": 214.5,
+                "y": 445.921875,
+                "width": 132.25,
+                "height": 12,
+                "top": 445.921875,
+                "right": 346.75,
+                "bottom": 457.921875,
+                "left": 214.5
+              },
+              {
+                "x": 346.75,
+                "y": 445.921875,
+                "width": 15.25,
+                "height": 38,
+                "top": 445.921875,
+                "right": 362,
+                "bottom": 483.921875,
+                "left": 346.75
+              }
+            ],
+            "viewport": 390,
+            "documentWidth": 390,
+            "textOverflow": "clip",
+            "overflow": "visible",
+            "opacity": "1"
+          },
+          {
+            "text": "2–4 uczestników",
+            "foreground": [
+              173,
+              185,
+              200
+            ],
+            "background": [
+              24,
+              28,
+              37
+            ],
+            "contrast": 8.566090117532204,
+            "fontSize": 12,
+            "images": [],
+            "card": {
+              "x": 13,
+              "y": 507.921875,
+              "width": 177.5,
+              "height": 86,
+              "top": 507.921875,
+              "right": 190.5,
+              "bottom": 593.921875,
+              "left": 13
+            },
+            "lines": [
+              {
+                "x": 28,
+                "y": 552.921875,
+                "width": 93.375,
+                "height": 16,
+                "top": 552.921875,
+                "right": 121.375,
+                "bottom": 568.921875,
+                "left": 28
+              }
+            ],
+            "siblings": [
+              {
+                "x": 28,
+                "y": 522.921875,
+                "width": 132.25,
+                "height": 21,
+                "top": 522.921875,
+                "right": 160.25,
+                "bottom": 543.921875,
+                "left": 28
+              },
+              {
+                "x": 160.25,
+                "y": 522.921875,
+                "width": 15.25,
+                "height": 56,
+                "top": 522.921875,
+                "right": 175.5,
+                "bottom": 578.921875,
+                "left": 160.25
+              }
+            ],
+            "viewport": 390,
+            "documentWidth": 390,
+            "textOverflow": "clip",
+            "overflow": "visible",
+            "opacity": "1"
+          },
+          {
+            "text": "opłaty sieci są osobne",
+            "foreground": [
+              173,
+              185,
+              200
+            ],
+            "background": [
+              24,
+              28,
+              37
+            ],
+            "contrast": 8.566090117532204,
+            "fontSize": 12,
+            "images": [],
+            "card": {
+              "x": 199.5,
+              "y": 507.921875,
+              "width": 177.5,
+              "height": 86,
+              "top": 507.921875,
+              "right": 377,
+              "bottom": 593.921875,
+              "left": 199.5
+            },
+            "lines": [
+              {
+                "x": 214.5,
+                "y": 543.921875,
+                "width": 79.578125,
+                "height": 16,
+                "top": 543.921875,
+                "right": 294.078125,
+                "bottom": 559.921875,
+                "left": 214.5
+              },
+              {
+                "x": 214.5,
+                "y": 561.921875,
+                "width": 41.484375,
+                "height": 16,
+                "top": 561.921875,
+                "right": 255.984375,
+                "bottom": 577.921875,
+                "left": 214.5
+              }
+            ],
+            "siblings": [
+              {
+                "x": 214.5,
+                "y": 522.921875,
+                "width": 110.53125,
+                "height": 12,
+                "top": 522.921875,
+                "right": 325.03125,
+                "bottom": 534.921875,
+                "left": 214.5
+              },
+              {
+                "x": 325.03125,
+                "y": 522.921875,
+                "width": 36.96875,
+                "height": 56,
+                "top": 522.921875,
+                "right": 362,
+                "bottom": 578.921875,
+                "left": 325.03125
+              }
+            ],
+            "viewport": 390,
+            "documentWidth": 390,
+            "textOverflow": "clip",
+            "overflow": "visible",
+            "opacity": "1"
+          }
+        ]
+      },
+      {
+        "language": "pl",
+        "width": 1440,
+        "descriptions": [
+          {
+            "text": "podpisane i niewygasłe",
+            "foreground": [
+              173,
+              185,
+              200
+            ],
+            "background": [
+              24,
+              28,
+              37
+            ],
+            "contrast": 8.566090117532204,
+            "fontSize": 12,
+            "images": [],
+            "card": {
+              "x": 280,
+              "y": 472.375,
+              "width": 268,
+              "height": 126,
+              "top": 472.375,
+              "right": 548,
+              "bottom": 598.375,
+              "left": 280
+            },
+            "lines": [
+              {
+                "x": 300,
+                "y": 563.375,
+                "width": 128.609375,
+                "height": 16,
+                "top": 563.375,
+                "right": 428.609375,
+                "bottom": 579.375,
+                "left": 300
+              }
+            ],
+            "siblings": [
+              {
+                "x": 300,
+                "y": 490.375,
+                "width": 228,
+                "height": 18,
+                "top": 490.375,
+                "right": 528,
+                "bottom": 508.375,
+                "left": 300
+              },
+              {
+                "x": 300,
+                "y": 518.375,
+                "width": 228,
+                "height": 40,
+                "top": 518.375,
+                "right": 528,
+                "bottom": 558.375,
+                "left": 300
+              }
+            ],
+            "viewport": 1440,
+            "documentWidth": 1440,
+            "textOverflow": "clip",
+            "overflow": "visible",
+            "opacity": "1"
+          },
+          {
+            "text": "różne adresy portfeli",
+            "foreground": [
+              173,
+              185,
+              200
+            ],
+            "background": [
+              24,
+              28,
+              37
+            ],
+            "contrast": 8.566090117532204,
+            "fontSize": 12,
+            "images": [],
+            "card": {
+              "x": 563,
+              "y": 472.375,
+              "width": 268,
+              "height": 126,
+              "top": 472.375,
+              "right": 831,
+              "bottom": 598.375,
+              "left": 563
+            },
+            "lines": [
+              {
+                "x": 583,
+                "y": 563.375,
+                "width": 114.9375,
+                "height": 16,
+                "top": 563.375,
+                "right": 697.9375,
+                "bottom": 579.375,
+                "left": 583
+              }
+            ],
+            "siblings": [
+              {
+                "x": 583,
+                "y": 490.375,
+                "width": 228,
+                "height": 18,
+                "top": 490.375,
+                "right": 811,
+                "bottom": 508.375,
+                "left": 583
+              },
+              {
+                "x": 583,
+                "y": 518.375,
+                "width": 228,
+                "height": 40,
+                "top": 518.375,
+                "right": 811,
+                "bottom": 558.375,
+                "left": 583
+              }
+            ],
+            "viewport": 1440,
+            "documentWidth": 1440,
+            "textOverflow": "clip",
+            "overflow": "visible",
+            "opacity": "1"
+          },
+          {
+            "text": "2–4 uczestników",
+            "foreground": [
+              173,
+              185,
+              200
+            ],
+            "background": [
+              24,
+              28,
+              37
+            ],
+            "contrast": 8.566090117532204,
+            "fontSize": 12,
+            "images": [],
+            "card": {
+              "x": 846,
+              "y": 472.375,
+              "width": 268,
+              "height": 126,
+              "top": 472.375,
+              "right": 1114,
+              "bottom": 598.375,
+              "left": 846
+            },
+            "lines": [
+              {
+                "x": 866,
+                "y": 563.375,
+                "width": 93.375,
+                "height": 16,
+                "top": 563.375,
+                "right": 959.375,
+                "bottom": 579.375,
+                "left": 866
+              }
+            ],
+            "siblings": [
+              {
+                "x": 866,
+                "y": 490.375,
+                "width": 228,
+                "height": 18,
+                "top": 490.375,
+                "right": 1094,
+                "bottom": 508.375,
+                "left": 866
+              },
+              {
+                "x": 866,
+                "y": 518.375,
+                "width": 228,
+                "height": 40,
+                "top": 518.375,
+                "right": 1094,
+                "bottom": 558.375,
+                "left": 866
+              }
+            ],
+            "viewport": 1440,
+            "documentWidth": 1440,
+            "textOverflow": "clip",
+            "overflow": "visible",
+            "opacity": "1"
+          },
+          {
+            "text": "opłaty sieci są osobne",
+            "foreground": [
+              173,
+              185,
+              200
+            ],
+            "background": [
+              24,
+              28,
+              37
+            ],
+            "contrast": 8.566090117532204,
+            "fontSize": 12,
+            "images": [],
+            "card": {
+              "x": 1129,
+              "y": 472.375,
+              "width": 268,
+              "height": 126,
+              "top": 472.375,
+              "right": 1397,
+              "bottom": 598.375,
+              "left": 1129
+            },
+            "lines": [
+              {
+                "x": 1149,
+                "y": 563.375,
+                "width": 124.25,
+                "height": 16,
+                "top": 563.375,
+                "right": 1273.25,
+                "bottom": 579.375,
+                "left": 1149
+              }
+            ],
+            "siblings": [
+              {
+                "x": 1149,
+                "y": 490.375,
+                "width": 228,
+                "height": 18,
+                "top": 490.375,
+                "right": 1377,
+                "bottom": 508.375,
+                "left": 1149
+              },
+              {
+                "x": 1149,
+                "y": 518.375,
+                "width": 228,
+                "height": 40,
+                "top": 518.375,
+                "right": 1377,
+                "bottom": 558.375,
+                "left": 1149
+              }
+            ],
+            "viewport": 1440,
+            "documentWidth": 1440,
+            "textOverflow": "clip",
+            "overflow": "visible",
+            "opacity": "1"
+          }
+        ]
+      },
+      {
+        "language": "en",
+        "width": 390,
+        "descriptions": [
+          {
+            "text": "signed and unexpired",
+            "foreground": [
+              173,
+              185,
+              200
+            ],
+            "background": [
+              24,
+              28,
+              37
+            ],
+            "contrast": 8.566090117532204,
+            "fontSize": 12,
+            "images": [],
+            "card": {
+              "x": 13,
+              "y": 449.390625,
+              "width": 177.5,
+              "height": 86,
+              "top": 449.390625,
+              "right": 190.5,
+              "bottom": 535.390625,
+              "left": 13
+            },
+            "lines": [
+              {
+                "x": 28,
+                "y": 494.390625,
+                "width": 119.359375,
+                "height": 16,
+                "top": 494.390625,
+                "right": 147.359375,
+                "bottom": 510.390625,
+                "left": 28
+              }
+            ],
+            "siblings": [
+              {
+                "x": 28,
+                "y": 464.390625,
+                "width": 132.25,
+                "height": 21,
+                "top": 464.390625,
+                "right": 160.25,
+                "bottom": 485.390625,
+                "left": 28
+              },
+              {
+                "x": 160.25,
+                "y": 464.390625,
+                "width": 15.25,
+                "height": 56,
+                "top": 464.390625,
+                "right": 175.5,
+                "bottom": 520.390625,
+                "left": 160.25
+              }
+            ],
+            "viewport": 390,
+            "documentWidth": 390,
+            "textOverflow": "clip",
+            "overflow": "visible",
+            "opacity": "1"
+          },
+          {
+            "text": "different wallet addresses",
+            "foreground": [
+              173,
+              185,
+              200
+            ],
+            "background": [
+              24,
+              28,
+              37
+            ],
+            "contrast": 8.566090117532204,
+            "fontSize": 12,
+            "images": [],
+            "card": {
+              "x": 199.5,
+              "y": 449.390625,
+              "width": 177.5,
+              "height": 86,
+              "top": 449.390625,
+              "right": 377,
+              "bottom": 535.390625,
+              "left": 199.5
+            },
+            "lines": [
+              {
+                "x": 214.5,
+                "y": 485.390625,
+                "width": 83.09375,
+                "height": 16,
+                "top": 485.390625,
+                "right": 297.59375,
+                "bottom": 501.390625,
+                "left": 214.5
+              },
+              {
+                "x": 214.5,
+                "y": 503.390625,
+                "width": 57.5,
+                "height": 16,
+                "top": 503.390625,
+                "right": 272,
+                "bottom": 519.390625,
+                "left": 214.5
+              }
+            ],
+            "siblings": [
+              {
+                "x": 214.5,
+                "y": 464.390625,
+                "width": 132.25,
+                "height": 12,
+                "top": 464.390625,
+                "right": 346.75,
+                "bottom": 476.390625,
+                "left": 214.5
+              },
+              {
+                "x": 346.75,
+                "y": 464.390625,
+                "width": 15.25,
+                "height": 56,
+                "top": 464.390625,
+                "right": 362,
+                "bottom": 520.390625,
+                "left": 346.75
+              }
+            ],
+            "viewport": 390,
+            "documentWidth": 390,
+            "textOverflow": "clip",
+            "overflow": "visible",
+            "opacity": "1"
+          },
+          {
+            "text": "2–4 participants",
+            "foreground": [
+              173,
+              185,
+              200
+            ],
+            "background": [
+              24,
+              28,
+              37
+            ],
+            "contrast": 8.566090117532204,
+            "fontSize": 12,
+            "images": [],
+            "card": {
+              "x": 13,
+              "y": 544.390625,
+              "width": 177.5,
+              "height": 86,
+              "top": 544.390625,
+              "right": 190.5,
+              "bottom": 630.390625,
+              "left": 13
+            },
+            "lines": [
+              {
+                "x": 28,
+                "y": 589.390625,
+                "width": 92.890625,
+                "height": 16,
+                "top": 589.390625,
+                "right": 120.890625,
+                "bottom": 605.390625,
+                "left": 28
+              }
+            ],
+            "siblings": [
+              {
+                "x": 28,
+                "y": 559.390625,
+                "width": 132.25,
+                "height": 21,
+                "top": 559.390625,
+                "right": 160.25,
+                "bottom": 580.390625,
+                "left": 28
+              },
+              {
+                "x": 160.25,
+                "y": 559.390625,
+                "width": 15.25,
+                "height": 56,
+                "top": 559.390625,
+                "right": 175.5,
+                "bottom": 615.390625,
+                "left": 160.25
+              }
+            ],
+            "viewport": 390,
+            "documentWidth": 390,
+            "textOverflow": "clip",
+            "overflow": "visible",
+            "opacity": "1"
+          },
+          {
+            "text": "network fees are separate",
+            "foreground": [
+              173,
+              185,
+              200
+            ],
+            "background": [
+              24,
+              28,
+              37
+            ],
+            "contrast": 8.566090117532204,
+            "fontSize": 12,
+            "images": [],
+            "card": {
+              "x": 199.5,
+              "y": 544.390625,
+              "width": 177.5,
+              "height": 86,
+              "top": 544.390625,
+              "right": 377,
+              "bottom": 630.390625,
+              "left": 199.5
+            },
+            "lines": [
+              {
+                "x": 214.5,
+                "y": 580.390625,
+                "width": 92.171875,
+                "height": 16,
+                "top": 580.390625,
+                "right": 306.671875,
+                "bottom": 596.390625,
+                "left": 214.5
+              },
+              {
+                "x": 214.5,
+                "y": 598.390625,
+                "width": 49.046875,
+                "height": 16,
+                "top": 598.390625,
+                "right": 263.546875,
+                "bottom": 614.390625,
+                "left": 214.5
+              }
+            ],
+            "siblings": [
+              {
+                "x": 214.5,
+                "y": 559.390625,
+                "width": 110.53125,
+                "height": 12,
+                "top": 559.390625,
+                "right": 325.03125,
+                "bottom": 571.390625,
+                "left": 214.5
+              },
+              {
+                "x": 325.03125,
+                "y": 559.390625,
+                "width": 36.96875,
+                "height": 56,
+                "top": 559.390625,
+                "right": 362,
+                "bottom": 615.390625,
+                "left": 325.03125
+              }
+            ],
+            "viewport": 390,
+            "documentWidth": 390,
+            "textOverflow": "clip",
+            "overflow": "visible",
+            "opacity": "1"
+          }
+        ]
+      },
+      {
+        "language": "en",
+        "width": 1440,
+        "descriptions": [
+          {
+            "text": "signed and unexpired",
+            "foreground": [
+              173,
+              185,
+              200
+            ],
+            "background": [
+              24,
+              28,
+              37
+            ],
+            "contrast": 8.566090117532204,
+            "fontSize": 12,
+            "images": [],
+            "card": {
+              "x": 280,
+              "y": 472.375,
+              "width": 268,
+              "height": 126,
+              "top": 472.375,
+              "right": 548,
+              "bottom": 598.375,
+              "left": 280
+            },
+            "lines": [
+              {
+                "x": 300,
+                "y": 563.375,
+                "width": 119.359375,
+                "height": 16,
+                "top": 563.375,
+                "right": 419.359375,
+                "bottom": 579.375,
+                "left": 300
+              }
+            ],
+            "siblings": [
+              {
+                "x": 300,
+                "y": 490.375,
+                "width": 228,
+                "height": 18,
+                "top": 490.375,
+                "right": 528,
+                "bottom": 508.375,
+                "left": 300
+              },
+              {
+                "x": 300,
+                "y": 518.375,
+                "width": 228,
+                "height": 40,
+                "top": 518.375,
+                "right": 528,
+                "bottom": 558.375,
+                "left": 300
+              }
+            ],
+            "viewport": 1440,
+            "documentWidth": 1440,
+            "textOverflow": "clip",
+            "overflow": "visible",
+            "opacity": "1"
+          },
+          {
+            "text": "different wallet addresses",
+            "foreground": [
+              173,
+              185,
+              200
+            ],
+            "background": [
+              24,
+              28,
+              37
+            ],
+            "contrast": 8.566090117532204,
+            "fontSize": 12,
+            "images": [],
+            "card": {
+              "x": 563,
+              "y": 472.375,
+              "width": 268,
+              "height": 126,
+              "top": 472.375,
+              "right": 831,
+              "bottom": 598.375,
+              "left": 563
+            },
+            "lines": [
+              {
+                "x": 583,
+                "y": 563.375,
+                "width": 143.78125,
+                "height": 16,
+                "top": 563.375,
+                "right": 726.78125,
+                "bottom": 579.375,
+                "left": 583
+              }
+            ],
+            "siblings": [
+              {
+                "x": 583,
+                "y": 490.375,
+                "width": 228,
+                "height": 18,
+                "top": 490.375,
+                "right": 811,
+                "bottom": 508.375,
+                "left": 583
+              },
+              {
+                "x": 583,
+                "y": 518.375,
+                "width": 228,
+                "height": 40,
+                "top": 518.375,
+                "right": 811,
+                "bottom": 558.375,
+                "left": 583
+              }
+            ],
+            "viewport": 1440,
+            "documentWidth": 1440,
+            "textOverflow": "clip",
+            "overflow": "visible",
+            "opacity": "1"
+          },
+          {
+            "text": "2–4 participants",
+            "foreground": [
+              173,
+              185,
+              200
+            ],
+            "background": [
+              24,
+              28,
+              37
+            ],
+            "contrast": 8.566090117532204,
+            "fontSize": 12,
+            "images": [],
+            "card": {
+              "x": 846,
+              "y": 472.375,
+              "width": 268,
+              "height": 126,
+              "top": 472.375,
+              "right": 1114,
+              "bottom": 598.375,
+              "left": 846
+            },
+            "lines": [
+              {
+                "x": 866,
+                "y": 563.375,
+                "width": 92.890625,
+                "height": 16,
+                "top": 563.375,
+                "right": 958.890625,
+                "bottom": 579.375,
+                "left": 866
+              }
+            ],
+            "siblings": [
+              {
+                "x": 866,
+                "y": 490.375,
+                "width": 228,
+                "height": 18,
+                "top": 490.375,
+                "right": 1094,
+                "bottom": 508.375,
+                "left": 866
+              },
+              {
+                "x": 866,
+                "y": 518.375,
+                "width": 228,
+                "height": 40,
+                "top": 518.375,
+                "right": 1094,
+                "bottom": 558.375,
+                "left": 866
+              }
+            ],
+            "viewport": 1440,
+            "documentWidth": 1440,
+            "textOverflow": "clip",
+            "overflow": "visible",
+            "opacity": "1"
+          },
+          {
+            "text": "network fees are separate",
+            "foreground": [
+              173,
+              185,
+              200
+            ],
+            "background": [
+              24,
+              28,
+              37
+            ],
+            "contrast": 8.566090117532204,
+            "fontSize": 12,
+            "images": [],
+            "card": {
+              "x": 1129,
+              "y": 472.375,
+              "width": 268,
+              "height": 126,
+              "top": 472.375,
+              "right": 1397,
+              "bottom": 598.375,
+              "left": 1129
+            },
+            "lines": [
+              {
+                "x": 1149,
+                "y": 563.375,
+                "width": 144.40625,
+                "height": 16,
+                "top": 563.375,
+                "right": 1293.40625,
+                "bottom": 579.375,
+                "left": 1149
+              }
+            ],
+            "siblings": [
+              {
+                "x": 1149,
+                "y": 490.375,
+                "width": 228,
+                "height": 18,
+                "top": 490.375,
+                "right": 1377,
+                "bottom": 508.375,
+                "left": 1149
+              },
+              {
+                "x": 1149,
+                "y": 518.375,
+                "width": 228,
+                "height": 40,
+                "top": 518.375,
+                "right": 1377,
+                "bottom": 558.375,
+                "left": 1149
+              }
+            ],
+            "viewport": 1440,
+            "documentWidth": 1440,
+            "textOverflow": "clip",
+            "overflow": "visible",
+            "opacity": "1"
+          }
+        ]
+      }
+    ]
+  },
+  "complete": true,
+  "runtimeSourceSha256": {
+    "apps/web/src/App.tsx": "fdd3e6423a6001e7cf7c2335d332101ac0a0962a12e985fa571319fb38d24c15",
+    "apps/web/src/styles.css": "e4f384fda9745ccb6e870713e9770d1475b94535512efbc535665df0363dbdb4"
+  },
+  "limitations": [
+    "Próbkowy pomiar kontrastu i nawigacji klawiaturą, bez deklaracji pełnej zgodności WCAG, powiększenia przeglądarki lub testu czytnika ekranu.",
+    "Stan portfela pozostaje rozłączony; test nie dotyczy przebiegu podpisywania transakcji."
+  ],
+  "regression": {
+    "execution": "Standardowy runner Playwright na źródłach TypeScript, jeden worker, Chrome. Bez bundlowania testów.",
+    "command": "pnpm --dir apps/web exec playwright test e2e/interface.spec.ts e2e/ux-round2.spec.ts --reporter=list,json",
+    "environment": {
+      "SWAPCIRCLE_UX_ROUND2_LOCALNET": "1",
+      "SWAPCIRCLE_UX_RUN_ID": "audit-round2",
+      "E2E_BASE_URL": "http://127.0.0.1:5187",
+      "E2E_BROWSER_CHANNEL": "chrome"
+    },
+    "stats": {
+      "startTime": "2026-10-03T17:22:27.387Z",
+      "duration": 39759.186,
+      "expected": 8,
+      "skipped": 0,
+      "unexpected": 0,
+      "flaky": 0
+    },
+    "exitCode": 0
+  },
+  "archivedRound1": {
+    "evidence": "docs/evidence/ui-ux-audit.json",
+    "sha256": "5d211eede22981dc78418630cc1c6ec36d2f1dc474a8e0f82100792e53c3c50b",
+    "unchanged": true
+  },
+  "visualReview": {
+    "screenshots": [
+      "docs/evidence/ui-ux-round2-stats-pl-mobile.png",
+      "docs/evidence/ui-ux-round2-stats-en-mobile.png",
+      "docs/evidence/ui-ux-round2-skip-mobile.png"
+    ],
+    "result": "Obejrzano wszystkie trzy zrzuty. Opisy statystyk są pełne, zawijają się w obrębie kafli i nie nakładają na liczby. Po aktywacji skip link w Dopasowaniach widok pozostaje na tej trasie, a kolejny Tab wskazuje przycisk ręcznego cyklu."
+  }
+}

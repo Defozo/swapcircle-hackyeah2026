@@ -1,0 +1,114 @@
+WEBVTT
+
+1
+00:00:00.650 --> 00:00:03.970
+W wymianie z obcą osobą ktoś zwykle musi wysłać
+pierwszy.
+
+2
+00:00:03.970 --> 00:00:06.362
+Co jeśli druga strona zniknie?
+
+3
+00:00:08.650 --> 00:00:10.908
+Alicja ma tokeny, których potrzebuje Celina.
+
+4
+00:00:10.908 --> 00:00:12.808
+Celina ma coś dla Bartka.
+
+5
+00:00:12.808 --> 00:00:15.308
+Bartek ma to, czego szuka Alicja.
+
+6
+00:00:15.308 --> 00:00:18.402
+Żadna para nie pasuje, ale cała trójka może się
+wymienić.
+
+7
+00:00:20.805 --> 00:00:23.105
+SwapCircle znajduje taki krąg.
+
+8
+00:00:23.105 --> 00:00:25.705
+100 tokenów dX trafia od Alicji do Celiny,
+
+9
+00:00:25.705 --> 00:00:28.305
+250 dZ od Celiny do Bartka,
+
+10
+00:00:28.305 --> 00:00:31.192
+40 dY od Bartka do Alicji.
+
+11
+00:00:35.400 --> 00:00:39.264
+Każdy widzi ile wpłaca, co otrzyma i do kiedy można
+dołączyć.
+
+12
+00:00:39.464 --> 00:00:41.764
+Te warunki zostają zapisane w cyklu.
+
+13
+00:00:41.764 --> 00:00:43.806
+Nie można ich podmienić po wpłacie.
+
+14
+00:00:45.658 --> 00:00:47.658
+Alicja wpłaca pierwsza.
+
+15
+00:00:47.658 --> 00:00:49.758
+Bartek dołącza chwilę później.
+
+16
+00:00:49.758 --> 00:00:52.058
+Ich tokeny czekają w depozytach programu.
+
+17
+00:00:52.058 --> 00:00:53.684
+Nikt jeszcze nie dostaje wypłaty.
+
+18
+00:00:58.674 --> 00:01:00.474
+Teraz wpłaca Celina.
+
+19
+00:01:00.574 --> 00:01:04.074
+Ostatnia wpłata uruchamia całe rozliczenie w jednej
+transakcji.
+
+20
+00:01:04.174 --> 00:01:08.374
+Wszyscy otrzymują uzgodnione tokeny albo ta transakcja
+nie dochodzi do skutku.
+
+21
+00:01:11.650 --> 00:01:13.586
+A jeśli Celina nie dołączy?
+
+22
+00:01:13.886 --> 00:01:18.486
+Po upływie terminu Alicja i Bartek mogą osobno
+odzyskać swoje depozyty,
+
+23
+00:01:18.486 --> 00:01:21.913
+bez zgody nieobecnej osoby i bez decyzji operatora.
+
+24
+00:01:27.672 --> 00:01:31.572
+Ten sam mechanizm obsługuje wymiany dwóch, trzech i
+czterech osób.
+
+25
+00:01:31.972 --> 00:01:38.272
+Dla małych społeczności Solany to sposób na połączenie
+ofert, które osobno nie znalazłyby partnera.
+
+26
+00:01:40.650 --> 00:01:45.201
+Otwórz demo SwapCircle, znajdź krąg, przeprowadź
+wymianę i sprawdź zwrot.

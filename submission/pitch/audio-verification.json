@@ -1,0 +1,124 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "candidate": "SwapCircle-demo.mp4",
+  "candidate_sha256": "78d8d1e36760be0740e07f7db40246fd001ace736aca42e81874436ec5657481",
+  "duration_seconds": 108,
+  "audio_video_duration_delta_seconds": 0.0,
+  "integrated_loudness_lufs": -17.34,
+  "true_peak_dbtp": -1.74,
+  "mix_source_correlation": 0.9999927387251787,
+  "narration_segment_provenance": [
+    {
+      "id": "01-hook",
+      "lag_samples": 0,
+      "lag_milliseconds": 0.0,
+      "correlation": 0.985630905596528
+    },
+    {
+      "id": "02-offers",
+      "lag_samples": 0,
+      "lag_milliseconds": 0.0,
+      "correlation": 0.9823109983889274
+    },
+    {
+      "id": "03-cycle",
+      "lag_samples": 0,
+      "lag_milliseconds": 0.0,
+      "correlation": 0.9810038989594926
+    },
+    {
+      "id": "04-terms",
+      "lag_samples": 0,
+      "lag_milliseconds": 0.0,
+      "correlation": 0.9850967352902894
+    },
+    {
+      "id": "05-deposits",
+      "lag_samples": 0,
+      "lag_milliseconds": 0.0,
+      "correlation": 0.9830150767135696
+    },
+    {
+      "id": "06-settlement",
+      "lag_samples": 0,
+      "lag_milliseconds": 0.0,
+      "correlation": 0.9830564277653817
+    },
+    {
+      "id": "07-refund",
+      "lag_samples": 0,
+      "lag_milliseconds": 0.0,
+      "correlation": 0.9812042965786048
+    },
+    {
+      "id": "08-community",
+      "lag_samples": 0,
+      "lag_milliseconds": 0.0,
+      "correlation": 0.9862880143160165
+    },
+    {
+      "id": "09-close",
+      "lag_samples": 0,
+      "lag_milliseconds": 0.0,
+      "correlation": 0.9851603555215739
+    }
+  ],
+  "last_voice_end_seconds": 105.201125,
+  "music_fade_seconds": 3,
+  "final_frame_seconds": 107.8,
+  "perceptual_review": {
+    "reviewer": "Independent stateless Gemini 3.8 Flash audiovisual model request",
+    "type": "model perception of actual MP4, not human listening",
+    "input": "Exact full final MP4 including its encoded AAC track",
+    "input_sha256": "78d8d1e36760be0740e07f7db40246fd001ace736aca42e81874436ec5657481",
+    "range_seconds": [
+      0,
+      108
+    ],
+    "script_supplied": false,
+    "history_supplied": false,
+    "voice": {
+      "intelligibility": "Bardzo wysoka",
+      "pronunciation": "Czysta i naturalna wymowa w języku polskim, w tym symboli tokenów (dX, dY, dZ), nazw własnych oraz pojęć technicznych ('Solany', 'depozyt', 'skarbiec').",
+      "pacing": "Równomierne, spokojne tempo dopasowane do prezentowanych plansz interfejsu."
+    },
+    "music": {
+      "balance": "Muzyka tła jest wyważona, nie zakłóca odbioru lektorki i zachowuje odpowiedni poziom głośności.",
+      "ducking_fade": "Płynne wejście na początku oraz miękkie wyciszenie (fade-out) pod koniec nagrania."
+    },
+    "audiovisual_alignment": {
+      "sync": "Ścisła synchronizacja; narracja wyprzedza lub precyzyjnie opisuje klikane elementy modali, statusy wpłat w tabeli i stany zegara.",
+      "demo_truthfulness": "Etykiety 'DEMO' są stale widoczne w interfejsie oraz w narożnikach slajdów, rzetelnie informując o charakterze demonstracyjnym."
+    },
+    "ending": {
+      "end_timestamp": "01:48",
+      "last_spoken_words": "Znajdź krąg, przeprowadź wymianę i sprawdź zwrot.",
+      "audio_completes": true,
+      "observation": "Lektorka dokończyła zdanie przed 01:46, po czym nastąpiło łagodne wyciszenie muzyki do 01:48."
+    },
+    "confirmed_issues": [],
+    "overall_pass": true,
+    "raw_evidence": "docs/evidence/pitch-video-perceptual.json"
+  },
+  "editor_frame_review": {
+    "frames": 27,
+    "method": "Source, boundary, midpoint and ending stills extracted by output timestamp and visually inspected. Full motion/audio perception is separately covered by the exact MP4 review."
+  },
+  "secondary_audio_review": {
+    "input": "AAC elementary stream copied from final MP4",
+    "content_and_mix": "All nine narration parts heard, quiet ambient music, no reported clipping, pops or cutoff.",
+    "limitation": "Raw ADTS duration estimation and model timestamps were unreliable. They are excluded from timing evidence. Exact MP4 container, decoded samples and final full-MP4 review are authoritative."
+  },
+  "caption_review": {
+    "cue_count": 26,
+    "all_bounds_within_video": true,
+    "no_overlaps": true,
+    "final_cue_end_seconds": 105.201125,
+    "alignment_precision": "Sentence-level approximate timing, based on actual voice audition and exact per-clip output offsets; no claim of word-level forced alignment."
+  },
+  "limitations": [
+    "Audio perception was performed by a multimodal model, not a human listener.",
+    "Model timestamps are approximate. Frame counts and exact sample positions come from local decoding."
+  ]
+}

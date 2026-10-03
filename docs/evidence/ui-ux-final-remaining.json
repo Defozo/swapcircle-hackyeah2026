@@ -1,0 +1,324 @@
+{
+  "checkedAt": "2026-10-03T17:35:12.928Z",
+  "status": "partial",
+  "scope": "Odczytowe potwierdzenie trzech uwag końcowego niezależnego audytu. Bez poprawek runtime, nowych testów stale blokujących CI, podpisów, transakcji i zmian rejestru.",
+  "reference": "docs/evidence/ux-independent-3.json",
+  "findings": {
+    "F1": {
+      "confirmed": true,
+      "summary": "Shift+Tab z przycisku Zamknij przenosi fokus na Anuluj poza widocznym obszarem dialogu, bez przewinięcia. Powtórzono dwukrotnie przy 720×450. Escape nadal przywraca fokus przyciskowi otwierającemu.",
+      "attempts": [
+        {
+          "attempt": 1,
+          "initial": {
+            "name": "Zamknij",
+            "tag": "BUTTON",
+            "bounds": {
+              "x": 583,
+              "y": 43.25,
+              "width": 34,
+              "height": 34,
+              "top": 43.25,
+              "right": 617,
+              "bottom": 77.25,
+              "left": 583
+            },
+            "viewport": {
+              "width": 720,
+              "height": 450
+            },
+            "modalBounds": {
+              "x": 80,
+              "y": 20.25,
+              "width": 560,
+              "height": 409.5,
+              "top": 20.25,
+              "right": 640,
+              "bottom": 429.75,
+              "left": 80
+            },
+            "modalScrollTop": 0,
+            "modalClientHeight": 408,
+            "modalScrollHeight": 975,
+            "wholeControlVisible": true
+          },
+          "wrappedBack": {
+            "name": "Anuluj",
+            "tag": "BUTTON",
+            "bounds": {
+              "x": 391.078125,
+              "y": 863.296875,
+              "width": 62.75,
+              "height": 37,
+              "top": 863.296875,
+              "right": 453.828125,
+              "bottom": 900.296875,
+              "left": 391.078125
+            },
+            "viewport": {
+              "width": 720,
+              "height": 450
+            },
+            "modalBounds": {
+              "x": 80,
+              "y": 20.25,
+              "width": 560,
+              "height": 409.5,
+              "top": 20.25,
+              "right": 640,
+              "bottom": 429.75,
+              "left": 80
+            },
+            "modalScrollTop": 0,
+            "modalClientHeight": 408,
+            "modalScrollHeight": 975,
+            "wholeControlVisible": false
+          },
+          "wrappedForward": {
+            "name": "Zamknij",
+            "tag": "BUTTON",
+            "bounds": {
+              "x": 583,
+              "y": 43.25,
+              "width": 34,
+              "height": 34,
+              "top": 43.25,
+              "right": 617,
+              "bottom": 77.25,
+              "left": 583
+            },
+            "viewport": {
+              "width": 720,
+              "height": 450
+            },
+            "modalBounds": {
+              "x": 80,
+              "y": 20.25,
+              "width": 560,
+              "height": 409.5,
+              "top": 20.25,
+              "right": 640,
+              "bottom": 429.75,
+              "left": 80
+            },
+            "modalScrollTop": 0,
+            "modalClientHeight": 408,
+            "modalScrollHeight": 975,
+            "wholeControlVisible": true
+          },
+          "escapeRestoredTrigger": true
+        },
+        {
+          "attempt": 2,
+          "initial": {
+            "name": "Zamknij",
+            "tag": "BUTTON",
+            "bounds": {
+              "x": 583,
+              "y": 43.25,
+              "width": 34,
+              "height": 34,
+              "top": 43.25,
+              "right": 617,
+              "bottom": 77.25,
+              "left": 583
+            },
+            "viewport": {
+              "width": 720,
+              "height": 450
+            },
+            "modalBounds": {
+              "x": 80,
+              "y": 20.25,
+              "width": 560,
+              "height": 409.5,
+              "top": 20.25,
+              "right": 640,
+              "bottom": 429.75,
+              "left": 80
+            },
+            "modalScrollTop": 0,
+            "modalClientHeight": 408,
+            "modalScrollHeight": 975,
+            "wholeControlVisible": true
+          },
+          "wrappedBack": {
+            "name": "Anuluj",
+            "tag": "BUTTON",
+            "bounds": {
+              "x": 391.078125,
+              "y": 863.296875,
+              "width": 62.75,
+              "height": 37,
+              "top": 863.296875,
+              "right": 453.828125,
+              "bottom": 900.296875,
+              "left": 391.078125
+            },
+            "viewport": {
+              "width": 720,
+              "height": 450
+            },
+            "modalBounds": {
+              "x": 80,
+              "y": 20.25,
+              "width": 560,
+              "height": 409.5,
+              "top": 20.25,
+              "right": 640,
+              "bottom": 429.75,
+              "left": 80
+            },
+            "modalScrollTop": 0,
+            "modalClientHeight": 408,
+            "modalScrollHeight": 975,
+            "wholeControlVisible": false
+          },
+          "wrappedForward": {
+            "name": "Zamknij",
+            "tag": "BUTTON",
+            "bounds": {
+              "x": 583,
+              "y": 43.25,
+              "width": 34,
+              "height": 34,
+              "top": 43.25,
+              "right": 617,
+              "bottom": 77.25,
+              "left": 583
+            },
+            "viewport": {
+              "width": 720,
+              "height": 450
+            },
+            "modalBounds": {
+              "x": 80,
+              "y": 20.25,
+              "width": 560,
+              "height": 409.5,
+              "top": 20.25,
+              "right": 640,
+              "bottom": 429.75,
+              "left": 80
+            },
+            "modalScrollTop": 0,
+            "modalClientHeight": 408,
+            "modalScrollHeight": 975,
+            "wholeControlVisible": true
+          },
+          "escapeRestoredTrigger": true
+        }
+      ]
+    },
+    "F2": {
+      "confirmed": true,
+      "summary": "W dwóch sprawdzonych sekcjach aktywna pozycja jest wyróżniona klasą CSS, ale nie ma aria-current, aria-selected ani aria-pressed.",
+      "navigation": [
+        {
+          "route": "board",
+          "entries": [
+            {
+              "text": "Tablica ofert",
+              "visuallyActiveClass": true,
+              "ariaCurrent": null,
+              "ariaSelected": null,
+              "ariaPressed": null
+            },
+            {
+              "text": "Dopasowania",
+              "visuallyActiveClass": false,
+              "ariaCurrent": null,
+              "ariaSelected": null,
+              "ariaPressed": null
+            },
+            {
+              "text": "Moje depozyty",
+              "visuallyActiveClass": false,
+              "ariaCurrent": null,
+              "ariaSelected": null,
+              "ariaPressed": null
+            },
+            {
+              "text": "Odzyskiwanie",
+              "visuallyActiveClass": false,
+              "ariaCurrent": null,
+              "ariaSelected": null,
+              "ariaPressed": null
+            },
+            {
+              "text": "Jak działa SwapCircle",
+              "visuallyActiveClass": false,
+              "ariaCurrent": null,
+              "ariaSelected": null,
+              "ariaPressed": null
+            }
+          ]
+        },
+        {
+          "route": "matches",
+          "entries": [
+            {
+              "text": "Tablica ofert",
+              "visuallyActiveClass": false,
+              "ariaCurrent": null,
+              "ariaSelected": null,
+              "ariaPressed": null
+            },
+            {
+              "text": "Dopasowania",
+              "visuallyActiveClass": true,
+              "ariaCurrent": null,
+              "ariaSelected": null,
+              "ariaPressed": null
+            },
+            {
+              "text": "Moje depozyty",
+              "visuallyActiveClass": false,
+              "ariaCurrent": null,
+              "ariaSelected": null,
+              "ariaPressed": null
+            },
+            {
+              "text": "Odzyskiwanie",
+              "visuallyActiveClass": false,
+              "ariaCurrent": null,
+              "ariaSelected": null,
+              "ariaPressed": null
+            },
+            {
+              "text": "Jak działa SwapCircle",
+              "visuallyActiveClass": false,
+              "ariaCurrent": null,
+              "ariaSelected": null,
+              "ariaPressed": null
+            }
+          ]
+        }
+      ]
+    },
+    "F3": {
+      "observed": true,
+      "summary": "Pole adresu używa skrótu PDA, a opis konta zastępczego skrótu ATA. Przytoczona treść ekranu nie rozwija tych skrótów ani nie wskazuje komunikatu rozpoznającego uszkodzenie ATA. Nie przeprowadzono badania z nowym użytkownikiem.",
+      "recovery": {
+        "placeholder": "Publiczny adres PDA cyklu",
+        "formText": "Odczytaj cykl\nAdres cyklu\nOdczytaj cykl\nlub odczytaj adres z pakietu\nWybierz publiczny pakiet odzyskiwania",
+        "visibleInstructions": "Co jest Twoim prawem?\nDokładna kwota depozytu\n\nZwrot obejmuje zdeponowane tokeny. Opłaty sieciowe i utracone korzyści nie są zwracane.\n\nBez zgody pozostałych osób\n\nPo terminie wystarczy własny skarbiec i bezpieczne konto docelowe. Dowolna osoba może opłacić operację.\n\nKonto zastępcze, gdy potrzebne\n\nGdy ATA jest uszkodzone, utwórz nowe konto tokenowe. Właściciel i mint pozostają zgodne z cyklem.\n\nDostęp również bez tej strony\n\nPakiet zawiera adresy i komendę niezależnego klienta. Nie zawiera żadnych sekretów."
+      }
+    }
+  },
+  "screenshot": "docs/evidence/ui-ux-final-remaining.png",
+  "runtimeUnchanged": true,
+  "runtimeSourceSha256": {
+    "apps/web/src/App.tsx": "fdd3e6423a6001e7cf7c2335d332101ac0a0962a12e985fa571319fb38d24c15",
+    "apps/web/src/ui.tsx": "c8744e4a981bfd650bcf629bf9335cd5a72d09bedf6da23a5f222113fc717e27",
+    "apps/web/src/i18n.ts": "4081fb93dbf8b74a73b3b9368db55ede2b1f80770e1e8a25158e4b879ed121c4",
+    "apps/web/src/styles.css": "e4f384fda9745ccb6e870713e9770d1475b94535512efbc535665df0363dbdb4"
+  },
+  "writeRequests": [],
+  "pageErrors": [],
+  "limitations": [
+    "Próbkowa kontrola DOM i obrazu bez czytnika ekranu.",
+    "720×450 jest rozmiarem okna, nie rzeczywistym powiększeniem przeglądarki do 200%.",
+    "Uwagi pozostają otwarte; zakończono dopuszczone dwie rundy korekt."
+  ]
+}

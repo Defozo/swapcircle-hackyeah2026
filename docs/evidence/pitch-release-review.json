@@ -1,0 +1,67 @@
+{
+  "checkedAt": "2026-10-03T21:37:59.590470+00:00",
+  "files": {
+    "SwapCircle.pdf": {
+      "path": "submission/pitch/SwapCircle.pdf",
+      "bytes": 479303,
+      "sha256": "c747f6fcb953c4d37a229e725f28ebc36b3c33e0f19234a91928ad7d8ef8ec60"
+    },
+    "SwapCircle.pptx": {
+      "path": "submission/pitch/SwapCircle.pptx",
+      "bytes": 1002416,
+      "sha256": "ce73a891c069865f05e8f869ddad91d4f0f04106f59590f3a31b1e84d308dbb0"
+    },
+    "SwapCircle-demo.mp4": {
+      "path": "submission/pitch/SwapCircle-demo.mp4",
+      "bytes": 9962189,
+      "sha256": "78d8d1e36760be0740e07f7db40246fd001ace736aca42e81874436ec5657481"
+    }
+  },
+  "pdfPages": 9,
+  "editableSlides": 9,
+  "speakerNotesSlides": 9,
+  "durationSeconds": 108.0,
+  "fullVideoAndAudioDecode": "passed",
+  "slideVisualReview": "Root inspected every rendered PDF page and reread revised outcome labels in final slides6/7. No confirmed clipping, content or link issue.",
+  "videoPerceptualEvidence": "docs/evidence/pitch-video-perceptual.json",
+  "videoPerceptualCoverage": "Actual full MP4 supplied to a stateless audiovisual model. No project history or narration script supplied. This is not human listening or a frame-by-frame human review.",
+  "timeBasedFrames": [
+    {
+      "seconds": 0,
+      "path": ".local/pitch-video-review/time-0.png",
+      "sha256": "4e176bc6bc5d9538e2c9c675f51d9782fb16fdef6283e43b50cf627334167c26"
+    },
+    {
+      "seconds": 27,
+      "path": ".local/pitch-video-review/time-27.png",
+      "sha256": "b2dba39c8c0ebba91b61033fd47a763fc1b7dbd9bd92a75290398960d7265d44"
+    },
+    {
+      "seconds": 40,
+      "path": ".local/pitch-video-review/time-40.png",
+      "sha256": "590c59c7873025b8a9f3c68f14240514a13d02654b5bd9abd372d3ac904fc9b3"
+    },
+    {
+      "seconds": 65,
+      "path": ".local/pitch-video-review/time-65.png",
+      "sha256": "ab192a37427c33dadd0c75f508fe9243ab6f3104dadbfd5a6eaf3528fde2c7fd"
+    },
+    {
+      "seconds": 83,
+      "path": ".local/pitch-video-review/time-83.png",
+      "sha256": "03c6b83b5fa01ea0e0a917eb738e7bd577fba64146bf7308f996c1ad93be7060"
+    },
+    {
+      "seconds": 106,
+      "path": ".local/pitch-video-review/time-106.png",
+      "sha256": "1335eb187223ad24260807da9c448f2fcaffeaa9d8bb9fd3109b38004c022651"
+    }
+  ],
+  "presentationRequirements": {
+    "language": "pl",
+    "maximumPdfSlides": 10,
+    "maximumVideoSeconds": 180
+  },
+  "publicAccess": "Verified separately after publication",
+  "complete": true
+}

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "video": "SwapCircle-demo.mp4",
+  "sha256": "78d8d1e36760be0740e07f7db40246fd001ace736aca42e81874436ec5657481",
+  "duration_seconds": 108,
+  "resolution": "1920x1080",
+  "fps": "30/1",
+  "mode": "Interactive simulation, visibly labelled Demo",
+  "visuals": {
+    "source": "Real local browser recording of the included public demo, with actual clicks. Original authored title cards and chapter labels.",
+    "synthetic_video_generation": false
+  },
+  "narration": {
+    "provider": "ElevenLabs",
+    "voice": "Bella - Professional, Bright, Warm",
+    "category": "premade",
+    "voice_id": "hpp4J3VqNfWAUOO0d1Us",
+    "model": "eleven_multilingual_v2",
+    "language": "pl",
+    "account_tier_at_generation": "payg",
+    "user_voice_cloned": false,
+    "rights": "Generated with paid commercial publishing entitlement. Finished narration is included; no voice model is supplied.",
+    "rights_reference": "https://help.elevenlabs.io/hc/en-us/articles/13313564601361-Can-I-publish-the-content-I-generate-on-the-platform"
+  },
+  "music": {
+    "title": "SwapCircle quiet circuit",
+    "origin": "Original local procedural composition and synthesis",
+    "external_samples": false,
+    "artist_or_song_imitation": false,
+    "tempo_bpm": 104,
+    "source_code": "scripts/video/pitch/compose_music.py",
+    "code_license": "MIT, see repository LICENSE",
+    "recording_rights": "Original recording created for this project. No third-party musical recording or sample is incorporated.",
+    "mix": "Music normalized to -33 LUFS, speech to -17 LUFS, music fades out over final 3 seconds."
+  },
+  "subtitles": {
+    "file": "captions-pl.vtt",
+    "language": "pl",
+    "cues": 26,
+    "timing": "Sentence timing mapped to exact output positions of intact voice clips. Not word-level forced alignment."
+  },
+  "final_review": {
+    "type": "model perception of actual MP4, not human listening",
+    "whole_video_pass": true,
+    "report": "docs/evidence/pitch-video-perceptual.json",
+    "human_listening_claimed": false,
+    "correction_rounds": 0
+  }
+}

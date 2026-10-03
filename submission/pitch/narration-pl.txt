@@ -1,0 +1,17 @@
+W wymianie z obcą osobą ktoś zwykle musi wysłać pierwszy. Co, jeśli druga strona zniknie?
+
+Alicja ma tokeny, których potrzebuje Celina. Celina ma coś dla Bartka. Bartek ma to, czego szuka Alicja. Żadna para nie pasuje, ale cała trójka może się wymienić.
+
+SwapCircle znajduje taki krąg. Sto tokenów de iks trafia od Alicji do Celiny. Dwieście pięćdziesiąt de zet od Celiny do Bartka. Czterdzieści de igrek od Bartka do Alicji.
+
+Każdy widzi, ile wpłaca, co otrzyma i do kiedy można dołączyć. Te warunki zostają zapisane w cyklu. Nie można ich podmienić po wpłacie.
+
+Alicja wpłaca pierwsza. Bartek dołącza chwilę później. Ich tokeny czekają w depozytach programu. Nikt jeszcze nie dostaje wypłaty.
+
+Teraz wpłaca Celina. Ostatnia wpłata uruchamia całe rozliczenie w jednej transakcji. Wszyscy otrzymują uzgodnione tokeny albo ta transakcja nie dochodzi do skutku.
+
+A jeśli Celina nie dołączy? Po upływie terminu Alicja i Bartek mogą osobno odzyskać swoje depozyty. Bez zgody nieobecnej osoby i bez decyzji operatora.
+
+Ten sam mechanizm obsługuje wymiany dwóch, trzech i czterech osób. Dla małych społeczności Solany to sposób na połączenie ofert, które osobno nie znalazłyby partnera.
+
+Otwórz demo SwapCircle. Znajdź krąg, przeprowadź wymianę i sprawdź zwrot.

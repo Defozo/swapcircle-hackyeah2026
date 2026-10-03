@@ -1,0 +1,203 @@
+{
+  "schemaVersion": 1,
+  "status": "partial",
+  "reason": "Obejrzano wszystkie wskazane trasy, ale zakres obejmował wyłącznie dostępne stany bez portfela. Nie sprawdzono wysyłania formularzy, transakcji ani ich potwierdzeń. Testy dostępności były próbkowe.",
+  "firstImpression": {
+    "purpose": "Wymiana tokenów pomiędzy użytkownikami Solany przez dopasowanie kilku ofert w krąg.",
+    "audience": "Użytkownicy Solany, prawdopodobnie znający portfele kryptowalutowe.",
+    "firstAction": "Dodaj ofertę.",
+    "expectedOutcome": "Określenie tokenów i kwot wymiany.",
+    "uncertainties": [
+      "Jak dobierany jest krąg?",
+      "Czy krąg i cykl oznaczają to samo?",
+      "Co oznacza Solana Localnet dla korzystającego?"
+    ],
+    "recordedBeforeExploration": true
+  },
+  "coverage": {
+    "entryUrl": "http://127.0.0.1:5187/",
+    "routesRequested": [
+      "http://127.0.0.1:5187/#/board",
+      "http://127.0.0.1:5187/#/matches",
+      "http://127.0.0.1:5187/#/deposits",
+      "http://127.0.0.1:5187/#/recovery",
+      "http://127.0.0.1:5187/#/rules",
+      "http://127.0.0.1:5187/#/cycle/AikkwU6i7MZhJyu94op9pBmEhMRTgYGZ9ve6qZGJGQVi",
+      "http://127.0.0.1:5187/#/cycle/2XiE3MLZhFVLeo6NQhK72sjUx4GzokY4BYYDn7YPdHgB"
+    ],
+    "routesChecked": [
+      "http://127.0.0.1:5187/",
+      "http://127.0.0.1:5187/#/board",
+      "http://127.0.0.1:5187/#/matches",
+      "http://127.0.0.1:5187/#/deposits",
+      "http://127.0.0.1:5187/#/recovery",
+      "http://127.0.0.1:5187/#/rules",
+      "http://127.0.0.1:5187/#/cycle/AikkwU6i7MZhJyu94op9pBmEhMRTgYGZ9ve6qZGJGQVi",
+      "http://127.0.0.1:5187/#/cycle/2XiE3MLZhFVLeo6NQhK72sjUx4GzokY4BYYDn7YPdHgB"
+    ],
+    "checks": [
+      {
+        "area": "first-impression",
+        "result": "checked",
+        "evidence": "Zrzut ekranu 1440 × 900 i drzewo dostępności zapisano przed eksploracją. Cel wymiany i przycisk „Dodaj ofertę” były widoczne.",
+        "limitations": "Ocena jednej pierwszej wizyty."
+      },
+      {
+        "area": "navigation",
+        "result": "checked",
+        "evidence": "Z menu otwarto Dopasowania, Moje depozyty, Odzyskiwanie i Sprawdź zasady. Oba cykle otwarto bezpośrednio.",
+        "limitations": "Pusta tablica nie udostępniała odnośników do wskazanych cykli. Ich odkrywalności przez listy nie potwierdzono."
+      },
+      {
+        "area": "language",
+        "result": "checked",
+        "evidence": "Dokument ma język pl. Opisy wyjaśniają podpis, koszty i zwrot, ale zawierają też nieobjaśnione terminy implementacyjne.",
+        "limitations": "Nie oceniano wersji angielskiej."
+      },
+      {
+        "area": "cognitive-load",
+        "result": "checked",
+        "evidence": "Czytelne główne działania i stany puste. Szczegóły cyklu zawierają diagram, tabelę, operacje i salda; status zwróconego cyklu pozostaje częściowo niejednoznaczny.",
+        "limitations": "Brak zapełnionej tablicy i listy dopasowań."
+      },
+      {
+        "area": "forms-and-feedback",
+        "result": "checked",
+        "evidence": "Otwarto formularze oferty i ręcznego cyklu. Pola mają nazwy, a publikacja oferty jest wyłączona z wyjaśnieniem konieczności połączenia portfela. Obejrzano formularz odczytu cyklu.",
+        "limitations": "Nie wysyłano danych, nie importowano plików i nie sprawdzano walidacji po wysłaniu ani sukcesu transakcji."
+      },
+      {
+        "area": "keyboard-and-focus",
+        "result": "checked",
+        "evidence": "Wykonano Tab, Shift+Tab, Enter i Escape. Link pomijający nawigację ma widoczny fokus. Escape zamyka formularze i przywraca fokus wywołującemu przyciskowi. Na wąskim ekranie fokus trafia do ukrytego menu.",
+        "limitations": "Nie przetestowano całej kolejności wszystkich kontrolek."
+      },
+      {
+        "area": "semantics-and-names",
+        "result": "checked",
+        "evidence": "Sprawdzono drzewo dostępności, nazwy przycisków, etykiety pól, nazwane dialogi, region main oraz natywne tabele z nagłówkami th.",
+        "limitations": "Nie przeprowadzono testu czytnikiem ekranu ani pełnej kontroli powiązań błędów."
+      },
+      {
+        "area": "contrast",
+        "result": "checked",
+        "evidence": "Na podstawie obliczonych kolorów zmierzono kontrast opisu upływu terminu: około 4,15:1 dla tekstu 9 px.",
+        "limitations": "Pomiar próbkowy, bez pełnej analizy wszystkich kolorów i stanów."
+      },
+      {
+        "area": "zoom-and-mobile",
+        "result": "checked",
+        "evidence": "Sprawdzono cykl przy emulacji 390 × 844 oraz tablicę przy 720 × 450. Szerokość dokumentu nie przekraczała szerokości tych viewportów.",
+        "limitations": "Skróty powiększenia nie zmieniły mierzalnych parametrów. Viewport 720 × 450 był wyłącznie symulacją przestrzeni dostępnej przy 200% względem 1440 × 900, nie rzeczywistym zoomem ani powiększeniem tekstu. Nie sprawdzono wszystkich ekranów mobilnych."
+      },
+      {
+        "area": "status-announcements",
+        "result": "checked",
+        "evidence": "W DOM szczegółów cyklu znaleziono pusty region aria-live=\"assertive\".",
+        "limitations": "Nie potwierdzono dynamicznych ogłoszeń sukcesu lub błędu ani ich odczytu przez czytnik ekranu."
+      }
+    ],
+    "limitations": [
+      "Użyto wyłącznie izolowanej przeglądarki ux_browser oraz renderowanego interfejsu.",
+      "Tryb tylko do odczytu wykluczał publikację, wpłaty, zwroty i inne zmiany danych.",
+      "Brak połączonego portfela ograniczał dostępne działania.",
+      "Wynik nie stanowi pełnej oceny zgodności z WCAG."
+    ]
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "priority": "high",
+      "confidence": "high",
+      "area": "keyboard-and-focus",
+      "location": {
+        "url": "http://127.0.0.1:5187/#/cycle/2XiE3MLZhFVLeo6NQhK72sjUx4GzokY4BYYDn7YPdHgB",
+        "target": "Zamknięte boczne menu przy szerokości 390 px"
+      },
+      "evidence": "Po linku „Przejdź do treści” kolejne naciśnięcia Tab ustawiają fokus na logo, „Tablica ofert” i „Dopasowania”. Elementy znajdują się poza ekranem, przy x = -217 px, a zrzut nie pokazuje fokusu.",
+      "reproduction": [
+        "Otwórz wskazany cykl w viewportcie 390 × 844.",
+        "Pozostaw menu zamknięte.",
+        "Naciskaj Tab od początku dokumentu."
+      ],
+      "impact": "Osoba korzystająca z klawiatury traci widoczność miejsca działania i może uruchomić niewidoczną nawigację.",
+      "recommendation": "Wyłącz zamknięty panel z kolejności fokusu i drzewa dostępności. Przy otwarciu udostępnij jego elementy, a przy zamknięciu przywróć fokus do przycisku menu.",
+      "acceptanceCriteria": [
+        "Przy zamkniętym menu Tab i Shift+Tab pomijają wszystkie elementy panelu.",
+        "Każdy osiągalny klawiaturą element ma widoczny fokus.",
+        "Otwarcie i zamknięcie menu zachowuje przewidywalną kolejność fokusu."
+      ]
+    },
+    {
+      "id": "F2",
+      "priority": "medium",
+      "confidence": "high",
+      "area": "contrast",
+      "location": {
+        "url": "http://127.0.0.1:5187/#/cycle/2XiE3MLZhFVLeo6NQhK72sjUx4GzokY4BYYDn7YPdHgB",
+        "target": "Opis „Termin minął według zegara przeglądarki”"
+      },
+      "evidence": "Tekst 9 px ma kolor rgb(125,143,120) na tle rgb(37,43,45). Obliczony współczynnik kontrastu wynosi 4,15:1, poniżej 4,5:1 dla zwykłego tekstu.",
+      "reproduction": [
+        "Otwórz szczegóły cyklu.",
+        "Sprawdź opis pod terminem wpłat.",
+        "Oblicz kontrast z kolorów tekstu i tła."
+      ],
+      "impact": "Istotne zastrzeżenie dotyczące zegara może być trudne do odczytania, szczególnie przy słabszym wzroku.",
+      "recommendation": "Zwiększ kontrast opisu do co najmniej 4,5:1; rozważ również większy rozmiar tekstu.",
+      "acceptanceCriteria": [
+        "Opis osiąga kontrast co najmniej 4,5:1 względem rzeczywistego tła.",
+        "Pozostaje czytelny i kompletny na wąskim ekranie."
+      ]
+    },
+    {
+      "id": "F3",
+      "priority": "medium",
+      "confidence": "medium",
+      "area": "language",
+      "location": {
+        "url": "http://127.0.0.1:5187/#/cycle/2XiE3MLZhFVLeo6NQhK72sjUx4GzokY4BYYDn7YPdHgB",
+        "target": "Opis pod sekcją „Twoje operacje w cyklu”"
+      },
+      "evidence": "Opis zawiera „deadline”, „Brak osobnej operacji settle”, „właściciela danej nogi” oraz „zwraca rent”. Formularz ręcznego cyklu używa także etykiety „Decimals mintu”.",
+      "reproduction": [
+        "Otwórz szczegóły cyklu i przeczytaj opis operacji.",
+        "W Dopasowaniach otwórz „Ułóż cykl ręcznie”.",
+        "Porównaj terminologię z pozostałymi polskimi opisami."
+      ],
+      "impact": "Znajomość portfela i tokenów nie zapewnia znajomości słownictwa implementacyjnego. Użytkownik może nie rozumieć skutków operacji dotyczących środków.",
+      "recommendation": "Użyj spójnych polskich określeń i krótkich objaśnień technicznych pojęć. Zachowaj terminy Solany tam, gdzie identyfikują rzeczywisty mechanizm, ale wyjaśnij ich znaczenie dla działania.",
+      "acceptanceCriteria": [
+        "Opis wyjaśnia rozliczenie i odbiorcę nadwyżki bez znajomości słów „settle” i „noga”.",
+        "„Decimals mintu” jest opisane jako liczba miejsc dziesiętnych tokena.",
+        "Wyjaśnienie rent zachowuje faktyczne zasady zwrotu kosztu konta."
+      ]
+    },
+    {
+      "id": "F4",
+      "priority": "medium",
+      "confidence": "medium",
+      "area": "cognitive-load",
+      "location": {
+        "url": "http://127.0.0.1:5187/#/cycle/2XiE3MLZhFVLeo6NQhK72sjUx4GzokY4BYYDn7YPdHgB",
+        "target": "Status cyklu i status uczestnika bez depozytu"
+      },
+      "evidence": "Nagłówek pokazuje „Zwrócono”, termin już minął, a jeden uczestnik nadal ma status „Oczekuje”. Niżej ta sama osoba ma opis „Bez depozytu”. Pozostaje też ogólny komunikat rozpoczynający się od „Wpłata blokuje tokeny”.",
+      "reproduction": [
+        "Otwórz wskazany cykl.",
+        "Porównaj status główny, statusy uczestników i opisy operacji."
+      ],
+      "impact": "Nie jest jasne, czy aplikacja nadal oczekuje wpłaty, czy pokazuje historyczny brak udziału. Może to powodować niepotrzebne oczekiwanie lub obawy o zakończenie wymiany.",
+      "recommendation": "Dopasuj opis uczestnika do aktualnego stanu, np. użyj zgodnego z obserwacją „Bez depozytu”. Oddziel historyczne warunki od bieżącego wyniku. Potwierdź znaczenie stanu „Zwrócono” przed zmianą komunikatu końcowego.",
+      "acceptanceCriteria": [
+        "Status uczestnika bez depozytu nie sugeruje aktywnego oczekiwania, jeśli wpłata nie jest już możliwa.",
+        "Ekran jednoznacznie odróżnia bieżący wynik od historycznych warunków.",
+        "Komunikaty pozostają zgodne ze stanem odczytanym z programu."
+      ]
+    }
+  ],
+  "overall": {
+    "understandable": true,
+    "summary": "Podstawowy cel i pierwszy krok są zrozumiałe, a opisy podpisu i kosztów pomagają ocenić skutki działań. Najważniejszy potwierdzony problem to niewidoczny fokus w zamkniętym menu mobilnym. Poprawy wymagają również kontrast opisu terminu, słownictwo techniczne i komunikaty zwróconego cyklu."
+  }
+}

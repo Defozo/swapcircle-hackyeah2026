@@ -2,12 +2,18 @@
 
 Zespół: **DEFOZO SOFTWARE HOUSE**. Jedyny członek: **Michał Kiełtyka**.
 
-SwapCircle pomaga małym społecznościom Solany znaleźć i wykonać wymiany klasycznych tokenów SPL, których nie da się dopasować bezpośrednimi parami. Użytkownik podpisuje ofertę z dokładnym mintem i ilością oddawanego oraz oczekiwanego tokena. Wyszukiwarka znajduje zgodne cykle 2-4 różnych właścicieli.
+W małej społeczności każdy może mieć token, którego potrzebuje ktoś inny, a mimo to żadna para nie dogada się na wymianę. Alicja oddaje 100 dX za 40 dY. Bartek oferuje 40 dY za 250 dZ. Celina ma 250 dZ i chce 100 dX. SwapCircle łączy te trzy potrzeby w jeden krąg.
 
-Powiernika przyjmującego i rozdzielającego depozyty zastępuje program Solany. Każdy uczestnik niezależnie podpisuje wpłatę do niezmiennego cyklu. Ostatnia poprawna wpłata przed terminem wykonuje wszystkie przekazania w jednej transakcji. Gdy zabraknie uczestnika, po terminie każdą wcześniejszą wpłatę można odzyskać bez zgody pozostałych stron lub operatora.
+Budujemy dla małych społeczności Solany wymieniających klasyczne tokeny SPL. Użytkownik określa, co oddaje i co chce otrzymać. Wyszukiwarka znajduje zgodne pary oraz kręgi 3-4 różnych właścicieli. Każdy widzi dokładne ilości, odbiorców i termin przed podjęciem decyzji.
 
-Zwrot pozostaje możliwy również na inne bezpieczne konto tokenowe tego samego właściciela, gdy jego ATA jest niedostępne. Publiczny pakiet odzyskiwania oraz SDK i CLI pozwalają wykonać operację bez tablicy ofert i hostingu aplikacji. Serwer odkrywania ofert nigdy nie przechowuje kluczy uczestników ani nie ustala należności.
+W zwykłej wymianie grupowej powiernik zbiera depozyty i rozdziela tokeny. W SwapCircle tę rolę przejmuje program Solany. Uczestnicy wpłacają niezależnie, a ostatnia poprawna wpłata przed terminem uruchamia wszystkie transfery w jednej transakcji. Alicja otrzymuje 40 dY, Bartek 250 dZ, a Celina 100 dX. Operator aplikacji nie musi zatwierdzać wypłat.
 
-Program gwarantuje dokładne ilości i odbiorców zaakceptowanego cyklu. Nie gwarantuje znalezienia partnerów, korzystnej ceny ani wartości rynkowej tokenów. Wcześniejszy depozyt pozostaje zablokowany do sukcesu lub deadline. Aktywne uprawnienie aktualizacji programu jest jawne w interfejsie. Demo korzysta z testowych tokenów bez wartości pieniężnej, a rzeczywisty popyt pozostaje hipotezą do walidacji.
+Jeśli ktoś nie wpłaci, po upływie terminu każdy wcześniejszy depozyt można odzyskać oddzielnie. Zwrot nie potrzebuje zgody nieobecnego uczestnika ani operatora. Publiczne narzędzia odzyskiwania pozwalają wykonać tę operację także bez hostingu aplikacji. Wpłata pozostaje zablokowana do rozliczenia albo uzgodnionego terminu, więc ten warunek jest widoczny przed jej zatwierdzeniem.
 
-Aktualny stan wdrożenia, wykonane testy i publiczne linki określają README, manifest oraz raporty w `docs/evidence`. Pakiet przygotowania nie oznacza wysłania zgłoszenia do HackTribe.
+Wartość SwapCircle polega na połączeniu dopasowania wielostronnego z wykonaniem uzgodnionej wymiany i samodzielnym wyjściem z niepełnego kręgu. Wyszukiwarka pomaga znaleźć kontrahentów, a program kontroluje depozyty i reguły przekazania aktywów. Zwykła baza ofert nie egzekwuje tych transferów.
+
+Interaktywne Demo pokazuje cały przebieg: oferty, znaleziony krąg, akceptację warunków, niezależne wpłaty, rozliczenie i scenariusz zwrotu. Korzysta z symulowanych tokenów bez wartości pieniężnej. Repozytorium zawiera program, SDK, aplikację i instrukcję uruchomienia oraz dokumentację techniczną z wynikami testów.
+
+Demo: https://defozo.github.io/swapcircle-hackyeah2026/
+
+Repozytorium i uruchomienie: https://github.com/Defozo/swapcircle-hackyeah2026

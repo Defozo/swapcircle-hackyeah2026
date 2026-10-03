@@ -6,19 +6,34 @@ SwapCircle wyszukuje zgodne wymiany klasycznych tokenów SPL pomiędzy 2-4 osoba
 
 Przykład: Alicja oddaje 100 dX za 40 dY, Bartek 40 dY za 250 dZ, Celina 250 dZ za 100 dX. Nie ma zgodnej pary. Cykl Alicja → Celina → Bartek → Alicja zaspokaja wszystkie potrzeby. Ilości są uzgodnione, bez oracle, kursu i zaokrąglania.
 
-## Stan i dowody
+## Wypróbuj SwapCircle
+
+[Otwórz interaktywne demo](https://defozo.github.io/swapcircle-hackyeah2026/) i przejdź przez wymianę bez instalacji i podłączania portfela. Zacznij od trzech ofert, znajdź cykl, sprawdź warunki i wykonaj kolejne wpłaty. Wypróbuj też brakującą wpłatę i zwrot po terminie. Dostępne są warianty dla 2, 3 i 4 osób. Tryb Demo symuluje operacje, wykorzystując wyszukiwarkę cykli produktu.
+
+[Film z lektorem i prezentacja](https://defozo.github.io/swapcircle-hackyeah2026/watch.html) pokazują pełną drogę od ofert do rozliczenia.
+
+Samo demo wymaga Node.js 24 i pnpm 10.33.0:
+
+```powershell
+pnpm install --frozen-lockfile
+pnpm --filter @swapcircle/web dev --port 5187
+```
+
+Otwórz `http://localhost:5187/`. Instrukcja poniżej uruchamia również program na lokalnym validatorze; klient z portfelem jest dostępny pod `http://localhost:5187/?mode=app`.
+
+## Stan techniczny i dowody
 
 Kod implementuje program, SDK, tablicę podpisanych ofert Convex, wyszukiwanie cykli, aplikację i niezależne odzyskiwanie. Aktualny stan odbioru opisuje [raport wykonania](docs/ACCEPTANCE.md). Wyniki lokalne nie oznaczają wykonania transakcji devnet. Manifest `deployments/devnet.json` jawnie wskazuje `deployed: false`, dopóki wdrożenie nie zostanie odczytane z sieci. Interfejs nie przedstawia tego programu jako działającego ani niezmiennego.
 
-[Publiczna aplikacja](https://defozo.github.io/swapcircle-hackyeah2026/) otwiera się bez logowania i pokazuje aktualny status wdrożenia. [Repozytorium](https://github.com/Defozo/swapcircle-hackyeah2026) zawiera odtwarzalny lokalny przepływ. Działający hosting nie oznacza wdrożonego programu devnet.
+[Klient z portfelem](https://defozo.github.io/swapcircle-hackyeah2026/?mode=app) pokazuje aktualny status wdrożenia odczytany z sieci. Publiczne Demo i pomiary localnet są odrębnymi rodzajami dowodu.
 
 - [Model protokołu i zaufania](docs/protocol.md)
 - [Pomiary rzeczywistych transakcji localnet](docs/evidence/localnet-flows.json)
 - [Pomiary programu SBF w LiteSVM](tests/program/measurements.json)
 - [Weryfikacja działającej tablicy Convex](tests/matching/live-result.json)
-- [Opis zgłoszenia](submission/description.md), [prezentacja PDF](submission/SwapCircle.pdf), [scenariusz pokazu](docs/demo.md)
+- [Opis zgłoszenia](submission/description.md), [prezentacja PDF](submission/pitch/SwapCircle.pdf), [edytowalny PPTX](submission/pitch/SwapCircle.pptx), [scenariusz localnet](docs/demo.md)
 - [Film: rzeczywisty localnet, 1:55](https://github.com/Defozo/swapcircle-hackyeah2026/releases/tag/demo-localnet-2026-10-03), [salda i sygnatury nagrania](submission/demo-localnet.evidence.json)
-- [Pakiet materiałów ZIP](https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-localnet-2026-10-03/SwapCircle-localnet-package.zip): dane zespołu, opis, PDF, film, dowody i status formalny. Przygotowany pakiet localnet nie oznacza wysłania zgłoszenia ani pełnego odbioru devnet.
+- [Aktualny pakiet materiałów ZIP](https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-pitch-2026-10-03/SwapCircle-package.zip): prezentacja, film, notatki i dane zespołu. [Archiwalny pakiet localnet](https://github.com/Defozo/swapcircle-hackyeah2026/releases/tag/demo-localnet-2026-10-03) zachowuje pierwotne nagranie rzeczywistych lokalnych transakcji.
 - [Pełny zakres pomiarów kosztów i limitów](docs/measurements.md)
 - [Hipoteza potrzeby i plan walidacji](docs/validation-research.md)
 
@@ -49,7 +64,7 @@ $env:VITE_CONVEX_URL=''
 pnpm --filter @swapcircle/web dev --port 5187
 ```
 
-Adres Vite pojawi się w terminalu. Aplikacja używa routingu hash, więc odświeżenie adresu cyklu działa także na statycznym hostingu. Manifest localnet jest zapisywany przez seed również do `apps/web/public/deployments/`. Przeglądarka weryfikuje genesis hash RPC. Portfel musi obsługiwać wybraną sieć. Phantom i Solflare są zintegrowane przez Wallet Adapter; testowy signer występuje wyłącznie w testach, nie w publicznym buildzie.
+Adres Vite pojawi się w terminalu. Otwórz go z `?mode=app`, aby użyć klienta z portfelem. Aplikacja używa routingu hash, więc odświeżenie adresu cyklu działa także na statycznym hostingu. Manifest localnet jest zapisywany przez seed również do `apps/web/public/deployments/`. Przeglądarka weryfikuje genesis hash RPC. Portfel musi obsługiwać wybraną sieć. Phantom i Solflare są zintegrowane przez Wallet Adapter; testowy signer występuje wyłącznie w testach, nie w publicznym buildzie.
 
 Do deterministycznego zestawu ofert bez zgodnych par:
 

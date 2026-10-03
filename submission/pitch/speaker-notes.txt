@@ -1,0 +1,69 @@
+1. SwapCircle
+
+W wymianie z obcą osobą ktoś zwykle musi wysłać pierwszy. W małej społeczności dochodzi jeszcze drugi problem: dwie oferty nie zawsze do siebie pasują. SwapCircle wyszukuje wymiany między dwiema, trzema lub czterema osobami i łączy je ze wspólnym rozliczeniem. Uczestnicy wpłacają niezależnie. Powiernika depozytów zastępuje program Solany.
+
+Źródła: official-2026-10-03/PLAN.md, §3-4
+
+
+2. Trzy oferty bez zgodnej pary
+
+Alicja oddaje sto dX i szuka czterdziestu dY. Bartek oferuje czterdzieści dY za dwieście pięćdziesiąt dZ. Celina ma dwieście pięćdziesiąt dZ i chce sto dX. Spójrzmy na dowolną parę: jedna z osób nie otrzyma tego, czego potrzebuje. Ale w całej grupie są już wszystkie potrzebne tokeny. To przykład demonstracyjny. Kwoty wynikają z ofert, a nie z wyceny rynku.
+
+Źródła: official-2026-10-03/PLAN.md, §3-4
+
+
+3. Krąg łączy wszystkie potrzeby
+
+Wyszukiwarka porównuje oferty i znajduje krąg. Alicja przekazuje sto dX Celinie. Celina przekazuje dwieście pięćdziesiąt dZ Bartkowi. Bartek przekazuje czterdzieści dY Alicji. Każda osoba dostaje dokładnie to, czego szukała. Ten sam mechanizm szuka zgodnych kręgów dwóch, trzech i czterech różnych właścicieli.
+
+Źródła: official-2026-10-03/PLAN.md, §3-4
+packages/matching/src/index.ts
+apps/web/src/demo-state.ts
+
+
+4. Warunki widoczne przed wpłatą
+
+Przed wpłatą uczestnik sprawdza, co oddaje, co otrzyma i do kiedy potrwa blokada. Warunki obejmują dokładne tokeny, ilości oraz odbiorców. W tym demo wybieramy dwie minuty. Wpłata oznacza akceptację konkretnego kręgu. Środki czekają do rozliczenia albo do chwili, w której można wystąpić o zwrot po terminie.
+
+Źródła: official-2026-10-03/PLAN.md, §3-4
+https://github.com/Defozo/swapcircle-hackyeah2026/blob/main/programs/swapcircle/src/lib.rs
+
+
+5. Każdy wpłaca we własnym czasie
+
+Alicja wpłaca pierwsza. Jej tokeny czekają w skarbcu programu. Później wpłaca Bartek. Oboje mogą odejść od aplikacji. Celina dołącza w swoim czasie, przed ustalonym terminem. Wcześniejsi uczestnicy nie muszą ponownie podpisywać wspólnego rozliczenia.
+
+Źródła: https://github.com/Defozo/swapcircle-hackyeah2026/blob/main/programs/swapcircle/src/lib.rs
+apps/web/src/demo-state.ts
+
+
+6. Ostatnia wpłata rozlicza cały krąg
+
+Celina wykonuje ostatnią wpłatę. W tej samej transakcji program realizuje wszystkie uzgodnione przekazania. Alicja otrzymuje czterdzieści dY. Bartek dostaje dwieście pięćdziesiąt dZ, a Celina sto dX. Nie ma kolejnego zatwierdzenia przez operatora. Atomowość oznacza, że ostatnia wpłata i wszystkie transfery kończą się razem. Jeśli któryś transfer zawiedzie, ta transakcja nie wykona się częściowo.
+
+Źródła: https://github.com/Defozo/swapcircle-hackyeah2026/blob/main/programs/swapcircle/src/lib.rs
+apps/web/src/demo-state.ts
+
+
+7. Niezależny zwrot po terminie
+
+Drugi scenariusz: Alicja i Bartek wpłacili, ale Celina nie dołączyła. Po terminie nowe wpłaty są zamknięte. Alicja odbiera własne sto dX. Bartek oddzielnie odbiera czterdzieści dY. Żadne z nich nie potrzebuje zgody Celiny ani operatora. Reguła zwrotu kieruje tokeny do pierwotnego właściciela. Zwrot dotyczy tokenów depozytu, nie kosztów sieci.
+
+Źródła: https://github.com/Defozo/swapcircle-hackyeah2026/blob/main/programs/swapcircle/src/lib.rs
+scripts/recover.ts
+
+
+8. Program przejmuje rolę powiernika
+
+Wyszukiwarka pomaga odkryć wymianę, ale sama nie kontroluje aktywów. Program Solany sprawdza właściciela wpłaty i zaakceptowane warunki. Zarządza depozytami, wykonuje kompletne rozliczenie i dopuszcza zwrot po terminie. Operator aplikacji nie podejmuje decyzji o wypłacie. To powód użycia blockchaina: zwykła baza ofert nie może egzekwować tych transferów bez powierzenia komuś klucza do depozytów.
+
+Źródła: https://github.com/Defozo/swapcircle-hackyeah2026/blob/main/programs/swapcircle/src/lib.rs
+official-2026-10-03/materials/3b73ed0c42b8c22b.pdf.txt, §2 i §5
+
+
+9. SwapCircle w Twojej społeczności
+
+SwapCircle kierujemy do małych społeczności Solany, w których użytkownicy mają konkretne potrzeby wymiany klasycznych tokenów SPL. Publiczne SDK pozwala osadzić mechanizm w aplikacji społeczności. Następny krok to pilotaż na rzeczywistych ofertach i sprawdzenie, ile potrzeb dają się zaspokoić kręgami oraz jaki czas blokady użytkownicy akceptują. Teraz można otworzyć demo, przeprowadzić pełną wymianę i sprawdzić samodzielny zwrot.
+
+Źródła: official-2026-10-03/PLAN.md, §3-4
+https://github.com/Defozo/swapcircle-hackyeah2026

@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "kind": "swapcircle-ux-production-build",
+  "recordedAt": "2026-10-03T17:38:39.436Z",
+  "complete": true,
+  "source": {
+    "baseCommit": "5a6363203de6b407eab90bbe4ce45c7222860761",
+    "archive": "git archive --format=tar HEAD",
+    "archiveSha256": "dc6b92714f3e5ca396901ed204c66155f7cac6dc513a83e8eddc0dd282794178",
+    "overlay": "Four frozen UI source files copied after the round-2 browser checks passed",
+    "files": [
+      {
+        "path": "apps/web/src/App.tsx",
+        "sha256": "fdd3e6423a6001e7cf7c2335d332101ac0a0962a12e985fa571319fb38d24c15",
+        "afterBuildSha256": "fdd3e6423a6001e7cf7c2335d332101ac0a0962a12e985fa571319fb38d24c15"
+      },
+      {
+        "path": "apps/web/src/ui.tsx",
+        "sha256": "c8744e4a981bfd650bcf629bf9335cd5a72d09bedf6da23a5f222113fc717e27",
+        "afterBuildSha256": "c8744e4a981bfd650bcf629bf9335cd5a72d09bedf6da23a5f222113fc717e27"
+      },
+      {
+        "path": "apps/web/src/i18n.ts",
+        "sha256": "4081fb93dbf8b74a73b3b9368db55ede2b1f80770e1e8a25158e4b879ed121c4",
+        "afterBuildSha256": "4081fb93dbf8b74a73b3b9368db55ede2b1f80770e1e8a25158e4b879ed121c4"
+      },
+      {
+        "path": "apps/web/src/styles.css",
+        "sha256": "e4f384fda9745ccb6e870713e9770d1475b94535512efbc535665df0363dbdb4",
+        "afterBuildSha256": "e4f384fda9745ccb6e870713e9770d1475b94535512efbc535665df0363dbdb4"
+      }
+    ],
+    "currentWorkspaceMatchesSnapshot": true,
+    "workspaceVerifiedAt": "2026-10-03T17:38:44.4545017Z"
+  },
+  "environment": {
+    "platform": "linux",
+    "architecture": "x64",
+    "container": "swapcircle-toolchain",
+    "isolatedRoot": "/tmp/swapcircle-ux-build-6d271775",
+    "node": "v24.13.0",
+    "pnpm": "10.33.0",
+    "nodeArchiveUrl": "https://nodejs.org/dist/v24.13.0/node-v24.13.0-linux-x64.tar.xz",
+    "nodeChecksumsUrl": "https://nodejs.org/dist/v24.13.0/SHASUMS256.txt",
+    "nodeArchiveSha256": "e798599612f4bb71333a3397ab0d095fd62214e115aea45aa858a145fc72d67e",
+    "officialChecksumVerified": true,
+    "dependencyInstall": "pnpm install --frozen-lockfile --store-dir /tmp/swapcircle-ux-build-6d271775/pnpm-store",
+    "dependencyInstallExitCode": 0,
+    "projectSecretFilesCopied": false,
+    "hostNodeModulesUsed": false,
+    "globalToolsChanged": false
+  },
+  "build": {
+    "command": "pnpm build",
+    "startedAt": "2026-10-03T17:25:24Z",
+    "finishedAt": "2026-10-03T17:37:57Z",
+    "exitCode": 0,
+    "steps": [
+      "root TypeScript check",
+      "web TypeScript check",
+      "web TypeScript check and Vite production build"
+    ],
+    "publicEnvironment": {
+      "CI": "true",
+      "VITE_APP_BASE": "/swapcircle-hackyeah2026/",
+      "VITE_CONVEX_URL": "https://academic-mole-172.convex.cloud"
+    },
+    "log": ".local/ux-build-6d271775/build.log",
+    "durationSeconds": 753.0,
+    "transformedModules": 2338,
+    "warnings": [
+      "Vite chunk-size advisory: bootstrap-CwqHWLz3.js is 1075.55 kB minified, 337.56 kB gzip, above the configured 800 kB warning threshold. Build completed successfully."
+    ]
+  },
+  "bundle": {
+    "archive": ".local/ux-build-6d271775/dist.tar.gz",
+    "archiveSha256": "c6d150e32f26e9a970585d8ce53f474a2d006b1f3ff5bb917d7299bc21808fbb",
+    "files": [
+      {
+        "path": "assets/board-B3l8P3Rd.js",
+        "bytes": 18400,
+        "sha256": "511394f54a86cc7b8ea432df771c81d053c87ef05deff56b91333e5ac9135518"
+      },
+      {
+        "path": "assets/bootstrap-CwqHWLz3.js",
+        "bytes": 1075552,
+        "sha256": "695c5c79943deebff012dcc5ebbf4f39a8d70f488bad0c4b5a556d102b6c0c67"
+      },
+      {
+        "path": "assets/bootstrap-ObM7EX7j.css",
+        "bytes": 60352,
+        "sha256": "4d4c2741975649d26d8728b7118fd0d482657ef71416044c74ee8acfcfd71fb4"
+      },
+      {
+        "path": "assets/dm-sans-Xz1IZZA0.woff2",
+        "bytes": 36932,
+        "sha256": "9fea608a947e67020c33cad9a6fe3d60c54119dfb8cff87768a8117a15ed7543"
+      },
+      {
+        "path": "assets/index-CGy3I4gk.js",
+        "bytes": 29990,
+        "sha256": "cbe4cc0a92661c7b53eb49cc190daa42f051b3743c69c105c34ae6402246d2d4"
+      },
+      {
+        "path": "assets/index-CYi_FEv_.js",
+        "bytes": 28872,
+        "sha256": "8edf697733fd3319b5f2673cfd693461d1da6ec8a227630529e47caecd39b277"
+      },
+      {
+        "path": "assets/index-DKctqfBL.js",
+        "bytes": 12209,
+        "sha256": "c9074174546e4547ed2838aac00e5b436953e6ff4bc295a2bfc04d3ad5a26e1b"
+      },
+      {
+        "path": "assets/manrope-DHIcAJRg.woff2",
+        "bytes": 24836,
+        "sha256": "a30ddcd349703aff7464c34bef3fffdff405ee50c113440d7c8693c02d210972"
+      },
+      {
+        "path": "assets/v4-Cxtd0NjV.js",
+        "bytes": 2619,
+        "sha256": "ce9b98b7549ea0503df9956ad3e35205557e014a42a8547b4473385b2480628d"
+      },
+      {
+        "path": "deployments/devnet.json",
+        "bytes": 754,
+        "sha256": "e6d2ace53b9aba8bd429f383b62178b60d3f27283763c75e635a05d6ab063d53"
+      },
+      {
+        "path": "deployments/localnet.json",
+        "bytes": 1370,
+        "sha256": "f875a49bd507982fad3d1da3c1753ffe9a91f70ce829fa5830a064e5ca01a490"
+      },
+      {
+        "path": "favicon.svg",
+        "bytes": 279,
+        "sha256": "c119cf9254eec4b7bd1725e66c8698e87e1a824c2f9053de09cb62937ef01fbc"
+      },
+      {
+        "path": "fixtures/localnet-offers.json",
+        "bytes": 2201,
+        "sha256": "870e4a50dd91cda0f6c67bf04e839974facf41905545f3b08521ff587191198e"
+      },
+      {
+        "path": "index.html",
+        "bytes": 614,
+        "sha256": "f32f82b688993eed17b176aa8cf9690a477c0ad01e03d218fb66ced938473eb3"
+      }
+    ],
+    "totalBytes": 1294980
+  },
+  "scope": "Compilation only, using public tracked source plus four frozen UI files. No deployment, program build, validator operation, wallet signature or financial test was performed."
+}
