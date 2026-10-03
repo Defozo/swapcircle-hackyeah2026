@@ -14,6 +14,8 @@ try{
  const response=await page.goto(url,{waitUntil:'domcontentloaded',timeout:90000});
  expect(response.status()).toBe(200);
  await expect(page.getByRole('heading',{name:'Dobre wymiany łączą ludzi.'})).toBeVisible({timeout:60000});
+ await expect(page.locator('.board-bottom')).toContainText('Współdzielona tablica Convex',{timeout:60000});
+ await expect(page.locator('.board-bottom .status-green')).toBeVisible();
  await page.getByRole('button',{name:'Zobacz przykład',exact:true}).click();
  await expect(page.getByRole('dialog')).toBeVisible();
  await expect(page.getByRole('table')).toBeVisible();
@@ -42,7 +44,7 @@ try{
  const manifest=await manifestResponse.json();
  expect(pageErrors).toEqual([]);
  expect(failedAssets).toEqual([]);
- const report={verifiedAt:new Date().toISOString(),url,freshBrowserContext:true,authenticationUsed:false,loaded:true,navigationVerified:true,languages:['pl','en'],englishRecoveryTermsVerified:true,languagePersistsAfterReload:true,mobileOverflow:false,pageErrors,failedAssets,manifest:{cluster:manifest.cluster,programId:manifest.programId,deployed:manifest.deployed},financialFlowVerified:false};
+ const report={verifiedAt:new Date().toISOString(),url,freshBrowserContext:true,authenticationUsed:false,loaded:true,navigationVerified:true,sharedOfferBoardConnected:true,languages:['pl','en'],englishRecoveryTermsVerified:true,languagePersistsAfterReload:true,mobileOverflow:false,pageErrors,failedAssets,manifest:{cluster:manifest.cluster,programId:manifest.programId,deployed:manifest.deployed},financialFlowVerified:false};
  writeFileSync('docs/evidence/public-web.json',JSON.stringify(report,null,2)+'\n');
  console.log(JSON.stringify(report,null,2));
 }finally{await browser.close();}
