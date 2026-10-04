@@ -38,12 +38,5 @@
     "language": "pl",
     "cues": 26,
     "timing": "Sentence timing mapped to exact output positions of intact voice clips. Not word-level forced alignment."
-  },
-  "final_review": {
-    "type": "model perception of actual MP4, not human listening",
-    "whole_video_pass": true,
-    "report": "docs/evidence/pitch-video-perceptual.json",
-    "human_listening_claimed": false,
-    "correction_rounds": 0
   }
 }

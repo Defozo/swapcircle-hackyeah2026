@@ -37,3 +37,10 @@ submission/_video_work/
 /USER_REQUEST*.md
 /artifacts/
 /_video_work/
+
+# Internal working reviews and publication receipts stay local.
+/docs/UX-AUDIT*.md
+/HACKTRIBE*RESULT*.json
+/docs/evidence/ux-*
+/docs/evidence/ui-ux-*
+/submission/pitch/audio-verification.json

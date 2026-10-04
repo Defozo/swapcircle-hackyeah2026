@@ -10,5 +10,6 @@
   "videoSources": "https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-pitch-2026-10-03/SwapCircle-video-sources.zip",
   "hacktribe": "https://hackyeah2026.hacktribe.co/swapcircle/",
   "mode": "Demo: interactive simulation",
-  "programEvidence": "https://github.com/Defozo/swapcircle-hackyeah2026/releases/tag/demo-localnet-2026-10-03"
+  "programEvidence": "https://github.com/Defozo/swapcircle-hackyeah2026/releases/tag/demo-localnet-2026-10-03",
+  "sourcePackage": "https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-pitch-2026-10-03/SwapCircle-source.zip"
 }

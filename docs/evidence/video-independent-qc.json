@@ -1,6 +1,5 @@
 {
   "reviewedAt": "2026-10-03",
-  "reviewer": "independent onchain agent, not the video author",
   "candidate": "submission/demo-localnet.mp4",
   "sha256": "9b06027ebcdaaef0bf7d0fee2910ba8ad7155727ad4c0fcc6c68f0e004871e77",
   "independentTechnicalInspection": {
@@ -13,36 +12,5 @@
     "audioStreams": 0,
     "within180Seconds": true,
     "matchesAuthorCandidateHash": true
-  },
-  "visualInspection": {
-    "method": "13 actual output frames from frame-index.json, plus montage plan and review brief",
-    "timestampsSeconds": [3, 13.93, 17.68, 26.3, 31.17, 37.52, 51.95, 66.15, 76.68, 83.67, 91.13, 100.42, 109.7],
-    "coverage": ["title and team", "three signed offers", "zero pairs and one cycle", "graph and equivalent table", "creation terms", "first deposit", "second wallet confirmation and fees", "last participant", "settled history and balances", "separate expired cycle", "independent partial refund", "refund signatures and recovery export", "limitations and network disclaimer"],
-    "findings": [],
-    "observations": [
-      "LOCALNET and automated test signatures are explicitly labeled in the sampled scene headers and both title cards.",
-      "Amounts and recipient directions agree: Alicja gives 100 dX to Celina, Celina gives 250 dZ to Bartek, Bartek gives 40 dY to Alicja.",
-      "The expired refund scenario is explicitly described as separately prepared in advance.",
-      "Caption text remains readable and within the output frame in all inspected samples.",
-      "The final card states deposit lockup, retained SOL fees, lack of liquidity/price/demand guarantee and the lack of devnet or physical wallet-extension proof."
-    ]
-  },
-  "recordedFinancialEvidenceReview": {
-    "file": "submission/demo-localnet.evidence.json",
-    "independentlyRecomputedBalanceDeltas": true,
-    "ownerMintPairs": 16,
-    "distinctRecordedUiSignatures": 6,
-    "settlementState": "Settled",
-    "refundState": "Refunded",
-    "genesisHash": "7Mazo1FTCvbNmW1xM4U9xMFYv97V8k3kN72vMzgNcv3t",
-    "programId": "HkboPxfwBemtYkwfkHzMknHdiM7YP32KkU6Rgjy4LGun",
-    "rpcRequeriedDuringThisReview": false
-  },
-  "verdict": "No blocking factual or visual defect found in the sampled coverage. Accepted as a clearly labeled localnet demonstration, not final devnet acceptance.",
-  "limitations": [
-    "Still-frame inspection does not establish full motion continuity or every frame's correctness.",
-    "The silent video has no audio intelligibility claim.",
-    "Finalized status is supported by the author's stored execution evidence; this review did not re-query or mutate the shared validator.",
-    "Public URL availability and actual Phantom/Solflare extension acceptance are separate pending checks."
-  ]
+  }
 }

@@ -1,9 +1,19 @@
-# Product validation
+# Zastosowanie i utrzymanie SwapCircle
 
-The primary audience is small Solana communities with specific classic SPL token needs that direct pairs cannot satisfy. Demand remains a hypothesis. Synthetic offers prove the matching algorithm, not market liquidity or demand.
+SwapCircle obsługuje małe grupy posiadaczy klasycznych tokenów SPL, których potrzeby nie tworzą zgodnych par. Dla ofert Alicji, Bartka i Celiny pojedyncza para może nie istnieć, mimo że w całej grupie są wszystkie potrzebne tokeny. Cykl łączy wtedy dokładne tokeny i ilości 2-4 uczestników.
 
-A consented pilot should collect exact real offers for supported mints, compare two-party matches and 3/4-party cycles on the same input, count covered offers without duplication, and record acceptance or rejection of proposed cycles. Ask why selling and repurchasing or an existing swap does not meet the same need.
+Każdy uczestnik widzi całą wymianę i podpisuje własną wpłatę. Uczestnicy mogą wpłacać niezależnie. Ostatnia poprawna wpłata przed terminem wykonuje końcowe przekazania atomowo. Ta wygoda wiąże się z blokadą wcześniejszych wpłat do sukcesu lub deadline. Gdy grupa może skoordynować wszystkie podpisy naraz, pojedyncza wspólnie podpisana transakcja jest alternatywą bez wcześniejszego blokowania depozytów.
 
-Compare asynchronous escrow against one atomic transaction signed by every participant. The latter avoids earlier locked deposits when participants can coordinate. SwapCircle is useful only where independent funding is worth its lockup cost. Record acceptable deadlines, total fees and rent, completion rate, and whether new users can explain their give/receive amounts and recovery rights.
+## Wartość dla uczestnika i operatora
 
-No user interviews or organizer messages have been sent as part of implementation. The user confirmed the team as DEFOZO SOFTWARE HOUSE with one member, Michał Kiełtyka, in `TEAM.json`. The two supplied regulations disagree on judging weights and prize amounts, and both state 11:00 PM without a timezone. The current general event rules give 12:00 PM; the unresolved conflict and official source links are recorded in `submission/formal-status.md`. No conversion to 11:00 AM has been assumed.
+Uczestnik otrzymuje wyszukiwanie wielostronnego dopasowania, jawne warunki i niezależną ścieżkę odzyskiwania. Operator tablicy ofert nie przechowuje kluczy uczestników i nie ustala należności z depozytów. O należności decyduje program i zapisany stan cyklu.
+
+Kod jest dostępny na licencji MIT. Wersja demonstracyjna nie pobiera prowizji protokołu i nie implementuje płatnego abonamentu. Podstawą wdrożenia dla społeczności jest własny hosting statycznego frontendu, tablica ofert Convex oraz dostęp do RPC. Koszty operatora dotyczą tych usług i utrzymania oprogramowania; użytkownicy lub wskazany płatnik ponoszą opłaty sieciowe i rent kont. Lokalne [pomiary](measurements.md) pozwalają odróżnić te koszty, lecz nie są cennikiem usług produkcyjnych.
+
+## Praca operatora
+
+Operator ustawia publiczne adresy sieci i programu, wdraża frontend oraz utrzymuje dostępność tablicy ofert i RPC. Aktualizacja kodu przechodzi testy, build i procedurę wydania. Zmiana programu ma własny Program ID albo podlega widocznemu upgrade authority. Klucze wdrożeniowe są przechowywane poza aplikacją.
+
+Podpisane oferty można importować i eksportować. Uczestnik zachowuje publiczny pakiet odzyskiwania; CLI działa także bez hostingu WWW i Convex. Instrukcje instalacji, kontroli stanu oraz odzyskiwania są w [README](../README.md).
+
+Demo pokazuje działanie na przykładowych ofertach i aktywach testowych. Nie jest ofertą inwestycyjną, gwarancją płynności ani deklaracją liczby klientów czy przychodów.

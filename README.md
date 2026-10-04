@@ -23,21 +23,17 @@ pnpm --filter @swapcircle/web dev --port 5187
 
 Otwórz `http://localhost:5187/`. Instrukcja poniżej uruchamia również program na lokalnym validatorze; klient z portfelem jest dostępny pod `http://localhost:5187/?mode=app`.
 
-## Stan techniczny i dowody
+## Dokumentacja i materiały
 
-Kod implementuje program, SDK, tablicę podpisanych ofert Convex, wyszukiwanie cykli, aplikację i niezależne odzyskiwanie. Aktualny stan odbioru opisuje [raport wykonania](docs/ACCEPTANCE.md). Wyniki lokalne nie oznaczają wykonania transakcji devnet. Manifest `deployments/devnet.json` jawnie wskazuje `deployed: false`, dopóki wdrożenie nie zostanie odczytane z sieci. Interfejs nie przedstawia tego programu jako działającego ani niezmiennego.
-
-[Klient z portfelem](https://defozo.github.io/swapcircle-hackyeah2026/?mode=app) pokazuje aktualny status wdrożenia odczytany z sieci. Publiczne Demo i pomiary localnet są odrębnymi rodzajami dowodu.
+Repozytorium zawiera program Solana, SDK, tablicę podpisanych ofert Convex, wyszukiwanie cykli, aplikację i niezależne odzyskiwanie. Publiczne Demo symuluje operacje. Program sprawdzono na lokalnym validatorze i w LiteSVM; manifest `deployments/devnet.json` wskazuje `deployed: false`. Klient z portfelem odczytuje stan programu z wybranej sieci przed użyciem.
 
 - [Model protokołu i zaufania](docs/protocol.md)
-- [Pomiary rzeczywistych transakcji localnet](docs/evidence/localnet-flows.json)
-- [Pomiary programu SBF w LiteSVM](tests/program/measurements.json)
-- [Weryfikacja działającej tablicy Convex](tests/matching/live-result.json)
-- [Opis zgłoszenia](submission/description.md), [prezentacja PDF](submission/pitch/SwapCircle.pdf), [edytowalny PPTX](submission/pitch/SwapCircle.pptx), [scenariusz localnet](docs/demo.md)
-- [Film: rzeczywisty localnet, 1:55](https://github.com/Defozo/swapcircle-hackyeah2026/releases/tag/demo-localnet-2026-10-03), [salda i sygnatury nagrania](submission/demo-localnet.evidence.json)
-- [Aktualny pakiet materiałów ZIP](https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-pitch-2026-10-03/SwapCircle-package.zip): prezentacja, film, notatki i dane zespołu. [Archiwalny pakiet localnet](https://github.com/Defozo/swapcircle-hackyeah2026/releases/tag/demo-localnet-2026-10-03) zachowuje pierwotne nagranie rzeczywistych lokalnych transakcji.
-- [Pełny zakres pomiarów kosztów i limitów](docs/measurements.md)
-- [Hipoteza potrzeby i plan walidacji](docs/validation-research.md)
+- [Uruchamianie testów i zakres weryfikacji](docs/ACCEPTANCE.md)
+- [Pomiary transakcji i kosztów localnet](docs/measurements.md)
+- [Zastosowanie i model utrzymania](docs/validation-research.md)
+- [Opis projektu](submission/description.md), [prezentacja PDF](submission/pitch/SwapCircle.pdf), [edytowalny PPTX](submission/pitch/SwapCircle.pptx)
+- [Pakiet materiałów](https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-pitch-2026-10-03/SwapCircle-package.zip) i [pakiet kodu źródłowego](https://github.com/Defozo/swapcircle-hackyeah2026/releases/download/demo-pitch-2026-10-03/SwapCircle-source.zip)
+- [Nagranie rzeczywistych transakcji localnet](https://github.com/Defozo/swapcircle-hackyeah2026/releases/tag/demo-localnet-2026-10-03) i [salda oraz sygnatury nagrania](submission/demo-localnet.evidence.json)
 
 ## Uruchomienie lokalne
 
@@ -130,7 +126,15 @@ Deployment wymaga testowego SOL na wydzielonym płatniku. Seed tworzy dX/dY/dZ (
 
 Finalne wydanie ma osobny Program ID. Procedura `scripts/release.mjs` przygotowuje oddzielny, sprawdzalny artefakt, wdraża go jako aktualizowalny i wymaga pełnych wyników devnet przed odebraniem authority. Odebranie jest nieodwracalne i wymaga osobnego polecenia z dokładnym Program ID. Po nim trzeba ponowić odbiór. Nie jest częścią zwykłego deployu ani uruchomienia aplikacji. Zobacz [instrukcję wydania](docs/release.md).
 
-GitHub Actions wykonuje testy i build. Osobny workflow `publish-web` publikuje statyczny frontend przez GitHub Pages. Publiczne adresy znajdują się w `submission/links.json`, a [dowód publikacji materiałów](docs/evidence/pitch-publication.json) łączy zakończone wdrożenie, testy publicznego Demo i kontrolę pobranych materiałów. [Najnowsza aktualizacja formularzy](docs/evidence/ux-demo-publication.json) potwierdza publikację `48c7494` i 22 kontrole publicznego adresu. [Odrębny raport UX](docs/UX-AUDIT-2026-10-04.md) opisuje dwie rundy poprawek i pozostałe uwagi okna wyboru portfela.
+GitHub Actions wykonuje testy i build. Workflow `publish-web` publikuje statyczny frontend przez GitHub Pages. Publiczne adresy materiałów znajdują się w `submission/links.json`.
+
+## Utrzymanie instalacji
+
+Frontend jest statyczny. Jego aktualizacja wymaga `pnpm install --frozen-lockfile`, `pnpm test` i `pnpm build`; pliki wynikowe są w `apps/web/dist`. Własny hosting ustawia publiczną konfigurację z `.env.example`. Sekrety wdrożeniowe pozostają poza repozytorium i frontendem.
+
+Convex obsługuje podpisane oferty i wycofania. Operator utrzymuje dostępność tej tablicy, endpointów RPC i hostingu WWW. Przed zmianą programu należy przejść procedurę [wydania](docs/release.md), zachować poprzedni manifest i sprawdzić zgodność źródeł, IDL oraz wdrożonych bajtów. Dostępność RPC i stan programu można odczytać przez `pnpm run doctor --manifest deployments/localnet.json`, a dla własnego wdrożenia podać jego manifest.
+
+Uczestnik zachowuje publiczny pakiet odzyskiwania oraz własny klucz. Awaria hostingu lub tablicy ofert nie zmienia warunków zapisanych w cyklu. CLI pozwala odczytać cykl i odzyskać należne tokeny przez sprawny RPC tej samej sieci. Po nieznanym wyniku wysłania sprawdź zachowaną sygnaturę przed ponowieniem.
 
 ## Granice gwarancji
 
@@ -139,7 +143,7 @@ GitHub Actions wykonuje testy i build. Osobny workflow `publish-web` publikuje s
 - Obsługiwany jest klasyczny SPL Token Program, bez freeze authority i wrapped SOL. Token-2022, rozszerzenia i szczególne standardy NFT są odrzucane. Aktywna mint authority jest jawnym ryzykiem podaży.
 - Salda ofert są chwilowym odczytem i nie rezerwują tokenów. Dopiero prawidłowa wpłata ustala należność. Darowizna do vaultu nie finansuje nogi.
 - Jeśli program ma upgrade authority, jej właściciel może zmienić kod. UI odczytuje ten stan z sieci. Brak funkcji administratora nie jest dowodem niezmienności.
-- To implementacja demonstracyjna z testowymi aktywami. Nie ma niezależnego audytu ani potwierdzonego popytu. Publiczne adresy, kwoty i terminy są widoczne w sieci.
+- To implementacja demonstracyjna z testowymi aktywami. Nie ma niezależnego audytu bezpieczeństwa. Publiczne adresy, kwoty i terminy są widoczne w sieci.
 
 ## Struktura i licencja
 
@@ -147,4 +151,4 @@ GitHub Actions wykonuje testy i build. Osobny workflow `publish-web` publikuje s
 
 Anchor 1.1.2, Agave 3.1.10, Rust 1.96.0, legacy web3.js 1.99.0, React 19.1.1, Vite 6.3.6. Konkretne zależności są w Cargo.lock, pnpm-lock.yaml i obrazie z digestem. Bazę środowiska wskazuje komentarz z przypiętym commitem kursu Superteam w Dockerfile.
 
-Kod projektu: MIT, autor Michał Kiełtyka / DEFOZO SOFTWARE HOUSE. Zależności zachowują własne licencje. Oryginalne materiały zadania, dostępne w lokalnym `official-2026-10-03`, nie są kodem projektu ani częścią jego licencji. [Historyczny wynik aktualizacji materiałów](HACKTRIBE_UPDATE_RESULT.json) opisuje zapis z 4 października o 00:01 Europe/Warsaw, przed późniejszą publikacją zgłoszenia. Bieżące materiały są dostępne w [zgłoszeniu SwapCircle](https://hackyeah2026.hacktribe.co/swapcircle/). Publikacja repozytorium i widoczność zgłoszenia są odrębne od finalizacji Submit.
+Kod projektu: MIT, autor Michał Kiełtyka / DEFOZO SOFTWARE HOUSE. Zależności i dołączone fonty zachowują własne licencje. Pochodzenie głosu i muzyki opisuje `submission/pitch/media-provenance.json`. Oryginalne materiały zadania nie są kodem projektu ani częścią jego licencji.
