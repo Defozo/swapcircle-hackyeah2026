@@ -2,6 +2,8 @@
 
 **DEFOZO SOFTWARE HOUSE · Michał Kiełtyka**
 
+[Zgłoszenie SwapCircle w HackTribe](https://hackyeah2026.hacktribe.co/swapcircle/)
+
 SwapCircle wyszukuje zgodne wymiany klasycznych tokenów SPL pomiędzy 2-4 osobami. Każda osoba podpisuje własną wpłatę do niezmiennego cyklu. Ostatnia wpłata przed terminem wykonuje wszystkie przekazania w jednej transakcji Solany. Jeśli zabraknie uczestnika, po terminie każdy depozyt można odzyskać niezależnie, także z CLI i bez serwera ofert.
 
 Przykład: Alicja oddaje 100 dX za 40 dY, Bartek 40 dY za 250 dZ, Celina 250 dZ za 100 dX. Nie ma zgodnej pary. Cykl Alicja → Celina → Bartek → Alicja zaspokaja wszystkie potrzeby. Ilości są uzgodnione, bez oracle, kursu i zaokrąglania.
@@ -145,4 +147,4 @@ GitHub Actions wykonuje testy i build. Osobny workflow `publish-web` publikuje s
 
 Anchor 1.1.2, Agave 3.1.10, Rust 1.96.0, legacy web3.js 1.99.0, React 19.1.1, Vite 6.3.6. Konkretne zależności są w Cargo.lock, pnpm-lock.yaml i obrazie z digestem. Bazę środowiska wskazuje komentarz z przypiętym commitem kursu Superteam w Dockerfile.
 
-Kod projektu: MIT, autor Michał Kiełtyka / DEFOZO SOFTWARE HOUSE. Zależności zachowują własne licencje. Oryginalne materiały zadania, dostępne w lokalnym `official-2026-10-03`, nie są kodem projektu ani częścią jego licencji. Aktualizację istniejącego projektu HackTribe zapisano i odczytano ponownie; [wynik](HACKTRIBE_UPDATE_RESULT.json) potwierdza zachowanie etapu i widoczności. Osobnej finalizacji zgłoszenia nie wykonano.
+Kod projektu: MIT, autor Michał Kiełtyka / DEFOZO SOFTWARE HOUSE. Zależności zachowują własne licencje. Oryginalne materiały zadania, dostępne w lokalnym `official-2026-10-03`, nie są kodem projektu ani częścią jego licencji. [Historyczny wynik aktualizacji materiałów](HACKTRIBE_UPDATE_RESULT.json) opisuje zapis z 4 października o 00:01 Europe/Warsaw, przed późniejszą publikacją zgłoszenia. Bieżące materiały są dostępne w [zgłoszeniu SwapCircle](https://hackyeah2026.hacktribe.co/swapcircle/). Publikacja repozytorium i widoczność zgłoszenia są odrębne od finalizacji Submit.
