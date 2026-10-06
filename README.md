@@ -4,13 +4,15 @@
 
 [Zgłoszenie SwapCircle w HackTribe](https://hackyeah2026.hacktribe.co/swapcircle/)
 
-SwapCircle wyszukuje zgodne wymiany klasycznych tokenów SPL pomiędzy 2-4 osobami. Każda osoba podpisuje własną wpłatę do niezmiennego cyklu. Ostatnia wpłata przed terminem wykonuje wszystkie przekazania w jednej transakcji Solany. Jeśli zabraknie uczestnika, po terminie każdy depozyt można odzyskać niezależnie, także z CLI i bez serwera ofert.
+SwapCircle łączy potrzeby 2-4 osób w jedną wymianę klasycznych tokenów SPL. Wyszukuje cykle również wtedy, gdy żadna para nie może wymienić się bezpośrednio. Każda osoba zna tokeny, dokładne ilości, odbiorców i termin, zanim podpisze własną wpłatę. Ostatnia wpłata przed terminem wykonuje wszystkie przekazania w jednej transakcji Solany.
+
+Jeśli zabraknie uczestnika, po terminie każdy depozyt można odzyskać niezależnie, także z CLI i bez serwera ofert. Warunki cyklu określają należne tokeny; rozliczenie nie potrzebuje wyceny z oracle ani decyzji operatora.
 
 Przykład: Alicja oddaje 100 dX za 40 dY, Bartek 40 dY za 250 dZ, Celina 250 dZ za 100 dX. Nie ma zgodnej pary. Cykl Alicja → Celina → Bartek → Alicja zaspokaja wszystkie potrzeby. Ilości są uzgodnione, bez oracle, kursu i zaokrąglania.
 
 ## Wypróbuj SwapCircle
 
-[Otwórz interaktywne demo](https://defozo.github.io/swapcircle-hackyeah2026/) i przejdź przez wymianę bez instalacji i podłączania portfela. Zacznij od trzech ofert, znajdź cykl, sprawdź warunki i wykonaj kolejne wpłaty. Wypróbuj też brakującą wpłatę i zwrot po terminie. Dostępne są warianty dla 2, 3 i 4 osób. Tryb Demo symuluje operacje, wykorzystując wyszukiwarkę cykli produktu.
+[Otwórz symulację Demo](https://defozo.github.io/swapcircle-hackyeah2026/) i przejdź przez wymianę bez instalacji i podłączania portfela. Zacznij od trzech ofert, znajdź cykl, sprawdź warunki i wykonaj kolejne wpłaty. Wypróbuj też brakującą wpłatę i zwrot po terminie. Dostępne są warianty dla 2, 3 i 4 osób. Demo wykorzystuje wyszukiwarkę cykli produktu i symuluje wpłaty oraz zwroty; nie wysyła transakcji na devnet ani mainnet.
 
 [Film z lektorem i prezentacja](https://defozo.github.io/swapcircle-hackyeah2026/watch.html) pokazują pełną drogę od ofert do rozliczenia.
 
@@ -25,7 +27,9 @@ Otwórz `http://localhost:5187/`. Instrukcja poniżej uruchamia również progra
 
 ## Dokumentacja i materiały
 
-Repozytorium zawiera program Solana, SDK, tablicę podpisanych ofert Convex, wyszukiwanie cykli, aplikację i niezależne odzyskiwanie. Publiczne Demo symuluje operacje. Program sprawdzono na lokalnym validatorze i w LiteSVM; manifest `deployments/devnet.json` wskazuje `deployed: false`. Klient z portfelem odczytuje stan programu z wybranej sieci przed użyciem.
+Repozytorium zawiera program Solana, SDK, tablicę podpisanych ofert Convex, wyszukiwanie cykli, aplikację i niezależne odzyskiwanie. Wyszukiwarka łączy oferty według dokładnego mintu i ilości, weryfikuje podpisy oraz ważność i pokazuje zakres przeszukania. Możesz przejść od ofert do cyklu, a następnie zachować publiczny pakiet potrzebny do odzyskania swojego depozytu.
+
+Program sprawdzono na lokalnym validatorze i w LiteSVM. Klient z portfelem odczytuje stan programu z wybranej sieci przed użyciem. Instrukcje poniżej pozwalają odtworzyć rzeczywiste transakcje na localnet; [dokumentacja weryfikacji](docs/ACCEPTANCE.md) opisuje środowiska, wyniki i stan devnet.
 
 - [Model protokołu i zaufania](docs/protocol.md)
 - [Uruchamianie testów i zakres weryfikacji](docs/ACCEPTANCE.md)
